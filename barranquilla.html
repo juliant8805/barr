@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <meta charset="UTF-8">
+        <title>Ingreso Plataforma</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/login.css">
+        <script src="js/prefixfree.min.js"></script>
+        <video width="100%" controls auto loop autoplay>
+            <source src="demo.mp4" type="video/mp4">
+            Por favor utilice otro navegador (Chrome, Mozilla, Safari, Explorer).
+        </video>     
+    </head>
+    <body onload="onload()">
+        <div class="login">
+            <img src="./imagenes/logo_login.png">
+            <form method="post" action="validacion.html">
+                <input type="text" id="u" name="u" placeholder="Usuario" required="required" />
+                <input type="password" id="p" name="p" placeholder="Contraseña" required="required" />
+                <button type="submit" id="b" class="btn btn-primary btn-block btn-circle" onclick="setCookie()">Log in</button>
+                <h2 id="er" class="error" hidden="hidden">Credenciales no validas</h2>
+                <h2 id="er1" class="error" hidden="hidden">Por favor ingrese desde Google Chrome</h2>
+            </form>
+        </div>
+        <script src="js/index.js"></script>
+        <script src="js/md5.inc.js"></script>
+        <script src="principal/load.js"></script>              
+    </body>
+</html>
