@@ -416,6 +416,8 @@ function limpiar_consulta() {
     vias.setVisible(false);
     predio.setVisible(true);
     document.getElementById('panel_atr').style.display = 'none';
+    document.getElementById('tablaatributospuntosaaa').style.display = 'none';
+    document.getElementById('botonmaximizarpuntosaaa').style.display = 'none';
     document.getElementById('botoncerrarstreetview').style.display = 'none';
     document.getElementById('botonmostrarstreetview').style.display = 'none';
     document.getElementById('mensaje').style.display = 'none';
@@ -601,28 +603,32 @@ function lista() {
 }
 
 function abrir_manual() {
-    if (modulo == 'catastro') {
-        window.open(
+    if (modulo == 'catastro') { 
+            window.open('./documentos/manual_catastro.pdf', '_blank');
+            /* window.open(
                 'http://35.184.3.4/gesstor/documentos/manual_catastro.pdf',
                 '_blank' // <- This is what makes it open in a new window.
-                );
+                );*/
     } else if (modulo == 'planeacion') {
-        window.open(
-                'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
+            window.open('./documentos/manual_misional_planeacion.pdf', '_blank', 'fullscreen=yes');
+                /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
                 '_blank' // <- This is what makes it open in a new window.
-                );
+                );*/
     } else if (modulo == 'sui') {
-        window.open(
+            window.open('./documentos/manual_sui.pdf', '_blank', 'fullscreen=yes');
+       /* window.open(
                 'http://35.184.3.4/gesstor/documentos/manual_sui.pdf',
                 '_blank' // <- This is what makes it open in a new window.
-                );
+                );*/
     } else if (modulo == 'hacienda') {
-        window.open(
+        window.open('./documentos/manual_hacienda.pdf', '_blank', 'fullscreen=yes');
+        /*window.open(
                 'http://35.184.3.4/gesstor/documentos/manual_hacienda.pdf',
                 '_blank' // <- This is what makes it open in a new window.
-                );
+                );*/
     }
 }
+
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function (event) {

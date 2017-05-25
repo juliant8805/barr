@@ -205,9 +205,6 @@ function file() {
       }   
     }
     
-    
-   
-
     var arr = JSON.stringify(select);
     arr = arr.replace(/\./g, ",");
     var url = "./export/export.php";

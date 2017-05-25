@@ -1435,7 +1435,7 @@ td{
     #boton_geocoder{
         position:absolute;
         top:1.7em;
-        left:55em; 
+        left:35em; 
         height:3em;
         width:3em;    
   }
@@ -1479,8 +1479,13 @@ td{
     cursor:pointer;  
 }
 
-
-
+#indicadorgeo{
+     position:absolute;
+     bottom:2em;
+     right:2em; 
+     height:3em;
+     width:3em;   
+}
 
 
 

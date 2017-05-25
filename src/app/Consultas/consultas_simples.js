@@ -311,7 +311,7 @@ function addressSource(requestString, responseFunc) {
         var temp = "codigo";
     } else if ($("#input_ladomanzana")["0"].value !== "") {
         var tempname = "preproduccion:ladomanzana_autocompletar";
-        var temp = "lado_manza";
+        var temp = "lado_manzanas";
     } else if ($("#input_predioshasusos")["0"].value !== "") {
         var tempname = "preproduccion:predioshasusos_autocompletar";
         var temp = "referencia";
@@ -335,6 +335,7 @@ function addressSource(requestString, responseFunc) {
                 object: data
             });
             var arr = [];
+             
             if (temp === "direccion") {
                 //console.log(data.features);
                 for (i = 0; i < data.features.length; i++) {
@@ -407,22 +408,95 @@ function addressSource(requestString, responseFunc) {
                 }
             } else {
                 if (temp === 'direcci') {
-                    //console.log(viewParamsStr);
+                    
                     codeAddress(viewParamsStr);
-                } else {
-                    arr[0] = "No se encuentra informacion geografica asociada a la consulta";
-                    responseFunc(arr);
+                } 
+                
+                else {
+      
+                    if(tempname == "preproduccion:buscar_direccion_registro1"){
+                    alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador: <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'>");
+                    document.getElementById("direccion").value ="";
+                    }
+                    else if(tempname == "preproduccion:buscar_barrio"){
+                      alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de Barrio Ingresado, por favor verifique que el nombre ingresado sea correcto. Ejemplo:</br></br> La Concepcion</br>Paseo de La Castella</br>Zona Franca</br>etc."); 
+                    document.getElementById("barrio").value ="";
+                    }
+                    else if(tempname == "preproduccion:buscar_localidad"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de Localidad Ingresado, por favor verifique que el nombre ingresado corresponda a una de las 5 Localidades Existentes:</br></br>Riomar</br>Centro Historico</br>Suroccidente</br>Suroriente</br>Metropolitana");  
+                       document.getElementById("localidad").value ="";
+                    }
+                    else if(tempname == "preproduccion:buscar_manzana"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código de manzana ingresado, tenga en cuenta que todos los códigos comienzan por 08001... Ejemplo:</br></br>08001010100000198</br>08001010300000334</br>08001010600000646</br>etc."); 
+                        document.getElementById("manzana").value ="";
+                    }
+                    else if(tempname == "preproduccion:sitios_autocompletar"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el sitio de interés ingresado, por favor verifique que el nombre ingresado sea correcto. Ejemplo:</br></br>Gerencia de Gestion Catastral</br>Hospital General</br>Tienda Los Robles</br>etc.");  
+                       document.getElementById("address1").value ="";
+                    }
+                    else if(tempname == "preproduccion:buscar_matricula_reg"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código de matricula ingresado, por favor verifique que el código de matricula inmobiliario ingresado sea correcto. Ejemplo:</br></br>040-86998"); 
+                      document.getElementById("matricula").value ="";             
+                    }
+                    else if(tempname == "preproduccion:buscar_cod_reg"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código catastral ingresado, por favor verifique que el código ingresado sea correcto. Ejemplo:</br></br>080010104000005340004000000000");  
+                        document.getElementById("codigo").value =""; 
+                    }
+                    else if(tempname == "preproduccion:buscar_propietario_reg"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de propietario ingresado, por favor verifique que el nombre ingresado sea correcto."); 
+                       document.getElementById("propietarios").value =""; 
+                    }
+                    else if(tempname == "preproduccion:buscar_cedula_reg"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el ID de propietario ingresado, por favor verifique que el ID (Cédula, Nit etc.) ingresado sea correcto.");
+                       document.getElementById("cedul").value ="";
+                    }
+                    else if(tempname == "preproduccion:ladomanzana_autocompletar"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información de Alineamiento Urbano con este Código Catastral, por favor verifique que el Código Catastral ingresado sea correcto. Ejemplo: </br></br>0800101010021B"); 
+                        document.getElementById("input_ladomanzana").value ="";
+                    }
+                    else if(tempname == "preproduccion:predioshasusos_autocompletar"){
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información de Usos Permitidos con esta referencia Catastral, por favor verifique que la referencia catastral ingresada sea correcta. Ejemplo: </br></br>010101710004000"); 
+                        document.getElementById("input_predioshasusos").value ="";
+                    }
+                    else{
+                        alert("GESSTOR INFORMA:</br></br>La información se encuentra en la base de datos alfanumérica y no en la base de datos geográfica, este caso se presenta por diferencia de vigencias de  información");
+                          document.getElementById("direccion").value ="";
+                          document.getElementById("codigo").value ="";
+                          document.getElementById("propietarios").value ="";
+                          document.getElementById("cedul").value ="";
+                          document.getElementById("barrio").value ="";
+                          document.getElementById("matricula").value ="";
+                          document.getElementById("address1").value ="";
+                          document.getElementById("localidad").value ="";
+                          document.getElementById("manzana").value ="";
+                          document.getElementById("input_ladomanzana").value =""; 
+                          document.getElementById("input_predioshasusos").value ="";
+                        
+                    }
+                             
+                   // responseFunc(arr);    
                 }
             }
         },
         error: function () {
             console.log("error");
         }
-
-    });
-
+    });       
 }
+
+
 function addressSelect(event, ui) {
+      document.getElementById("direccion").value ="";
+      document.getElementById("codigo").value ="";
+      document.getElementById("propietarios").value ="";
+      document.getElementById("cedul").value ="";
+      document.getElementById("barrio").value ="";
+      document.getElementById("matricula").value ="";
+      document.getElementById("address1").value ="";
+      document.getElementById("localidad").value ="";
+      document.getElementById("manzana").value ="";
+      document.getElementById("input_ladomanzana").value =""; 
+      document.getElementById("input_predioshasusos").value ="";
     //console.log(ui);
     //var select = validacionusuarios();
     var consultaregistro = new Object();
@@ -1190,6 +1264,16 @@ function manzanaSelect(event, ui) {
 
 
 function ladomanzanaSelect(event, ui) {
+    document.getElementById("direccion").value ="";
+      document.getElementById("codigo").value ="";
+      document.getElementById("propietarios").value ="";
+      document.getElementById("cedul").value ="";
+      document.getElementById("barrio").value ="";
+      document.getElementById("matricula").value ="";
+      document.getElementById("address1").value ="";
+      document.getElementById("localidad").value ="";
+      document.getElementById("manzana").value ="";
+      document.getElementById("input_ladomanzana").value =""; 
     document.getElementById("panel_atributos_predioshasusos").style.display = "none";
     document.getElementById("tablaatributospredioshasusos").style.display = "none";
     document.getElementById("panel_atributos").style.display = "none";
@@ -1217,7 +1301,7 @@ function ladomanzanaSelect(event, ui) {
     view.setCenter(featureCenter);
     view.fitExtent(ppExtent, map.getSize());
     var viewResolution = map.getView().getResolution();
-    var ladoman = feat.values_.lado_manza;
+    var ladoman = feat.values_.lado_manzanas;
     predio.setVisible(true);
     $.ajax({
         success: function (data) {
@@ -1235,7 +1319,7 @@ function ladomanzanaSelect(event, ui) {
             select[3] = "<b>Nombre de Perfil</b>";
             select[4] = "<b>Lb_Lc</b>";
             sel[0] = feat.values_.codigo;
-            sel[1] = feat.values_.lado_manza;
+            sel[1] = feat.values_.lado_manzanas;
             sel[2] = feat.values_.perfil;
             sel[3] = feat.values_.nom_perfil;
             sel[4] = feat.values_.lb_lc;
@@ -1262,6 +1346,16 @@ function ladomanzanaSelect(event, ui) {
 }
 
 function predioshasusosSelect(event, ui) {
+    document.getElementById("direccion").value ="";
+      document.getElementById("codigo").value ="";
+      document.getElementById("propietarios").value ="";
+      document.getElementById("cedul").value ="";
+      document.getElementById("barrio").value ="";
+      document.getElementById("matricula").value ="";
+      document.getElementById("address1").value ="";
+      document.getElementById("localidad").value ="";
+      document.getElementById("manzana").value ="";
+      document.getElementById("input_ladomanzana").value =""; 
     document.getElementById("panel_atributos").style.display = "none";
     document.getElementById("tablaatributos").style.display = "none";
     document.getElementById("panel_atributos_alineamiento").style.display = "none";
