@@ -1,8 +1,8 @@
 //window.onload = detectarCarga;
 //window.oncontextmenu = function() { return false; };
-$(document).on('ready',function(){
+$(document).on('ready', function () {
 //codigo aquí
-var select = validacionusuarios();
+    var select = validacionusuarios();
     //console.log(select);
     if (navigator.vendor !== "Google Inc.") {
         location.href = "barranquilla.html?ig=navegador";
@@ -11,21 +11,21 @@ var select = validacionusuarios();
         location.href = "barranquilla.html?ig=error";
     }
     /*registro de inrgeso de usuarios
-    else {
-        try {
-            var select1 = select_query("SELECT count(*) AS count FROM reguser WHERE usuario = '" + ca[0] + "'");
-            if (select1[0][0] === 0) {
-                document.getElementById("completo").style.display = 'block';
-            }
-            var f = new Date();
-            //var hora = f.getHours
-            var fecha = f.getFullYear() + "/" + (f.getMonth() + 1) + "/" + f.getDate() + " " + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
-            //console.log(fecha);
-            update_query("INSERT INTO reguser (usuario,fecha) VALUES('" + select[0][3] + "','" + fecha + "');");
-            //console.log(arrayResult);
-        } catch (err) {
-        }
-    }*/
+     else {
+     try {
+     var select1 = select_query("SELECT count(*) AS count FROM reguser WHERE usuario = '" + ca[0] + "'");
+     if (select1[0][0] === 0) {
+     document.getElementById("completo").style.display = 'block';
+     }
+     var f = new Date();
+     //var hora = f.getHours
+     var fecha = f.getFullYear() + "/" + (f.getMonth() + 1) + "/" + f.getDate() + " " + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
+     //console.log(fecha);
+     update_query("INSERT INTO reguser (usuario,fecha) VALUES('" + select[0][3] + "','" + fecha + "');");
+     //console.log(arrayResult);
+     } catch (err) {
+     }
+     }*/
     //console.log(document.getElementById("nombre_usuario").innerHTML);
     //vista de iconos por perfil
     //console.log(select);
@@ -57,7 +57,7 @@ var select = validacionusuarios();
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-            
+
             var d = document.createElement("script");
             d.type = "text/javascript";
             d.charset = "UTF-8";
@@ -65,7 +65,7 @@ var select = validacionusuarios();
             var c = document.getElementsByTagName("head")[0];
             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
             c.appendChild(d);
-            
+
             var e = document.createElement("script");
             e.type = "text/javascript";
             e.charset = "UTF-8";
@@ -73,14 +73,14 @@ var select = validacionusuarios();
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
-            
-          /*  var e = document.createElement("script");
-            e.type = "text/javascript";
-            e.charset = "UTF-8";
-            e.src = "src/app/app/Consultas/sinconsulta.js";
-            var f = document.getElementsByTagName("head")[0];
-            f || (f = document.body.parentNode.appendChild(document.createElement("head")));
-            f.appendChild(f);*/        
+
+            /*  var e = document.createElement("script");
+             e.type = "text/javascript";
+             e.charset = "UTF-8";
+             e.src = "src/app/app/Consultas/sinconsulta.js";
+             var f = document.getElementsByTagName("head")[0];
+             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
+             f.appendChild(f);*/
         } else if (select[0][7] === true) {
             //document.getElementById("metrotel").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
@@ -101,7 +101,7 @@ var select = validacionusuarios();
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-            
+
             var d = document.createElement("script");
             d.type = "text/javascript";
             d.charset = "UTF-8";
@@ -109,7 +109,7 @@ var select = validacionusuarios();
             var c = document.getElementsByTagName("head")[0];
             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
             c.appendChild(d);
-            
+
             var e = document.createElement("script");
             e.type = "text/javascript";
             e.charset = "UTF-8";
@@ -117,19 +117,19 @@ var select = validacionusuarios();
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
-            
+
         } else if (select[0][9] === true) {
             modulo = "planeacion";
             //var sele = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%'");
             //console.log(sele);
             /*if (parseInt(sele[0][0]) > 0) {
-                //console.log(sele);        
-                document.getElementById("valid").style.display = "block";
-            }
-            var sel = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%'");
-            if (parseInt(sel[0][0]) > 0) {
-                document.getElementById("deshacer").style.display = "block";
-            }*/
+             //console.log(sele);        
+             document.getElementById("valid").style.display = "block";
+             }
+             var sel = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%'");
+             if (parseInt(sel[0][0]) > 0) {
+             document.getElementById("deshacer").style.display = "block";
+             }*/
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
@@ -145,7 +145,7 @@ var select = validacionusuarios();
             document.getElementById("Estructura Ecologica Principal").style.display = "block";
             document.getElementById("Clasificacion_Uso").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
-              
+
             var b = document.createElement("script");
             b.type = "text/javascript";
             b.charset = "UTF-8";
@@ -153,7 +153,7 @@ var select = validacionusuarios();
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-            
+
             var d = document.createElement("script");
             d.type = "text/javascript";
             d.charset = "UTF-8";
@@ -161,7 +161,7 @@ var select = validacionusuarios();
             var c = document.getElementsByTagName("head")[0];
             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
             c.appendChild(d);
-            
+
             var e = document.createElement("script");
             e.type = "text/javascript";
             e.charset = "UTF-8";
@@ -169,10 +169,8 @@ var select = validacionusuarios();
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
-            
-        } 
-        
-        else if (select[0][10] === true) {
+
+        } else if (select[0][10] === true) {
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
@@ -184,7 +182,7 @@ var select = validacionusuarios();
             document.getElementById("Impuesto Camara").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             modulo = "hacienda";
-            
+
             var b = document.createElement("script");
             b.type = "text/javascript";
             b.charset = "UTF-8";
@@ -192,15 +190,15 @@ var select = validacionusuarios();
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-            
+
             var d = document.createElement("script");
             d.type = "text/javascript";
             d.charset = "UTF-8";
             d.src = "sql/js_sql.js";
             var c = document.getElementsByTagName("head")[0];
             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
-            c.appendChild(d);    
-            
+            c.appendChild(d);
+
             var e = document.createElement("script");
             e.type = "text/javascript";
             e.charset = "UTF-8";
@@ -208,12 +206,10 @@ var select = validacionusuarios();
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
-            
-            
-        } 
-        
-        else if (select[0][12] === true) {
-            
+
+
+        } else if (select[0][12] === true) {
+
             //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             //document.getElementById("manual").style.display = "block";
@@ -269,7 +265,7 @@ function validacionusuarios() {
     try {
         //var selec = select_query("SELECT * FROM usuario WHERE usuario ='" + ca[0] + "' AND contrasena ='" + ca[1] + "' AND estado='t';");
         //console.log(selec);
-        var select = search ("preproduccion:ValidateUser", ca[0],ca[1]);
+        var select = search("preproduccion:ValidateUser", ca[0], ca[1]);
         document.getElementById("carga").style.display = "none";
         document.getElementById("nombre_usuario").innerHTML = select[0][0].split(" ", 1);
     } catch (err) {
@@ -277,22 +273,50 @@ function validacionusuarios() {
     return(select);
 }
 changestyles = 0;
-/*passwordchange
+
 function password() {
     var ca = document.cookie.split('=');
     //hex_md5(document.getElementById("p").value);
-    var select = select_query("SELECT * FROM usuario WHERE usuario ='" + ca[0] + "' AND contrasena ='" + hex_md5(document.getElementById('password').value) + "';");
-    //console.log(select);
-    if (select === null) {
+    //var select = select_query("SELECT * FROM usuario WHERE usuario ='" + ca[0] + "' AND contrasena ='" + hex_md5(document.getElementById('password').value) + "';");
+    var select = search("preproduccion:ValidateUser", ca[0], hex_md5(document.getElementById('password').value));
+    if (select === null || select.length === 0) {
         alert("Contraseña incorrecta");
     } else if (document.getElementById("newpassword").value === document.getElementById("cpassword").value) {
-        var arrayResult = update_query("UPDATE usuario SET contrasena='" + hex_md5(document.getElementById('newpassword').value) + "' WHERE usuario='" + ca[0] + "';");
+        //var arrayResult = update_query("UPDATE usuario SET contrasena='" + hex_md5(document.getElementById('newpassword').value) + "' WHERE usuario='" + ca[0] + "';");
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+            <Update typeName="user:usuario">\
+                <Property>\
+                    <Name>contrasena</Name>\
+                    <Value>' + hex_md5(document.getElementById('newpassword').value) + '</Value>\
+                </Property>\
+                <Filter>\
+                    <FeatureId fid="usuario.' + select[0][18] + '"/>\
+                </Filter>\
+            </Update>\
+        </Transaction>';
+        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        $.ajax({
+            type: "POST",
+            url: rooturl,
+            dataType: "xml",
+            async: false,
+            contentType: "text/xml",
+            data: postData,
+            success: function (xml) {
+                //console.log(xml);
+                alert('Datos actualizados con exito');
+            },
+            error: function (xml) {
+                //console.log('error');
+                alert('Los datos NO se actualizaron');
+            }
+        });
         $('#myModal').modal('hide');
     } else {
         alert("La contraseña nueva y su confirmacion no coinciden");
     }
     return;
-}*/
+}
 function mostrar(consulta) {
     //document.getElementById('barra_direccion').style.display = 'none';
     document.getElementById('barra_sitio').style.display = 'none';
@@ -475,11 +499,10 @@ function limpiar_consulta() {
     document.getElementById("panel_atributos_ph").style.display = "none";
     document.getElementById("tablaatributosprediosph").style.display = "none";
     document.getElementById("botonmaximizarph").style.display = "none";
-    if (modulo=='gestor'){
-       predio.getSource().updateParams({'STYLES': 'ffsf'}); 
-    }
-    else{
-    predio.getSource().updateParams({'STYLES': 'predios_sin_consulta', 'CQL_FILTER': null});
+    if (modulo == 'gestor') {
+        predio.getSource().updateParams({'STYLES': 'ffsf'});
+    } else {
+        predio.getSource().updateParams({'STYLES': 'predios_sin_consulta', 'CQL_FILTER': null});
     }
 }
 function busqueda_personalizada() {
@@ -552,15 +575,15 @@ function busqueda(id) {
     }
 }
 
-function ocultarpanelatributosaaa(){
-   document.getElementById('mensaje').style.display = 'none'; 
-   document.getElementById('tablaatributospuntosaaa').style.display = 'none'; 
-   document.getElementById('botonmaximizarpuntosaaa').style.display = 'block';   
+function ocultarpanelatributosaaa() {
+    document.getElementById('mensaje').style.display = 'none';
+    document.getElementById('tablaatributospuntosaaa').style.display = 'none';
+    document.getElementById('botonmaximizarpuntosaaa').style.display = 'block';
 }
-function mostrarpanelatributosaaa(){
-   document.getElementById('mensaje').style.display = 'none'; 
-   document.getElementById('tablaatributospuntosaaa').style.display = 'block'; 
-   document.getElementById('botonmaximizarpuntosaaa').style.display = 'none';   
+function mostrarpanelatributosaaa() {
+    document.getElementById('mensaje').style.display = 'none';
+    document.getElementById('tablaatributospuntosaaa').style.display = 'block';
+    document.getElementById('botonmaximizarpuntosaaa').style.display = 'none';
 }
 
 
@@ -961,40 +984,36 @@ window.alert = function (message) {
 };
 
 function habilitar(value)
-		{
-			if(document.getElementById("checkconstruccion").checked == true)
-			{
-				document.getElementById("botonlicconstruc").style.display = "block";
-			}
-            else {
-                document.getElementById("botonlicconstruc").style.display = "none";
-			}
-            if(document.getElementById("checkservpublico").checked == true)
-			{
-				document.getElementById("botonservpublico").style.display = "block";
-			}
-            else {
-                document.getElementById("botonservpublico").style.display = "none";
-			}
-            if(document.getElementById("checkfotografia").checked == true)
-			{
-				document.getElementById("botonfotografia").style.display = "block";
-			}
-            else {
-                document.getElementById("botonfotografia").style.display = "none";
-			}
-            if(document.getElementById("checkdoc").checked == true)
-			{
-				document.getElementById("botondoc").style.display = "block";
-			}
-            else {
-                document.getElementById("botondoc").style.display = "none";
-			}
-		}
-
-  function enviargesstor()
 {
-      alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
-  }
+    if (document.getElementById("checkconstruccion").checked == true)
+    {
+        document.getElementById("botonlicconstruc").style.display = "block";
+    } else {
+        document.getElementById("botonlicconstruc").style.display = "none";
+    }
+    if (document.getElementById("checkservpublico").checked == true)
+    {
+        document.getElementById("botonservpublico").style.display = "block";
+    } else {
+        document.getElementById("botonservpublico").style.display = "none";
+    }
+    if (document.getElementById("checkfotografia").checked == true)
+    {
+        document.getElementById("botonfotografia").style.display = "block";
+    } else {
+        document.getElementById("botonfotografia").style.display = "none";
+    }
+    if (document.getElementById("checkdoc").checked == true)
+    {
+        document.getElementById("botondoc").style.display = "block";
+    } else {
+        document.getElementById("botondoc").style.display = "none";
+    }
+}
 
-   
+function enviargesstor()
+{
+    alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
+}
+
+

@@ -26,33 +26,23 @@
                 text-align: center;
             }
         </style>
-        <script src="sql/js_sql.js"></script>
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="src/jquery/jquery-ui-1.11.2/jquery-ui.css">
+        <script src="src/jquery/jquery.min.js"></script>
+        <script src="src/jquery/jquery-ui-1.11.2/jquery-ui.js"></script>
+        <script src="sql/jsSearch.js"></script>
+        <script src="admin/admin.js"></script>
     </head>
     <body>
-        <script>
-            window.onload = function () {
-                //alert("dd");
-                var ca = document.cookie.split('=');
-                //alert(ca);
-                var select = select_query("SELECT * FROM usuario WHERE usuario ='" + ca[0] + "' AND contrasena ='" + ca[1] + "' AND estado='t' AND sistemas='t';");
-                //console.log(select);
-                if (select === null) {
-                    //alert("ad");
-                    location.href = "barranquilla.html?ig=error";
-                }
-            };
-        </script>
         <ul class="nav nav-tabs">
             <li class="active"><a href="#crear" data-toggle="tab">Crear Usuario</a></li>
             <li><a href="#modificacion" data-toggle="tab">Modificación de Usuarios</a></li>
             <a href="barranquilla.html"><img src="imagenes/limpiar.png" align="right" title="Salir" style="height: 30px;"></a>
         </ul>
-
         <div class="tab-content">
-
             <div class="tab-pane fade in active" id="crear">
                 <div class="col-xs-12"><h2>Creación de Usuario</h2></div>
-
                 <br /><br />
                 <form class="form-horizontal" method="post" action="" onsubmit="guardar()">
                     <!--<div class="form-group">
@@ -254,11 +244,11 @@
             <div class="tab-pane fade" id="modificacion">
                 <div class="col-xs-12"><h2>Modificación de Usuario</h2></div>
                 <br /><br />
-                <form class="form-horizontal" method="post" action="" onsubmit="actualizar()">
+                <form class="form-horizontal" method="post" onsubmit="actualizar()">
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="formGroup">Usuario</label>
                         <div class="col-sm-2">
-                            <input class="form-control ui-autocomplete-input" type="text" id="usu" onkeyup="usuario()" autocomplete="off">
+                            <input class="form-control" type="text" id="usu" autocomplete="off">
                         </div>
                     </div>
                     <div id="group" hidden="hidden">
@@ -458,286 +448,11 @@
             </div>
         </div>-->
         <script>
-            function actualizar() {
-
-                //var nom = document.getElementById('nombre1').value.split(' ');
-                //var nomg = nom[0] + "." + nom[nom.length - 1];
-                //console.log(nomg + "2017");
-                //var contrasena = hex_md5(nomg + "2017");
-                if (document.getElementById('catastroE').className === 'btn btn-primary') {
-                    var catastroE = 'f';
-                } else {
-                    var catastroE = 't';
-                }
-                if (document.getElementById('catastroConsulE').className === 'btn btn-success') {
-                    var catastroConsulE = 'f';
-                } else {
-                    var catastroConsulE = 't';
-                }
-                if (document.getElementById('planeacionE').className === 'btn btn-primary') {
-                    var planeacionE = 'f';
-                } else {
-                    var planeacionE = 't';
-                }
-                if (document.getElementById('planeacionConsulE').className === 'btn btn-success') {
-                    var planeacionConsulE = 'f';
-                } else {
-                    var planeacionConsulE = 't';
-                }
-                if (document.getElementById('suiE').className === 'btn btn-warning') {
-                    var suiE = 'f';
-                } else {
-                    var suiE = 't';
-                }
-                if (document.getElementById('potE').className === 'btn btn-danger') {
-                    var potE = 'f';
-                } else {
-                    var potE = 't';
-                }
-                if (document.getElementById('haciendaE').className === 'btn btn-primary') {
-                    var haciendaE = 'f';
-                } else {
-                    var haciendaE = 't';
-                }
-                if (document.getElementById('haciendaConsulE').className === 'btn btn-success') {
-                    var haciendaConsulE = 'f';
-                } else {
-                    var haciendaConsulE = 't';
-                }
-                if (document.getElementById('sistemasE').className === 'btn btn-warning') {
-                    var sistemasE = 'f';
-                } else {
-                    var sistemasE = 't';
-                }
-                if (document.getElementById('gestorE').className === 'btn btn-danger') {
-                    var gestorE = 'f';
-                } else {
-                    var gestorE = 't';
-                }
-                /*console.log("catastro"+catastro);
-                 console.log("catastroConsul"+catastroConsul);
-                 console.log("hacienda"+hacienda);
-                 console.log("haciendaadm"+haciendaadm);
-                 console.log("planeacion"+planeacion);
-                 console.log("planeacionadm"+planeacionadm);
-                 console.log("tecnologia"+tecnologia);
-                 console.log("gestor"+gestor);
-                 console.log(document.getElementById('inlineRadio1').checked);*/
-                var arrayResult = update_query("UPDATE usuario SET cargo='" + document.getElementById('e_cargo').value + "',email='" + document.getElementById('e_email').value + "', catastrom='" + catastroE + "', catastroc='" + catastroConsulE + "', sui='" + suiE + "', pot='" + potE + "', planeacionm='" + planeacionE + "', haciendam='" + haciendaE + "', sistemas='" + sistemasE + "', gestor='" + gestorE + "', planeacionc='" + planeacionConsulE + "', haciendac='" + haciendaConsulE + "', estado='" + document.getElementById('rad1').checked + "', dependenci='" + document.getElementById('e_dependencia').value + "', fechaexp='" + document.getElementById('e_fecha').value + "' WHERE usuario='" + document.getElementById('usu').value + "';");
-                //var arrayResult = update_query("INSERT INTO usuario (nombre1,nombre2,apellido1,apellido2,email,usuario,contrasena,catastro,catastro_adm,hacienda,hacienda_adm,planeacion,planeacion_adm,tecnologia,gestor,estado) VALUES('" + document.getElementById('nombre1').value + "','" + document.getElementById('nombre2').value + "','" + document.getElementById('apellido1').value + "','" + document.getElementById('apellido2').value + "','" + document.getElementById('email').value + "','" + nomg + "','" + contrasena + "','" + catastro + "','" + catastroConsul + "','" + hacienda + "','" + haciendaadm + "','" + planeacion + "','" + planeacionadm + "','" + tecnologia + "','" + gestor + "','" + document.getElementById('inlineRadio1').checked + "');");
-                //console.log(arrayResult);
-                //var arrayResult = update_query("UPDATE u_terreno SET simbol='0';UPDATE u_terreno SET simbol = '100' WHERE area<100;UPDATE u_terreno SET simbol = '100-1.000' WHERE area BETWEEN 100 AND 1000;UPDATE u_terreno SET simbol = '1.000-10.000' WHERE area BETWEEN 1000 AND 10000;UPDATE u_terreno SET simbol = '10.000' WHERE area > 10000;");
-            }
-            function guardar() {
-                var nom = document.getElementById('nombre').value.split(' ');
-                var nomg = nom[0] + "." + nom[nom.length - 1];
-                //console.log(nomg + "2017");
-                var cont = nomg + "2017";
-                var contrasena = hex_md5(cont);
-                if (document.getElementById('catastro').className === 'btn btn-primary') {
-                    var catastro = 'f';
-                } else {
-                    var catastro = 't';
-                }
-                if (document.getElementById('catastroConsul').className === 'btn btn-success') {
-                    var catastroConsul = 'f';
-                } else {
-                    var catastroConsul = 't';
-                }
-                if (document.getElementById('sui').className === 'btn btn-warning') {
-                    var sui = 'f';
-                } else {
-                    var sui = 't';
-                }
-                if (document.getElementById('pot').className === 'btn btn-danger') {
-                    var pot = 'f';
-                } else {
-                    var pot = 't';
-                }
-                if (document.getElementById('planeacion').className === 'btn btn-primary') {
-                    var planeacion = 'f';
-                } else {
-                    var planeacion = 't';
-                }
-                if (document.getElementById('hacienda').className === 'btn btn-primary') {
-                    var hacienda = 'f';
-                } else {
-                    var hacienda = 't';
-                }
-                if (document.getElementById('sistemas').className === 'btn btn-warning') {
-                    var sistemas = 'f';
-                } else {
-                    var sistemas = 't';
-                }
-                if (document.getElementById('gestor').className === 'btn btn-danger') {
-                    var gestor = 'f';
-                } else {
-                    var gestor = 't';
-                }
-                if (document.getElementById('planeacionConsul').className === 'btn btn-success') {
-                    var planeacionConsul = 'f';
-                } else {
-                    var planeacionConsul = 't';
-                }
-                if (document.getElementById('haciendaConsul').className === 'btn btn-success') {
-                    var haciendaConsul = 'f';
-                } else {
-                    var haciendaConsul = 't';
-                }
-                /*console.log("catastro"+catastro);
-                 console.log("catastroConsul"+catastroConsul);
-                 console.log("hacienda"+hacienda);
-                 console.log("haciendaadm"+haciendaadm);
-                 console.log("planeacion"+planeacion);
-                 console.log("planeacionadm"+planeacionadm);
-                 console.log("tecnologia"+tecnologia);
-                 console.log("gestor"+gestor);
-                 console.log(document.getElementById('inlineRadio1').checked);*/
-                var arrayResult = update_query("INSERT INTO usuario (nombre,cargo,email,usuario,contrasena,catastrom,catastroc,sui,pot,planeacionm,haciendam,sistemas,gestor,planeacionc,haciendac,estado,dependenci,fechaexp) VALUES('" + document.getElementById('nombre').value + "','" + document.getElementById('cargo').value + "','" + document.getElementById('email').value + "','" + nomg + "','" + contrasena + "','" + catastro + "','" + catastroConsul + "','" + sui + "','" + pot + "','" + planeacion + "','" + hacienda + "','" + sistemas + "','" + gestor + "','" + planeacionConsul + "','" + haciendaConsul + "','t','" + document.getElementById('dependencia').value + "','" + document.getElementById('fecha').value + "');");
-                if (arrayResult) {
-                    var urls = "./mail/envio_mail.php";
-                    var req = new ajaxRequest();
-                    var url = urls + "?c=" + document.getElementById('email').value + "&u=" + nomg + "&p=" + cont;
-                    //console.log(url);
-                    req.open("GET", url, false);
-                    req.send();
-                } else {
-                    alert("El usuario ya existe");
-                }
-            }
-            function usuario() {
-                var elemento = document.getElementById('usu');
-                var posicion = elemento.getBoundingClientRect();
-                try {
-                    var eliminar = document.getElementById('autocompletar');
-                    eliminar.parentNode.removeChild(eliminar);
-                } catch (error) {
-                }
-                var select = select_query("SELECT usuario FROM usuario WHERE usuario LIKE '" + document.getElementById("usu").value + "%';");
-                //console.log(select);
-                //if (select.length > 5) {
-                var iDiv = document.createElement('div');
-                iDiv.id = 'autocompletar';
-                iDiv.style = "overflow:auto;top:" + posicion.bottom + "px;left:" + posicion.left + "px;width:" + posicion.width + "px; height:200px;position:absolute; border:1px solid #ebebeb";
-                //console.log(document.getElementById('autocompletar'));
-                //var html = '';
-                //ahora creamos el contenido que va dentro del div sera un ul con la respuesta
-                //html += '<ul id="lista">';
-                var ul = document.createElement('ul');
-                ul.id = 'lista';
-                //ul.className="list-group";
-                ul.classList.add('list-group');
-                select.forEach(function (entry) {
-                    //console.log(entry[0]);
-                    var li = document.createElement("li");
-                    //li.value=entry[0];
-                    //li.data-codigo=entry[0];
-                    //li.innerHTML=entry[0]==''?'(nada)':entry[0];
-                    //var li= '<li data-codigo="' + entry[0] + '"><a href="javascript:;">' + entry[0] + '</a></li>';
-                    var a = document.createElement("a");
-                    a.id = "a" + entry[0];
-                    a.href = "#";
-                    //a.onclick="auto();return false;";
-                    a.addEventListener("click", function () {
-                        auto(a.id);
-                    }, false);
-                    a.classList.add('list-group-item');
-                    a.classList.add('list-group-item-action');
-                    a.classList.add('list-group-item-success');
-                    a.value = entry[0];
-                    a.innerHTML = entry[0];
-                    li.appendChild(a);
-                    ul.appendChild(li);
-                });
-                //console.log(ul);
-                iDiv.appendChild(ul);
-                //console.log(iDiv);
-                document.body.appendChild(iDiv);
-            }
-            function auto(id) {
-                document.getElementById('usu').disabled = true;
-                //alert(id);
-                //console.log(document.getElementById('a').innerHTML);
-                document.getElementById('usu').value = document.getElementById(id).innerHTML;
-                var eliminar = document.getElementById('autocompletar');
-                eliminar.parentNode.removeChild(eliminar);
-                var select = select_query("SELECT * FROM usuario WHERE usuario = '" + document.getElementById("usu").value + "';");
-                //console.log(select);
-                document.getElementById('group').style.display = 'block';
-                document.getElementById('button').style.display = 'block';
-                //document.getElementById('e_nombre1').value = select["0"][0];
-                //document.getElementById('e_apellido1').value = select["0"][2];
-                //document.getElementById('e_apellido2').value = select["0"][3];
-                document.getElementById('e_cargo').value = select["0"][1];
-                document.getElementById('e_email').value = select["0"][2];
-                document.getElementById('e_fecha').value = select["0"][15];
-                if (select["0"][14] === "Planeación") {
-                    document.getElementById("e_dependencia").value = "Planeación";
-                } else if (select["0"][14] === "Catastro") {
-                    document.getElementById("e_dependencia").value = "Catastro";
-                } else if (select["0"][14] === "Hacienda") {
-                    document.getElementById("e_dependencia").value = "Hacienda";
-                } else if (select["0"][14] === "GESSTOR") {
-                    document.getElementById("e_dependencia").value = "GESSTOR";
-                }
-                if (select["0"][13] === "t") {
-                    document.getElementById("rad1").checked = true;
-                } else {
-                    document.getElementById("rad2").checked = true;
-                }
-                if (select["0"][5] === "t") {
-                    document.getElementById("catastroE").className = "btn btn-primary active";
-                } else {
-                    document.getElementById("catastroE").className = "btn btn-primary";
-                }
-                if (select["0"][6] === "t") {
-                    document.getElementById("catastroConsulE").className = "btn btn-success active";
-                } else {
-                    document.getElementById("catastroConsulE").className = "btn btn-success";
-                }
-                if (select["0"][7] === "t") {
-                    document.getElementById("suiE").className = "btn btn-warning active";
-                } else {
-                    document.getElementById("suiE").className = "btn btn-warning";
-                }
-                if (select["0"][8] === "t") {
-                    document.getElementById("potE").className = "btn btn-danger active";
-                } else {
-                    document.getElementById("potE").className = "btn btn-danger";
-                }
-                if (select["0"][9] === "t") {
-                    document.getElementById("planeacionE").className = "btn btn-primary active";
-                } else {
-                    document.getElementById("planeacionE").className = "btn btn-primary";
-                }
-                if (select["0"][10] === "t") {
-                    document.getElementById("haciendaE").className = "btn btn-primary active";
-                } else {
-                    document.getElementById("haciendaE").className = "btn btn-primary";
-                }
-                if (select["0"][11] === "t") {
-                    document.getElementById("sistemasE").className = "btn btn-warning active";
-                } else {
-                    document.getElementById("sistemasE").className = "btn btn-warning";
-                }
-                if (select["0"][12] === "t") {
-                    document.getElementById("gestorE").className = "btn btn-danger active";
-                } else {
-                    document.getElementById("gestorE").className = "btn btn-danger";
-                }
-                if (select["0"][16] === "t") {
-                    document.getElementById("planeacionConsulE").className = "btn btn-success active";
-                } else {
-                    document.getElementById("planeacionConsulE").className = "btn btn-success";
-                }
-                if (select["0"][17] === "t") {
-                    document.getElementById("haciendaConsulE").className = "btn btn-success active";
-                } else {
-                    document.getElementById("haciendaConsulE").className = "btn btn-success";
-                }
-                //document.getElementById('e_nombre1').value = select["0"]["0"];
-                //document.getElementById('e_nombre1').value = select["0"]["0"];
-            }
+            $("#usu").autocomplete({
+                minLength: 1,
+                source: Sourceuser,
+                select: SelectUser
+            });
         </script>
         <script src="src/jquery/jquery.min.js"></script>
         <script src="src/bootstrap/js/bootstrap.js"></script>
