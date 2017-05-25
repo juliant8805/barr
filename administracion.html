@@ -26,6 +26,11 @@
                 text-align: center;
             }
         </style>
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="src/jquery/jquery-ui-1.11.2/jquery-ui.css">
+        <script src="src/jquery/jquery.min.js"></script>
+        <script src="src/jquery/jquery-ui-1.11.2/jquery-ui.js"></script>
         <script src="sql/jsSearch.js"></script>
     </head>
     <body>
@@ -49,12 +54,9 @@
             <li><a href="#modificacion" data-toggle="tab">Modificación de Usuarios</a></li>
             <a href="barranquilla.html"><img src="imagenes/limpiar.png" align="right" title="Salir" style="height: 30px;"></a>
         </ul>
-
         <div class="tab-content">
-
             <div class="tab-pane fade in active" id="crear">
                 <div class="col-xs-12"><h2>Creación de Usuario</h2></div>
-
                 <br /><br />
                 <form class="form-horizontal" method="post" action="" onsubmit="guardar()">
                     <!--<div class="form-group">
@@ -256,11 +258,11 @@
             <div class="tab-pane fade" id="modificacion">
                 <div class="col-xs-12"><h2>Modificación de Usuario</h2></div>
                 <br /><br />
-                <form class="form-horizontal" method="post" action="" onsubmit="actualizar()">
+                <form class="form-horizontal" method="post" onsubmit="actualizar()">
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="formGroup">Usuario</label>
                         <div class="col-sm-2">
-                            <input class="form-control ui-autocomplete-input" type="text" id="usu" onkeyup="usuario()" autocomplete="off">
+                            <input class="form-control" type="text" id="usu" autocomplete="off">
                         </div>
                     </div>
                     <div id="group" hidden="hidden">
@@ -460,61 +462,216 @@
             </div>
         </div>-->
         <script>
+            $("#usu").autocomplete({
+                minLength: 1,
+                source: Sourceuser,
+                select: SelectUser
+            });
+            function Sourceuser(requestString, responseFunc) {
+                var querystr = requestString.term.replace(/[^0-9a-zA-Z ]/g, "");
+                if (querystr.length === 0) {
+                    response([]);
+                    return;
+                }
+                var viewParamsStr = viewparamsToStr({
+                    query: querystr
+                });
+                var wfsParams = {
+                    service: 'WFS',
+                    version: '2.0.0',
+                    request: 'GetFeature',
+                    typeName: 'preproduccion:BuscarUsuario',
+                    outputFormat: 'application/json',
+                    srsname: 'EPSG:3857',
+                    viewparams: viewParamsStr
+                };
+                $.ajax({
+                    url: url,
+                    data: wfsParams,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data, status, xhr) {
+                        //console.log(data);
+                        var arr = [];
+                        for (i = 0; i < data.features.length; i++) {
+                            //arr[i] = data.features[i].properties.usuario;
+                            arr.push({
+                                //codigo: data.features[i].properties.codigo,
+                                value: data.features[i].properties.usuario,
+                                //feature: data,
+                                cargo: data.features[i].properties.cargo,
+                                catastroc: data.features[i].properties.catastroc,
+                                catastrom: data.features[i].properties.catastrom,
+                                dependenci: data.features[i].properties.dependenci,
+                                email: data.features[i].properties.email,
+                                estado: data.features[i].properties.estado,
+                                fechaexp: data.features[i].properties.fechaexp,
+                                gestor: data.features[i].properties.gestor,
+                                haciendac: data.features[i].properties.haciendac,
+                                haciendam: data.features[i].properties.haciendam,
+                                nombre: data.features[i].properties.nombre,
+                                planeacionc: data.features[i].properties.planeacionc,
+                                planeacionm: data.features[i].properties.planeacionm,
+                                pot: data.features[i].properties.pot,
+                                sistemas: data.features[i].properties.sistemas,
+                                sui: data.features[i].properties.sui,
+                                id: data.features[i].properties.id
+                                        //usuario: data.features[i].properties.usuario
+                                        //direccion: data.features[i].properties.direccion
+                            });
+                        }
+                        if (arr.length !== 0) {
+                            responseFunc(arr);
+                        } else {
+                            arr[0] = "No se encuentra informacion asociada a la consulta";
+                            responseFunc(arr);
+                        }
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log(jqXHR);
+                        console.log(exception);
+                    }
+                });
+            }
+            function SelectUser(event, ui) {
+                //console.log(ui.item);
+                //console.log(Object.keys(ui.item));
+                var select = [];
+                select[0] = [];
+                for (j = 0; j < Object.keys(ui.item).length; j++) {
+                    var a = Object.keys(ui.item)[j];
+                    select[0][j] = ui.item[a];
+                }
+                //console.log(select);
+                userid = select[0][17];
+                document.getElementById('usu').disabled = true;
+                document.getElementById('group').style.display = 'block';
+                document.getElementById('button').style.display = 'block';
+                //document.getElementById('e_nombre1').value = select["0"][0];
+                //document.getElementById('e_apellido1').value = select["0"][2];
+                //document.getElementById('e_apellido2').value = select["0"][3];
+                document.getElementById('e_cargo').value = select[0][1];
+                document.getElementById('e_email').value = select[0][5];
+                document.getElementById('e_fecha').value = select[0][7].substring(0, 10);
+                if (select[0][4] === "Planeación") {
+                    document.getElementById("e_dependencia").value = "Planeación";
+                } else if (select[0][4] === "Catastro") {
+                    document.getElementById("e_dependencia").value = "Catastro";
+                } else if (select[0][4] === "Hacienda") {
+                    document.getElementById("e_dependencia").value = "Hacienda";
+                } else if (select[0][4] === "GESSTOR") {
+                    document.getElementById("e_dependencia").value = "GESSTOR";
+                }
+                if (select[0][6] === true) {
+                    document.getElementById("rad1").checked = true;
+                } else {
+                    document.getElementById("rad2").checked = true;
+                }
+                if (select[0][3] === true) {
+                    document.getElementById("catastroE").className = "btn btn-primary active";
+                } else {
+                    document.getElementById("catastroE").className = "btn btn-primary";
+                }
+                if (select[0][2] === true) {
+                    document.getElementById("catastroConsulE").className = "btn btn-success active";
+                } else {
+                    document.getElementById("catastroConsulE").className = "btn btn-success";
+                }
+                if (select[0][16] === true) {
+                    document.getElementById("suiE").className = "btn btn-warning active";
+                } else {
+                    document.getElementById("suiE").className = "btn btn-warning";
+                }
+                if (select[0][14] === true) {
+                    document.getElementById("potE").className = "btn btn-danger active";
+                } else {
+                    document.getElementById("potE").className = "btn btn-danger";
+                }
+                if (select[0][13] === true) {
+                    document.getElementById("planeacionE").className = "btn btn-primary active";
+                } else {
+                    document.getElementById("planeacionE").className = "btn btn-primary";
+                }
+                if (select[0][10] === true) {
+                    document.getElementById("haciendaE").className = "btn btn-primary active";
+                } else {
+                    document.getElementById("haciendaE").className = "btn btn-primary";
+                }
+                if (select[0][15] === true) {
+                    document.getElementById("sistemasE").className = "btn btn-warning active";
+                } else {
+                    document.getElementById("sistemasE").className = "btn btn-warning";
+                }
+                if (select[0][8] === true) {
+                    document.getElementById("gestorE").className = "btn btn-danger active";
+                } else {
+                    document.getElementById("gestorE").className = "btn btn-danger";
+                }
+                if (select[0][12] === true) {
+                    document.getElementById("planeacionConsulE").className = "btn btn-success active";
+                } else {
+                    document.getElementById("planeacionConsulE").className = "btn btn-success";
+                }
+                if (select[0][9] === true) {
+                    document.getElementById("haciendaConsulE").className = "btn btn-success active";
+                } else {
+                    document.getElementById("haciendaConsulE").className = "btn btn-success";
+                }
+            }
             function actualizar() {
-
                 //var nom = document.getElementById('nombre1').value.split(' ');
                 //var nomg = nom[0] + "." + nom[nom.length - 1];
                 //console.log(nomg + "2017");
                 //var contrasena = hex_md5(nomg + "2017");
                 if (document.getElementById('catastroE').className === 'btn btn-primary') {
-                    var catastroE = 'f';
+                    var catastroE = false;
                 } else {
-                    var catastroE = 't';
+                    var catastroE = true;
                 }
                 if (document.getElementById('catastroConsulE').className === 'btn btn-success') {
-                    var catastroConsulE = 'f';
+                    var catastroConsulE = false;
                 } else {
-                    var catastroConsulE = 't';
+                    var catastroConsulE = true;
                 }
                 if (document.getElementById('planeacionE').className === 'btn btn-primary') {
-                    var planeacionE = 'f';
+                    var planeacionE = false;
                 } else {
-                    var planeacionE = 't';
+                    var planeacionE = true;
                 }
                 if (document.getElementById('planeacionConsulE').className === 'btn btn-success') {
-                    var planeacionConsulE = 'f';
+                    var planeacionConsulE = false;
                 } else {
-                    var planeacionConsulE = 't';
+                    var planeacionConsulE = true;
                 }
                 if (document.getElementById('suiE').className === 'btn btn-warning') {
-                    var suiE = 'f';
+                    var suiE = false;
                 } else {
-                    var suiE = 't';
+                    var suiE = true;
                 }
                 if (document.getElementById('potE').className === 'btn btn-danger') {
-                    var potE = 'f';
+                    var potE = false;
                 } else {
-                    var potE = 't';
+                    var potE = true;
                 }
                 if (document.getElementById('haciendaE').className === 'btn btn-primary') {
-                    var haciendaE = 'f';
+                    var haciendaE = false;
                 } else {
-                    var haciendaE = 't';
+                    var haciendaE = true;
                 }
                 if (document.getElementById('haciendaConsulE').className === 'btn btn-success') {
-                    var haciendaConsulE = 'f';
+                    var haciendaConsulE = false;
                 } else {
-                    var haciendaConsulE = 't';
+                    var haciendaConsulE = true;
                 }
                 if (document.getElementById('sistemasE').className === 'btn btn-warning') {
-                    var sistemasE = 'f';
+                    var sistemasE = false;
                 } else {
-                    var sistemasE = 't';
+                    var sistemasE = true;
                 }
                 if (document.getElementById('gestorE').className === 'btn btn-danger') {
-                    var gestorE = 'f';
+                    var gestorE = false;
                 } else {
-                    var gestorE = 't';
+                    var gestorE = true;
                 }
                 /*console.log("catastro"+catastro);
                  console.log("catastroConsul"+catastroConsul);
@@ -526,44 +683,15 @@
                  console.log("gestor"+gestor);
                  console.log(document.getElementById('inlineRadio1').checked);*/
                 //var cargo = document.getElementById('e_cargo').value;
-                var arrayResult = update_query("UPDATE usuario SET cargo='" + document.getElementById('e_cargo').value + "',email='" + document.getElementById('e_email').value + "', catastrom='" + catastroE + "', catastroc='" + catastroConsulE + "', sui='" + suiE + "', pot='" + potE + "', planeacionm='" + planeacionE + "', haciendam='" + haciendaE + "', sistemas='" + sistemasE + "', gestor='" + gestorE + "', planeacionc='" + planeacionConsulE + "', haciendac='" + haciendaConsulE + "', estado='" + document.getElementById('rad1').checked + "', dependenci='" + document.getElementById('e_dependencia').value + "', fechaexp='" + document.getElementById('e_fecha').value + "' WHERE usuario='" + document.getElementById('usu').value + "';");
+                //var arrayResult = update_query("UPDATE usuario SET cargo='" + document.getElementById('e_cargo').value + "',email='" + document.getElementById('e_email').value + "', catastrom='" + catastroE + "', catastroc='" + catastroConsulE + "', sui='" + suiE + "', pot='" + potE + "', planeacionm='" + planeacionE + "', haciendam='" + haciendaE + "', sistemas='" + sistemasE + "', gestor='" + gestorE + "', planeacionc='" + planeacionConsulE + "', haciendac='" + haciendaConsulE + "', estado='" + document.getElementById('rad1').checked + "', dependenci='" + document.getElementById('e_dependencia').value + "', fechaexp='" + document.getElementById('e_fecha').value + "' WHERE usuario='" + document.getElementById('usu').value + "';");
                 var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
                     <Update typeName="user:usuario">\
                         <Property>\
                             <Name>cargo</Name>\
                             <Value>' + document.getElementById('e_cargo').value + '</Value>\
-                            <Name>email</Name>\
-                            <Value>' + document.getElementById('e_email').value + '</Value>\
-                            <Name>catastrom</Name>\
-                            <Value>' + catastroE + '</Value>\
-                            <Name>catastroc</Name>\
-                            <Value>' + catastroConsulE + '</Value>\
-                            <Name>sui</Name>\
-                            <Value>' + suiE + '</Value>\
-                            <Name>pot</Name>\
-                            <Value>' + potE + '</Value>\
-                            <Name>planeacionm</Name>\
-                            <Value>' + planeacionE + '</Value>\
-                            <Name>haciendam</Name>\
-                            <Value>' + haciendaE + '</Value>\
-                            <Name>sistemas</Name>\
-                            <Value>' + sistemasE + '</Value>\
-                            <Name>gestor</Name>\
-                            <Value>' + gestorE + '</Value>\
-                            <Name>planeacionc</Name>\
-                            <Value>' + planeacionConsulE + '</Value>\
-                            <Name>haciendac</Name>\
-                            <Value>' + haciendaConsulE + '</Value>\
-                            <Name>estado</Name>\
-                            <Value>' + document.getElementById('rad1').checked + '</Value>\
-                            <Name>dependenci</Name>\
-                            <Value>' + document.getElementById('e_dependencia').value + '</Value>\
-                            <Name>fechaexp</Name>\
-                            <Value>' + document.getElementById('e_fecha').value + '</Value>\
                         </Property>\
                         <Filter>\
-                            <PropertyName>usuario</PropertyName>\
-                            <Literal>' + document.getElementById('usu').value + '</Literal>\
+                            <FeatureId fid="usuario.' + userid + '"/>\
                         </Filter>\
                     </Update>\
                 </Transaction>';
@@ -587,60 +715,61 @@
                 //var arrayResult = update_query("UPDATE u_terreno SET simbol='0';UPDATE u_terreno SET simbol = '100' WHERE area<100;UPDATE u_terreno SET simbol = '100-1.000' WHERE area BETWEEN 100 AND 1000;UPDATE u_terreno SET simbol = '1.000-10.000' WHERE area BETWEEN 1000 AND 10000;UPDATE u_terreno SET simbol = '10.000' WHERE area > 10000;");
             }
             function guardar() {
-                var nom = document.getElementById('nombre').value.split(' ');
-                var nomg = nom[0] + "." + nom[nom.length - 1];
+                var nom1 = document.getElementById('nombre').value.toLowerCase();
+                var nom = nom1.split(' ');
+                var nomg = nom[0].charAt(0).toUpperCase() + nom[0].slice(1) + nom[nom.length - 1].charAt(0).toUpperCase() + nom[nom.length - 1].slice(1);
                 //console.log(nomg + "2017");
                 var cont = nomg + "2017";
                 var contrasena = hex_md5(cont);
                 if (document.getElementById('catastro').className === 'btn btn-primary') {
-                    var catastro = 'f';
+                    var catastro = 'false';
                 } else {
-                    var catastro = 't';
+                    var catastro = 'true';
                 }
                 if (document.getElementById('catastroConsul').className === 'btn btn-success') {
-                    var catastroConsul = 'f';
+                    var catastroConsul = 'false';
                 } else {
-                    var catastroConsul = 't';
+                    var catastroConsul = 'true';
                 }
                 if (document.getElementById('sui').className === 'btn btn-warning') {
-                    var sui = 'f';
+                    var sui = 'false';
                 } else {
-                    var sui = 't';
+                    var sui = 'true';
                 }
                 if (document.getElementById('pot').className === 'btn btn-danger') {
-                    var pot = 'f';
+                    var pot = 'false';
                 } else {
-                    var pot = 't';
+                    var pot = 'true';
                 }
                 if (document.getElementById('planeacion').className === 'btn btn-primary') {
-                    var planeacion = 'f';
+                    var planeacion = 'false';
                 } else {
-                    var planeacion = 't';
+                    var planeacion = 'true';
                 }
                 if (document.getElementById('hacienda').className === 'btn btn-primary') {
-                    var hacienda = 'f';
+                    var hacienda = 'false';
                 } else {
-                    var hacienda = 't';
+                    var hacienda = 'true';
                 }
                 if (document.getElementById('sistemas').className === 'btn btn-warning') {
-                    var sistemas = 'f';
+                    var sistemas = 'false';
                 } else {
-                    var sistemas = 't';
+                    var sistemas = 'true';
                 }
                 if (document.getElementById('gestor').className === 'btn btn-danger') {
-                    var gestor = 'f';
+                    var gestor = 'false';
                 } else {
-                    var gestor = 't';
+                    var gestor = 'true';
                 }
                 if (document.getElementById('planeacionConsul').className === 'btn btn-success') {
-                    var planeacionConsul = 'f';
+                    var planeacionConsul = 'false';
                 } else {
-                    var planeacionConsul = 't';
+                    var planeacionConsul = 'true';
                 }
                 if (document.getElementById('haciendaConsul').className === 'btn btn-success') {
-                    var haciendaConsul = 'f';
+                    var haciendaConsul = 'false';
                 } else {
-                    var haciendaConsul = 't';
+                    var haciendaConsul = 'true';
                 }
                 /*console.log("catastro"+catastro);
                  console.log("catastroConsul"+catastroConsul);
@@ -651,69 +780,84 @@
                  console.log("tecnologia"+tecnologia);
                  console.log("gestor"+gestor);
                  console.log(document.getElementById('inlineRadio1').checked);*/
-                var arrayResult = update_query("INSERT INTO usuario (nombre,cargo,email,usuario,contrasena,catastrom,catastroc,sui,pot,planeacionm,haciendam,sistemas,gestor,planeacionc,haciendac,estado,dependenci,fechaexp) VALUES('" + document.getElementById('nombre').value + "','" + document.getElementById('cargo').value + "','" + document.getElementById('email').value + "','" + nomg + "','" + contrasena + "','" + catastro + "','" + catastroConsul + "','" + sui + "','" + pot + "','" + planeacion + "','" + hacienda + "','" + sistemas + "','" + gestor + "','" + planeacionConsul + "','" + haciendaConsul + "','t','" + document.getElementById('dependencia').value + "','" + document.getElementById('fecha').value + "');");
-                if (arrayResult) {
-                    var urls = "./mail/envio_mail.php";
-                    var req = new ajaxRequest();
-                    var url = urls + "?c=" + document.getElementById('email').value + "&u=" + nomg + "&p=" + cont;
-                    //console.log(url);
-                    req.open("GET", url, false);
-                    req.send();
-                } else {
-                    alert("El usuario ya existe");
-                }
-            }
+                //var arrayResult = update_query("INSERT INTO usuario (nombre,cargo,email,usuario,contrasena,catastrom,catastroc,sui,pot,planeacionm,haciendam,sistemas,gestor,planeacionc,haciendac,estado,dependenci,fechaexp) VALUES('" + document.getElementById('nombre').value + "','" + document.getElementById('cargo').value + "','" + document.getElementById('email').value + "','" + nomg + "','" + contrasena + "','" + catastro + "','" + catastroConsul + "','" + sui + "','" + pot + "','" + planeacion + "','" + hacienda + "','" + sistemas + "','" + gestor + "','" + planeacionConsul + "','" + haciendaConsul + "','t','" + document.getElementById('dependencia').value + "','" + document.getElementById('fecha').value + "');");
+                var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.3.4:8080/geoserver">\
+                    <Insert xmlns="http://www.opengis.net/wfs">\
+                        <user:usuario>\
+                            <usuario>' + nomg + '</usuario>\
+                            <nombre>' + document.getElementById('nombre').value + '</nombre>\
+                            <cargo>' + document.getElementById('cargo').value + '</cargo>\
+                            <email>' + document.getElementById('email').value + '</email>\
+                            <contrasena>' + contrasena + '</contrasena>\
+                            <catastrom>' + catastro + '</catastrom>\
+                            <catastroc>' + catastroConsul + '</catastroc>\
+                            <sui>' + sui + '</sui>\
+                            <pot>' + pot + '</pot>\
+                            <planeacionm>' + planeacion + '</planeacionm>\
+                            <haciendam>' + hacienda + '</haciendam>\
+                            <sistemas>' + sistemas + '</sistemas>\
+                            <gestor>' + gestor + '</gestor>\
+                            <estado>true</estado>\
+                            <dependenci>' + document.getElementById('dependencia').value + '</dependenci>\
+                            <fechaexp>' + document.getElementById('fecha').value + '</fechaexp>\
+                            <planeacionc>' + planeacionConsul + '</planeacionc>\
+                            <haciendac>' + haciendaConsul + '</haciendac>\
+                        </user:usuario>\
+                    </Insert>\
+                </Transaction>';
 
-            $("#usu").autocomplete({
-                minLength: 1,
-                source: Sourceuser,
-                select: SelectUser
-            });
+                /*var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.3.4:8080/geoserver">\
+                    <Insert xmlns="http://www.opengis.net/wfs">\
+                        <user:usuario fid="usuario.popr">\
+                            <usuario>popeye</usuario>\
+                            <nombre>popeye</nombre>\
+                            <cargo>1010</cargo>\
+                            <email>admin@admin.com</email>\
+                            <contrasena>c4ca4238a0b923820dcc509a6f75849b</contrasena>\
+                            <catastrom>true</catastrom>\
+                            <catastroc>true</catastroc>\
+                            <sui>true</sui>\
+                            <pot>true</pot>\
+                            <planeacionm>true</planeacionm>\
+                            <haciendam>true</haciendam>\
+                            <sistemas>true</sistemas>\
+                            <gestor>false</gestor>\
+                            <estado>true</estado>\
+                            <dependenci>gestor(AAA)</dependenci>\
+                            <fechaexp>2017-10-10</fechaexp>\
+                            <planeacionc>false</planeacionc>\
+                            <haciendac>false</haciendac>\
+                        </user:usuario>\
+                    </Insert>\
+                </Transaction>';*/
 
-            function addressSource(requestString, responseFunc) {
-                var querystr = requestString.term.replace(/[^0-9a-zA-Z ]/g, "");
-                if (querystr.length === 0) {
-                    response([]);
-                    return;
-                }
-                var viewParamsStr = viewparamsToStr({
-                    query: querystr
-                });
-                var wfsParams = {
-                    service: 'WFS',
-                    version: '2.0.0',
-                    request: 'GetFeature',
-                    typeName: 'preproduccion:codigo_autocompletar',
-                    outputFormat: 'application/json',
-                    srsname: 'EPSG:3857',
-                    viewparams: viewParamsStr
-                };
+                console.log(arrayResult);
+                rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
                 $.ajax({
-                    url: url,
-                    data: wfsParams,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data, status, xhr) {
-                        /*var geojson = new ol.source.GeoJSON({
-                            object: data
-                        });*/
-                        var arr = [];
-                        for (i = 0; i < data.features.length; i++) {
-                            arr.push({
-                                //label: data.features[i].properties.direccion,
-                                codigo: data.features[i].properties.codigo,
-                                value: data.features[i].properties.direccion,
-                                feature: data
-                            });
-                        }
-                        if (arr.length !== 0) {
-                            responseFunc(arr);
-                        } else {
-                            arr[0] = "No se encuentra informacion asociada a la consulta";
-                            responseFunc(arr);
-                        }
+                    type: "POST",
+                    url: rooturl,
+                    dataType: "xml",
+                    contentType: "text/xml",
+                    async: false,
+                    data: arrayResult,
+                    success: function (xml) {
+                        console.log(xml);
+                        //alert('success');
+                    },
+                    error: function (xml) {
+                        console.log('error');
                     }
                 });
+                /*if (arrayResult) {
+                 var urls = "./mail/envio_mail.php";
+                 var req = new ajaxRequest();
+                 var url = urls + "?c=" + document.getElementById('email').value + "&u=" + nomg + "&p=" + cont;
+                 //console.log(url);
+                 req.open("GET", url, false);
+                 req.send();
+                 } else {
+                 alert("El usuario ya existe");
+                 }*/
             }
 
             /*function usuario() {
@@ -766,86 +910,7 @@
              document.body.appendChild(iDiv);
              }*/
             function auto(id) {
-                document.getElementById('usu').disabled = true;
-                //alert(id);
-                //console.log(document.getElementById('a').innerHTML);
-                document.getElementById('usu').value = document.getElementById(id).innerHTML;
-                var eliminar = document.getElementById('autocompletar');
-                eliminar.parentNode.removeChild(eliminar);
-                var select = select_query("SELECT * FROM usuario WHERE usuario = '" + document.getElementById("usu").value + "';");
-                //console.log(select);
-                document.getElementById('group').style.display = 'block';
-                document.getElementById('button').style.display = 'block';
-                //document.getElementById('e_nombre1').value = select["0"][0];
-                //document.getElementById('e_apellido1').value = select["0"][2];
-                //document.getElementById('e_apellido2').value = select["0"][3];
-                document.getElementById('e_cargo').value = select["0"][1];
-                document.getElementById('e_email').value = select["0"][2];
-                document.getElementById('e_fecha').value = select["0"][15];
-                if (select["0"][14] === "Planeación") {
-                    document.getElementById("e_dependencia").value = "Planeación";
-                } else if (select["0"][14] === "Catastro") {
-                    document.getElementById("e_dependencia").value = "Catastro";
-                } else if (select["0"][14] === "Hacienda") {
-                    document.getElementById("e_dependencia").value = "Hacienda";
-                } else if (select["0"][14] === "GESSTOR") {
-                    document.getElementById("e_dependencia").value = "GESSTOR";
-                }
-                if (select["0"][13] === "t") {
-                    document.getElementById("rad1").checked = true;
-                } else {
-                    document.getElementById("rad2").checked = true;
-                }
-                if (select["0"][5] === "t") {
-                    document.getElementById("catastroE").className = "btn btn-primary active";
-                } else {
-                    document.getElementById("catastroE").className = "btn btn-primary";
-                }
-                if (select["0"][6] === "t") {
-                    document.getElementById("catastroConsulE").className = "btn btn-success active";
-                } else {
-                    document.getElementById("catastroConsulE").className = "btn btn-success";
-                }
-                if (select["0"][7] === "t") {
-                    document.getElementById("suiE").className = "btn btn-warning active";
-                } else {
-                    document.getElementById("suiE").className = "btn btn-warning";
-                }
-                if (select["0"][8] === "t") {
-                    document.getElementById("potE").className = "btn btn-danger active";
-                } else {
-                    document.getElementById("potE").className = "btn btn-danger";
-                }
-                if (select["0"][9] === "t") {
-                    document.getElementById("planeacionE").className = "btn btn-primary active";
-                } else {
-                    document.getElementById("planeacionE").className = "btn btn-primary";
-                }
-                if (select["0"][10] === "t") {
-                    document.getElementById("haciendaE").className = "btn btn-primary active";
-                } else {
-                    document.getElementById("haciendaE").className = "btn btn-primary";
-                }
-                if (select["0"][11] === "t") {
-                    document.getElementById("sistemasE").className = "btn btn-warning active";
-                } else {
-                    document.getElementById("sistemasE").className = "btn btn-warning";
-                }
-                if (select["0"][12] === "t") {
-                    document.getElementById("gestorE").className = "btn btn-danger active";
-                } else {
-                    document.getElementById("gestorE").className = "btn btn-danger";
-                }
-                if (select["0"][16] === "t") {
-                    document.getElementById("planeacionConsulE").className = "btn btn-success active";
-                } else {
-                    document.getElementById("planeacionConsulE").className = "btn btn-success";
-                }
-                if (select["0"][17] === "t") {
-                    document.getElementById("haciendaConsulE").className = "btn btn-success active";
-                } else {
-                    document.getElementById("haciendaConsulE").className = "btn btn-success";
-                }
+
                 //document.getElementById('e_nombre1').value = select["0"]["0"];
                 //document.getElementById('e_nombre1').value = select["0"]["0"];
             }
