@@ -594,11 +594,11 @@ function addressSelect(event, ui) {
                     sel[7].target = "marco";
                     sel[7].setAttribute("onclick", "open_streetview()");
                     //sel[7].onclick = "open_streetview()";
-                    sel[7].href = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
+                    sel[7].href = "https://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
                     imag[7] = document.createElement("img");
                     imag[7].id = "im1";
                     imag[7].className = "pequeña";
-                    imag[7].src = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
+                    imag[7].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
                     stv[7] = document.createElement("a");
                     stv[7].id = "imgstreet1";
                     stv[7].target = "marco";
@@ -701,11 +701,11 @@ function addressSelect(event, ui) {
                     sel[14].style = "width: 30px; height: 50px;";
                     sel[14].target = "marco";
                     sel[14].setAttribute("onclick", "open_streetview()");
-                    sel[14].href = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
+                    sel[14].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
                     imag[14] = document.createElement("img");
                     imag[14].id = "im1";
                     imag[14].className = "pequeña";
-                    imag[14].src = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
+                    imag[14].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
                     stv[14] = document.createElement("a");
                     stv[14].id = "imgstreet1";
                     stv[14].target = "marco";
@@ -800,11 +800,11 @@ function addressSelect(event, ui) {
                     sel[10].style = "width: 30px; height: 50px;";
                     sel[10].target = "marco";
                     sel[10].setAttribute("onclick","open_streetview()");
-                    sel[10].href = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
+                    sel[10].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
                     imag[10] = document.createElement("img");
                     imag[10].id = "im1";
                     imag[10].className = "pequeña";
-                    imag[10].src = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";           
+                    imag[10].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";           
                     stv[10] = document.createElement("a");
                     stv[10].id = "imgstreet1";
                     stv[10].target = "marco";
@@ -925,7 +925,9 @@ function addressSelect(event, ui) {
                     select[9] = "<b>Unidades Alcantarillado</b>";
                     select[10] = "<b>Unidades Aseo</b>";
                     select[11] = "<b>Tipo de Propiedad Prestadores</b>";
-                    select[12] = "<b>Fotografias</b>";
+                    select[12] = "<b>Uso Permitido</b>";
+                    select[13] = "<b>Uso Actual</b>"; 
+                    select[14] = "<b>Fotografias</b>";
                     sel[0] = values.manzana_co;
                     sel[1] = values.codigo;
                     sel[2] = values.codigo_ant;
@@ -938,23 +940,25 @@ function addressSelect(event, ui) {
                     sel[9] = values.unid_alc;
                     sel[10] = values.unid_aseo;
                     sel[11] = values.tipo_prop_prest;
-                    sel[12] = document.createElement("a");
-                    sel[12].id = "img1";
-                    sel[12].style = "width: 30px; height: 50px;";
-                    sel[12].target = "marco";
-                    sel[12].setAttribute("onclick", "open_streetview()");
-                    sel[12].href = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
-                    imag[12] = document.createElement("img");
-                    imag[12].id = "im1";
-                    imag[12].className = "pequeña";
-                    imag[12].src = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
-                    stv[12] = document.createElement("a");
-                    stv[12].id = "imgstreet1";
-                    stv[12].target = "marco";
-                    stv[12].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
-                    stv[12].setAttribute("onclick", "open_streetview()");
-                    ig[12] = document.createElement("img");
-                    ig[12].src = "./imagenes/streetview.png";
+                    sel[12] = values.norma_uso;
+                    sel[13] = values.uso_actual_zhf;  
+                    sel[14] = document.createElement("a");
+                    sel[14].id = "img1";
+                    sel[14].style = "width: 30px; height: 50px;";
+                    sel[14].target = "marco";
+                    sel[14].setAttribute("onclick", "open_streetview()");
+                    sel[14].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    imag[14] = document.createElement("img");
+                    imag[14].id = "im1";
+                    imag[14].className = "pequeña";
+                    imag[14].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    stv[14] = document.createElement("a");
+                    stv[14].id = "imgstreet1";
+                    stv[14].target = "marco";
+                    stv[14].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                    stv[14].setAttribute("onclick", "open_streetview()");
+                    ig[14] = document.createElement("img");
+                    ig[14].src = "./imagenes/streetview.png";
 
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
@@ -962,7 +966,7 @@ function addressSelect(event, ui) {
                         cell2 = row.insertCell(1);
                         cell1.innerHTML = select[i];
 
-                        if (i === 12) {
+                        if (i === 14) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
                             sel[i].appendChild(imag[i]);
@@ -1089,13 +1093,13 @@ function addressSelect(event, ui) {
                     sel[9].style = "width: 30px; height: 50px;";
                     sel[9].target = "marco";
                     sel[9].setAttribute("onclick", "open_streetview()");
-                    sel[9].href = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
+                    sel[9].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
 
 
                     imag[9] = document.createElement("img");
                     imag[9].id = "im1";
                     imag[9].className = "pequeña";
-                    imag[9].src = "http://35.184.3.4/gesstor/fotografias/" + codfoto + "/1.jpg";
+                    imag[9].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
                     stv[9] = document.createElement("a");
                     stv[9].id = "imgstreet1";
                     stv[9].target = "marco";

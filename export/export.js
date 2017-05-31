@@ -47,10 +47,7 @@ function file() {
         }
     }
     
-    else if (queryexport.substring(0, 21) === "predios_actualizacion"){
-            alert("GESSTOR INFORMA:</br></br>No existe reporte alfanumérico para esta consulta");
-            quitgif(); 
-    }
+    
     
     else if (queryexport.substring(0, 9) === "plusvalia"){
         alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte");
@@ -203,6 +200,16 @@ function file() {
         else{
         var select = search("preproduccion:ReportNomenclaturaDomiciliariaFiltro", values);
       }   
+    }
+    
+    else if (queryexport.substring(0, 21) === "predios_actualizacion"){
+        var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Area Construida M2", "# Predios"]);
+        if (queryexport === 'predios_actualizacion G') {
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            quitgif();
+        } else {
+            var select = search("preproduccion:ReportAreaConstruida", values);
+        }
     }
     
     var arr = JSON.stringify(select);

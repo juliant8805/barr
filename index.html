@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="src/css/Popup.css">
     <link rel="stylesheet" href="src/css/LayersControl.css">
     <link rel="stylesheet" href="css/general.css">
-    <link rel="icon" type="image/ico" href="favicon.ico">
+    <link rel="icon" type="image/ico" href="http://www.gesstorbarranquilla.com/barranquilla/favicon.ico" />
     <script src="js/index.js"></script>
     <script src="js/md5.inc.js"></script>
     <script src="src/ol3/ol-debug.js"></script>
@@ -529,6 +529,13 @@
             <option value="Alcantarillado" style="font-weight: bold; color: white;  font-size:small;">Alcantarillado
             <option value="Aseo" style="font-weight: bold; color: white;  font-size:small;">Aseo
         </select>
+        
+        <select class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/oficial_vs_AAA_uso.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="oficial_vs_AAA_uso" name=prestadores onchange="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'>
+            <option disabled selected>
+            <option value="Acueducto" style="font-weight: bold; color: white;  font-size:small;">Acueducto
+            <option value="Alcantarillado" style="font-weight: bold; color: white;  font-size:small;">Alcantarillado
+            <option value="Aseo" style="font-weight: bold; color: white;  font-size:small;">Aseo
+        </select>
 
         <!--metrotel-->    
         <!--<button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/estratificacion_metrotel.png'); background-color:#008E30; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="metrotel" name="metrotel" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button> -->         
@@ -607,7 +614,7 @@
         </select>
         
         <!--Actualizacion Conservacion-->
-        <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/conservacion/conservacion.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="predios_actualizacion" name="predios_actualizacion" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
+        <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/conservacion/conservacion.png'); background-color:#006D1B; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="predios_actualizacion" name="predios_actualizacion" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
         
          <!--plusvalia-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/plusvalia/plusvalia.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="plusvalia" name="plusvalia" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>

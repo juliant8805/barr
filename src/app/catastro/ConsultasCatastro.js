@@ -175,21 +175,40 @@ function rango(style) {
     
      else if (style === "predios_actualizacion") {
              estacionestransmetro.setVisible(false);
-             viastransmasivo.setVisible(false);
-             construcciones.setVisible(false);
-             predio.setVisible(true);
-             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para establecer cuales predios son sujetos de Actualización o Conservación Catastral");
-                var select = search("preproduccion:TotalPredios");
-                var param = [['Predio Sujeto a Conservación'], ['Predio Sujeto a Actualización'], ['Sin Informacion']];
-                var total1 = search("preproduccion:SinInformacion");
-                var total2 = search("preproduccion:SinInformacion");
-                var total3 = search("preproduccion:TotalPredios");
-                var totales = total1.concat(total2, total3);
-                var titulo = "Predios Susceptibles a Actualización o Conservación Catastral";
-                predio.getSource().updateParams({'STYLES': 'sin_informacion'});
-                estdistica(select, titulo, param, totales);
-                map.getView().fitExtent(predio.getExtent(), map.getSize());  
-                queryexport = style + ' G';
+        viastransmasivo.setVisible(false);
+        construcciones.setVisible(false);
+        predio.setVisible(true);
+        alert("GESSTOR INFORMA:</br></br>Esta consulta solo sirve de referencia para los predios que aparecen con área construida 0 en los registros planos.");
+        if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
+            var select = search("preproduccion:TotalPredios");
+            var param = [['Sin Novedad'], ['Posible Predio Para Actualizar']];
+            var total1 = search("preproduccion:PrediosConstruidos", '1');
+            var total2 = search("preproduccion:PrediosConstruidos", '0');   
+            var totales = total1.concat(total2);
+            predio.getSource().updateParams({'STYLES': style});
+            var titulo = "Actualización o Conservación"
+            estdistica(select, titulo, param, totales);
+            map.getView().fitExtent(predio.getExtent(), map.getSize());
+            queryexport = style + ' G';
+        } else {
+            var select = search("preproduccion:TotalPrediosSinConsulta", values);
+            var param = [['Sin Novedad'], ['Posible Predio Para Actualizar']];
+            var total1 = search("preproduccion:PrediosConstruidosFiltro", values, '1');
+            var total2 = search("preproduccion:PrediosConstruidosFiltro", values, '0');
+            var totales = total1.concat(total2);
+            var titulo = "Actualización o Conservación"
+            estdistica(select, titulo, param, totales);
+            var valor = "'" + values + "'";
+            if (document.getElementById("barrio").value !== '') {
+                var filtro = '"cod_barrio=' + valor + '"';   
+            } else if (document.getElementById("localidad").value !== '') {
+                var filtro = '"cod_loc=' + valor + '"';  
+            } else if (document.getElementById("manzana").value !== '') {
+                var filtro = '"manzana_co=' + valor + '"';  
+            }
+            predio.getSource().updateParams({'STYLES': style, 'CQL_FILTER': eval(filtro)});
+            queryexport = style;
+         }
         }
     
     else if (style === "plusvalia") {

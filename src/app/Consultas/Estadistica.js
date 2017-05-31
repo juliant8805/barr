@@ -100,7 +100,7 @@ function estdistica(select, titulo, param, totales) {
         }else if(param[i][0]==='Con Conflicto'){
             color[i]='#FF0000';
         }else if(param[i][0]==='Uso Coincidente'){
-            color[i]='#ffff4c';
+            color[i]='#7CEB98';
         }else if(param[i][0]==='Uso Diferente'){
             color[i]='#FF0000';
         }else if(param[i][0]==='Cuenta con Acueducto'){
@@ -229,6 +229,10 @@ function estdistica(select, titulo, param, totales) {
             color[i]='#56ab2c';
         }else if(param[i][0]==='Espacion Público Propuesto (Hectáreas)'){
             color[i]='#a3cccc';
+        }else if (param[i][0]==='Sin Novedad'){
+            color[i]='#BAC0E8';
+        }else if (param[i][0]==='Posible Predio Para Actualizar'){
+            color[i]='#FFB2B2';
         }
         
         
