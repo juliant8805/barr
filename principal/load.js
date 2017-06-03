@@ -29,7 +29,6 @@ function setC(name, value, expirydays) {
     document.cookie = name + "=" + value + "; " + expires + ";path=/";
     ;
 }
-
 function deleteCookie(name) {
     setC(name, "", -1);
 }
@@ -44,4 +43,7 @@ function setCookie(cname, cvalue, exdays) {
         //console.log(document.getElementById("u").value + "=" + pw + ";expires="+now.toGMTString()+";path=/");
         document.cookie = document.getElementById("u").value + "=" + pw + ";expires=" + now.toGMTString() + ";path=/";
     }
+}
+function rempass() {
+    
 }
