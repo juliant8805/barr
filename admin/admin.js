@@ -332,7 +332,11 @@ function actualizar() {
 function guardar() {
     var nom1 = document.getElementById('nombre').value.toLowerCase();
     var nom = nom1.split(' ');
-    var nomg = nom[0].charAt(0).toUpperCase() + nom[0].slice(1) + nom[nom.length - 1].charAt(0).toUpperCase() + nom[nom.length - 1].slice(1);
+    if (nom.length === 1) {
+        var nomg = nom[0].charAt(0).toUpperCase() + nom[0].slice(1);
+    } else {
+        var nomg = nom[0].charAt(0).toUpperCase() + nom[0].slice(1) + nom[nom.length - 1].charAt(0).toUpperCase() + nom[nom.length - 1].slice(1);
+    }
     //console.log(nomg + "2017");
     var cont = nomg + "2017";
     var contrasena = hex_md5(cont);
@@ -397,32 +401,32 @@ function guardar() {
      console.log(document.getElementById('inlineRadio1').checked);*/
     //var arrayResult = update_query("INSERT INTO usuario (nombre,cargo,email,usuario,contrasena,catastrom,catastroc,sui,pot,planeacionm,haciendam,sistemas,gestor,planeacionc,haciendac,estado,dependenci,fechaexp) VALUES('" + document.getElementById('nombre').value + "','" + document.getElementById('cargo').value + "','" + document.getElementById('email').value + "','" + nomg + "','" + contrasena + "','" + catastro + "','" + catastroConsul + "','" + sui + "','" + pot + "','" + planeacion + "','" + hacienda + "','" + sistemas + "','" + gestor + "','" + planeacionConsul + "','" + haciendaConsul + "','t','" + document.getElementById('dependencia').value + "','" + document.getElementById('fecha').value + "');");
     var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.3.4:8080/geoserver">\
-                    <Insert xmlns="http://www.opengis.net/wfs">\
-                        <user:usuario>\
-                            <usuario>' + nomg + '</usuario>\
-                            <nombre>' + document.getElementById('nombre').value + '</nombre>\
-                            <cargo>' + document.getElementById('cargo').value + '</cargo>\
-                            <email>' + document.getElementById('email').value + '</email>\
-                            <contrasena>' + contrasena + '</contrasena>\
-                            <catastrom>' + catastro + '</catastrom>\
-                            <catastroc>' + catastroConsul + '</catastroc>\
-                            <sui>' + sui + '</sui>\
-                            <pot>' + pot + '</pot>\
-                            <planeacionm>' + planeacion + '</planeacionm>\
-                            <haciendam>' + hacienda + '</haciendam>\
-                            <sistemas>' + sistemas + '</sistemas>\
-                            <gestor>' + gestor + '</gestor>\
-                            <estado>true</estado>\
-                            <dependenci>' + document.getElementById('dependencia').value + '</dependenci>\
-                            <fechaexp>' + document.getElementById('fecha').value + '</fechaexp>\
-                            <planeacionc>' + planeacionConsul + '</planeacionc>\
-                            <haciendac>' + haciendaConsul + '</haciendac>\
-                        </user:usuario>\
-                    </Insert>\
-                </Transaction>';
-    console.log(arrayResult);
+     <Insert xmlns="http://www.opengis.net/wfs">\
+     <user:usuario>\
+     <usuario>' + nomg + '</usuario>\
+     <nombre>' + document.getElementById('nombre').value + '</nombre>\
+     <cargo>' + document.getElementById('cargo').value + '</cargo>\
+     <email>' + document.getElementById('email').value + '</email>\
+     <contrasena>' + contrasena + '</contrasena>\
+     <catastrom>' + catastro + '</catastrom>\
+     <catastroc>' + catastroConsul + '</catastroc>\
+     <sui>' + sui + '</sui>\
+     <pot>' + pot + '</pot>\
+     <planeacionm>' + planeacion + '</planeacionm>\
+     <haciendam>' + hacienda + '</haciendam>\
+     <sistemas>' + sistemas + '</sistemas>\
+     <gestor>' + gestor + '</gestor>\
+     <estado>true</estado>\
+     <dependenci>' + document.getElementById('dependencia').value + '</dependenci>\
+     <fechaexp>' + document.getElementById('fecha').value + '</fechaexp>\
+     <planeacionc>' + planeacionConsul + '</planeacionc>\
+     <haciendac>' + haciendaConsul + '</haciendac>\
+     </user:usuario>\
+     </Insert>\
+     </Transaction>';
+    //console.log(arrayResult);
     rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
-    $.ajax({
+    var res = $.ajax({
         type: "POST",
         url: rooturl,
         dataType: "xml",
@@ -430,11 +434,37 @@ function guardar() {
         async: false,
         data: arrayResult,
         success: function (xml) {
-            console.log(xml);
+            //console.log(xml);
             //alert('success');
         },
         error: function (xml) {
             console.log('error');
         }
     });
-};
+    console.log(res.responseText.substring(0, 63));
+    if (res.responseText.substring(0, 62) === '<?xml version="1.0" encoding="UTF-8"?><wfs:TransactionResponse') {
+        var urls = "./mail/envio_mail.php";
+        var req = new ajaxRequest();
+        var url = urls + "?c=" + document.getElementById('email').value + "&u=" + nomg + "&p=" + cont;
+        req.open("GET", url, false);
+        req.send();
+    } else {
+        alert("El usuario o correo electronico ya se encuentra registrado");
+    }
+}
+function ajaxRequest() {
+    try {
+        var request = new XMLHttpRequest();
+    } catch (e1) {
+        try {
+            request = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e2) {
+            try {
+                request = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e3) {
+                request = false;
+            }
+        }
+    }
+    return request;
+}
