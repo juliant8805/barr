@@ -2,7 +2,11 @@ var url = 'http://35.184.3.4:8080/geoserver/ows?';
 function search(param, request, request1, request2) {
     /*if (request === undefined || request === '') {
         return;
-    } else*/ if (request1 === undefined && request2 === undefined) {
+    } else*/
+    if (request === undefined && request1 === undefined && request2 === undefined) {
+        var viewParamsStr = viewparamsToStr({});
+    }
+    else if (request1 === undefined && request2 === undefined) {
         var viewParamsStr = viewparamsToStr({
             query: request
         });

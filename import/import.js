@@ -138,7 +138,8 @@ function validate(validar) {
     table.innerHTML = "";
     //$("table").children().remove()
     if (validar === "valid") {
-        var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%' ORDER BY table_name");
+        //var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%' ORDER BY table_name");
+        var select = search("preproduccion:CountTable", 'temp_%');
         //var sel = [];
         //console.log(select);
         var row = table.insertRow(0);

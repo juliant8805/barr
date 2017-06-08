@@ -5,7 +5,7 @@ function onload(){
 
     var val = document.location.href;
     var validar = val.split("?");
-    if (validar[1] == "ig=error")
+    if (validar[1] === "ig=error")
     {
         document.getElementById('er').style.display = 'block';
     }
@@ -25,7 +25,7 @@ function deleteCookie(name){
   setC(name,"",-1);
 }
 function setCookie(cname, cvalue, exdays) {
-    if (document.getElementById("u").value != "" && document.getElementById("p").value != "")
+    if (document.getElementById("u").value !== "" && document.getElementById("p").value !== "")
     {
         var pw = hex_md5(document.getElementById("p").value);
         var now = new Date();

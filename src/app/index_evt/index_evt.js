@@ -10,26 +10,71 @@ $(document).on('ready', function () {
     if (select === null || select === undefined) {
         location.href = "barranquilla.html?ig=error";
     }
-    /*registro de inrgeso de usuarios
-     else {
-     try {
-     var select1 = select_query("SELECT count(*) AS count FROM reguser WHERE usuario = '" + ca[0] + "'");
-     if (select1[0][0] === 0) {
-     document.getElementById("completo").style.display = 'block';
-     }
-     var f = new Date();
-     //var hora = f.getHours
-     var fecha = f.getFullYear() + "/" + (f.getMonth() + 1) + "/" + f.getDate() + " " + f.getHours() + ":" + f.getMinutes() + ":" + f.getSeconds();
-     //console.log(fecha);
-     update_query("INSERT INTO reguser (usuario,fecha) VALUES('" + select[0][3] + "','" + fecha + "');");
-     //console.log(arrayResult);
-     } catch (err) {
-     }
-     }*/
-    //console.log(document.getElementById("nombre_usuario").innerHTML);
-    //vista de iconos por perfil
-    //console.log(select);
+//registro de ingreso de usuarios
+    else {
+        var ca = document.cookie.split('=');
+        //var select1 = select_query("SELECT count(*) AS count FROM reguser WHERE usuario = '" + ca[0] + "'");
+        var select1 = search("preproduccion:activUser", ca[0]);
+        if (select1[0][0] === 0) {
+            document.getElementById("completo").style.display = 'block';
+        }
+        var f = new Date();
+        //var hora = f.getHours
+        if ((f.getMonth() + 1) < 10) {
+            var month = '0' + (f.getMonth() + 1);
+        } else {
+            var month = (f.getMonth() + 1);
+        }
+        if (f.getDate() < 10) {
+            var day = '0' + f.getDate();
+        } else {
+            var day = f.getDate();
+        }
+        if (f.getHours() < 10) {
+            var hour = '0' + f.getHours();
+        } else {
+            var hour = f.getHours();
+        }
+        if (f.getMinutes() < 10) {
+            var minute = '0' + f.getMinutes();
+        } else {
+            var minute = f.getMinutes();
+        }
+        if (f.getSeconds() < 10) {
+            var second = '0' + f.getSeconds();
+        } else {
+            var second = f.getSeconds();
+        }
+        var fecha = f.getFullYear() + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second + "Z";
+        var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.3.4:8080/geoserver">\
+            <Insert xmlns="http://www.opengis.net/wfs">\
+                <user:reguser>\
+                    <usuario>' + select[0][3] + '</usuario>\
+                    <fecha>' + fecha + '</fecha>\
+                    <actividad>Ingreso al sistema</actividad>\
+                </user:reguser>\
+            </Insert>\
+        </Transaction>';
+        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        var res = $.ajax({
+            type: "POST",
+            url: rooturl,
+            dataType: "xml",
+            contentType: "text/xml",
+            async: false,
+            data: arrayResult,
+            success: function (xml) {
+                //console.log(xml);
+                //alert('success');
+            },
+            error: function (xml) {
+                console.log('error');
+            }
+            //console.log(arrayResult);
+        });
+    }
     try {
+        //console.log(select);
         if (select[0][5] === true) {
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
@@ -57,7 +102,6 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-
             var d = document.createElement("script");
             d.type = "text/javascript";
             d.charset = "UTF-8";
@@ -65,7 +109,6 @@ $(document).on('ready', function () {
             var c = document.getElementsByTagName("head")[0];
             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
             c.appendChild(d);
-
             var e = document.createElement("script");
             e.type = "text/javascript";
             e.charset = "UTF-8";
@@ -73,7 +116,6 @@ $(document).on('ready', function () {
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
-
             /*  var e = document.createElement("script");
              e.type = "text/javascript";
              e.charset = "UTF-8";
@@ -102,7 +144,6 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-
             var d = document.createElement("script");
             d.type = "text/javascript";
             d.charset = "UTF-8";
@@ -110,7 +151,6 @@ $(document).on('ready', function () {
             var c = document.getElementsByTagName("head")[0];
             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
             c.appendChild(d);
-
             var e = document.createElement("script");
             e.type = "text/javascript";
             e.charset = "UTF-8";
@@ -118,8 +158,7 @@ $(document).on('ready', function () {
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
-
-        } else if (select[0][9] === true) {
+        } else if (select[0][16] === true) {
             modulo = "planeacion";
             //var sele = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%'");
             //console.log(sele);
@@ -155,15 +194,13 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-
-            var d = document.createElement("script");
-            d.type = "text/javascript";
-            d.charset = "UTF-8";
-            d.src = "sql/js_sql.js";
-            var c = document.getElementsByTagName("head")[0];
-            c || (c = document.body.parentNode.appendChild(document.createElement("head")));
-            c.appendChild(d);
-
+            /*var d = document.createElement("script");
+             d.type = "text/javascript";
+             d.charset = "UTF-8";
+             d.src = "sql/js_sql.js";
+             var c = document.getElementsByTagName("head")[0];
+             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
+             c.appendChild(d);*/
             var e = document.createElement("script");
             e.type = "text/javascript";
             e.charset = "UTF-8";
@@ -171,7 +208,64 @@ $(document).on('ready', function () {
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
-
+        } else if (select[0][9] === true) {
+            modulo = "planeacionmisional";
+            //var sele = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%'");
+            var sele = search("preproduccion:CountTable", 'temp_%');
+            //console.log(sele.length);
+            if (sele.length > 0) {
+                //console.log(sele);
+                document.getElementById("valid").style.display = "block";
+            }
+            //var sel = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%'");
+            var sel = search("preproduccion:CountTable", 'post_%');
+            //console.log(sel.length);
+            if (sel.length > 0) {
+                document.getElementById("deshacer").style.display = "block";
+            }
+            document.getElementById("menu_circular").style.display = "block";
+            document.getElementById("tipo_usuario").style.display = "block";
+            document.getElementById("manual").style.display = "block";
+            document.getElementById("subirshape").style.display = "block";
+            document.getElementById("alineamiento").style.display = "block";
+            document.getElementById("Usos_Permitidos").style.display = "block";
+            document.getElementById("espacio_publico").style.display = "block";
+            document.getElementById("transmetro").style.display = "block";
+            //document.getElementById("Conflicto Uso del Suelo").style.display = "block";
+            document.getElementById("Area Proteccion Urbanistica").style.display = "block";
+            document.getElementById("estratificacion_oficial").style.display = "block";
+            document.getElementById("Tipo de Amenaza").style.display = "block";
+            document.getElementById("Estructura Ecologica Principal").style.display = "block";
+            document.getElementById("Clasificacion_Uso").style.display = "block";
+            document.getElementById("boton_geocoder").style.display = "block";
+            var b = document.createElement("script");
+            b.type = "text/javascript";
+            b.charset = "UTF-8";
+            b.src = "src/app/planeacion/ConsultasPlaneacion.js";
+            var a = document.getElementsByTagName("head")[0];
+            a || (a = document.body.parentNode.appendChild(document.createElement("head")));
+            a.appendChild(b);
+            var d = document.createElement("script");
+            d.type = "text/javascript";
+            d.charset = "UTF-8";
+            d.src = "sql/js_sql.js";
+            var c = document.getElementsByTagName("head")[0];
+            c || (c = document.body.parentNode.appendChild(document.createElement("head")));
+            c.appendChild(d);
+            var e = document.createElement("script");
+            e.type = "text/javascript";
+            e.charset = "UTF-8";
+            e.src = "gesstor/gesstor.js";
+            var f = document.getElementsByTagName("head")[0];
+            f || (f = document.body.parentNode.appendChild(document.createElement("head")));
+            f.appendChild(e);
+            var g = document.createElement("script");
+            g.type = "text/javascript";
+            g.charset = "UTF-8";
+            g.src = "import/import.js";
+            var h = document.getElementsByTagName("head")[0];
+            h || (h = document.body.parentNode.appendChild(document.createElement("head")));
+            h.appendChild(g);
         } else if (select[0][10] === true) {
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";
@@ -184,7 +278,6 @@ $(document).on('ready', function () {
             document.getElementById("Impuesto Camara").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             modulo = "hacienda";
-
             var b = document.createElement("script");
             b.type = "text/javascript";
             b.charset = "UTF-8";
@@ -192,7 +285,6 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-
             var d = document.createElement("script");
             d.type = "text/javascript";
             d.charset = "UTF-8";
@@ -200,7 +292,6 @@ $(document).on('ready', function () {
             var c = document.getElementsByTagName("head")[0];
             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
             c.appendChild(d);
-
             var e = document.createElement("script");
             e.type = "text/javascript";
             e.charset = "UTF-8";
@@ -208,8 +299,6 @@ $(document).on('ready', function () {
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
-
-
         } else if (select[0][12] === true) {
 
             //document.getElementById("menu_circular").style.display = "block";
@@ -275,7 +364,6 @@ function validacionusuarios() {
     return(select);
 }
 changestyles = 0;
-
 function password() {
     var ca = document.cookie.split('=');
     //hex_md5(document.getElementById("p").value);
@@ -320,7 +408,7 @@ function password() {
     return;
 }
 function mostrar(consulta) {
-    //document.getElementById('barra_direccion').style.display = 'none';
+//document.getElementById('barra_direccion').style.display = 'none';
     document.getElementById('barra_sitio').style.display = 'none';
     //document.getElementById('barra_propietario').style.display = 'none';
     document.getElementById('barra_barrio').style.display = 'none';
@@ -342,7 +430,6 @@ function mostrar(consulta) {
     document.getElementById('manzana').value = "";
     document.getElementById('matricula').value = "";
     document.getElementById('direccion').value = "";
-
     if (consulta === 'consulta_direccion') {
         document.getElementById('barra_direccion').style.display = 'block';
         localidad.setVisible(false);
@@ -385,7 +472,7 @@ function mostrar(consulta) {
 }
 
 function menu_principal() {
-    // document.getElementById('botones').style.display = 'block';
+// document.getElementById('botones').style.display = 'block';
     document.getElementById('submenu').style.display = 'block';
     document.getElementById('cerrar_submenu').style.display = 'block';
     document.getElementById('lupa_pequeña').style.display = 'block';
@@ -516,7 +603,6 @@ function busqueda_personalizada() {
         document.getElementById('rango_area').style.display = 'block';
         document.getElementById('tipo_construccion').style.display = 'block';
         document.getElementById('estrato').style.display = 'block';
-
     } else
     {
         document.getElementById('personalizada').style.display = 'none';
@@ -531,7 +617,7 @@ function busqueda_personalizada() {
     }
 }
 function busqueda(id) {
-    //document.getElementById('barra_busqueda_direccion').style.display = 'none';
+//document.getElementById('barra_busqueda_direccion').style.display = 'none';
     document.getElementById('barra_busqueda_matricula').style.display = 'none';
     document.getElementById('barra_codigo').style.display = 'none';
     document.getElementById('barra_alineamiento').style.display = 'none';
@@ -615,7 +701,6 @@ $(document).ready(function () {
 function open_streetview() {
     document.getElementById('marco').style.display = 'block';
     document.getElementById('botoncerrarstreetview').style.display = 'block';
-
 }/*
  function close_streetview() {
  console.log(algo);
@@ -628,29 +713,29 @@ function lista() {
 }
 
 function abrir_manual() {
-    if (modulo == 'catastro') { 
-            window.open('./documentos/manual_catastro.pdf', '_blank');
-            /* window.open(
-                'http://35.184.3.4/gesstor/documentos/manual_catastro.pdf',
-                '_blank' // <- This is what makes it open in a new window.
-                );*/
+    if (modulo == 'catastro') {
+        window.open('./documentos/manual_catastro.pdf', '_blank');
+        /* window.open(
+         'http://35.184.3.4/gesstor/documentos/manual_catastro.pdf',
+         '_blank' // <- This is what makes it open in a new window.
+         );*/
     } else if (modulo == 'planeacion') {
-            window.open('./documentos/manual_misional_planeacion.pdf', '_blank', 'fullscreen=yes');
-                /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
-                '_blank' // <- This is what makes it open in a new window.
-                );*/
+        window.open('./documentos/manual_misional_planeacion.pdf', '_blank', 'fullscreen=yes');
+        /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
+         '_blank' // <- This is what makes it open in a new window.
+         );*/
     } else if (modulo == 'sui') {
-            window.open('./documentos/manual_sui.pdf', '_blank', 'fullscreen=yes');
-       /* window.open(
-                'http://35.184.3.4/gesstor/documentos/manual_sui.pdf',
-                '_blank' // <- This is what makes it open in a new window.
-                );*/
+        window.open('./documentos/manual_sui.pdf', '_blank', 'fullscreen=yes');
+        /* window.open(
+         'http://35.184.3.4/gesstor/documentos/manual_sui.pdf',
+         '_blank' // <- This is what makes it open in a new window.
+         );*/
     } else if (modulo == 'hacienda') {
         window.open('./documentos/manual_hacienda.pdf', '_blank', 'fullscreen=yes');
         /*window.open(
-                'http://35.184.3.4/gesstor/documentos/manual_hacienda.pdf',
-                '_blank' // <- This is what makes it open in a new window.
-                );*/
+         'http://35.184.3.4/gesstor/documentos/manual_hacienda.pdf',
+         '_blank' // <- This is what makes it open in a new window.
+         );*/
     }
 }
 
@@ -668,7 +753,6 @@ window.onclick = function (event) {
         }
     }
 };
-
 function marcado() {
     if (document.getElementById("termin").checked === true) {
         document.getElementById('completo').style.display = 'none';
@@ -988,7 +1072,6 @@ function alertDGC(mensaje) {
 window.alert = function (message) {
     alertDGC(message);
 };
-
 function habilitar(value)
 {
     if (document.getElementById("checkconstruccion").checked == true)
