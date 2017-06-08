@@ -174,10 +174,23 @@ function file() {
             var select = search("preproduccion:ReportDiferenciaEstratoAlcantarillado", values);
         } else if (queryexport == "oficial_vs_AAA AseoF"){
             var select = search("preproduccion:ReportDiferenciaEstratoAseo", values);
-        } 
-        
+        }    
     }
-    
+     
+    else if (queryexport.substring(0, 6) === "difuso"){
+       var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Destino Economico", "Uso Prestador", "# Predios"]);
+        if (queryexport == "difuso G"){
+            alert("GESSTOR INFORMA:</br></br>La base es demasiado grande para exportarla completa, por favor primero filtre por Localidad, Barrio o Manzana");
+            quitgif();    
+        } else if (queryexport == "difuso AcueductoF"){
+            var select = search("preproduccion:ReportDiferenciaUsoAcueducto", values);
+        } else if (queryexport == "difuso AlcantarilladoF"){
+            var select = search("preproduccion:ReportDiferenciaUsoAlcantarillado", values);
+        } else if (queryexport == "difuso AseoF"){
+            var select = search("preproduccion:ReportUsoEstratoAseo", values);
+        }    
+    }
+      
     else if (queryexport.substring(0, 18) === "disponibilidad_AAA"){
         var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Prestador", "# Predios"]);
         if (queryexport == "disponibilidad_AAA G"){

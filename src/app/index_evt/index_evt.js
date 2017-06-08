@@ -90,8 +90,9 @@ $(document).on('ready', function () {
             document.getElementById("estratificacion_oficial").style.display = "block";
             document.getElementById("oficial_vs_AAA").style.display = "block";
             document.getElementById("oficial_vs_AAA_uso").style.display = "block";
+            document.getElementById("uso_electricaribe").style.display = "block";
             document.getElementById("disponibilidad_AAA").style.display = "block";
-            document.getElementById("Nomenclatura Domiciliaria").style.display = "block";
+            document.getElementById("Nomenclatura Domiciliaria").style.display = "block"; 
             document.getElementById("boton_geocoder").style.display = "block";
             modulo = "sui";
             var b = document.createElement("script");
@@ -713,6 +714,8 @@ function changeImage(id) {
     } else if (id === "disponibilidad_AAA") {
         document.getElementById('disponibilidad_AAA').style = "background:url('./imagenes/disponibilidad_servicios_AAA.png'); background-color:#006600; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
         document.getElementById('disponibilidad_AAA').value = 0;
+    } else if (id === "uso_electricaribe") {
+        document.getElementById('uso_electricaribe').style = "background:url('./imagenes/botones_consultas/uso_electricaribe/uso_electricaribe.png'); background-color:#93c993; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
     } else if (id === "transmetro") {
         document.getElementById('transmetro').style = "background:url('./imagenes/botones_consultas/transmetro/transmetro.png'); background-color:#93c993; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
     } else if (id === "espacio_publico") {
@@ -801,6 +804,8 @@ function normalImage(id) {
         } else {
             document.getElementById('oficial_vs_AAA_uso').style = "background:url('./imagenes/oficial_vs_AAA_uso.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
         }
+    } else if (id === "uso_electricaribe") {
+        document.getElementById('uso_electricaribe').style = "background:url('./imagenes/botones_consultas/uso_electricaribe/uso_electricaribe.png'); background-color:#006D1B; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
     } else if (id === "disponibilidad_AAA") {
         if (document.getElementById("disponibilidad_AAA").value === "Acueducto") {
             document.getElementById('disponibilidad_AAA').style = "background-color:#008E30; min-height: 40px; border:0px;";
