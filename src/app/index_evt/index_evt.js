@@ -363,13 +363,10 @@ function validacionusuarios() {
 changestyles = 0;
 function password() {
     var ca = document.cookie.split('=');
-    //hex_md5(document.getElementById("p").value);
-    //var select = select_query("SELECT * FROM usuario WHERE usuario ='" + ca[0] + "' AND contrasena ='" + hex_md5(document.getElementById('password').value) + "';");
     var select = search("preproduccion:ValidateUser", ca[0], hex_md5(document.getElementById('password').value));
     if (select === null || select.length === 0) {
         alert("Contraseña incorrecta");
     } else if (document.getElementById("newpassword").value === document.getElementById("cpassword").value) {
-        //var arrayResult = update_query("UPDATE usuario SET contrasena='" + hex_md5(document.getElementById('newpassword').value) + "' WHERE usuario='" + ca[0] + "';");
         var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
             <Update typeName="user:usuario">\
                 <Property>\
@@ -390,11 +387,9 @@ function password() {
             contentType: "text/xml",
             data: postData,
             success: function (xml) {
-                //console.log(xml);
                 alert('Datos actualizados con exito');
             },
             error: function (xml) {
-                //console.log('error');
                 alert('Los datos NO se actualizaron');
             }
         });
