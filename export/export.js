@@ -47,10 +47,7 @@ function file() {
         }
     }
     
-    else if (queryexport.substring(0, 21) === "predios_actualizacion"){
-            alert("GESSTOR INFORMA:</br></br>No existe reporte alfanumérico para esta consulta");
-            quitgif(); 
-    }
+    
     
     else if (queryexport.substring(0, 9) === "plusvalia"){
         alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte");
@@ -177,10 +174,23 @@ function file() {
             var select = search("preproduccion:ReportDiferenciaEstratoAlcantarillado", values);
         } else if (queryexport == "oficial_vs_AAA AseoF"){
             var select = search("preproduccion:ReportDiferenciaEstratoAseo", values);
-        } 
-        
+        }    
     }
-    
+     
+    else if (queryexport.substring(0, 6) === "difuso"){
+       var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Destino Economico", "Uso Prestador", "# Predios"]);
+        if (queryexport == "difuso G"){
+            alert("GESSTOR INFORMA:</br></br>La base es demasiado grande para exportarla completa, por favor primero filtre por Localidad, Barrio o Manzana");
+            quitgif();    
+        } else if (queryexport == "difuso AcueductoF"){
+            var select = search("preproduccion:ReportDiferenciaUsoAcueducto", values);
+        } else if (queryexport == "difuso AlcantarilladoF"){
+            var select = search("preproduccion:ReportDiferenciaUsoAlcantarillado", values);
+        } else if (queryexport == "difuso AseoF"){
+            var select = search("preproduccion:ReportUsoEstratoAseo", values);
+        }    
+    }
+      
     else if (queryexport.substring(0, 18) === "disponibilidad_AAA"){
         var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Prestador", "# Predios"]);
         if (queryexport == "disponibilidad_AAA G"){
@@ -203,6 +213,16 @@ function file() {
         else{
         var select = search("preproduccion:ReportNomenclaturaDomiciliariaFiltro", values);
       }   
+    }
+    
+    else if (queryexport.substring(0, 21) === "predios_actualizacion"){
+        var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Area Construida M2", "# Predios"]);
+        if (queryexport === 'predios_actualizacion G') {
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            quitgif();
+        } else {
+            var select = search("preproduccion:ReportAreaConstruida", values);
+        }
     }
     
     var arr = JSON.stringify(select);

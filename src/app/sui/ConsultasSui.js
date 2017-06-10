@@ -19,8 +19,7 @@ function rango(style) {
     globalstyle = style;
     puntos_aaa.setVisible(false);
     document.getElementById('mensaje').style.display = 'none';
-   
-    
+     
     if (style === "Distrito vs Prestadores AAA") {
         document.getElementById("statistics").style.display = "none";
         document.getElementById("botonocultarstatistics").style.display = "none";
@@ -180,8 +179,125 @@ function rango(style) {
             queryexport = style + ' AseoF';               
            }                   
          }              
-    }          
-      
+    }   
+    
+    else if (style === "oficial_vs_AAA_uso") {
+            puntos_aaa.setVisible(false);
+            document.getElementById("statistics").style.display = "none";
+            document.getElementById("botonocultarstatistics").style.display = "none";
+            document.getElementById("botonmostrarstatistics").style.display = "none";
+            construcciones.setVisible(false); 
+            predio.setVisible(true);
+            if (document.getElementById("oficial_vs_AAA_uso").value === "Acueducto") {
+            if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
+            var select = search("preproduccion:TotalPredios");
+            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var total1 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'Igual');
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'Diferente');  
+            var totales = total1.concat(total2);
+            predio.getSource().updateParams({'STYLES':'Oficial vs AAA Uso Acueducto'});
+            var titulo = "Uso Oficial vs Uso Acueducto";
+            estdistica(select, titulo, param, totales);
+            map.getView().fitExtent(predio.getExtent(), map.getSize());
+            var difuso = "difuso";
+            queryexport = difuso + ' G';   
+           } 
+           else {
+            var select = search("preproduccion:TotalPrediosSinConsulta", values);
+            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var total1 = search("preproduccion:UsoDistritoPrestadoresAcueductoFiltro", values, 'Igual');
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAcueductoFiltro", values, 'Diferente');
+            var totales = total1.concat(total2);
+            var titulo = "Uso Oficial vs Uso Acueducto";
+            estdistica(select, titulo, param, totales);
+            var valor = "'" + values + "'";
+            if (document.getElementById("barrio").value !== '') {
+                var filtro = '"cod_barrio=' + valor + '"';   
+            } else if (document.getElementById("localidad").value !== '') {
+                var filtro = '"cod_loc=' + valor + '"';  
+            } else if (document.getElementById("manzana").value !== '') {
+                var filtro = '"manzana_co=' + valor + '"';  
+            }
+            predio.getSource().updateParams({'STYLES': 'Oficial vs AAA Uso Acueducto', 'CQL_FILTER': eval(filtro)});
+            var difuso = "difuso";
+            queryexport = difuso + ' AcueductoF';
+            //queryexport = style + ' AcueductoF';              
+           }                   
+        }
+         
+         else if (document.getElementById("oficial_vs_AAA_uso").value === "Alcantarillado") {
+            if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
+            var select = search("preproduccion:TotalPredios");
+            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var total1 = search("preproduccion:UsoDistritoPrestadoresAlcantarillado", 'Igual');
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAlcantarillado", 'Diferente');  
+            var totales = total1.concat(total2);
+            predio.getSource().updateParams({'STYLES':'Oficial vs AAA Uso Alcantarillado'});
+            var titulo = "Uso Oficial vs Uso Alcantarillado";
+            estdistica(select, titulo, param, totales);
+            map.getView().fitExtent(predio.getExtent(), map.getSize());
+            var difuso = "difuso";
+            queryexport = difuso + ' G';  
+           } 
+           else {
+            var select = search("preproduccion:TotalPrediosSinConsulta", values);
+            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var total1 = search("preproduccion:UsoDistritoPrestadoresAlcantarilladoFiltro", values, 'Igual');
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAlcantarilladoFiltro", values, 'Diferente');
+            var totales = total1.concat(total2);
+            var titulo = "Uso Oficial vs Uso Alcantarillado";
+            estdistica(select, titulo, param, totales);
+            var valor = "'" + values + "'";
+            if (document.getElementById("barrio").value !== '') {
+                var filtro = '"cod_barrio=' + valor + '"';   
+            } else if (document.getElementById("localidad").value !== '') {
+                var filtro = '"cod_loc=' + valor + '"';  
+            } else if (document.getElementById("manzana").value !== '') {
+                var filtro = '"manzana_co=' + valor + '"';  
+            }
+            predio.getSource().updateParams({'STYLES': 'Oficial vs AAA Uso Alcantarillado', 'CQL_FILTER': eval(filtro)});
+            var difuso = "difuso";
+            queryexport = difuso + ' AlcantarilladoF';               
+           }                   
+         } 
+         
+         else if (document.getElementById("oficial_vs_AAA_uso").value === "Aseo") {
+            if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
+            var select = search("preproduccion:TotalPredios");
+            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var total1 = search("preproduccion:UsoDistritoPrestadoresAseo", 'Igual');
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAseo", 'Diferente');  
+            var totales = total1.concat(total2);
+            predio.getSource().updateParams({'STYLES':'Oficial vs AAA Uso Aseo'});
+            var titulo = "Uso Oficial vs Uso Aseo";
+            estdistica(select, titulo, param, totales);
+            map.getView().fitExtent(predio.getExtent(), map.getSize());
+            var difuso = "difuso";
+            queryexport = difuso + ' G'; 
+           } 
+           else {
+            var select = search("preproduccion:TotalPrediosSinConsulta", values);
+            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var total1 = search("preproduccion:UsoDistritoPrestadoresAseoFiltro", values, 'Igual');
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAseoFiltro", values, 'Diferente');
+            var totales = total1.concat(total2);
+            var titulo = "Uso Oficial vs Uso Aseo";
+            estdistica(select, titulo, param, totales);
+            var valor = "'" + values + "'";
+            if (document.getElementById("barrio").value !== '') {
+                var filtro = '"cod_barrio=' + valor + '"';   
+            } else if (document.getElementById("localidad").value !== '') {
+                var filtro = '"cod_loc=' + valor + '"';  
+            } else if (document.getElementById("manzana").value !== '') {
+                var filtro = '"manzana_co=' + valor + '"';  
+            }
+            predio.getSource().updateParams({'STYLES': 'Oficial vs AAA Uso Aseo', 'CQL_FILTER': eval(filtro)});
+            var difuso = "difuso";
+            queryexport = difuso + ' AseoF';              
+           }                   
+         }              
+    } 
+        
     else if (style === "disponibilidad_AAA") {
             puntos_aaa.setVisible(false);
             document.getElementById("statistics").style.display = "none";
@@ -389,6 +505,43 @@ function rango(style) {
         }         
     }
     
+    else if (style === "uso_electricaribe") {
+        construcciones.setVisible(false);
+        predio.setVisible(true);
+        if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
+            var select = search("preproduccion:TotalPredios");
+            var param = [['Uso Coincidente'], ['Uso Diferente'], ['Sin Informacion']];
+            var total1 = search("preproduccion:UsoElectricaribeMunicipio", 'Igual');
+            var total2 = search("preproduccion:UsoElectricaribeMunicipio", 'Diferente');
+            var total3 = search("preproduccion:UsoElectricaribeMunicipio", 'Sin Informacion');
+            var totales = total1.concat(total2, total3);
+            predio.getSource().updateParams({'STYLES': style});
+            estdistica(select, style, param, totales);
+            map.getView().fitExtent(predio.getExtent(), map.getSize());
+            queryexport = style + ' G';
+        } 
+        else {
+            var select = search("preproduccion:TotalPrediosSinConsulta", values);
+            var param = [['Uso Coincidente'], ['Uso Diferente'], ['Sin Informacion']];
+            var total1 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'Igual');
+            var total2 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'Diferente'); 
+            var total3 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'Sin Informacion');
+            var totales = total1.concat(total2, total3);
+            estdistica(select, style, param, totales);
+            var valor = "'" + values + "'";
+            if (document.getElementById("barrio").value !== '') {
+                var filtro = '"cod_barrio=' + valor + '"';
+               
+            } else if (document.getElementById("localidad").value !== '') {
+                var filtro = '"cod_loc=' + valor + '"';
+                
+            } else if (document.getElementById("manzana").value !== '') {
+                var filtro = '"manzana_co=' + valor + '"';   
+            }
+            predio.getSource().updateParams({'STYLES': style, 'CQL_FILTER': eval(filtro)});
+            queryexport = style;
+        }
+    }    
 }
 
 

@@ -244,7 +244,44 @@ function rango(style) {
              map.getView().fitExtent(predio.getExtent(), map.getSize());
              queryexport = style + ' G';
     
-    }   
+    } 
+    else if (style === "Nomenclatura Domiciliaria") {
+            construcciones.setVisible(false);
+            predio.setVisible(true);
+            if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
+            var select = search("preproduccion:TotalPredios");
+            var param = [['Nomenclatura Estandarizada'], ['Nomenclatura No Estandarizada'], ['Sin Direccion']];
+            var total1 = search("preproduccion:NomenclaturaEstandarizada", 'SI');
+            var total2 = search("preproduccion:NomenclaturaEstandarizada", 'NO');
+            var total3 = search("preproduccion:NomenclaturaEstandarizada", 'NN');
+            var totales = total1.concat(total2, total3);
+            predio.getSource().updateParams({'STYLES': style});
+            estdistica(select, style, param, totales);
+            map.getView().fitExtent(predio.getExtent(), map.getSize());
+            queryexport = style + ' G';
+        } 
+        else {
+            var select = search("preproduccion:TotalPrediosSinConsulta", values);
+            var param = [['Nomenclatura Estandarizada'], ['Nomenclatura No Estandarizada'], ['Sin Direccion']];
+            var total1 = search("preproduccion:NomenclaturaEstandarizadaFiltro", values, 'SI');
+            var total2 = search("preproduccion:NomenclaturaEstandarizadaFiltro", values, 'NO');
+            var total3 = search("preproduccion:NomenclaturaEstandarizadaFiltro", values, 'NN');
+            var totales = total1.concat(total2, total3);
+            estdistica(select, style, param, totales);
+            var valor = "'" + values + "'";
+            if (document.getElementById("barrio").value !== '') {
+                var filtro = '"cod_barrio=' + valor + '"';
+               
+            } else if (document.getElementById("localidad").value !== '') {
+                var filtro = '"cod_loc=' + valor + '"';
+                
+            } else if (document.getElementById("manzana").value !== '') {
+                var filtro = '"manzana_co=' + valor + '"';   
+            }
+            predio.getSource().updateParams({'STYLES': style, 'CQL_FILTER': eval(filtro)});
+            queryexport = style;
+        }         
+    }
 }
 
 
