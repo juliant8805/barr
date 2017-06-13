@@ -647,11 +647,11 @@ function guardar() {
 }
 function password() {
     var ca = document.cookie.split('=');
-    console.log(ca);
+    //console.log(ca);
     var select = search("preproduccion:ValidateUser", ca[0], hex_md5(document.getElementById('password').value), "t");
-    console.log(select);
-    console.log(document.getElementById('password').value);
-    console.log(hex_md5(document.getElementById('password').value));
+    //console.log(select);
+    //console.log(document.getElementById('password').value);
+    //console.log(hex_md5(document.getElementById('password').value));
     if (select === null || select.length === 0) {
         alert("Contraseña incorrecta");
     } else if (document.getElementById("newpassword").value === document.getElementById("cpassword").value) {
