@@ -166,8 +166,8 @@ function file() {
     else if (queryexport.substring(0, 14) === "oficial_vs_AAA"){
         var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Estrato Oficial", "Estrato Prestador", "# Predios"]);
         if (queryexport == "oficial_vs_AAA G"){
-            alert("GESSTOR INFORMA:</br></br>La base es demasiado grande para exportarla completa, por favor primero filtre por Localidad, Barrio o Manzana");
-            quitgif();    
+            var select = search("preproduccion:ReportDiferenciaEstratoAcueductoGeneral")
+            quitgif(); 
         } else if (queryexport == "oficial_vs_AAA AcueductoF"){
             var select = search("preproduccion:ReportDiferenciaEstratoAcueducto", values);
         } else if (queryexport == "oficial_vs_AAA AlcantarilladoF"){
@@ -180,7 +180,7 @@ function file() {
     else if (queryexport.substring(0, 6) === "difuso"){
        var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Destino Economico", "Uso Prestador", "# Predios"]);
         if (queryexport == "difuso G"){
-            alert("GESSTOR INFORMA:</br></br>La base es demasiado grande para exportarla completa, por favor primero filtre por Localidad, Barrio o Manzana");
+            var select = search("preproduccion:ReportDiferenciaUsoAcueductoGeneral");
             quitgif();    
         } else if (queryexport == "difuso AcueductoF"){
             var select = search("preproduccion:ReportDiferenciaUsoAcueducto", values);
@@ -222,6 +222,16 @@ function file() {
             quitgif();
         } else {
             var select = search("preproduccion:ReportAreaConstruida", values);
+        }
+    }
+    
+    else if (queryexport.substring(0, 17) === "uso_electricaribe"){
+        var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Destino Economico", "Uso Electricaribe", "#Predios"]);
+        if (queryexport === 'uso_electricaribe G') {
+            var select = search("preproduccion:ReportElectricaribeGeneral");
+            quitgif();
+        } else {
+            var select = search("preproduccion:ReportElectricaribeFiltro", values);
         }
     }
     

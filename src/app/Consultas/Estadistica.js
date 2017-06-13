@@ -101,8 +101,10 @@ function estdistica(select, titulo, param, totales) {
             color[i]='#FF0000';
         }else if(param[i][0]==='Uso Coincidente'){
             color[i]='#7CEB98';
-        }else if(param[i][0]==='Uso Diferente'){
+        }else if(param[i][0]==='E.Comercial-D.Residencial'){
             color[i]='#FF0000';
+        }else if(param[i][0]==='E.Residencial-D.Comercial'){
+            color[i]='#ffff7f';
         }else if(param[i][0]==='Cuenta con Acueducto'){
             color[i]='#9999ff';
         }else if(param[i][0]==='Sin Disponibilidad de Acueducto'){
@@ -191,11 +193,11 @@ function estdistica(select, titulo, param, totales) {
             color[i]='#006600';
         }else if(param[i][0]==='Corredor Ecologico'){
             color[i]='#003300';
-        }else if(param[i][0]==='Riesgo de Inund. Bajo'){
+        }else if(param[i][0]==='Amenaza de Inund. Baja'){
             color[i]='#7CEB98';
-        }else if(param[i][0]==='Riesgo de Inund. Medio'){
+        }else if(param[i][0]==='Amenaza de Inund. Media'){
             color[i]='#EDEF85';
-        }else if(param[i][0]==='Riego de Inund. Alto'){
+        }else if(param[i][0]==='Amenaza de Inund. Alta'){
             color[i]='#FFBBFF';
         }else if(param[i][0]==='Predios Coincidentes'){
             color[i]='#A5A5FF';
@@ -205,11 +207,11 @@ function estdistica(select, titulo, param, totales) {
             color[i]='#00cc00';
         }else if(param[i][0]==='Registros AAA sin codigo catastral'){
             color[i]='#FF0000';
-        }else if(param[i][0]==='Estratos Coincidentes'){
+        }else if(param[i][0]==='Est. Coincidentes'){
             color[i]='#7CEB98';
-        }else if(param[i][0]==='Estrato Prestador Mas Alto'){
+        }else if(param[i][0]==='Est. Prestador Mas Alto'){
             color[i]='#FFA8A8';
-        }else if(param[i][0]==='Estrato Prestador Mas Bajo'){
+        }else if(param[i][0]==='Est. Prestador Mas Bajo'){
             color[i]='#A5A5FF';
         }else if(param[i][0]==='Especial o Sin Inf.'){
             color[i]='#a2a0a3';
@@ -233,6 +235,14 @@ function estdistica(select, titulo, param, totales) {
             color[i]='#BAC0E8';
         }else if (param[i][0]==='Posible Predio Para Actualizar'){
             color[i]='#FFB2B2';
+        }else if (param[i][0]==='Otro'){
+            color[i]='#ffff7f';
+        }else if (param[i][0]==='P.Comercial-D.Residencial'){
+            color[i]='#FF0000';
+        }else if (param[i][0]==='P.Residencial-D.Comercial'){
+            color[i]='#ffff7f';
+        }else if(param[i][0]==='Sin Amenaza de Inund.'){
+            color[i]='#b2b2b2';
         }
         
         

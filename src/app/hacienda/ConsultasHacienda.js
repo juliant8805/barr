@@ -181,6 +181,42 @@ function rango(style) {
                 map.getView().fitExtent(predio.getExtent(), map.getSize());  
                 queryexport = style + ' G';   
         }
+    
+        //propiedad horizontal
+     else if (style === "Tipo Construccion") { 
+        estacionestransmetro.setVisible(false);
+        viastransmasivo.setVisible(false);
+        construcciones.setVisible(false);
+        predio.setVisible(true);
+        if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
+            var select = search("preproduccion:TotalPredios");
+            var param = [['NPH'], ['PH']];
+            var total1 = search("preproduccion:PropiedadHorizontal", 0, 0);
+            var total2 = search("preproduccion:PropiedadHorizontal", 1, 1);
+            var totales = total1.concat(total2);
+            predio.getSource().updateParams({'STYLES': style});
+            estdistica(select, style, param, totales);
+            map.getView().fitExtent(predio.getExtent(), map.getSize());
+            queryexport = style + ' G';
+        } else {
+            var select = search("preproduccion:TotalPrediosSinConsulta", values);
+            var param = [['NPH'], ['PH']];
+            var total1 = search("preproduccion:PropiedadHorizontalFiltro", values, 0, 0);
+            var total2 = search("preproduccion:PropiedadHorizontalFiltro", values, 1, 1);
+            var totales = total1.concat(total2);
+            estdistica(select, style, param, totales);
+            var valor = "'" + values + "'";
+            if (document.getElementById("barrio").value !== '') {
+            var filtro = '"cod_barrio=' + valor + '"';   
+            } else if (document.getElementById("localidad").value !== '') {
+                var filtro = '"cod_loc=' + valor + '"';   
+            } else if (document.getElementById("manzana").value !== '') {
+                var filtro = '"manzana_co=' + valor + '"';    
+            }
+            predio.getSource().updateParams({'STYLES': style, 'CQL_FILTER': eval(filtro)});
+            queryexport = style;
+        }
+    }   
        
 }
 

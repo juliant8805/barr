@@ -27,10 +27,11 @@ function rango(style) {
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPrediosInundacion");
-            var param = [['Riesgo de Inund. Bajo'], ['Riesgo de Inund. Medio'], ['Riego de Inund. Alto']];
+            var param = [['Amenaza de Inund. Baja'], ['Amenaza de Inund. Media'], /*['Amenaza de Inund. Alta'],*/ ['Sin Amenaza de Inund.']];
             var total1 = search("preproduccion:RiesgoInundacion", 'Baja');
             var total2 = search("preproduccion:RiesgoInundacion", 'Media');
-            var total3 = search("preproduccion:RiesgoInundacion", 'Alta');
+            //var total3 = search("preproduccion:RiesgoInundacion", 'Alta');
+            var total3 = search("preproduccion:RiesgoInundacion", 'Sin Riesgo');
             var totales = total1.concat(total2, total3);
             predio.getSource().updateParams({'STYLES': 'Inundacion'});
             var titulo ="Predios en Zona de Inundación";
@@ -40,10 +41,10 @@ function rango(style) {
         } 
         else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
-            var param = [['Riesgo de Inund. Bajo'], ['Riesgo de Inund. Medio'], ['Riego de Inund. Alto']];
+            var param = [['Amenaza de Inund. Baja'], ['Amenaza de Inund. Media'], /*['Amenaza de Inund. Alta'],*/ ['Sin Amenaza de Inund.']];
             var total1 = search("preproduccion:RiesgoInundacionFiltro", values, 'Baja');
             var total2 = search("preproduccion:RiesgoInundacionFiltro", values, 'Media');
-            var total3 = search("preproduccion:RiesgoInundacionFiltro", values, 'Alta');
+            var total3 = search("preproduccion:RiesgoInundacionFiltro", values, 'Sin Riesgo');
             var totales = total1.concat(total2, total3);
             var titulo ="Predios en Zona de Inundación";
             estdistica(select, titulo, param, totales);

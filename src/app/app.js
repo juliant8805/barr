@@ -504,46 +504,66 @@ map.on('singleclick', function (evt) {
                             ig[15].src = "./imagenes/streetview.png";
                             var campos = 15;
                         } 
-                            else if (modulo === 'hacienda') {      
+                            else if (modulo === 'hacienda') { 
+                            var propietario = search("preproduccion:ConsultaPropietario", direccion[0]);
+                            for (i = 0; i < propietario.length; i++) {
+                            var tablaprop = ("<table max-width=20 border=1>");
+                            for (i = 0; i < propietario.length; i++) {
+                                tablaprop += ("<tr>");
+                                tablaprop += ("<td><b>" + propietario[i] + "</b></td>");
+                                tablaprop += ("</tr>");
+                            }
+                            tablaprop += ("</table>");
+                            }
                             select[0] = "<b>Codigo Manzana</b>";
                             select[1] = "<b>Codigo Catastral Nuevo</b>";
                             select[2] = "<b>Codigo Catastral Anterior</b>";
                             select[3] = "<b>Dirección</b>";
-                            select[4] = "<b>Estrato</b>";
-                            select[5] = "<b>Destino</b>";
-                            select[6] = "<b>Avalúo Catastral 2017</b>";
-                            select[7] = "<b>Impuesto Predial 2017</b>";
-                            select[8] = "<b>Area de Terreno (m2)</b>";
-                            select[9] = "<b>Area Construida (m2)</b>";
-                            select[10] = "<b>Fotografias</b>";
+                            select[4] = "<b>Código ZHG</b>";
+                            select[5] = "<b>Valor m2 ZHG</b>";
+                            select[6] = "<b>Código ZHF</b>";   
+                            select[7] = "<b>Destino Económico</b>";
+                            select[8] = "<b>Avalúo Catastral 2017</b>";
+                            select[9] = "<b>Impuesto Predial 2017</b>";      
+                            select[10] = "<b>Uso Permitido</b>";
+                            select[11] = "<b>Uso Actual</b>"; 
+                            select[12] = "<b>Área de Terreno</b>";
+                            select[13] = "<b>Área Construida</b>"; 
+                            select[14] = "<b>Propietario(s)</b>";
+                            select[15] = "<b>Fotografias</b>";
                             sel[0] = values.manzana_co;
                             sel[1] = values.codigo;
                             sel[2] = values.codigo_ant;
                             sel[3] = direccion[0];
-                            sel[4] = values.estrato_hacienda;
-                            sel[5] = values.destino_hacienda;
-                            sel[6] = values.avaluo_hacienda;
-                            sel[7] = values.impuesto_hacienda;
-                            sel[8] = values.area_terreno_hacienda;
-                            sel[9] = values.area_construida_hacienda;                        
-                            sel[10] = document.createElement("a");
-                            sel[10].id = "img1";
-                            sel[10].style = "width: 30px; height: 50px;";
-                            sel[10].target = "marco";
-                            sel[10].setAttribute("onclick", "open_streetview()");
-                            sel[10].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                            imag[10] = document.createElement("img");
-                            imag[10].id = "im1";
-                            imag[10].className = "pequeña";
-                            imag[10].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                            stv[10] = document.createElement("a");
-                            stv[10].id = "imgstreet1";
-                            stv[10].target = "marco";
-                            stv[10].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
-                            stv[10].setAttribute("onclick", "open_streetview()");
-                            ig[10] = document.createElement("img");
-                            ig[10].src = "./imagenes/streetview.png";
-                            var campos = 10;
+                            sel[4] = values.zhg;
+                            sel[5] = values.valor_m2_zhg;
+                            sel[6] = values.zhf;  
+                            sel[7] = values.destino_hacienda;
+                            sel[8] = values.avaluo_hacienda;
+                            sel[9] = values.impuesto_hacienda;    
+                            sel[10] = values.norma_uso;
+                            sel[11] = values.uso_actual_zhf; 
+                            sel[12] = values.area_terreno_hacienda;
+                            sel[13] = values.area_construida_hacienda; 
+                            sel[14] = tablaprop;
+                            sel[15] = document.createElement("a");
+                            sel[15].id = "img1";
+                            sel[15].style = "width: 30px; height: 50px;";
+                            sel[15].target = "marco";
+                            sel[15].setAttribute("onclick", "open_streetview()");
+                            sel[15].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            imag[15] = document.createElement("img");
+                            imag[15].id = "im1";
+                            imag[15].className = "pequeña";
+                            imag[15].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            stv[15] = document.createElement("a");
+                            stv[15].id = "imgstreet1";
+                            stv[15].target = "marco";
+                            stv[15].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                            stv[15].setAttribute("onclick", "open_streetview()");
+                            ig[15] = document.createElement("img");
+                            ig[15].src = "./imagenes/streetview.png";
+                            var campos = 15;
                         } 
                                
                         else if (modulo == 'totem') {

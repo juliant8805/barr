@@ -92,6 +92,7 @@ $(document).on('ready', function () {
             document.getElementById("Rango Area Terreno").style.display = "block";
             document.getElementById("Calidad Construcciones").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
+            document.getElementById("boton_comparacion").style.display = "block";
             //document.getElementById("Avaluo Catastral").style.display = "block";
             modulo = "catastro";
             //new
@@ -135,7 +136,9 @@ $(document).on('ready', function () {
             document.getElementById("uso_electricaribe").style.display = "block";
             document.getElementById("disponibilidad_AAA").style.display = "block";
             document.getElementById("Nomenclatura Domiciliaria").style.display = "block"; 
+            document.getElementById("icono_codigo").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
+            document.getElementById("boton_comparacion").style.display = "block";
             modulo = "sui";
             var b = document.createElement("script");
             b.type = "text/javascript";
@@ -185,6 +188,7 @@ $(document).on('ready', function () {
             document.getElementById("Estructura Ecologica Principal").style.display = "block";
             document.getElementById("Clasificacion_Uso").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
+            document.getElementById("boton_comparacion").style.display = "block";
             document.getElementById("Nomenclatura Domiciliaria").style.display = "block";
 
             var b = document.createElement("script");
@@ -215,18 +219,18 @@ $(document).on('ready', function () {
             //console.log(sele.length);
             if (sele.length > 0) {
                 //console.log(sele);
-                document.getElementById("valid").style.display = "block";
+               // document.getElementById("valid").style.display = "block";
             }
             //var sel = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%'");
             var sel = search("preproduccion:CountTable", 'post_%');
             //console.log(sel.length);
             if (sel.length > 0) {
-                document.getElementById("deshacer").style.display = "block";
+               // document.getElementById("deshacer").style.display = "block";
             }
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
-            document.getElementById("subirshape").style.display = "block";
+            //document.getElementById("subirshape").style.display = "block";
             document.getElementById("alineamiento").style.display = "block";
             document.getElementById("Usos_Permitidos").style.display = "block";
             document.getElementById("espacio_publico").style.display = "block";
@@ -237,6 +241,7 @@ $(document).on('ready', function () {
             document.getElementById("Tipo de Amenaza").style.display = "block";
             document.getElementById("Estructura Ecologica Principal").style.display = "block";
             document.getElementById("Clasificacion_Uso").style.display = "block";
+            document.getElementById("boton_comparacion").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             var b = document.createElement("script");
             b.type = "text/javascript";
@@ -276,6 +281,11 @@ $(document).on('ready', function () {
             //document.getElementById("predios_exentos_2016").style.display = "block";
             document.getElementById("Tipo Propietario").style.display = "block";
             document.getElementById("Impuesto Camara").style.display = "block";
+            document.getElementById("icono_matricula").style.display = "block";
+            document.getElementById("icono_codigo").style.display = "block";
+            document.getElementById("propietario").style.display = "block";
+            document.getElementById("Tipo Construccion").style.display = "block";
+            document.getElementById("boton_comparacion").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             modulo = "hacienda";
             var b = document.createElement("script");
@@ -1105,4 +1115,7 @@ function enviargesstor()
     alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
 }
 
-
+function comparacion()
+{
+    window.open('./control/comp/comp.html', '_blank');
+}
