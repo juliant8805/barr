@@ -4,10 +4,171 @@ window.onload = function () {
         var select = search("preproduccion:ValidateUser", ca[0], ca[1], 't');
     } catch (err) {
     }
+    if (navigator.vendor !== "Google Inc.") {
+        location.href = "barranquilla.html?ig=navegador";
+    }
     if (select === undefined) {
         location.href = "barranquilla.html";
     }
 };
+function changeprofile(){
+    console.log(document.getElementById("dependencia").value);
+    if (document.getElementById("dependencia").value !== ""){
+        $("#labelP").removeAttr("hidden").show();
+        $("#table").removeAttr("hidden").show();
+    }else if(document.getElementById("dependencia").value === ""){
+        $("#labelP").hide();
+        $("#table").hide();
+    }
+    if (document.getElementById("dependencia").value === "Planeación"){
+        $("#th1").hide();
+        $("#th11").hide();
+        $("#th12").hide();
+        $("#c11").hide();
+        $("#c12").hide();
+        $("#th2").removeAttr("hidden").show();
+        $("#th21").removeAttr("hidden").show();
+        $("#th22").removeAttr("hidden").show();
+        $("#th23").removeAttr("hidden").show();
+        $("#c21").removeAttr("hidden").show();
+        $("#c22").removeAttr("hidden").show();
+        $("#c23").removeAttr("hidden").show();
+        $("#th3").hide();
+        $("#th31").hide();
+        $("#th32").hide();
+        $("#c31").hide();
+        $("#c32").hide();
+        $("#th4").hide();
+        $("#c4").hide();
+        $("#th5").hide();
+        $("#c5").hide();
+        $("#th6").hide();
+        $("#c6").hide();
+        document.getElementById("sui").className = "btn btn-warning";
+        document.getElementById("planeacion").className = "btn btn-primary";
+        document.getElementById("planeacionConsul").className = "btn btn-success";
+    }else if (document.getElementById("dependencia").value === "Hacienda"){
+        $("#th1").hide();
+        $("#th11").hide();
+        $("#th12").hide();
+        $("#c11").hide();
+        $("#c12").hide();
+        $("#th2").hide();
+        $("#th21").hide();
+        $("#th22").hide();
+        $("#th23").hide();
+        $("#c21").hide();
+        $("#c22").hide();
+        $("#c23").hide();
+        $("#th3").removeAttr("hidden").show();
+        $("#th31").removeAttr("hidden").show();
+        $("#th32").removeAttr("hidden").show();
+        $("#c31").removeAttr("hidden").show();
+        $("#c32").removeAttr("hidden").show();
+        $("#th4").hide();
+        $("#c4").hide();
+        $("#th5").hide();
+        $("#c5").hide();
+        $("#th6").hide();
+        $("#c6").hide();
+    }else if (document.getElementById("dependencia").value === "Catastro"){
+        $("#th1").removeAttr("hidden").show();
+        $("#th11").removeAttr("hidden").show();
+        $("#th12").removeAttr("hidden").show();
+        $("#c11").removeAttr("hidden").show();
+        $("#c12").removeAttr("hidden").show();
+        $("#th2").hide();
+        $("#th21").hide();
+        $("#th22").hide();
+        $("#th23").hide();
+        $("#c21").hide();
+        $("#c22").hide();
+        $("#c23").hide();
+        $("#th3").hide();
+        $("#th31").hide();
+        $("#th32").hide();
+        $("#c31").hide();
+        $("#c32").hide();
+        $("#th4").hide();
+        $("#c4").hide();
+        $("#th5").hide();
+        $("#c5").hide();
+        $("#th6").hide();
+        $("#c6").hide();
+    }else if (document.getElementById("dependencia").value === "GESSTOR"){
+        $("#th1").hide();
+        $("#th11").hide();
+        $("#th12").hide();
+        $("#c11").hide();
+        $("#c12").hide();
+        $("#th2").hide();
+        $("#th21").hide();
+        $("#th22").hide();
+        $("#th23").hide();
+        $("#c21").hide();
+        $("#c22").hide();
+        $("#c23").hide();
+        $("#th3").hide();
+        $("#th31").hide();
+        $("#th32").hide();
+        $("#c31").hide();
+        $("#c32").hide();
+        $("#th4").hide();
+        $("#c4").hide();
+        $("#th5").removeAttr("hidden").show();
+        $("#c5").removeAttr("hidden").show();
+        $("#th6").hide();
+        $("#c6").hide();
+    }else if (document.getElementById("dependencia").value === "Sistemas"){
+        $("#th1").hide();
+        $("#th11").hide();
+        $("#th12").hide();
+        $("#c11").hide();
+        $("#c12").hide();
+        $("#th2").hide();
+        $("#th21").hide();
+        $("#th22").hide();
+        $("#th23").hide();
+        $("#c21").hide();
+        $("#c22").hide();
+        $("#c23").hide();
+        $("#th3").hide();
+        $("#th31").hide();
+        $("#th32").hide();
+        $("#c31").hide();
+        $("#c32").hide();
+        $("#th4").removeAttr("hidden").show();
+        $("#c4").removeAttr("hidden").show();
+        $("#th5").hide();
+        $("#c5").hide();
+        $("#th6").hide();
+        $("#c6").hide();
+    }else if (document.getElementById("dependencia").value === "Totem"){
+        $("#th1").hide();
+        $("#th11").hide();
+        $("#th12").hide();
+        $("#c11").hide();
+        $("#c12").hide();
+        $("#th2").hide();
+        $("#th21").hide();
+        $("#th22").hide();
+        $("#th23").hide();
+        $("#c21").hide();
+        $("#c22").hide();
+        $("#c23").hide();
+        $("#th3").hide();
+        $("#th31").hide();
+        $("#th32").hide();
+        $("#c31").hide();
+        $("#c32").hide();
+        $("#th4").hide();
+        $("#c4").hide();
+        $("#th5").hide();
+        $("#c5").hide();
+        $("#th6").removeAttr("hidden").show();
+        $("#c6").removeAttr("hidden").show();
+    }
+}
 function Sourceuser(requestString, responseFunc) {
     var querystr = requestString.term.replace(/[^0-9a-zA-Z ]/g, "");
     if (querystr.length === 0) {
@@ -240,7 +401,7 @@ function actualizar() {
                             <FeatureId fid="usuario.' + userid + '"/>\
                         </Filter>\
                         <Property>\
-                            <Name>pot</Name>\
+                            <Name>totem</Name>\
                             <Value>' + potE + '</Value>\
                         </Property>\
                         <Filter>\
@@ -320,11 +481,9 @@ function actualizar() {
         contentType: "text/xml",
         data: postData,
         success: function (xml) {
-            //console.log(xml);
             alert('Datos actualizados con exito');
         },
         error: function (xml) {
-            //console.log('error');
             alert('Los datos NO se actualizaron');
         }
     });
@@ -337,7 +496,6 @@ function guardar() {
     } else {
         var nomg = nom[0].charAt(0).toUpperCase() + nom[0].slice(1) + nom[nom.length - 1].charAt(0).toUpperCase() + nom[nom.length - 1].slice(1);
     }
-    //console.log(nomg + "2017");
     var cont = nomg + "2017";
     var contrasena = hex_md5(cont);
     if (document.getElementById('catastro').className === 'btn btn-primary') {
@@ -399,7 +557,6 @@ function guardar() {
      console.log("tecnologia"+tecnologia);
      console.log("gestor"+gestor);
      console.log(document.getElementById('inlineRadio1').checked);*/
-    //var arrayResult = update_query("INSERT INTO usuario (nombre,cargo,email,usuario,contrasena,catastrom,catastroc,sui,pot,planeacionm,haciendam,sistemas,gestor,planeacionc,haciendac,estado,dependenci,fechaexp) VALUES('" + document.getElementById('nombre').value + "','" + document.getElementById('cargo').value + "','" + document.getElementById('email').value + "','" + nomg + "','" + contrasena + "','" + catastro + "','" + catastroConsul + "','" + sui + "','" + pot + "','" + planeacion + "','" + hacienda + "','" + sistemas + "','" + gestor + "','" + planeacionConsul + "','" + haciendaConsul + "','t','" + document.getElementById('dependencia').value + "','" + document.getElementById('fecha').value + "');");
     var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.3.4:8080/geoserver">\
      <Insert xmlns="http://www.opengis.net/wfs">\
      <user:usuario>\
@@ -411,7 +568,7 @@ function guardar() {
      <catastrom>' + catastro + '</catastrom>\
      <catastroc>' + catastroConsul + '</catastroc>\
      <sui>' + sui + '</sui>\
-     <pot>' + pot + '</pot>\
+     <totem>' + pot + '</totem>\
      <planeacionm>' + planeacion + '</planeacionm>\
      <haciendam>' + hacienda + '</haciendam>\
      <sistemas>' + sistemas + '</sistemas>\
@@ -424,7 +581,6 @@ function guardar() {
      </user:usuario>\
      </Insert>\
      </Transaction>';
-    //console.log(arrayResult);
     rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
     var res = $.ajax({
         type: "POST",
@@ -434,14 +590,11 @@ function guardar() {
         async: false,
         data: arrayResult,
         success: function (xml) {
-            //console.log(xml);
-            //alert('success');
         },
         error: function (xml) {
             console.log('error');
         }
     });
-    console.log(res.responseText.substring(0, 63));
     if (res.responseText.substring(0, 62) === '<?xml version="1.0" encoding="UTF-8"?><wfs:TransactionResponse') {
         var urls = "./mail/envio_mail.php";
         var req = new ajaxRequest();
@@ -451,6 +604,48 @@ function guardar() {
     } else {
         alert("El usuario o correo electronico ya se encuentra registrado");
     }
+}
+function password() {
+    var ca = document.cookie.split('=');
+    console.log(ca);
+    var select = search("preproduccion:ValidateUser", ca[0], hex_md5(document.getElementById('password').value), "t");
+    console.log(select);
+    console.log(document.getElementById('password').value);
+    console.log(hex_md5(document.getElementById('password').value));
+    if (select === null || select.length === 0) {
+        alert("Contraseña incorrecta");
+    } else if (document.getElementById("newpassword").value === document.getElementById("cpassword").value) {
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+            <Update typeName="user:usuario">\
+                <Property>\
+                    <Name>contrasena</Name>\
+                    <Value>' + hex_md5(document.getElementById('newpassword').value) + '</Value>\
+                </Property>\
+                <Filter>\
+                    <FeatureId fid="usuario.' + select[0][18] + '"/>\
+                </Filter>\
+            </Update>\
+        </Transaction>';
+        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        $.ajax({
+            type: "POST",
+            url: rooturl,
+            dataType: "xml",
+            async: false,
+            contentType: "text/xml",
+            data: postData,
+            success: function (xml) {
+                alert('Datos actualizados con exito');
+            },
+            error: function (xml) {
+                alert('Los datos NO se actualizaron');
+            }
+        });
+        $('#myModal').modal('hide');
+    } else {
+        alert("La contraseña nueva y su confirmacion no coinciden");
+    }
+    return;
 }
 function ajaxRequest() {
     try {

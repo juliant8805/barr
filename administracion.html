@@ -39,7 +39,43 @@
             <li class="active"><a href="#crear" data-toggle="tab">Crear Usuario</a></li>
             <li><a href="#modificacion" data-toggle="tab">Modificación de Usuarios</a></li>
             <a href="barranquilla.html"><img src="imagenes/limpiar.png" align="right" title="Salir" style="height: 30px;"></a>
+            <img id="tipo_usuario" src="imagenes/changepass.png" data-toggle="modal" data-target="#myModal" title="Cambiar Contraseña" align="right" style="height: 30px;">
         </ul>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cambio de Contraseña</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="control-group">
+                            <label for="current_password" class="control-label">Contaseña Actual</label>
+                            <div class="controls">
+                                <input type="password" id="password" name="current_password" required="required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="new_password" class="control-label">Nueva Contraseña</label>
+                            <div class="controls">
+                                <input type="password" id="newpassword"  name="new_password" required="required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="confirm_password" class="control-label">Confirmar Contraseña </label>
+                            <div class="controls">
+                                <input type="password" id="cpassword" name="confirm_password" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                        <button href="#" class="btn btn-primary" id="password_modal_save" onclick="password()">Guardar Cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="tab-content">
             <div class="tab-pane fade in active" id="crear">
                 <div class="col-xs-12"><h2>Creación de Usuario</h2></div>
@@ -73,11 +109,14 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="formGroup">Dependencia</label>
                         <div class="col-sm-2">
-                            <select class="form-control" id="dependencia">
-                                <option>Planeación</option>
-                                <option>Catastro</option>
-                                <option>Hacienda</option>
-                                <option>GESSTOR</option>
+                            <select class="form-control" id="dependencia" onchange="changeprofile()" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Planeación">Planeación</option>
+                                <option value="Hacienda">Hacienda</option>
+                                <option value="Catastro">Catastro</option>
+                                <option value="GESSTOR">GESSTOR</option>
+                                <option value="Sistemas">Sistemas</option>
+                                <option value="Totem">Totem</option>
                             </select>
                         </div>
                     </div>
@@ -123,30 +162,31 @@
                             </label>
                         </div>
                     </div>-->
-                    <div class="col-xs-12"><h2>Permisos</h2></div>
+                    <div id="labelP" hidden="hidden" class="col-xs-12"><h2>Permisos</h2></div>
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered">
+                        <table id="table" hidden="hidden" class="table table-hover table-bordered">
                             <tr>
-                                <th colspan="2">GESTION CATASTRAL</th>
-                                <th colspan="4">PLANEACION</th>
-                                <th colspan="2">HACIENDA</th>
-                                <th rowspan="2">SISTEMAS</th>
-                                <th rowspan="2">GESSTOR</th>
+                                <th id="th1" hidden="hidden" colspan="2">GESTION CATASTRAL</th>
+                                <th id="th2" hidden="hidden" colspan="3">PLANEACION</th>
+                                <th id="th3" hidden="hidden" colspan="2">HACIENDA</th>
+                                <th id="th4" hidden="hidden" rowspan="2">SISTEMAS</th>
+                                <th id="th5" hidden="hidden" rowspan="2">GESSTOR</th>
+                                <th id="th6" hidden="hidden" rowspan="2">TOTEM</th>
                             </tr>
                             <tr>
-                                <th>MISIONAL</th>
-                                <th>CONSULTA</th>
-                                <th>MISIONAL</th>
-                                <th>CONSULTA</th>
-                                <th>SUI</th>
-                                <th>POT INTERACTIVO</th>
-                                <th>MISIONAL</th>
-                                <th>CONSULTA</th>
+                                <th id="th11" hidden="hidden">MISIONAL</th>
+                                <th id="th12" hidden="hidden">CONSULTA</th>
+                                <th id="th21" hidden="hidden">MISIONAL</th>
+                                <th id="th22" hidden="hidden">CONSULTA</th>
+                                <th id="th23" hidden="hidden">SUI</th>
+                                <!--<th>POT INTERACTIVO</th>-->
+                                <th id="th31" hidden="hidden">MISIONAL</th>
+                                <th id="th32" hidden="hidden">CONSULTA</th>
                             </tr>
                             <tbody>
                                 <!-- Aplicadas en las filas -->
                                 <tr class="active">
-                                    <td>
+                                    <td id="c11" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="catastro" class="btn btn-primary">
                                                 <input type="checkbox" autocomplete="off">
@@ -154,7 +194,7 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="c12" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="catastroConsul" class="btn btn-success">
                                                 <input type="checkbox" autocomplete="off">
@@ -162,7 +202,7 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="c21" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="planeacion" class="btn btn-primary">
                                                 <input type="checkbox" autocomplete="off">
@@ -170,7 +210,7 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="c22" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="planeacionConsul" class="btn btn-success">
                                                 <input type="checkbox" autocomplete="off">
@@ -178,7 +218,7 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="c23" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="sui" class="btn btn-warning">
                                                 <input type="checkbox" autocomplete="off">
@@ -186,7 +226,7 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="c31" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="pot" class="btn btn-danger">
                                                 <input type="checkbox" autocomplete="off">
@@ -194,7 +234,7 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="c32" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="hacienda" class="btn btn-primary">
                                                 <input type="checkbox" autocomplete="off">
@@ -202,7 +242,7 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="c4" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="haciendaConsul" class="btn btn-success">
                                                 <input type="checkbox" autocomplete="off">
@@ -211,7 +251,7 @@
                                         </div>
                                     </td>
 
-                                    <td>
+                                    <td id="c5" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="sistemas" class="btn btn-warning">
                                                 <input type="checkbox" autocomplete="off">
@@ -219,7 +259,7 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="c6" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
                                             <label id="gestor" class="btn btn-danger">
                                                 <input type="checkbox" autocomplete="off">
@@ -290,9 +330,11 @@
                             <div class="col-sm-2">
                                 <select class="form-control" id="e_dependencia">
                                     <option>Planeación</option>
-                                    <option>Catastro</option>
                                     <option>Hacienda</option>
+                                    <option>Catastro</option>
                                     <option>GESSTOR</option>
+                                    <option>Sistemas</option>
+                                    <option>Totem</option>
                                 </select>
                             </div>
                         </div>

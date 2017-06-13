@@ -1,12 +1,13 @@
 function resetpass() {
     //console.log(document.getElementById("email").value);
     var select = search("preproduccion:mailUser", document.getElementById("email").value);
-    if (select){
+    console.log(select[0]);
+    if (select[0]) {
         //console.log(select[0][0]);
-        var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
+        var caracteres = "abcdefghijklmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
         var contraseña = "";
-        for (i=0; i<6; i++){
-            contraseña += caracteres.charAt(Math.floor(Math.random()*caracteres.length));
+        for (i = 0; i < 6; i++) {
+            contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
         }
         var cont = hex_md5(contraseña);
         var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
@@ -34,12 +35,15 @@ function resetpass() {
                 console.log('error');
             }
         });
+        var urls = "./mail/envio_mail.php";
+        var req = new ajaxRequest();
+        var url = urls + "?c=" + document.getElementById('email').value + "&u=" + select[0][1] + "&p=" + contraseña + "&ch=si";
+        req.open("GET", url, false);
+        req.send();
+        alert("Se le ha enviado una nueva contraseña a su dirección de email registrado en la plataforma. Por favor ingrese con los datos enviados a su correo.");
+    } else {
+        alert("La dirección de email ingresada no se encuentra registrada en al plataforma.");
     }
-    var urls = "./mail/envio_mail.php";
-    var req = new ajaxRequest();
-    var url = urls + "?c=" + document.getElementById('email').value + "&u=" + select[0][1] + "&p=" + contraseña + "&ch=si";
-    req.open("GET", url, false);
-    req.send();
 }
 function onload() {
     var cookies = document.cookie.split(";");
