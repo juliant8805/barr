@@ -69,12 +69,13 @@ function rango(style) {
             if (document.getElementById("oficial_vs_AAA").value === "Acueducto") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
-            var param = [['Estratos Coincidentes'], ['Estrato Prestador Mas Alto'], ['Estrato Prestador Mas Bajo'], ['Especial o Sin Inf.']];
+            var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAcueducto", 'Igual');
-            var total2 = search("preproduccion:EstratoDistritoPrestadoresAcueducto", 'prest');  
+            var total2 = search("preproduccion:EstratoDistritoPrestadoresAcueducto", 'prest'); 
             var total3 = search("preproduccion:EstratoDistritoPrestadoresAcueducto", 'dist'); 
             var total4 = search("preproduccion:EstratoDistritoPrestadoresAcueducto", 'sincomp');
-            var totales = total1.concat(total2, total3, total4);
+            var total5 = search("preproduccion:EstratoDistritoPrestadoresAcueducto", 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4, total5);
             predio.getSource().updateParams({'STYLES':'Oficial vs AAA Acueducto'});
             var titulo = "Est Oficial vs Est Acueducto";
             estdistica(select, titulo, param, totales);
@@ -83,12 +84,13 @@ function rango(style) {
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
-            var param = [['Estratos Coincidentes'], ['Estrato Prestador Mas Alto'], ['Estrato Prestador Mas Bajo'], ['Especial o Sin Inf.']];
+            var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAcueductoFiltro", values, 'Igual');
             var total2 = search("preproduccion:EstratoDistritoPrestadoresAcueductoFiltro", values, 'prest');
             var total3 = search("preproduccion:EstratoDistritoPrestadoresAcueductoFiltro", values, 'dist');
             var total4 = search("preproduccion:EstratoDistritoPrestadoresAcueductoFiltro", values, 'sincomp');
-            var totales = total1.concat(total2, total3, total4);
+            var total5 = search("preproduccion:EstratoDistritoPrestadoresAcueductoFiltro", values, 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4, total5);
             var titulo = "Est Oficial vs Est Acueducto";
             estdistica(select, titulo, param, totales);
             var valor = "'" + values + "'";
@@ -107,12 +109,13 @@ function rango(style) {
          else if (document.getElementById("oficial_vs_AAA").value === "Alcantarillado") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
-            var param = [['Estratos Coincidentes'], ['Estrato Prestador Mas Alto'], ['Estrato Prestador Mas Bajo'], ['Especial o Sin Inf.']];
+            var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAlcantarillado", 'Igual');
             var total2 = search("preproduccion:EstratoDistritoPrestadoresAlcantarillado", 'prest');  
             var total3 = search("preproduccion:EstratoDistritoPrestadoresAlcantarillado", 'dist'); 
             var total4 = search("preproduccion:EstratoDistritoPrestadoresAlcantarillado", 'sincomp');
-            var totales = total1.concat(total2, total3, total4);
+            var total5 = search("preproduccion:EstratoDistritoPrestadoresAlcantarillado", 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4, total5);
             predio.getSource().updateParams({'STYLES':'Oficial vs AAA Alcantarillado'});
             var titulo = "Est Oficial vs Est Alcantarillado";
             estdistica(select, titulo, param, totales);
@@ -121,12 +124,13 @@ function rango(style) {
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
-            var param = [['Estratos Coincidentes'], ['Estrato Prestador Mas Alto'], ['Estrato Prestador Mas Bajo'], ['Especial o Sin Inf.']];
+            var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAlcantarilladoFiltro", values, 'Igual');
             var total2 = search("preproduccion:EstratoDistritoPrestadoresAlcantarilladoFiltro", values, 'prest');
             var total3 = search("preproduccion:EstratoDistritoPrestadoresAlcantarilladoFiltro", values, 'dist');
             var total4 = search("preproduccion:EstratoDistritoPrestadoresAlcantarilladoFiltro", values, 'sincomp');
-            var totales = total1.concat(total2, total3, total4);
+            var total5 = search("preproduccion:EstratoDistritoPrestadoresAlcantarilladoFiltro", values, 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4, total5);
             var titulo = "Oficial vs AAA Alcantarillado";
             estdistica(select, titulo, param, totales);
             var valor = "'" + values + "'";
@@ -145,12 +149,13 @@ function rango(style) {
          else if (document.getElementById("oficial_vs_AAA").value === "Aseo") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
-            var param = [['Estratos Coincidentes'], ['Estrato Prestador Mas Alto'], ['Estrato Prestador Mas Bajo'], ['Especial o Sin Inf.']];
+            var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAseo", 'Igual');
             var total2 = search("preproduccion:EstratoDistritoPrestadoresAseo", 'prest');  
-            var total3 = search("preproduccion:EstratoDistritoPrestadoresAseo", 'dist'); 
+            var total3 = search("preproduccion:EstratoDistritoPrestadoresAseo", 'dist');
             var total4 = search("preproduccion:EstratoDistritoPrestadoresAseo", 'sincomp');
-            var totales = total1.concat(total2, total3, total4);
+            var total5 = search("preproduccion:EstratoDistritoPrestadoresAseo", 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4, total5);
             predio.getSource().updateParams({'STYLES':'Oficial vs AAA Aseo'});
             var titulo = "Est Oficial vs Est Aseo";
             estdistica(select, titulo, param, totales);
@@ -159,12 +164,13 @@ function rango(style) {
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
-            var param = [['Estratos Coincidentes'], ['Estrato Prestador Mas Alto'], ['Estrato Prestador Mas Bajo'], ['Especial o Sin Inf.']];
+            var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAseoFiltro", values, 'Igual');
             var total2 = search("preproduccion:EstratoDistritoPrestadoresAseoFiltro", values, 'prest');
             var total3 = search("preproduccion:EstratoDistritoPrestadoresAseoFiltro", values, 'dist');
             var total4 = search("preproduccion:EstratoDistritoPrestadoresAseoFiltro", values, 'sincomp');
-            var totales = total1.concat(total2, total3, total4);
+            var total5 = search("preproduccion:EstratoDistritoPrestadoresAseoFiltro", values, 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4, total5);
             var titulo = "Oficial vs AAA Aseo";
             estdistica(select, titulo, param, totales);
             var valor = "'" + values + "'";
@@ -191,10 +197,12 @@ function rango(style) {
             if (document.getElementById("oficial_vs_AAA_uso").value === "Acueducto") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
-            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'Igual');
-            var total2 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'Diferente');  
-            var totales = total1.concat(total2);
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'PCDR');  
+            var total3 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'PRDC');
+            var total4 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4);
             predio.getSource().updateParams({'STYLES':'Oficial vs AAA Uso Acueducto'});
             var titulo = "Uso Oficial vs Uso Acueducto";
             estdistica(select, titulo, param, totales);
@@ -204,10 +212,12 @@ function rango(style) {
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
-            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoDistritoPrestadoresAcueductoFiltro", values, 'Igual');
-            var total2 = search("preproduccion:UsoDistritoPrestadoresAcueductoFiltro", values, 'Diferente');
-            var totales = total1.concat(total2);
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAcueductoFiltro", values, 'PCDR');
+            var total3 = search("preproduccion:UsoDistritoPrestadoresAcueductoFiltro", values, 'PRDC');
+            var total4 = search("preproduccion:UsoDistritoPrestadoresAcueductoFiltro", values, 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4);
             var titulo = "Uso Oficial vs Uso Acueducto";
             estdistica(select, titulo, param, totales);
             var valor = "'" + values + "'";
@@ -228,10 +238,12 @@ function rango(style) {
          else if (document.getElementById("oficial_vs_AAA_uso").value === "Alcantarillado") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
-            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoDistritoPrestadoresAlcantarillado", 'Igual');
-            var total2 = search("preproduccion:UsoDistritoPrestadoresAlcantarillado", 'Diferente');  
-            var totales = total1.concat(total2);
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAlcantarillado", 'PCDR'); 
+            var total3 = search("preproduccion:UsoDistritoPrestadoresAlcantarillado", 'PRDC');
+            var total4 = search("preproduccion:UsoDistritoPrestadoresAlcantarillado", 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4);
             predio.getSource().updateParams({'STYLES':'Oficial vs AAA Uso Alcantarillado'});
             var titulo = "Uso Oficial vs Uso Alcantarillado";
             estdistica(select, titulo, param, totales);
@@ -241,10 +253,12 @@ function rango(style) {
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
-            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoDistritoPrestadoresAlcantarilladoFiltro", values, 'Igual');
-            var total2 = search("preproduccion:UsoDistritoPrestadoresAlcantarilladoFiltro", values, 'Diferente');
-            var totales = total1.concat(total2);
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAlcantarilladoFiltro", values, 'PCDR');
+            var total3 = search("preproduccion:UsoDistritoPrestadoresAlcantarilladoFiltro", values, 'PRDC');
+            var total4 = search("preproduccion:UsoDistritoPrestadoresAlcantarilladoFiltro", values, 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4);
             var titulo = "Uso Oficial vs Uso Alcantarillado";
             estdistica(select, titulo, param, totales);
             var valor = "'" + values + "'";
@@ -264,10 +278,12 @@ function rango(style) {
          else if (document.getElementById("oficial_vs_AAA_uso").value === "Aseo") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
-            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoDistritoPrestadoresAseo", 'Igual');
-            var total2 = search("preproduccion:UsoDistritoPrestadoresAseo", 'Diferente');  
-            var totales = total1.concat(total2);
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAseo", 'PCDR');  
+            var total3 = search("preproduccion:UsoDistritoPrestadoresAseo", 'PRDC');
+            var total4 = search("preproduccion:UsoDistritoPrestadoresAseo", 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4);
             predio.getSource().updateParams({'STYLES':'Oficial vs AAA Uso Aseo'});
             var titulo = "Uso Oficial vs Uso Aseo";
             estdistica(select, titulo, param, totales);
@@ -277,10 +293,12 @@ function rango(style) {
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
-            var param = [['Uso Coincidente'], ['Uso Diferente']];
+            var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoDistritoPrestadoresAseoFiltro", values, 'Igual');
-            var total2 = search("preproduccion:UsoDistritoPrestadoresAseoFiltro", values, 'Diferente');
-            var totales = total1.concat(total2);
+            var total2 = search("preproduccion:UsoDistritoPrestadoresAseoFiltro", values, 'PCDR');
+            var total3 = search("preproduccion:UsoDistritoPrestadoresAseoFiltro", values, 'PRDC');
+            var total4 = search("preproduccion:UsoDistritoPrestadoresAseoFiltro", values, 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4);
             var titulo = "Uso Oficial vs Uso Aseo";
             estdistica(select, titulo, param, totales);
             var valor = "'" + values + "'";
@@ -510,11 +528,12 @@ function rango(style) {
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
-            var param = [['Uso Coincidente'], ['Uso Diferente'], ['Sin Informacion']];
+            var param = [['Uso Coincidente'], ['E.Comercial-D.Residencial'], ['E.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoElectricaribeMunicipio", 'Igual');
-            var total2 = search("preproduccion:UsoElectricaribeMunicipio", 'Diferente');
-            var total3 = search("preproduccion:UsoElectricaribeMunicipio", 'Sin Informacion');
-            var totales = total1.concat(total2, total3);
+            var total2 = search("preproduccion:UsoElectricaribeMunicipio", 'ECDR');
+            var total3 = search("preproduccion:UsoElectricaribeMunicipio", 'ERDC');
+            var total4 = search("preproduccion:UsoElectricaribeMunicipio", 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4);
             predio.getSource().updateParams({'STYLES': style});
             estdistica(select, style, param, totales);
             map.getView().fitExtent(predio.getExtent(), map.getSize());
@@ -522,11 +541,12 @@ function rango(style) {
         } 
         else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
-            var param = [['Uso Coincidente'], ['Uso Diferente'], ['Sin Informacion']];
+            var param = [['Uso Coincidente'], ['E.Comercial-D.Residencial'], ['E.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'Igual');
-            var total2 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'Diferente'); 
-            var total3 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'Sin Informacion');
-            var totales = total1.concat(total2, total3);
+            var total2 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'ECDR'); 
+            var total3 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'ERDC');
+            var total4 = search("preproduccion:UsoElectricaribeMunicipioFiltro", values, 'Sin Informacion');
+            var totales = total1.concat(total2, total3, total4);
             estdistica(select, style, param, totales);
             var valor = "'" + values + "'";
             if (document.getElementById("barrio").value !== '') {
@@ -543,7 +563,6 @@ function rango(style) {
         }
     }    
 }
-
 
 
 
