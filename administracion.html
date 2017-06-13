@@ -109,7 +109,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="formGroup">Dependencia</label>
                         <div class="col-sm-2">
-                            <select class="form-control" id="dependencia" onchange="changeprofile()" required>
+                            <select class="form-control" id="dependencia" onchange="changeprofile('')" required>
                                 <option value="">Seleccione...</option>
                                 <option value="Planeación">Planeación</option>
                                 <option value="Hacienda">Hacienda</option>
@@ -228,7 +228,7 @@
                                     </td>
                                     <td id="c31" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
-                                            <label id="pot" class="btn btn-danger">
+                                            <label id="pot" class="btn btn-danger" disabled>
                                                 <input type="checkbox" autocomplete="off">
                                                 <span class="glyphicon glyphicon-ok"></span>
                                             </label>
@@ -253,7 +253,7 @@
 
                                     <td id="c5" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
-                                            <label id="sistemas" class="btn btn-warning">
+                                            <label id="sistemas" class="btn btn-warning" disabled>
                                                 <input type="checkbox" autocomplete="off">
                                                 <span class="glyphicon glyphicon-ok"></span>
                                             </label>
@@ -261,13 +261,12 @@
                                     </td>
                                     <td id="c6" hidden="hidden">
                                         <div class="btn-group" data-toggle="buttons">
-                                            <label id="gestor" class="btn btn-danger">
+                                            <label id="gestor" class="btn btn-danger" disabled>
                                                 <input type="checkbox" autocomplete="off">
                                                 <span class="glyphicon glyphicon-ok"></span>
                                             </label>
                                         </div>
                                     </td>
-
                                 </tr>
                             </tbody>
                         </table>
@@ -328,7 +327,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="formGroup">Dependencia</label>
                             <div class="col-sm-2">
-                                <select class="form-control" id="e_dependencia">
+                                <select class="form-control" id="dependenciaE" onchange="changeprofile('E')">
                                     <option>Planeación</option>
                                     <option>Hacienda</option>
                                     <option>Catastro</option>
@@ -360,108 +359,108 @@
                         <div class="table-responsive">
                             <table class="table table-hover table-bordered">
                                 <tr>
-                                    <th colspan="2">GESTION CATASTRAL</th>
-                                    <th colspan="4">PLANEACION</th>
-                                    <th colspan="2">HACIENDA</th>
-                                    <th rowspan="2">SISTEMAS</th>
-                                    <th rowspan="2">GESSTOR</th>
-                                </tr>
-                                <tr>
-                                    <th>MISIONAL</th>
-                                    <th>CONSULTA</th>
-                                    <th>MISIONAL</th>
-                                    <th>CONSULTA</th>
-                                    <th>SUI</th>
-                                    <th>POT INTERACTIVO</th>
-                                    <th>MISIONAL</th>
-                                    <th>CONSULTA</th>
-                                </tr>
-                                <tbody>
-                                    <!-- Aplicadas en las filas -->
-                                    <tr class="active">
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="catastroE" class="btn btn-primary">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="catastroConsulE" class="btn btn-success">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="planeacionE" class="btn btn-primary">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="planeacionConsulE" class="btn btn-success">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="suiE" class="btn btn-warning">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="potE" class="btn btn-danger">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="haciendaE" class="btn btn-primary">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="haciendaConsulE" class="btn btn-success">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
+                                <th id="th1E" hidden="hidden" colspan="2">GESTION CATASTRAL</th>
+                                <th id="th2E" hidden="hidden" colspan="3">PLANEACION</th>
+                                <th id="th3E" hidden="hidden" colspan="2">HACIENDA</th>
+                                <th id="th4E" hidden="hidden" rowspan="2">SISTEMAS</th>
+                                <th id="th5E" hidden="hidden" rowspan="2">GESSTOR</th>
+                                <th id="th6E" hidden="hidden" rowspan="2">TOTEM</th>
+                            </tr>
+                            <tr>
+                                <th id="th11E" hidden="hidden">MISIONAL</th>
+                                <th id="th12E" hidden="hidden">CONSULTA</th>
+                                <th id="th21E" hidden="hidden">MISIONAL</th>
+                                <th id="th22E" hidden="hidden">CONSULTA</th>
+                                <th id="th23E" hidden="hidden">SUI</th>
+                                <!--<th>POT INTERACTIVO</th>-->
+                                <th id="th31E" hidden="hidden">MISIONAL</th>
+                                <th id="th32E" hidden="hidden">CONSULTA</th>
+                            </tr>
+                            <tbody>
+                                <!-- Aplicadas en las filas -->
+                                <tr class="active">
+                                    <td id="c11E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="catastroE" class="btn btn-primary">
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td id="c12E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="catastroConsulE" class="btn btn-success">
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td id="c21E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="planeacionE" class="btn btn-primary">
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td id="c22E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="planeacionConsulE" class="btn btn-success">
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td id="c23E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="suiE" class="btn btn-warning">
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td id="c31E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="potE" class="btn btn-danger" disabled>
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td id="c32E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="haciendaE" class="btn btn-primary">
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td id="c4E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="haciendaConsulE" class="btn btn-success">
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
 
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="sistemasE" class="btn btn-warning">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label id="gestorE" class="btn btn-danger">
-                                                    <input type="checkbox" autocomplete="off">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-
-                                    </tr>
+                                    <td id="c5E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="sistemasE" class="btn btn-warning" disabled>
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td id="c6E" hidden="hidden">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label id="gestorE" class="btn btn-danger" disabled>
+                                                <input type="checkbox" autocomplete="off">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
