@@ -19,7 +19,6 @@ function rango(style) {
     globalstyle = style;
     puntos_aaa.setVisible(false);
     document.getElementById('mensaje').style.display = 'none';
-     
     if (style === "Distrito vs Prestadores AAA") {
         document.getElementById("statistics").style.display = "none";
         document.getElementById("botonocultarstatistics").style.display = "none";
@@ -29,6 +28,7 @@ function rango(style) {
         predio.setVisible(true);
         puntos_aaa.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA vigencia 01/03/2017");
             var select = search("preproduccion:TotalPredios");
             var param = [['Predios Coincidentes'], ['Predios En base catastral y no en AAA'], ['Registros AAA sin codigo catastral']];
             var total1 = search("preproduccion:DistritovsPrestadores", 'Si');
@@ -68,6 +68,7 @@ function rango(style) {
             predio.setVisible(true);
             if (document.getElementById("oficial_vs_AAA").value === "Acueducto") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
             var select = search("preproduccion:TotalPredios");
             var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAcueducto", 'Igual');
@@ -108,6 +109,7 @@ function rango(style) {
          
          else if (document.getElementById("oficial_vs_AAA").value === "Alcantarillado") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
             var select = search("preproduccion:TotalPredios");
             var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAlcantarillado", 'Igual');
@@ -148,6 +150,7 @@ function rango(style) {
          
          else if (document.getElementById("oficial_vs_AAA").value === "Aseo") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
             var select = search("preproduccion:TotalPredios");
             var param = [['Est. Coincidentes'],['Est. Prestador Mas Alto'],['Est. Prestador Mas Bajo'],['Otro'],['Sin Informacion']];
             var total1 = search("preproduccion:EstratoDistritoPrestadoresAseo", 'Igual');
@@ -196,6 +199,7 @@ function rango(style) {
             predio.setVisible(true);
             if (document.getElementById("oficial_vs_AAA_uso").value === "Acueducto") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
             var select = search("preproduccion:TotalPredios");
             var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'Igual');
@@ -208,7 +212,7 @@ function rango(style) {
             estdistica(select, titulo, param, totales);
             map.getView().fitExtent(predio.getExtent(), map.getSize());
             var difuso = "difuso";
-            queryexport = difuso + ' G';   
+            queryexport = difuso + ' GAcueducto';   
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
@@ -236,6 +240,7 @@ function rango(style) {
         }
          
          else if (document.getElementById("oficial_vs_AAA_uso").value === "Alcantarillado") {
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
             var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
@@ -249,7 +254,7 @@ function rango(style) {
             estdistica(select, titulo, param, totales);
             map.getView().fitExtent(predio.getExtent(), map.getSize());
             var difuso = "difuso";
-            queryexport = difuso + ' G';  
+            queryexport = difuso + ' GAlcantarillado';    
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);
@@ -276,6 +281,7 @@ function rango(style) {
          } 
          
          else if (document.getElementById("oficial_vs_AAA_uso").value === "Aseo") {
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
             var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
@@ -289,7 +295,7 @@ function rango(style) {
             estdistica(select, titulo, param, totales);
             map.getView().fitExtent(predio.getExtent(), map.getSize());
             var difuso = "difuso";
-            queryexport = difuso + ' G'; 
+            queryexport = difuso + ' GAseo';  
            } 
            else {
             var select = search("preproduccion:TotalPrediosSinConsulta", values);

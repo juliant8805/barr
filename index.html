@@ -3,7 +3,7 @@
 <html lang="es">
     <head>
         <title>::GESSTOR::</title>
-    <div id="carga"><img src="./image/gif_gestor_mediano.gif"><p></p></div>
+    <div id="carga"><img id="gifini" src="./image/gif_gestor_mediano.gif"><p></p></div>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
@@ -28,18 +28,19 @@
     <script src="src/app/popup.js"></script>
     <script src="src/app/LayersControl.js"></script>
     <script src="src/app/index_evt/index_evt.js"></script>
+    <script src="sql/webserviceh.js"></script>
 
     <!--Highcharts-->
     <script src="src/highcharts/js/highcharts.js"></script>
     <script src="src/highcharts/js/modules/exporting.js"></script>
     <!-- <script src="src/googlecharts/googlecharts.js"></script>-->
-    <div id="carga2" hidden="hidden"><img src="./image/procesando.gif" style="top:50%; left:50%; width:auto; height:auto; position:absolute"></div>
+    <div id="carga2" hidden="hidden"><img id="imgprocess" src="./image/procesando.gif"></div>
     <div id="carga3" hidden="hidden"><img src="./image/cargando.png" style="top:30%; left:30%; width:auto; height:auto; position:absolute"></div>
     <div id="completo" hidden="hidden">		
         <div id="condiciones" >
             <img id="gesstor" src="./imagenes/imagen_condiciones.png" style="top:5%; left:10%; width:80%; height:auto">
 
-            <div style="margin-left:8em;  margin-top:13em"><a href="http://www.gesstorbarranquilla/barranquilla/image/CONDICIONES_DE_USO.pdf" target="_blank" style="color:blue; text-decoration: underline">Condiciones de Uso</a></div>
+            <div style="margin-left:8em;  margin-top:13em"><a href="http://www.gesstorbarranquilla.com/barranquilla/image/CONDICIONES_DE_USO.pdf" target="_blank" style="color:blue; text-decoration: underline">Condiciones de Uso</a></div>
 
             <div style="margin-left:1em;  margin-top:0.1em">
                 <input type="checkbox" value="1" name="termin" id="termin"/><label><font size="2">&nbspAcepto los T&eacute;rminos y Condiciones&nbsp&nbsp</font></label>
@@ -532,7 +533,7 @@
             <option value="Aseo" style="font-weight: bold; color: white;  font-size:small;">Aseo
         </select>
         
-        <select class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/oficial_vs_AAA_uso.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="oficial_vs_AAA_uso" name=prestadores onchange="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'>
+        <select class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/oficial_vs_AAA_destino.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="oficial_vs_AAA_uso" name=prestadores onchange="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'>
             <option disabled selected>
             <option value="Acueducto" style="font-weight: bold; color: white;  font-size:small;">Acueducto
             <option value="Alcantarillado" style="font-weight: bold; color: white;  font-size:small;">Alcantarillado

@@ -6,7 +6,7 @@ var exportar = async function (x) {
 function file() {
     var req = new ajaxRequest();
     if (queryexport.substring(0, 18) === "Rango Area Terreno"){
-        var titulo = JSON.stringify(["Codigo Predial","Localidad","Barrio","Area Terreno M2","# Predios"]);
+        var titulo = JSON.stringify(["Codigo Predial","Direccion", "Localidad","Barrio","Area Terreno M2","# Predios"]);
         if (queryexport === 'Rango Area Terreno G') {
             alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
             quitgif();
@@ -164,9 +164,9 @@ function file() {
     }
     
     else if (queryexport.substring(0, 14) === "oficial_vs_AAA"){
-        var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Estrato Oficial", "Estrato Prestador", "# Predios"]);
+        var titulo = JSON.stringify(["Codigo Predial","Direccion","Localidad","Barrio", "Estrato Oficial", "Estrato Prestador", "# Predios"]);
         if (queryexport == "oficial_vs_AAA G"){
-            var select = search("preproduccion:ReportDiferenciaEstratoAcueductoGeneral")
+            var select = search("preproduccion:ReportDiferenciaEstratoAcueductoGeneral");
             quitgif(); 
         } else if (queryexport == "oficial_vs_AAA AcueductoF"){
             var select = search("preproduccion:ReportDiferenciaEstratoAcueducto", values);
@@ -178,10 +178,16 @@ function file() {
     }
      
     else if (queryexport.substring(0, 6) === "difuso"){
-       var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Destino Economico", "Uso Prestador", "# Predios"]);
-        if (queryexport == "difuso G"){
+       var titulo = JSON.stringify(["Codigo Predial", "Direccion", "Localidad", "Barrio", "Uso Prestador", "Destino Economico", "Avaluo Catastral", "# Predios"]);
+        if (queryexport == "difuso GAcueducto"){
             var select = search("preproduccion:ReportDiferenciaUsoAcueductoGeneral");
             quitgif();    
+        } else if (queryexport == "difuso GAlcantarillado"){
+            var select = search("preproduccion:ReportDiferenciaUsoAlcantarilladoGeneral");
+            quitgif(); 
+        } else if (queryexport == "difuso GAseo"){
+            var select = search("preproduccion:ReportDiferenciaUsoAseoGeneral");
+            quitgif();
         } else if (queryexport == "difuso AcueductoF"){
             var select = search("preproduccion:ReportDiferenciaUsoAcueducto", values);
         } else if (queryexport == "difuso AlcantarilladoF"){

@@ -1066,10 +1066,14 @@ body{
 }
 #carga{
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top:40%;
-    left:48%;    
+    width: auto;
+    height: 30%;
+    top:10%;
+    left:40%;    
+}
+#gifini{
+    width: auto;
+    height: 200%;   
 }
 /*
 #carga2{
@@ -1080,12 +1084,33 @@ body{
     left:48%;    
 }
 */
+@media handheld, only screen and (min-width: 900px) {
 #carga2{
     position: absolute;
+    top:0%;
+    left:0%;
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.5);
     z-index: 1;
+ }
+}
+@media handheld, only screen and (max-width: 900px) {
+#carga2{
+    position: absolute;
+    top:0%;
+    left:0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+ }
+}
+#imgprocess{
+   margin-top:10%;
+   margin-left: 40%;
+   width: auto;
+   height: 50%;        
 }
 #carga3{
     position: absolute;
@@ -1169,7 +1194,8 @@ select{
     background-color:#FFFFFF; 
     font-weight: bold;
     font-size:14px;
-}      
+}    
+@media handheld, only screen and (min-width: 900px) {
 #statistics{
     position:absolute;
     width: 20em;
@@ -1177,6 +1203,17 @@ select{
     top:7em;
     left:0em;    
 }
+}
+@media handheld, only screen and (max-width: 900px) {
+#statistics{
+    position:absolute;
+    width: 20em;
+    height: 25em;
+    top:7em;
+    left:0em;    
+}
+}
+
 #botonmostrarstatistics{
     position: absolute;
     top:10em;
@@ -1424,7 +1461,7 @@ td{
 }
 
 .dgcAlert {top: 0;position: absolute;width: 100%;display: block;height: 1000px; background: url(http://www.dgcmedia.es/recursosExternos/fondoAlert.png) repeat; text-align:center; opacity:0; display:none; z-index:999999999999999;}
-.dgcAlert .dgcVentana{width: 450px; background: white;min-height: 130px;position: relative;margin: 0 auto;color: black;padding: 8px;border-radius: 10px;}
+.dgcAlert .dgcVentana{width: 450px; background: white;min-height: 130px;margin: 0 auto;color: black;padding: 8px;border-radius: 10px;}
 .dgcAlert .dgcVentana .dgcCerrar {height: 25px;width: 25px;float: right; cursor:pointer; background: url(http://www.dgcmedia.es/recursosExternos/cerrarAlert.jpg) no-repeat center center;}
 .dgcAlert .dgcVentana .dgcMensaje { margin: 0 auto; padding-top: 45px; text-align: center; width: 400px;font-size: 16px;}
 .dgcAlert .dgcVentana .dgcAceptar{background:#09C; bottom:20px; display: inline-block; font-size: 12px; font-weight: bold; height: 24px; line-height: 24px; padding-left: 5px; padding-right: 5px;text-align: center; text-transform: uppercase; width: 75px;cursor: pointer; color:#FFF; margin-top:50px;}
@@ -1505,6 +1542,22 @@ td{
      height:3em;
      width:3em;   
 }
+
+@media handheld, only screen and (min-width: 900px) {
+    #avat2{
+        height:25em;
+        width:auto;  
+        
+    }
+}
+@media handheld, only screen and (max-width: 900px) {
+    #avat2{
+        height:10em;
+        width:auto; 
+       
+    }
+}
+
 
 
 

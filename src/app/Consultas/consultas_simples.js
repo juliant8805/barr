@@ -796,13 +796,13 @@ function addressSelect(event, ui) {
                     delete dataprop;
                     document.getElementById("panel_atr").style.display = "block";
                     document.getElementById("botonminimizar").style.display = "block";
-                 }
-                
+                 }     
             }
-        });
-    } else if (modulo === 'hacienda') {
-        predio.setVisible(true);
-        $.ajax({
+         });
+       } 
+             else if (modulo === 'hacienda') {         
+            predio.setVisible(true);
+            $.ajax({
             url: url,
             success: function (data) {
                 var features = format[0].readFeatures(data);
@@ -895,7 +895,57 @@ function addressSelect(event, ui) {
                             }
                             tablaprop += ("</table>");
                         }
-                    
+                    var estacueducto = values.estrato_acueducto;
+                    var estalcantarillado = values.estrato_alcantarillado;
+                    var estaseo = values.estrato_aseo;
+                    if (estacueducto == 11) {
+                        estacueducto = 'Industria (11)';
+                    }
+                    ;
+                    if (estacueducto == 12) {
+                        estacueducto = 'Comercial (12)';
+                    }
+                    ;
+                    if (estacueducto == 13) {
+                        estacueducto = 'Especial (13)';
+                    }
+                    ;
+                    if (estacueducto == 14) {
+                        estacueducto = 'Oficial (14)';
+                    }
+                    ;
+                    if (estalcantarillado == 11) {
+                        estalcantarillado = 'Industria (11)';
+                    }
+                    ;
+                    if (estalcantarillado == 12) {
+                        estalcantarillado = 'Comercial (12)';
+                    }
+                    ;
+                    if (estalcantarillado == 13) {
+                        estalcantarillado = 'Especial (13)';
+                    }
+                    ;
+                    if (estalcantarillado == 14) {
+                        estalcantarillado = 'Oficial (14)';
+                    }
+                    ;
+                    if (estaseo == 11) {
+                        estaseo = 'Industria (11)';
+                    }
+                    ;
+                    if (estaseo == 12) {
+                        estaseo = 'Comercial (12)';
+                    }
+                    ;
+                    if (estaseo == 13) {
+                        estaseo = 'Especial (13)';
+                    }
+                    ;
+                    if (estaseo == 14) {
+                        estaseo = 'Oficial (14)';
+                    }
+                    ;    
                     select[0] = "<b>Codigo Manzana</b>";
                     select[1] = "<b>Codigo Catastral Nuevo</b>";
                     select[2] = "<b>Codigo Catastral Anterior</b>";
@@ -903,15 +953,19 @@ function addressSelect(event, ui) {
                     select[4] = "<b>Código ZHG</b>";
                     select[5] = "<b>Valor m2 ZHG</b>";
                     select[6] = "<b>Código ZHF</b>";
-                    select[7] = "<b>Destino</b>";
-                    select[8] = "<b>Avalúo Catastral 2017</b>";
-                    select[9] = "<b>Impuesto Predial 2017</b>";  
-                    select[10] = "<b>Uso Permitido</b>";
-                    select[11] = "<b>Uso Actual</b>"; 
-                    select[12] = "<b>Área de Terreno</b>";
-                    select[13] = "<b>Área Construida</b>"; 
-                    select[14] = "<b>Propietario(s)</b>";
-                    select[15] = "<b>Fotografias</b>";
+                    select[7] = "<b>Destino Económico</b>";  
+                    select[8] = "<b>Estratificación Acueducto</b>";
+                    select[9] = "<b>Estratificación Alcantarillado</b>";
+                    select[10] = "<b>Estratificación Aseo</b>";    
+                    select[11] = "<b>Uso Electricaribe</b>";                                 
+                    select[12] = "<b>Avalúo Catastral 2017</b>";
+                    select[13] = "<b>Impuesto Predial 2017</b>";  
+                    select[14] = "<b>Uso Permitido</b>";
+                    select[15] = "<b>Uso Actual</b>"; 
+                    select[16] = "<b>Área de Terreno</b>";
+                    select[17] = "<b>Área Construida</b>"; 
+                    select[18] = "<b>Propietario(s)</b>";
+                    select[19] = "<b>Fotografias</b>";
                     sel[0] = values.manzana_co;
                     sel[1] = values.codigo;
                     sel[2] = values.codigo_ant;
@@ -919,39 +973,42 @@ function addressSelect(event, ui) {
                     sel[4] = values.zhg;
                     sel[5] = values.valor_m2_zhg;
                     sel[6] = values.zhf;
-                    sel[7] = values.destino_hacienda;
-                    sel[8] = avaluohacienda;
-                    sel[9] = impuestopredial; 
-                    sel[10] = values.norma_uso;
-                    sel[11] = values.uso_actual_zhf;  
-                    sel[12] = areaterreno;
-                    sel[13] = areaconstruida;  
-                    sel[14] = tablaprop;    
-                    sel[15] = document.createElement("a");
-                    sel[15].id = "img1";
-                    sel[15].style = "width: 30px; height: 50px;";
-                    sel[15].target = "marco";
-                    sel[15].setAttribute("onclick", "open_streetview()");
-                    sel[15].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                    imag[15] = document.createElement("img");
-                    imag[15].id = "im1";
-                    imag[15].className = "pequeña";
-                    imag[15].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                    stv[15] = document.createElement("a");
-                    stv[15].id = "imgstreet1";
-                    stv[15].target = "marco";
-                    stv[15].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
-                    stv[15].setAttribute("onclick", "open_streetview()");
-                    ig[15] = document.createElement("img");
-                    ig[15].src = "./imagenes/streetview.png";
-
+                    sel[7] = values.destino_hacienda;          
+                    sel[8] = estacueducto;
+                    sel[9] = estalcantarillado;
+                    sel[10] = estaseo;
+                    sel[11] = values.uso_elect;     
+                    sel[12] = avaluohacienda;
+                    sel[13] = impuestopredial; 
+                    sel[14] = values.norma_uso;
+                    sel[15] = values.uso_actual_zhf;  
+                    sel[16] = areaterreno;
+                    sel[17] = areaconstruida;  
+                    sel[18] = tablaprop;    
+                    sel[19] = document.createElement("a");
+                    sel[19].id = "img1";
+                    sel[19].style = "width: 30px; height: 50px;";
+                    sel[19].target = "marco";
+                    sel[19].setAttribute("onclick", "open_streetview()");
+                    sel[19].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    imag[19] = document.createElement("img");
+                    imag[19].id = "im1";
+                    imag[19].className = "pequeña";
+                    imag[19].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    stv[19] = document.createElement("a");
+                    stv[19].id = "imgstreet1";
+                    stv[19].target = "marco";
+                    stv[19].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                    stv[19].setAttribute("onclick", "open_streetview()");
+                    ig[19] = document.createElement("img");
+                    ig[19].src = "./imagenes/streetview.png";
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
                         cell2 = row.insertCell(1);
                         cell1.innerHTML = select[i];
 
-                        if (i === 15) {
+                        if (i === 19) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
                             sel[i].appendChild(imag[i]);
@@ -967,8 +1024,7 @@ function addressSelect(event, ui) {
                     delete dataprop;
                     document.getElementById("panel_atr").style.display = "block";
                     document.getElementById("botonminimizar").style.display = "block";
-                 }
-                
+                 }               
             }
         });
     } else if (modulo === 'sui') {
@@ -1049,7 +1105,7 @@ function addressSelect(event, ui) {
                             select[1] = "<b>Codigo Catastral Nuevo</b>";
                             select[2] = "<b>Codigo Catastral Anterior</b>";
                             select[3] = "<b>Dirección</b>";
-                            select[4] = "<b>Estratificación Oficial</b>";
+                            select[4] = "<b>Estratificación Hacienda</b>";
                             select[5] = "<b>Estratificación Acueducto</b>";
                             select[6] = "<b>Estratificación Alcantarillado</b>";
                             select[7] = "<b>Estratificación Aseo</b>";
@@ -1067,7 +1123,7 @@ function addressSelect(event, ui) {
                             sel[1] = values.codigo;
                             sel[2] = values.codigo_ant;
                             sel[3] = ui.item.direccionoriginal;
-                            sel[4] = values.estratific;
+                            sel[4] = values.estrato_hacienda;
                             sel[5] = estacueducto;
                             sel[6] = estalcantarillado;
                             sel[7] = estaseo;
@@ -1124,61 +1180,9 @@ function addressSelect(event, ui) {
             success: function (data) {
                 //console.log(data);
                 var features = format[0].readFeatures(data);
-                if (features && features.length >= 1 && features[0]) {
+                 if (features && features.length >= 1 && features[0]) {
                     var feature = features[0];
                     var values = feature.getProperties();
-                    var estacueducto = values.estrato_acueducto;
-                    var estalcantarillado = values.estrato_alcantarillado;
-                    var estaseo = values.estrato_aseo;
-                    if (estacueducto == 11) {
-                        estacueducto = 'Industria (11)';
-                    }
-                    ;
-                    if (estacueducto == 12) {
-                        estacueducto = 'Comercial (12)';
-                    }
-                    ;
-                    if (estacueducto == 13) {
-                        estacueducto = 'Especial (13)';
-                    }
-                    ;
-                    if (estacueducto == 14) {
-                        estacueducto = 'Oficial (14)';
-                    }
-                    ;
-                    if (estalcantarillado == 11) {
-                        estalcantarillado = 'Industria (11)';
-                    }
-                    ;
-                    if (estalcantarillado == 12) {
-                        estalcantarillado = 'Comercial (12)';
-                    }
-                    ;
-                    if (estalcantarillado == 13) {
-                        estalcantarillado = 'Especial (13)';
-                    }
-                    ;
-                    if (estalcantarillado == 14) {
-                        estalcantarillado = 'Oficial (14)';
-                    }
-                    ;
-                    if (estaseo == 11) {
-                        estaseo = 'Industria (11)';
-                    }
-                    ;
-                    if (estaseo == 12) {
-                        estaseo = 'Comercial (12)';
-                    }
-                    ;
-                    if (estaseo == 13) {
-                        estaseo = 'Especial (13)';
-                    }
-                    ;
-                    if (estaseo == 14) {
-                        estaseo = 'Oficial (14)';
-                    }
-                    ;
-
                     var table = document.getElementById("tblatt");
                     table.innerHTML = "";
                     var row = table.insertRow(0);
@@ -1191,61 +1195,63 @@ function addressSelect(event, ui) {
                     var stv = [];
                     var ig = [];
                     var codfoto = values.codigo_ant.substring(0, 17);
-
-                    select[0] = "<b>Localidad</b>";
-                    select[1] = "<b>Barrio</b>"
-
-                    select[2] = "<b>Codigo Manzana</b>";
-                    select[3] = "<b>Codigo Catastral Nuevo</b>";
-                    select[4] = "<b>Codigo Catastral Anterior</b>";
-                    select[5] = "<b>Dirección</b>";
-
-                    select[6] = "<b>Estratificación Acueducto</b>";
-                    select[7] = "<b>Estratificación Alcantarillado</b>";
-                    select[8] = "<b>Estratificación Aseo</b>";
-                    select[9] = "<b>Fotografias</b>";
-
-                    sel[0] = values.nombre_loc;
-                    sel[1] = values.cod_barrio;
-
-
-                    sel[2] = values.manzana_co;
-                    sel[3] = values.codigo;
-                    sel[4] = values.codigo_ant;
-                    sel[5] = ui.item.direccionoriginal;
-
-                    sel[6] = estacueducto;
-                    sel[7] = estalcantarillado;
-                    sel[8] = estaseo;
-
-
-                    sel[9] = document.createElement("a");
-                    sel[9].id = "img1";
-                    sel[9].style = "width: 30px; height: 50px;";
-                    sel[9].target = "marco";
-                    sel[9].setAttribute("onclick", "open_streetview()");
-                    sel[9].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-
-
-                    imag[9] = document.createElement("img");
-                    imag[9].id = "im1";
-                    imag[9].className = "pequeña";
-                    imag[9].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                    stv[9] = document.createElement("a");
-                    stv[9].id = "imgstreet1";
-                    stv[9].target = "marco";
-                    stv[9].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
-                    stv[9].setAttribute("onclick", "open_streetview()");
-                    ig[9] = document.createElement("img");
-                    ig[9].src = "./imagenes/streetview.png";
-
+                    var ph = values.ph;
+                    if (ph >= 800){
+                    var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
+                    ref_cat =ref_cat["0"]["0"];
+                    }
+                    else{
+                    var ref_cat = values.ref_catastral;     
+                    }
+                    ref_cat = "'"+ref_cat+"'";
+                    var arregloDeSubCadenas = enviarRef(eval(ref_cat)); 
+                    select[0] = "<b>Dirección</b>";
+                    select[1] = "<b>Referencia Catastral</b>";  
+                    sel[0] = ui.item.direccionoriginal;
+                    sel[1] = arregloDeSubCadenas[0];
+    
+                     for (i = 0; i < arregloDeSubCadenas.length-1; i=i+6) {
+                            select[i+2] = "<b></b>"; 
+                            select[i+3] = "<b>Destino Económico ("+arregloDeSubCadenas[i+5]+")</b>"
+                            select[i+4] = "<b>Estrato ("+arregloDeSubCadenas[i+5]+")</b>";
+                            select[i+5] = "<b>Valor Capital ("+arregloDeSubCadenas[i+5]+")</b>";
+                            select[i+6] = "<b>Valor Intereses ("+arregloDeSubCadenas[i+5]+")</b>";
+                            select[i+7] = "<b></b>"; 
+                            sel[i+2] = "";
+                            sel[i+3] = arregloDeSubCadenas[i+1];
+                            sel[i+4] = arregloDeSubCadenas[i+2];
+                            sel[i+5] = arregloDeSubCadenas[i+3];
+                            sel[i+6] = arregloDeSubCadenas[i+4];
+                            sel[i+7] = "";
+                            }       
+                            var p = sel.length;
+                            select[p] = "<b>Fotografias</b>";
+                            sel[p] = document.createElement("a");
+                            sel[p].id = "img1";
+                            sel[p].style = "width: 30px; height: 50px;";
+                            sel[p].target = "marco";
+                            sel[p].setAttribute("onclick", "open_streetview()");
+                            sel[p].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            imag[p] = document.createElement("img");
+                            imag[p].id = "im1";
+                            imag[p].className = "pequeña";
+                            imag[p].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            stv[p] = document.createElement("a");
+                            stv[p].id = "imgstreet1";
+                            stv[p].target = "marco";
+                            stv[p].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                            stv[p].setAttribute("onclick", "open_streetview()");
+                            ig[p] = document.createElement("img");
+                            ig[p].src = "./imagenes/streetview.png";
+                            var campos = sel.length-1;
+                
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
                         cell2 = row.insertCell(1);
                         cell1.innerHTML = select[i];
 
-                        if (i === 9) {
+                        if (i === campos) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
                             sel[i].appendChild(imag[i]);
@@ -1259,6 +1265,7 @@ function addressSelect(event, ui) {
                     }
                     document.getElementById("panel_atr").style.display = "block";
                     document.getElementById("botonminimizar").style.display = "block";
+                    document.getElementById("panel_atr").style.maxHeight = "50em";
 
                 }
             }
