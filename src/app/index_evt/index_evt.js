@@ -30,10 +30,10 @@ $(document).on('ready', function () {
         } else {
             var day = f.getDate();
         }
-        if (f.getHours() < 10) {
-            var hour = '0' + f.getHours();
+        if (f.getHours()+5 < 10) {
+            var hour = '0' + ( f.getHours() + 5 );
         } else {
-            var hour = f.getHours();
+            var hour = f.getHours()+5;
         }
         if (f.getMinutes() < 10) {
             var minute = '0' + f.getMinutes();
@@ -281,10 +281,12 @@ $(document).on('ready', function () {
             //document.getElementById("predios_exentos_2016").style.display = "block";
             document.getElementById("Tipo Propietario").style.display = "block";
             document.getElementById("Impuesto Camara").style.display = "block";
-            document.getElementById("icono_matricula").style.display = "block";
+            //document.getElementById("icono_matricula").style.display = "block";
             document.getElementById("icono_codigo").style.display = "block";
             document.getElementById("propietario").style.display = "block";
             document.getElementById("Tipo Construccion").style.display = "block";
+            document.getElementById("oficial_vs_AAA_uso").style.display = "block";
+            document.getElementById("uso_electricaribe").style.display = "block";
             document.getElementById("boton_comparacion").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             modulo = "hacienda";
@@ -350,6 +352,7 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
+            window.oncontextmenu = function() { return false; }
         }
         //$("#map").removeAttr("hidden").show();
         $("#logos_cabezote").removeAttr("hidden").show();
@@ -783,7 +786,8 @@ function changeImage(id) {
     } else if (id === "Tipo Construccion") {
         document.getElementById('Tipo Construccion').style = "background:url('./imagenes/botones_consultas/propiedad_horizontal/propiedad_horizontal.png'); background-color:#93c993; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
     } else if (id === "Distrito vs Prestadores AAA") {
-        document.getElementById('Distrito vs Prestadores AAA').style = "background:url('./imagenes/botones_consultas/base_distrito_prestadores/base_distrito_prestadores.png'); background-color:#93c993; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
+        
+       /* document.getElementById('Distrito vs Prestadores AAA').style = "background:url('./imagenes/botones_consultas/base_distrito_prestadores/base_distrito_prestadores.png'); background-color:#93c993; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";*/
     } else if (id === "metrotel") {
         document.getElementById('metrotel').style = "background:url('./imagenes/consultar_estratificacion_metrotel.png'); background-color:#326f32; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
     } else if (id === "Tipo de Contribuyente") {
@@ -798,7 +802,7 @@ function changeImage(id) {
         document.getElementById('oficial_vs_AAA').style = "background:url('./imagenes/oficial_vs_AAA.png'); background-color:#adad32; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
         document.getElementById('oficial_vs_AAA').value = 0;
     } else if (id === "oficial_vs_AAA_uso") {
-        document.getElementById('oficial_vs_AAA_uso').style = "background:url('./imagenes/oficial_vs_AAA_uso.png'); background-color:#326f32; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
+        document.getElementById('oficial_vs_AAA_uso').style = "background:url('./imagenes/oficial_vs_AAA_destino.png'); background-color:#326f32; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
         document.getElementById('oficial_vs_AAA_uso').value = 0;
     } else if (id === "disponibilidad_AAA") {
         document.getElementById('disponibilidad_AAA').style = "background:url('./imagenes/disponibilidad_servicios_AAA.png'); background-color:#006600; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
@@ -862,7 +866,8 @@ function normalImage(id) {
     } else if (id === "Tipo Construccion") {
         document.getElementById('Tipo Construccion').style = "background:url('./imagenes/botones_consultas/propiedad_horizontal/propiedad_horizontal.png'); background-color:#86B12D; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
     } else if (id === "Distrito vs Prestadores AAA") {
-        document.getElementById('Distrito vs Prestadores AAA').style = "background:url('./imagenes/botones_consultas/base_distrito_prestadores/base_distrito_prestadores.png'); background-color:#008E30; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
+        
+        /*document.getElementById('Distrito vs Prestadores AAA').style = "background:url('./imagenes/botones_consultas/base_distrito_prestadores/base_distrito_prestadores.png'); background-color:#008E30; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";*/
     } else if (id === "metrotel") {
         document.getElementById('metrotel').style = "background:url('./imagenes/estratificacion_metrotel.png'); background-color:#008E30; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
     } else if (id === "Tipo de Contribuyente") {
@@ -891,7 +896,7 @@ function normalImage(id) {
         } else if (document.getElementById("oficial_vs_AAA_uso").value === "Aseo") {
             document.getElementById('oficial_vs_AAA_uso').style = "background-color:#a6a6a6; min-height: 40px; border:0px; font-size:small;";
         } else {
-            document.getElementById('oficial_vs_AAA_uso').style = "background:url('./imagenes/oficial_vs_AAA_uso.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
+            document.getElementById('oficial_vs_AAA_uso').style = "background:url('./imagenes/oficial_vs_AAA_destino.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
         }
     } else if (id === "uso_electricaribe") {
         document.getElementById('uso_electricaribe').style = "background:url('./imagenes/botones_consultas/uso_electricaribe/uso_electricaribe.png'); background-color:#006D1B; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;";
@@ -1060,7 +1065,7 @@ function cerrarbarrasconsultas() {
 
 function alertDGC(mensaje) {
     var dgcTiempo = 500
-    var ventanaCS = '<div class="dgcAlert"><div class="dgcVentana"><div class="dgcCerrar"></div><div class="dgcMensaje">' + mensaje + '<br><div class="dgcAceptar">Aceptar</div></div></div></div>';
+    var ventanaCS = '<div class="dgcAlert"><div class="dgcVentana"><div class="dgcCerrar"></div><div class="dgcMensaje">' + mensaje + '<img id="avat2" src="./avatar/avatar_02.gif">' + '<br><div class="dgcAceptar">Aceptar</div></div></div></div></div>';
     $('body').append(ventanaCS);
     var alVentana = $('.dgcVentana').height();
     var alNav = $(window).height();

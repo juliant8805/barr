@@ -72,7 +72,6 @@ var predio = new ol.layer.Tile({
         params: {LAYERS: 'preproduccion:u_terreno', STYLES: ''}
     }), name: 'Predios'
 });
-
 var predio_rural = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
@@ -80,7 +79,6 @@ var predio_rural = new ol.layer.Tile({
         params: {LAYERS: 'preproduccion:r_terreno', STYLES: ''}
     }), name: 'Predios Rurales'
 });
-
 var manzana = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({

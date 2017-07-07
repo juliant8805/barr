@@ -11,10 +11,27 @@
         <script src="sql/jsSearch.js"></script>
         <script src="src/jquery/jquery.min.js"></script>
         <script src="src/bootstrap/js/bootstrap.min.js"></script>
-    <video width="100%" controls auto loop autoplay>
+         <div id="imagen_ini" hidden="hidden"><img src="./imagenes/fondo_ini.jpg" style="top:0%; left:0%; width:100%; height:auto; position:absolute"></div> 
+        <video id="video" hidden="hidden" width="100%" autoplay>
         <source src="demo.mp4" type="video/mp4">
         Por favor utilice otro navegador (Chrome, Mozilla, Safari, Explorer).
-    </video>     
+        </video>
+        <!--<video id="video_baja" hidden="hidden" width="100%" controls autoplay>
+        <source src="demo_baja.mp4" type="video/mp4">
+        Por favor utilice otro navegador (Chrome, Mozilla, Safari, Explorer).
+        </video>-->
+        <script>
+        var tamañopantalla = screen.width>800; 
+            console.log(tamañopantalla);
+        if (tamañopantalla==true){
+           //alert("grande"); 
+            document.getElementById("video").style.display = "block";
+        }
+        else{
+           //alert("pequeña");
+            document.getElementById("imagen_ini").style.display = "block";
+            }
+        </script>     
 </head>
 <body onload="onload()">
     <div class="modal fade" id="myModal" role="dialog">
