@@ -1062,7 +1062,20 @@ function cerrarbarrasconsultas() {
     document.getElementById("barra_alineamiento").style.display = "none";
     document.getElementById("barra_predioshasusos").style.display = "none";
 }
-
+function upd(){
+    var urlphp = 'admin/charge.php';
+    $.ajax({
+        url: urlphp,
+        data: {ref: "ref"},
+        type: "POST",
+        async: false,
+        success: function () {},
+        error: function (jqXHR, exception) {
+            console.log(jqXHR);
+            console.log(exception);
+        }
+    });
+}
 function alertDGC(mensaje) {
     var dgcTiempo = 500
     var ventanaCS = '<div class="dgcAlert"><div class="dgcVentana"><div class="dgcCerrar"></div><div class="dgcMensaje">' + mensaje + '<img id="avat2" src="./avatar/avatar_02.gif">' + '<br><div class="dgcAceptar">Aceptar</div></div></div></div></div>';
