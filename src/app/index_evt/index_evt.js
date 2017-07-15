@@ -93,6 +93,7 @@ $(document).on('ready', function () {
             document.getElementById("Calidad Construcciones").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             document.getElementById("boton_comparacion").style.display = "block";
+            document.getElementById("update").style.display = "block";
             //document.getElementById("Avaluo Catastral").style.display = "block";
             modulo = "catastro";
             //new
@@ -1062,19 +1063,17 @@ function cerrarbarrasconsultas() {
     document.getElementById("barra_alineamiento").style.display = "none";
     document.getElementById("barra_predioshasusos").style.display = "none";
 }
-function upd(){
-    var urlphp = 'admin/charge.php';
+function upd(validac){
+    var urlphp = 'http://35.184.79.25/charge.php?ref=' + validac;
     $.ajax({
         url: urlphp,
-        data: {ref: "ref"},
-        type: "POST",
+        dataType: 'jsonp',
+        type: "GET",
         async: false,
-        success: function () {},
-        error: function (jqXHR, exception) {
-            console.log(jqXHR);
-            console.log(exception);
-        }
+        success: function () {}
     });
+    $('#myModalC').modal('hide');
+    alert("Solicitud aceptada, mañana se veran reflejados sus cambios");
 }
 function alertDGC(mensaje) {
     var dgcTiempo = 500

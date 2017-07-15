@@ -78,38 +78,41 @@
     <div class="row" id="barra_codigo" hidden="hidden">
         <label style="color: black; text-shadow: 1px 1px 0px #FFFFFF">Buscar Dirección</label>
         <table id="tabladir" hidden="hidden">
-        <tr>
-            <td style="width:50px;">
-                <select id="dir_g1" style="font-weight: bold" class="form-control input-xs" >
-                    <option value="CALLE">CL</option>
-                    <option value="CARRERA">KR</option>
-                    <option value="DIAGONAL">DG</option>
-                    <option value="TRANSVERSAL">TV</option>
-                </select>
-            </td>
-            <td style="width:48px;">
-                <input id="dir1" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();"  onKeypress="if (event.keyCode === 32) event.returnValue = false;">
-            </td>
-            <td style="width:50px;">
-                <select id="dir_g2" style="font-weight: bold" class="form-control input-xs">
-                    <option>KR</option>
-                    <option>CL</option>
-                    <option>DG</option>
-                    <option>TV</option>
-                </select>
-            </td>
-            <td style="width:48px;">
-                <input id="dir2" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" onKeypress="if (event.keyCode === 32) event.returnValue = false;">
-            </td>
-            <td style="width:6px;">-</td>
-            <td style="width:40px;">
-                <input id="dir3" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" onKeypress="if (event.keyCode === 32) event.returnValue = false;">
-            </td>
-            <td style="width:50px;">
-                <!--<img id="busca_direccion" src="./imagenes/buscar.jpg" onclick="busca_dir()">-->  
-                <input type="image" id="busca_direccion" src="./imagenes/buscar.png" onclick="busca_dir()">  
-            </td>
-        </tr>
+            <tr>
+                <td style="width:50px;">
+                    <select id="dir_g1" style="font-weight: bold" class="form-control input-xs" >
+                        <option value="CALLE">CL</option>
+                        <option value="CARRERA">KR</option>
+                        <option value="DIAGONAL">DG</option>
+                        <option value="TRANSVERSAL">TV</option>
+                    </select>
+                </td>
+                <td style="width:48px;">
+                    <input id="dir1" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"  onKeypress="if (event.keyCode === 32)
+                            event.returnValue = false;">
+                </td>
+                <td style="width:50px;">
+                    <select id="dir_g2" style="font-weight: bold" class="form-control input-xs">
+                        <option>KR</option>
+                        <option>CL</option>
+                        <option>DG</option>
+                        <option>TV</option>
+                    </select>
+                </td>
+                <td style="width:48px;">
+                    <input id="dir2" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" onKeypress="if (event.keyCode === 32)
+                            event.returnValue = false;">
+                </td>
+                <td style="width:6px;">-</td>
+                <td style="width:40px;">
+                    <input id="dir3" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" onKeypress="if (event.keyCode === 32)
+                            event.returnValue = false;">
+                </td>
+                <td style="width:50px;">
+                    <!--<img id="busca_direccion" src="./imagenes/buscar.jpg" onclick="busca_dir()">-->  
+                    <input type="image" id="busca_direccion" src="./imagenes/buscar.png" onclick="busca_dir()">  
+                </td>
+            </tr>
         </table>
         <div class="col-xs-2"> 
             <div class="input-group textarea">
@@ -373,60 +376,60 @@
     </div>
 
 
-<!-- Modal -->
-<div id="myModal1" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Solicitud de Servicio Público</h4>
-      </div>
-      <div class="modal-body">
-     <label>Barrio:</label><br>
-     <input type="text" name="Barrio"><br>
-     <label>Dirección:</label><br>
-     <input type="text" name="Direccion"><br>
-     <label>Coordenadas:</label><br> 
-     <input type="text" name="Coordenadas"><br>
-     <label>Tipo de Servicio Público:</label><br>     
-        <select id="tiposerviciogesstor">
-        <option value="Acueducto">Acueducto</option>
-        <option value="Alcantarillado">Alcantarillado</option>
-        <option value="Alcantarillado">Energia</option>
-        <option value="Gas">Gas</option>
-        </select><br><br> 
-     <label>Estrato de Referencia:&nbsp&nbsp&nbsp</label><br>
-     <input type="text" name="EstratoR"><br>
-     <label>Uso de Referencia:&nbsp&nbsp&nbsp</label><br>
-     <input type="text" name="UsoR"><br>
-     <label>Certificado de Uso:&nbsp&nbsp&nbsp</label><br>  
-     <button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Certificado de Uso</button><br><br> 
-     <label>Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>     
-     <button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Certificado de Estratificación</button><br><br>
-          
-     <input type="checkbox" id="checkconstruccion" onchange="habilitar(this.checked);" unchecked><label>Licencia de Construcción:</label><br>  
-     <div id="botonlicconstruc" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Licencia de Construcción</button></div>
-          
-     <input type="checkbox" id="checkservpublico" onchange="habilitar(this.checked);" unchecked><label>Recibo de Servicio Público:</label><br>  
-     <div id="botonservpublico" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Recibo de Servicio Público</button></div>
-    
-     <input type="checkbox" id="checkfotografia" onchange="habilitar(this.checked);" unchecked><label>Fotografía del Predio:</label><br>  
-     <div id="botonfotografia" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Fotografía del Predio</button></div>
-          
-     <input type="checkbox" id="checkdoc" onchange="habilitar(this.checked);" unchecked><label>Otro Documento:</label><br> 
-     <div id="botondoc" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Documento</button></div>
-                 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal" onclick="enviargesstor()">Enviar</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-      </div>
+    <!-- Modal -->
+    <div id="myModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Solicitud de Servicio Público</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Barrio:</label><br>
+                    <input type="text" name="Barrio"><br>
+                    <label>Dirección:</label><br>
+                    <input type="text" name="Direccion"><br>
+                    <label>Coordenadas:</label><br> 
+                    <input type="text" name="Coordenadas"><br>
+                    <label>Tipo de Servicio Público:</label><br>     
+                    <select id="tiposerviciogesstor">
+                        <option value="Acueducto">Acueducto</option>
+                        <option value="Alcantarillado">Alcantarillado</option>
+                        <option value="Alcantarillado">Energia</option>
+                        <option value="Gas">Gas</option>
+                    </select><br><br> 
+                    <label>Estrato de Referencia:&nbsp&nbsp&nbsp</label><br>
+                    <input type="text" name="EstratoR"><br>
+                    <label>Uso de Referencia:&nbsp&nbsp&nbsp</label><br>
+                    <input type="text" name="UsoR"><br>
+                    <label>Certificado de Uso:&nbsp&nbsp&nbsp</label><br>  
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Certificado de Uso</button><br><br> 
+                    <label>Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>     
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Certificado de Estratificación</button><br><br>
+
+                    <input type="checkbox" id="checkconstruccion" onchange="habilitar(this.checked);" unchecked><label>Licencia de Construcción:</label><br>  
+                    <div id="botonlicconstruc" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Licencia de Construcción</button></div>
+
+                    <input type="checkbox" id="checkservpublico" onchange="habilitar(this.checked);" unchecked><label>Recibo de Servicio Público:</label><br>  
+                    <div id="botonservpublico" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Recibo de Servicio Público</button></div>
+
+                    <input type="checkbox" id="checkfotografia" onchange="habilitar(this.checked);" unchecked><label>Fotografía del Predio:</label><br>  
+                    <div id="botonfotografia" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Fotografía del Predio</button></div>
+
+                    <input type="checkbox" id="checkdoc" onchange="habilitar(this.checked);" unchecked><label>Otro Documento:</label><br> 
+                    <div id="botondoc" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Documento</button></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal" onclick="enviargesstor()">Enviar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-  </div>
-</div>
-    
 
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -463,6 +466,26 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="myModalC" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Actualización a la Base Catastral</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label for="current_password" class="control-label">Recuerde que la actualizacion se vera reflejada el siguiente dia al aceptar este mensaje.</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                    <button href="#" class="btn btn-primary" id="save54147612" onclick="upd(id)">Realizar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div>
         <!--<input type="button" id="boton3d" value="GESSTOR 3D" onclick="javascript:window.open('http://35.184.3.4/cesium/Apps/gesstor3d.html');" />-->
 
@@ -481,12 +504,15 @@
 
     <!--<img id="cerrar_submenu" hidden="hidden" src="./imagenes/cerrar_submenu.png" onclick="cerrar_menu()">-->
     <img id="gesstor" src="./imagenes/gesstor.png">
-    <img id="logos_cabezote" src="./imagenes/logos_cabezote.png" hidden="hidden" onclick="upd()">
+    <img id="logos_cabezote" src="./imagenes/logos_cabezote.png" hidden="hidden">
     <!--<<img id="logos_cabezote" src="./imagenes/logos_cabezote.png" data-toggle="modal" data-target="#charge">-->
     <img id="boton_limpiar" src="imagenes/limpiar.png" onclick="limpiar_consulta()" title="Limpiar Consulta" hidden="hidden">
     <img id="subirshape" src="imagenes/subirshape.jpg" style="display: none" data-toggle="modal" data-target="#charge" title="Subir shapefile">
     <img id="valid" src="imagenes/validar.jpg" onclick="validate(id)" style="display: none" data-toggle="modal" data-target="#validate" title="Validar Informacion subida">
-    <img id="deshacer" src="imagenes/deshacer.jpg" onclick="validate(id)" style="display: none" data-toggle="modal" data-target="#validate" title="Deshacer cambios">
+    <img id="deshacer" src="imagenes/deshacer.jpg" onclick="validate(id)" style="display: none" data-toggle="modal" data-target="#charge" title="Deshacer cambios">
+    
+    <img id="update" src="imagenes/subirshape.jpg" style="display: none" data-toggle="modal" data-target="#myModalC" title="Actualizar Base de datos">
+    
     <div id="menu_circular" hidden="hidden">
         <!--<img id="submenu" src="./imagenes/submenu.png">
         <img id="cerrar_submenu"  src="./imagenes/cerrar_submenu.png" onclick="cerrar_menu()">
@@ -532,14 +558,14 @@
             <option value="Alcantarillado" style="font-weight: bold; color: white;  font-size:small;">Alcantarillado
             <option value="Aseo" style="font-weight: bold; color: white;  font-size:small;">Aseo
         </select>
-        
+
         <select class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/oficial_vs_AAA_destino.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="oficial_vs_AAA_uso" name=prestadores onchange="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'>
             <option disabled selected>
             <option value="Acueducto" style="font-weight: bold; color: white;  font-size:small;">Acueducto
             <option value="Alcantarillado" style="font-weight: bold; color: white;  font-size:small;">Alcantarillado
             <option value="Aseo" style="font-weight: bold; color: white;  font-size:small;">Aseo
         </select>
-        
+
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/uso_electricaribe/uso_electricaribe.png'); background-color:#006D1B; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="uso_electricaribe" name="uso_electricaribe" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
 
         <!--metrotel-->    
@@ -586,7 +612,7 @@
 
         <!--nomenclatura estandarizada-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/icono_nomenclatura_estandarizada.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="Nomenclatura Domiciliaria" name="Nomenclatura Domiciliaria" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
-        
+
         <!--Rango Construccion-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/rango_area_construccion/rango_area_construccion.png'); background-color:#86B12D; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="Rango Area Construccion" name="predio" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
 
@@ -610,37 +636,37 @@
         <!--urbano rural o de expansion-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/clasificacion_uso/clasificacion_uso.png'); background-color:#00AD41; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="Clasificacion_Uso" name="Clasificacion_Uso" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
 
-       
+
         <!--<select class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/oficial_vs_AAA_uso.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="oficial_vs_AAA_uso" name=prestadores onchange="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'>
             <option disabled selected>
             <option value="Acueducto" style="font-weight: bold; color: white;  font-size:small;">Acueducto
             <option value="Alcantarillado" style="font-weight: bold; color: white;  font-size:small;">Alcantarillado
             <option value="Aseo" style="font-weight: bold; color: white;  font-size:small;">Aseo
         </select>-->
-         
+
         <!--Actualizacion Conservacion-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/conservacion/conservacion.png'); background-color:#006D1B; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="predios_actualizacion" name="predios_actualizacion" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
-        
-         <!--plusvalia-->
+
+        <!--plusvalia-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/plusvalia/plusvalia.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="plusvalia" name="plusvalia" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
 
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/direccion.png'); background-color:#008E30; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="dir_gestor" name="dir_gestor" onclick="busqueda(name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
-        
+
         <!--estructura ecologica principal-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/icono_estructura_ecologica.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="Estructura Ecologica Principal" name="Estructura Ecologica Principal" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
 
         <!--Areas de Proteccion-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/icono_proteccion_urbanistica.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="Area Proteccion Urbanistica" name="proteccion" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
-          
+
         <!--Tipo Propietario--> 
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/tipo_propietario/tipo_propietario.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="Tipo Propietario" name="propietario" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>	
-        
-         <!--Impuesto Camara y Comercio--> 
+
+        <!--Impuesto Camara y Comercio--> 
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/industria_y_comercio/industria_y_comercio.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="Impuesto Camara" name="Impuesto Camara" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
-        
+
         <!--Incremento Avaluo Catastral-->
         <button type="button" class="col-xs-6 col-sm-4 col-md-3 col-lg-1" style="display: none; background:url('./imagenes/botones_consultas/incremento_avaluo/incremento_avaluo.png'); background-color:#a6a6a6; min-height: 40px; border:0px; background-repeat:no-repeat; background-position: 50%; min-height: 35px;" id="Incremento Avaluo" name="Incremento Avaluo" onclick="rangoarea(id, name)" onmouseover='changeImage(this.id)' onmouseout='normalImage(this.id)'></button>
-        
+
 
     </div>
     <!--<input id="direccion" type="text" class="form-control" placeholder="Buscar Direccion">-->

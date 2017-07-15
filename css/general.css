@@ -302,7 +302,7 @@ body{
     margin-left: 0.5em;
 }
 /*@media handheld, only screen and (max-width: 767px) {*/
-#subirshape{
+#subirshape, #update{
     position: absolute;
     top: 5.3em;
     left: 1em;
