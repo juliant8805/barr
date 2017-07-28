@@ -94,6 +94,7 @@ $(document).on('ready', function () {
             document.getElementById("boton_geocoder").style.display = "block";
             document.getElementById("boton_comparacion").style.display = "block";
             document.getElementById("update").style.display = "block";
+            document.getElementById("updcsv").style.display = "block";
             //document.getElementById("Avaluo Catastral").style.display = "block";
             modulo = "catastro";
             //new
@@ -125,6 +126,13 @@ $(document).on('ready', function () {
              var f = document.getElementsByTagName("head")[0];
              f || (f = document.body.parentNode.appendChild(document.createElement("head")));
              f.appendChild(f);*/
+            var g = document.createElement("script");
+            g.type = "text/javascript";
+            g.charset = "UTF-8";
+            g.src = "import/importcsv.js";
+            var h = document.getElementsByTagName("head")[0];
+            h || (h = document.body.parentNode.appendChild(document.createElement("head")));
+            h.appendChild(g);
         } else if (select[0][7] === true) {
             //document.getElementById("metrotel").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";

@@ -374,7 +374,57 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="chargecsv" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Subir registros 1 y 2</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label for="selreg1" class="control-label">Seleccione Registro 1 (CSV)</label></br>
+                        <span class='success'>Recuerde que el archivo debe tener la siguiente estructura (DEPARTAMENTO;MUNICIPIO;NUMERO_DEL_PREDIO;TIPO_DE_REGISTRO;
+                            NUMERO_DE_ORDEN;TOTAL_REGISTROS;NOMBRE;ESTADO_CIVIL;
+                            TIPO_DOCUMENTO;NUMERO_DOCUMENTO;DIRECCION;COMUNA;
+                            DESTINO_ECONOMICO;AREA_TERRENO;AREA_CONSTRUIDA;AVALUO;VIGENCIA;
+                            NUMERO_PREDIAL_ANTERIOR)</span>
+                        <div class="controls"></br>
+                            <form enctype="multipart/form-data" class="formulario">
+                                <input type="file" id="file1" name="archivo"></br>
+                                <!--<input name="archivo" type="file" id="imagen" />-->
+                                <div class="message1"></div>
+                            </form>
+                        </div>
+                        <br>
+                        <label for="selreg1" class="control-label">Seleccione Registro 2 (CSV)</label></br>
+                        <span class='success'>Recuerde que el archivo debe tener la siguiente estructura (DEPARTAMENTO;MUNICIPIO;NUMERO_DEL_PREDIO;TIPO_DE_REGISTRO;
+                            NUMERO_DE_ORDEN;TOTAL_REGISTROS;MATRICULA_INMOBILIARIA;ESPACIO_1;
+                            ZONA_FISICA_1;ZONA_ECONOMICA_1;AREA_TERRENO_1;ESPACIO_2;
+                            ZONA_FISICA_2;ZONA_ECONOMICA_2;AREA_TERRENO_2;ESPACIO_3;
+                            HABITACIONES_1;BANOS_1;LOCALES_1;PISOS_1;ESTRATO_1;USO_1;PUNTAJE_1;
+                            AREA_CONSTRUIDA_1;ESPACIO_4;HABITACIONES_2;BANOS_2;LOCALES_2;
+                            PISOS_2;ESTRATO_2;USO_2;PUNTAJE_2;AREA_CONSTRUIDA_2;ESPACIO_5;
+                            HABITACIONES_3;BANOS_3;LOCALES_3;PISOS_3;ESTRATO_3;USO_3;PUNTAJE_3;
+                            AREA_CONSTRUIDA_3;ESPACIO_6;VIGENCIA;NUMERO_PREDIAL_ANTERIOR)</span>
+                        <div class="controls"></br>
+                            <form enctype="multipart/form-data" class="formulario">
+                                <input type="file" id="file2" name="archivo"></br>
+                                <!--<input name="archivo" type="file" id="imagen" />-->
+                                <div class="message2"></div>
+                                <div class="messages"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button href="#" class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                    <input id="btonsubir" type="button" class="btn btn-primary" value="Subir registros" disabled/>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div id="myModal1" class="modal fade" role="dialog">
@@ -512,6 +562,7 @@
     <img id="deshacer" src="imagenes/deshacer.jpg" onclick="validate(id)" style="display: none" data-toggle="modal" data-target="#charge" title="Deshacer cambios">
     
     <img id="update" src="imagenes/subirshape.jpg" style="display: none" data-toggle="modal" data-target="#myModalC" title="Actualizar Base de datos">
+    <img id="updcsv" src="imagenes/csvsql.jpg" style="display: none" data-toggle="modal" data-target="#chargecsv" title="Actualizar Base de datos">
     
     <div id="menu_circular" hidden="hidden">
         <!--<img id="submenu" src="./imagenes/submenu.png">

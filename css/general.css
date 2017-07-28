@@ -327,6 +327,17 @@ body{
     -o-box-shadow: 10px -10px 5px rgba(0,0,0,0.1); 
     border-radius:25px;
 }
+#updcsv{
+    position: absolute;
+    top: 5.3em;
+    left: 4em;
+    height: 2.5em;
+    width: 4.5em;
+    margin-left: 0.5em;
+    box-shadow: 1px -1px 1px rgba(0,0,0,0.1); -moz-box-shadow: 1px -1px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+    -o-box-shadow: 10px -10px 5px rgba(0,0,0,0.1);
+}
 #deshacer{
     position: absolute;
     top: 5.3em;
