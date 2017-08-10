@@ -14,17 +14,19 @@ var ortofotourbana = new ol.layer.Tile({
     minResolution:0,
     maxResolution:20,
     opacity:0,
+    preload: Infinity,
     source: new ol.source.XYZ({
-        url: "/ortofoto/{z}/{x}/{y}.png"
+        url: "http://www.gesstor.com/ortofoto/{z}/{x}/{y}.png"
     }), name: 'Ortofoto 2016 Distrito'
 });
 
 var mapabase = new ol.layer.Tile({
     visible: true,
+    preload: Infinity,
     //minResolution:2,
     maxResolution:20,
     source: new ol.source.XYZ({
-        url: "/mapa_base/{z}/{x}/{y}.jpg"
+        url: "http://www.gesstor.com/mapa_base/{z}/{x}/{y}.jpg"
     }), name: 'Mapa Base'
 });
 
@@ -40,9 +42,10 @@ var bingarranque = new ol.layer.Image({
                             visible: true,
                             minResolution:20,
                             opacity: 1,
+                            preload: Infinity,
                             title: "BING",    
                             source: new ol.source.ImageStatic({
-                               url: "/imagenes_base/Bing.png",
+                                url: "/imagenes_base/Bing.png",
                                 projection: 'EPSG:3857',
                                 alwaysInRange: true,
                                 //imageSize: [1888, 940],
@@ -57,12 +60,23 @@ var bing = new ol.layer.Tile({
         imagerySet: 'Aerial'
     }), name: 'Satelite'
 });
+/*var pruebas = new ol.layer.Tile({
+    
+    visible: false,
+    //minResolution:0.000280044661523,
+   
+    source: new ol.source.TileWMS({
+        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        params: {LAYERS: 'preproduccion:pruebas', STYLES: ''}
+    }), name: 'Pruebas'
+});*/
 var predio = new ol.layer.Tile({
     //preload: Infinity,
     //title : 'Predios',
     // extent: [-8327292.022321, 1232500.154157, -8325566.164885, 1233464.624518],
     extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     visible: true,
+    preload: Infinity,
     //minResolution:0.000280044661523,
     //maxResolution:0.960833233684,
    minResolution: -0.420066992284,
@@ -81,6 +95,7 @@ var predio_rural = new ol.layer.Tile({
 });
 var manzana = new ol.layer.Tile({
     visible: false,
+    preload: Infinity,
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_manzana', STYLES: ''}
@@ -465,6 +480,7 @@ var consolidado = new ol.layer.Tile({
 
 var construcciones = new ol.layer.Tile({
     visible: true,
+    preload: Infinity,
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_construccion', STYLES: ''}
@@ -628,7 +644,7 @@ var layerCartobasica = new ol.layer.Group({
 
 //CAPS GROUP
 var layerCatastro = new ol.layer.Group({
-    layers: [predio_rural, manzana, predio, construcciones, unidades, vias, consolidado, highlightfeatures],
+    layers: [predio_rural, manzana, predio, construcciones, unidades, vias, consolidado],
     name: 'Catastro'
 });
 var layerSitios = new ol.layer.Group({
@@ -676,7 +692,7 @@ var layerPot = new ol.layer.Group({
     name: 'POT'
 });
 var layerOrtofoto= new ol.layer.Group({
-    layers: [ortofotourbana],
+    layers: [ortofotourbana, highlightfeatures],
     name: 'Ortofoto 2016 Distrito'
 });
 
@@ -684,11 +700,6 @@ var layerBase = new ol.layer.Group({
     layers: [mapabase, bing, streetmap, bingarranque],
     name: 'Capas Base'
 });
-
-
-
-
-
 
 
 function buildLayerTree(layer) {

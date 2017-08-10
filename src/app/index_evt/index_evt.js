@@ -93,6 +93,8 @@ $(document).on('ready', function () {
             document.getElementById("Calidad Construcciones").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             document.getElementById("boton_comparacion").style.display = "block";
+            document.getElementById("update").style.display = "block";
+            document.getElementById("updcsv").style.display = "block";
             //document.getElementById("Avaluo Catastral").style.display = "block";
             modulo = "catastro";
             //new
@@ -124,6 +126,13 @@ $(document).on('ready', function () {
              var f = document.getElementsByTagName("head")[0];
              f || (f = document.body.parentNode.appendChild(document.createElement("head")));
              f.appendChild(f);*/
+            var g = document.createElement("script");
+            g.type = "text/javascript";
+            g.charset = "UTF-8";
+            g.src = "import/importcsv.js";
+            var h = document.getElementsByTagName("head")[0];
+            h || (h = document.body.parentNode.appendChild(document.createElement("head")));
+            h.appendChild(g);
         } else if (select[0][7] === true) {
             //document.getElementById("metrotel").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
@@ -328,27 +337,16 @@ $(document).on('ready', function () {
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
         } else {
-            //document.getElementById("Tipo de Contribuyente").style.display = "none";
-            //document.getElementById("predios_exentos_2016").style.display = "none";
-            //document.getElementById("Tipo Propietario").style.display = "none"; 
-            /*document.getElementById("cerrar_submenu").style.display = "none";
-             document.getElementById("cerrar_submenu_cafe").style.display = "none";
-             document.getElementById("cerrar_submenu_verde").style.display = "none";
-             document.getElementById("cerrar_submenu").style.display = "none";
-             document.getElementById("submenu").style.display = "none";
-             document.getElementById("menu_circular").style.display = "none";
-             document.getElementById("lupa_pequeña").style.display = "none";
-             document.getElementById("valid").style.display = "none";
-             document.getElementById("nombre_usuario").style.display = "none";
-             document.getElementById("tipo_usuario").style.display = "none";
-             document.getElementById("manual").style.display = "none";*/
+            document.getElementById("lista_general").style.display = "none";
+            document.getElementById("barra_direccion").style.display = "none";
             document.getElementById("tipo_usuario").style.display = "none";
             document.getElementById("salida").style.display = "none";
+            document.getElementById("menu_totem").style.display = "block";
             modulo = "totem";
             var b = document.createElement("script");
             b.type = "text/javascript";
             b.charset = "UTF-8";
-            b.src = "totem/totem.js";
+            b.src = "src/app/Totems/Totems.js";
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
@@ -477,6 +475,111 @@ function mostrar(consulta) {
         //manzana.setVisible(true);
         map.getView().fitExtent(barrio.getExtent(), map.getSize());
     }
+}
+
+function mostrartotem(consulta) {
+    if (consulta == 'direcciontotem'){
+        document.getElementById("inputsitiototem").value ="";
+        document.getElementById("inputmanzanatotem").value ="";
+        document.getElementById("inputlocalidadtotem").value ="";
+        document.getElementById("inputbarriototem").value ="";
+        document.getElementById("inputdirecciontotem").value =""; 
+        document.getElementById('inputlocalidadtotem').style.display = 'none';
+        document.getElementById('inputmanzanatotem').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'block';
+        document.getElementById('consultas_totem').style.display = 'block';
+        document.getElementById('exp1').style.display = 'block';
+        var x = document.getElementById("audiodireccion"); 
+        x.play(); 
+    }
+    else if (consulta == 'referencia') {
+        document.getElementById("inputsitiototem").value ="";
+        document.getElementById("inputmanzanatotem").value ="";
+        document.getElementById("inputlocalidadtotem").value ="";
+        document.getElementById("inputbarriototem").value ="";
+        document.getElementById("inputdirecciontotem").value ="";   
+        document.getElementById('inputlocalidadtotem').style.display = 'none';
+        document.getElementById('inputmanzanatotem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'none';
+        document.getElementById('exp1').style.display = 'none';
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'block';
+        document.getElementById('consultas_totem').style.display = 'block';
+        var x = document.getElementById("audiorefcatastral"); 
+        x.play();
+    }
+    else if (consulta == 'sitiototem') {
+        document.getElementById("inputsitiototem").value ="";
+        document.getElementById("inputmanzanatotem").value ="";
+        document.getElementById("inputlocalidadtotem").value ="";
+        document.getElementById("inputbarriototem").value ="";
+        document.getElementById("inputdirecciontotem").value ="";   
+        document.getElementById('inputlocalidadtotem').style.display = 'none';
+        document.getElementById('inputmanzanatotem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'none';
+        document.getElementById('exp1').style.display = 'none';
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'block';
+        document.getElementById('consultas_totem').style.display = 'block';
+        var x = document.getElementById("audiositio"); 
+        x.play();
+    }
+    else if (consulta == 'localidad') {
+        document.getElementById("inputsitiototem").value ="";
+        document.getElementById("inputmanzanatotem").value ="";
+        document.getElementById("inputlocalidadtotem").value ="";
+        document.getElementById("inputbarriototem").value ="";
+        document.getElementById("inputdirecciontotem").value ="";
+        document.getElementById('exp1').style.display = 'none';
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('inputmanzanatotem').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'none';
+        document.getElementById('inputlocalidadtotem').style.display = 'block';
+        document.getElementById('consultas_totem').style.display = 'block';
+        var x = document.getElementById("audiolocalidad"); 
+        x.play();    
+    }
+    else if (consulta == 'barrio') {
+        document.getElementById("inputsitiototem").value ="";
+        document.getElementById("inputmanzanatotem").value ="";
+        document.getElementById("inputlocalidadtotem").value ="";
+        document.getElementById("inputbarriototem").value ="";
+        document.getElementById("inputdirecciontotem").value ="";
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('exp1').style.display = 'none';
+        document.getElementById('inputlocalidadtotem').style.display = 'none';
+        document.getElementById('inputmanzanatotem').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'block';
+        document.getElementById('consultas_totem').style.display = 'block';
+        var x = document.getElementById("audiobarrio"); 
+        x.play();    
+    }
+     else if (consulta == 'manzana') {
+        document.getElementById("inputsitiototem").value ="";
+        document.getElementById("inputmanzanatotem").value ="";
+        document.getElementById("inputlocalidadtotem").value ="";
+        document.getElementById("inputbarriototem").value ="";
+        document.getElementById("inputdirecciontotem").value ="";
+        document.getElementById('exp1').style.display = 'none'; 
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'none';
+        document.getElementById('inputlocalidadtotem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'none';
+        document.getElementById('inputmanzanatotem').style.display = 'block';
+        document.getElementById('consultas_totem').style.display = 'block';
+        var x = document.getElementById("audiomanzana"); 
+        x.play();    
+    } 
 }
 
 function menu_principal() {
@@ -1062,7 +1165,18 @@ function cerrarbarrasconsultas() {
     document.getElementById("barra_alineamiento").style.display = "none";
     document.getElementById("barra_predioshasusos").style.display = "none";
 }
-
+function upd(validac){
+    var urlphp = 'http://35.184.79.25/charge.php?ref=' + validac;
+    $.ajax({
+        url: urlphp,
+        dataType: 'jsonp',
+        type: "GET",
+        async: false,
+        success: function () {}
+    });
+    $('#myModalC').modal('hide');
+    alert("Solicitud aceptada, mañana se veran reflejados sus cambios");
+}
 function alertDGC(mensaje) {
     var dgcTiempo = 500
     var ventanaCS = '<div class="dgcAlert"><div class="dgcVentana"><div class="dgcCerrar"></div><div class="dgcMensaje">' + mensaje + '<img id="avat2" src="./avatar/avatar_02.gif">' + '<br><div class="dgcAceptar">Aceptar</div></div></div></div></div>';
@@ -1118,4 +1232,17 @@ function enviargesstor()
 function comparacion()
 {
     window.open('./control/comp/comp.html', '_blank');
+}
+
+function cerrardirec()
+{
+   document.getElementById("consultas_totem").style.display = "none"; 
+   document.getElementById("exp1").style.display = "none"; 
+}
+
+function existeUrl(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status!=404;
 }

@@ -178,7 +178,7 @@ var ubicacion = new ol.style.Style({
     })
 });
 //AUTOCOMPLETE INITIAL
-$("#direccion").autocomplete({
+$(".direccion").autocomplete({
     minLength: 1,
     source: addressSource,
     select: addressSelect
@@ -187,6 +187,26 @@ $("#address1").autocomplete({
     minLength: 1,
     source: addressSource,
     select: PlaceSelect
+});
+$("#inputmanzanatotem").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: manzanaSelect
+});
+$("#inputbarriototem").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: PoligonSelect
+});
+$("#inputsitiototem").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: PlaceSelect
+});
+$("#inputlocalidadtotem").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: PoligonSelect
 });
 $("#direccion_gestor").autocomplete({
     minLength: 1,
@@ -271,17 +291,15 @@ function addressSource(requestString, responseFunc) {
         //console.log(4);
         var tempname = "preproduccion:codigo_autocompletar";
         var temp = "codigo";
-    } else if ($("#direccion")["0"].value !== "") {
+    } else if ($("#direccion")["0"].value !== "" || $("#inputdirecciontotem")["0"].value !== "") {
         var tempname = "preproduccion:buscar_direccion_registro1";
         var temp = "direccion";
     }
 
     //busqueda cod en reg 
     else if ($("#codigo")["0"].value !== "") {
-        // var tempname = "preproduccion:codigo_autocompletar";
         var tempname = "preproduccion:buscar_cod_reg";
         var temp = "cod";//no significa que este buscando por direccion; busqueda por codigo
-        //console.log(codigo);
     } else if ($("#propietarios")["0"].value !== "") {
         var tempname = "preproduccion:buscar_propietario_reg";
         var temp = "propietario";
@@ -291,22 +309,22 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#matricula")["0"].value !== "") {
         var tempname = "preproduccion:buscar_matricula_reg";
         var temp = "matricula";
-    } else if ($("#address1")["0"].value !== "") {
+    } else if ($("#address1")["0"].value !== "" || $("#inputsitiototem")["0"].value !== "") {
         var tempname = "preproduccion:sitios_autocompletar";
         var temp = "address1";
     } else if ($("#direccion_gestor")["0"].value !== "") {
         var tempname = "preproduccion:buscar_dir_gestor";
         var temp = "direcci";
-    } else if ($("#barrio")["0"].value !== "") {
+    } else if ($("#barrio")["0"].value !== "" || $("#inputbarriototem")["0"].value !== "") {
         var tempname = "preproduccion:buscar_barrio";
         var temp = "nombre";
     } else if ($("#comuna")["0"].value !== "") {
         var tempname = "preproduccion:buscar_comuna";
         var temp = "nombre";
-    } else if ($("#localidad")["0"].value !== "") {
+    } else if ($("#localidad")["0"].value !== "" || $("#inputlocalidadtotem")["0"].value !== "") {
         var tempname = "preproduccion:buscar_localidad";
         var temp = "nombre";
-    } else if ($("#manzana")["0"].value !== "") {
+    } else if ($("#manzana")["0"].value !== "" || $("#inputmanzanatotem")["0"].value !== "") {
         var tempname = "preproduccion:buscar_manzana";
         var temp = "codigo";
     } else if ($("#input_ladomanzana")["0"].value !== "") {
@@ -406,60 +424,60 @@ function addressSource(requestString, responseFunc) {
                     responseFunc(arr);
                 } catch (err) {
                 }
-            } else {
-                if (temp === 'direcci') {
-                    
+            } 
+                else {
+                  if (temp === 'direcci') {
                     codeAddress(viewParamsStr);
                 } 
                 
                 else {
-      
-                    if(tempname == "preproduccion:buscar_direccion_registro1"){
-                    alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador: <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'>");
+                    if((tempname == "preproduccion:buscar_direccion_registro1") && (modulo !== 'totem')){
+                    alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador:</br> <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'></br>");
                     document.getElementById("direccion").value ="";
                     }
                     else if(tempname == "preproduccion:buscar_barrio"){
-                      alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de Barrio Ingresado, por favor verifique que el nombre ingresado sea correcto. Ejemplo:</br></br> La Concepcion</br>Paseo de La Castella</br>Zona Franca</br>etc."); 
+                      alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de Barrio Ingresado, por favor verifique que el nombre ingresado sea correcto. Ejemplo:</br></br> La Concepcion</br>Paseo de La Castella</br>Zona Franca</br>etc.</br>"); 
                     document.getElementById("barrio").value ="";
                     }
                     else if(tempname == "preproduccion:buscar_localidad"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de Localidad Ingresado, por favor verifique que el nombre ingresado corresponda a una de las 5 Localidades Existentes:</br></br>Riomar</br>Centro Historico</br>Suroccidente</br>Suroriente</br>Metropolitana");  
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de Localidad Ingresado, por favor verifique que el nombre ingresado corresponda a una de las 5 Localidades Existentes:</br></br>Riomar</br>Centro Historico</br>Suroccidente</br>Suroriente</br>Metropolitana</br>");  
                        document.getElementById("localidad").value ="";
                     }
                     else if(tempname == "preproduccion:buscar_manzana"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código de manzana ingresado, tenga en cuenta que todos los códigos comienzan por 08001... Ejemplo:</br></br>08001010100000198</br>08001010300000334</br>08001010600000646</br>etc."); 
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código de manzana ingresado, tenga en cuenta que todos los códigos comienzan por 08001... Ejemplo:</br></br>08001010100000198</br>08001010300000334</br>08001010600000646</br>etc.</br>"); 
                         document.getElementById("manzana").value ="";
                     }
                     else if(tempname == "preproduccion:sitios_autocompletar"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el sitio de interés ingresado, por favor verifique que el nombre ingresado sea correcto. Ejemplo:</br></br>Gerencia de Gestion Catastral</br>Hospital General</br>Tienda Los Robles</br>etc.");  
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el sitio de interés ingresado, por favor verifique que el nombre ingresado sea correcto. Ejemplo:</br></br>Gerencia de Gestion Catastral</br>Hospital General</br>Tienda Los Robles</br>etc.</br>");  
                        document.getElementById("address1").value ="";
                     }
                     else if(tempname == "preproduccion:buscar_matricula_reg"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código de matricula ingresado, por favor verifique que el código de matricula inmobiliario ingresado sea correcto. Ejemplo:</br></br>040-86998"); 
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código de matricula ingresado, por favor verifique que el código de matricula inmobiliario ingresado sea correcto. Ejemplo:</br></br>040-86998</br>"); 
                       document.getElementById("matricula").value ="";             
                     }
                     else if(tempname == "preproduccion:buscar_cod_reg"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código catastral ingresado, por favor verifique que el código ingresado sea correcto. Ejemplo:</br></br>080010104000005340004000000000");  
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el código catastral ingresado, por favor verifique que el código ingresado sea correcto. Ejemplo:</br></br>080010104000005340004000000000</br>");  
                         document.getElementById("codigo").value =""; 
                     }
                     else if(tempname == "preproduccion:buscar_propietario_reg"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de propietario ingresado, por favor verifique que el nombre ingresado sea correcto."); 
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de propietario ingresado, por favor verifique que el nombre ingresado sea correcto.</br>"); 
                        document.getElementById("propietarios").value =""; 
                     }
                     else if(tempname == "preproduccion:buscar_cedula_reg"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el ID de propietario ingresado, por favor verifique que el ID (Cédula, Nit etc.) ingresado sea correcto.");
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el ID de propietario ingresado, por favor verifique que el ID (Cédula, Nit etc.) ingresado sea correcto.</br>");
                        document.getElementById("cedul").value ="";
                     }
                     else if(tempname == "preproduccion:ladomanzana_autocompletar"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información de Alineamiento Urbano con este Código Catastral, por favor verifique que el Código Catastral ingresado sea correcto. Ejemplo: </br></br>0800101010021B"); 
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información de Alineamiento Urbano con este Código Catastral, por favor verifique que el Código Catastral ingresado sea correcto. Ejemplo: </br></br>0800101010021B</br>"); 
                         document.getElementById("input_ladomanzana").value ="";
                     }
                     else if(tempname == "preproduccion:predioshasusos_autocompletar"){
-                       alert("GESSTOR INFORMA:</br></br> No se encuentra información de Usos Permitidos con esta referencia Catastral, por favor verifique que la referencia catastral ingresada sea correcta. Ejemplo: </br></br>010101710004000"); 
+                       alert("GESSTOR INFORMA:</br></br> No se encuentra información de Usos Permitidos con esta referencia Catastral, por favor verifique que la referencia catastral ingresada sea correcta. Ejemplo: </br></br>010101710004000</br>"); 
                         document.getElementById("input_predioshasusos").value ="";
                     }
                     else{
-                        alert("GESSTOR INFORMA:</br></br>La información se encuentra en la base de datos alfanumérica y no en la base de datos geográfica, este caso se presenta por diferencia de vigencias de  información");
+                        if (modulo !== 'totem'){
+                        alert("GESSTOR INFORMA:</br></br>La información se encuentra en la base de datos alfanumérica y no en la base de datos geográfica, este caso se presenta por diferencia de vigencias de  información</br>");
                           document.getElementById("direccion").value ="";
                           document.getElementById("codigo").value ="";
                           document.getElementById("propietarios").value ="";
@@ -477,6 +495,7 @@ function addressSource(requestString, responseFunc) {
                    // responseFunc(arr);    
                 }
             }
+          }
         },
         error: function () {
             console.log("error");
@@ -484,8 +503,8 @@ function addressSource(requestString, responseFunc) {
     });       
 }
 
-
 function addressSelect(event, ui) {
+      document.getElementById("exp1").style.display = "none";
       document.getElementById("direccion").value ="";
       document.getElementById("codigo").value ="";
       document.getElementById("propietarios").value ="";
@@ -1175,12 +1194,13 @@ function addressSelect(event, ui) {
     }   
         else if (modulo === 'totem') {
         predio.setVisible(true);
+        document.getElementById("consultas_totem").style.display = "none"; 
         $.ajax({
             url: url,
             success: function (data) {
                 //console.log(data);
                 var features = format[0].readFeatures(data);
-                 if (features && features.length >= 1 && features[0]) {
+                if (features && features.length >= 1 && features[0]) {
                     var feature = features[0];
                     var values = feature.getProperties();
                     var table = document.getElementById("tblatt");
@@ -1198,10 +1218,11 @@ function addressSelect(event, ui) {
                     var ph = values.ph;
                     if (ph >= 800){
                     var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
+                       console.log(ui.item.direccionoriginal);
                     ref_cat =ref_cat["0"]["0"];
                     }
                     else{
-                    var ref_cat = values.ref_catastral;     
+                    var ref_cat = values.ref_catastral; 
                     }
                     ref_cat = "'"+ref_cat+"'";
                     var arregloDeSubCadenas = enviarRef(eval(ref_cat)); 
@@ -1209,13 +1230,12 @@ function addressSelect(event, ui) {
                     select[1] = "<b>Referencia Catastral</b>";  
                     sel[0] = ui.item.direccionoriginal;
                     sel[1] = arregloDeSubCadenas[0];
-    
                      for (i = 0; i < arregloDeSubCadenas.length-1; i=i+6) {
                             select[i+2] = "<b></b>"; 
                             select[i+3] = "<b>Destino Económico ("+arregloDeSubCadenas[i+5]+")</b>"
                             select[i+4] = "<b>Estrato ("+arregloDeSubCadenas[i+5]+")</b>";
-                            select[i+5] = "<b>Valor Capital ("+arregloDeSubCadenas[i+5]+")</b>";
-                            select[i+6] = "<b>Valor Intereses ("+arregloDeSubCadenas[i+5]+")</b>";
+                            select[i+5] = "<b>Valor Capital Impuesto Predial ("+arregloDeSubCadenas[i+5]+")</b>";
+                            select[i+6] = "<b>Valor Intereses Impuesto Predial ("+arregloDeSubCadenas[i+5]+")</b>";
                             select[i+7] = "<b></b>"; 
                             sel[i+2] = "";
                             sel[i+3] = arregloDeSubCadenas[i+1];
@@ -1265,7 +1285,7 @@ function addressSelect(event, ui) {
                     }
                     document.getElementById("panel_atr").style.display = "block";
                     document.getElementById("botonminimizar").style.display = "block";
-                    document.getElementById("panel_atr").style.maxHeight = "50em";
+                    document.getElementById("panel_atr").style.maxHeight = "40em";
 
                 }
             }
@@ -1282,10 +1302,11 @@ function addressSelect(event, ui) {
     } catch (err) {
         sinconsulta();
     }
-
 }
 
 function PlaceSelect(event, ui) {
+    document.getElementById("exp1").style.display = "none";
+    document.getElementById("consultas_totem").style.display = "none"; 
     var view = map.getView();
     var feat = ui.item.feature;
     var values = feat.values_;
@@ -1297,8 +1318,6 @@ function PlaceSelect(event, ui) {
     var transf1 = (transf[1]);
     var transf2 = (transf[0]);
     var transf = [transf[1], transf[0], 0];
-    //console.log(transf);
-
     view.setCenter(geom.getFirstCoordinate());
     view.setZoom(18);
     highlight.setStyle(flagStyle);
@@ -1345,6 +1364,8 @@ function PlaceSelect(event, ui) {
     document.getElementById("botonminimizar").style.display = "block";
 }
 function PoligonSelect(event, ui) {
+    document.getElementById("exp1").style.display = "none";
+    document.getElementById("consultas_totem").style.display = "none"; 
     var view = map.getView();
     var feat = ui.item.feature;
     values = feat.values_.codigo;
@@ -1373,6 +1394,8 @@ function PoligonSelect(event, ui) {
     }
 }
 function manzanaSelect(event, ui) {
+    document.getElementById("exp1").style.display = "none";
+    document.getElementById("consultas_totem").style.display = "none"; 
     var view = map.getView();
     var feat = ui.item.feature;
     //console.log(feat);
@@ -1404,18 +1427,17 @@ function manzanaSelect(event, ui) {
     }
 }
 
-
 function ladomanzanaSelect(event, ui) {
     document.getElementById("direccion").value ="";
-      document.getElementById("codigo").value ="";
-      document.getElementById("propietarios").value ="";
-      document.getElementById("cedul").value ="";
-      document.getElementById("barrio").value ="";
-      document.getElementById("matricula").value ="";
-      document.getElementById("address1").value ="";
-      document.getElementById("localidad").value ="";
-      document.getElementById("manzana").value ="";
-      document.getElementById("input_ladomanzana").value =""; 
+    document.getElementById("codigo").value ="";
+    document.getElementById("propietarios").value ="";
+    document.getElementById("cedul").value ="";
+    document.getElementById("barrio").value ="";
+    document.getElementById("matricula").value ="";
+    document.getElementById("address1").value ="";
+    document.getElementById("localidad").value ="";
+    document.getElementById("manzana").value ="";
+    document.getElementById("input_ladomanzana").value =""; 
     document.getElementById("panel_atributos_predioshasusos").style.display = "none";
     document.getElementById("tablaatributospredioshasusos").style.display = "none";
     document.getElementById("panel_atributos").style.display = "none";
@@ -1489,15 +1511,15 @@ function ladomanzanaSelect(event, ui) {
 
 function predioshasusosSelect(event, ui) {
     document.getElementById("direccion").value ="";
-      document.getElementById("codigo").value ="";
-      document.getElementById("propietarios").value ="";
-      document.getElementById("cedul").value ="";
-      document.getElementById("barrio").value ="";
-      document.getElementById("matricula").value ="";
-      document.getElementById("address1").value ="";
-      document.getElementById("localidad").value ="";
-      document.getElementById("manzana").value ="";
-      document.getElementById("input_ladomanzana").value =""; 
+    document.getElementById("codigo").value ="";
+    document.getElementById("propietarios").value ="";
+    document.getElementById("cedul").value ="";
+    document.getElementById("barrio").value ="";
+    document.getElementById("matricula").value ="";
+    document.getElementById("address1").value ="";
+    document.getElementById("localidad").value ="";
+    document.getElementById("manzana").value ="";
+    document.getElementById("input_ladomanzana").value =""; 
     document.getElementById("panel_atributos").style.display = "none";
     document.getElementById("tablaatributos").style.display = "none";
     document.getElementById("panel_atributos_alineamiento").style.display = "none";
@@ -1586,9 +1608,7 @@ function predioshasusosSelect(event, ui) {
     }
 }
 
-
-function propietariosSelect(event, ui) {
-      
+function propietariosSelect(event, ui) {  
       dataprop = ui.item.feature.features["0"].properties.propietario;  
       var cantprop = search("preproduccion:CantidadPropietarios", dataprop);
       if (cantprop.length>1){

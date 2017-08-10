@@ -37,7 +37,7 @@ function resetpass() {
         });
         var urls = "./mail/envio_mail.php";
         var req = new ajaxRequest();
-        var url = urls + "?c=" + document.getElementById('email').value + "&u=" + select[0][1] + "&p=" + contraseña + "&ch=si";
+        var url = urls + "?c=" + document.getElementById('email').value + "&u=" + select[0][1] + "&p=" + contraseña + "&ch=c1d5c4d65s7d";
         req.open("GET", url, false);
         req.send();
         alert("Se le ha enviado una nueva contraseña a su dirección de email registrado en la plataforma. Por favor ingrese con los datos enviados a su correo.");

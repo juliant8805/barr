@@ -313,7 +313,7 @@ map.on('singleclick', function (evt) {
                         var stv = [];
                         var ig = [];
                         var codfoto = values.codigo_ant.substring(0, 17);
-                        if (modulo === 'planeacion') {
+                        if (modulo === 'planeacionmisional') {
                             select[0] = "<b>Codigo Manzana</b>";
                             select[1] = "<b>Codigo Catastral Nuevo</b>";
                             select[2] = "<b>Codigo Catastral Anterior</b>";
@@ -678,7 +678,7 @@ map.on('singleclick', function (evt) {
                     }  
                     document.getElementById("panel_atr").style.display = "block";
                     document.getElementById("botonminimizar").style.display = "block";
-                    document.getElementById("panel_atr").style.maxHeight = "50em";
+                    document.getElementById("panel_atr").style.maxHeight = "40em";
 
                     var c = feature.values_.geom.flatCoordinates.length - 1;
                     for (var i = 0; i <= c; i = i + 3) {

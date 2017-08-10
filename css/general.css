@@ -302,7 +302,7 @@ body{
     margin-left: 0.5em;
 }
 /*@media handheld, only screen and (max-width: 767px) {*/
-#subirshape{
+#subirshape, #update{
     position: absolute;
     top: 5.3em;
     left: 1em;
@@ -326,6 +326,17 @@ body{
     -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
     -o-box-shadow: 10px -10px 5px rgba(0,0,0,0.1); 
     border-radius:25px;
+}
+#updcsv{
+    position: absolute;
+    top: 5.3em;
+    left: 4em;
+    height: 2.5em;
+    width: 4.5em;
+    margin-left: 0.5em;
+    box-shadow: 1px -1px 1px rgba(0,0,0,0.1); -moz-box-shadow: 1px -1px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+    -o-box-shadow: 10px -10px 5px rgba(0,0,0,0.1);
 }
 #deshacer{
     position: absolute;
@@ -1067,13 +1078,13 @@ body{
 #carga{
     position: absolute;
     width: auto;
-    height: 30%;
-    top:10%;
-    left:40%;    
+    height: auto;
+    top:40%;
+    left:45%;    
 }
 #gifini{
     width: auto;
-    height: 200%;   
+    height: auto;   
 }
 /*
 #carga2{
@@ -1107,10 +1118,10 @@ body{
  }
 }
 #imgprocess{
-   margin-top:10%;
-   margin-left: 40%;
+   margin-top:25%;
+   margin-left: 45%;
    width: auto;
-   height: 50%;        
+   height: auto;        
 }
 #carga3{
     position: absolute;
@@ -1444,7 +1455,7 @@ img.pequeña{
 }
 
 .ol-touch .measure-control {
-    top: 80px;
+    visibility: hidden;
 }
 #limpiarmeasure{
     position:absolute;
@@ -1545,19 +1556,102 @@ td{
 
 @media handheld, only screen and (min-width: 900px) {
     #avat2{
-        height:25em;
+        height:15em;
         width:auto;  
         
     }
 }
 @media handheld, only screen and (max-width: 900px) {
     #avat2{
-        height:10em;
+        height:7em;
         width:auto; 
        
     }
 }
 
+div#menu_totem{
+    position: absolute;
+    top:80px;
+    left: 0px;
+    width:200px;
+    margin-right:50px;
+}
+div#menu_totem ul{
+   list-style: none;       
+}
+div#menu_totem ul li{
+   margin-top:15px;
+   font-family:tahoma;
+   font-size: 14px;
+   background-color:#639bb3;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   border-radius: 0px 20px 20px 0px;
+   padding-left: 20px;
+   box-shadow: 5px 0px 10px #939393;
+   -webkit-transition:padding-left 0.6s;
+}
+div#menu_totem ul li{
+   margin-top:15px;
+   font-family:tahoma;
+   font-size: 18px;
+   color: white;
+   background-color:#639bb3;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   border-radius: 0px 20px 20px 0px;
+   padding-left: 20px;
+   box-shadow: 5px 0px 10px #939393;
+   -webkit-transition:padding-left 0.6s;
+}
+div#menu_totem ul li:hover{
+   padding-left: 50px;
+   color: white;
+}
+div#menu_totem ul li#direcciontotem {
+ background-color:#53D1DF; 
+ width:200px;
+}
+div#menu_totem ul li#referencia {
+ background-color:#63A6E6;  
+ width:200px;
+}
+div#menu_totem ul li#sitiototem {
+ background-color:#62D9B7;  
+ width:200px;
+}
+div#menu_totem ul li#localidad {
+ background-color:#50D17C;  
+ width:200px;
+}
+div#menu_totem ul li#barrio {
+ background-color:#75BB48; 
+ width:200px;
+}
+div#menu_totem ul li#manzana {
+ background-color:#57CA55;
+ width:200px;
+}
+
+
+div#menu_totem ul li#direcciontotem:hover {
+ width:250px;
+}
+div#menu_totem ul li#referencia:hover {
+ width:250px;
+}
+div#menu_totem ul li#sitiototem:hover {
+ width:250px;  
+}
+div#menu_totem ul li#localidad:hover {
+ width:250px;   
+}
+div#menu_totem ul li#barrio:hover {
+ width:250px; 
+}
+div#menu_totem ul li#manzana:hover {
+ width:250px;
+}
 
 
 
