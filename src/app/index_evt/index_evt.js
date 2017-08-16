@@ -440,7 +440,7 @@ $(document).on('ready', function () {
             document.getElementById("barra_direccion").style.display = "none";
             document.getElementById("tipo_usuario").style.display = "none";
             document.getElementById("salida").style.display = "none";
-            document.getElementById("menu_totemp").style.display = "block"; 
+            document.getElementById("menu_totemp").style.display = "block";  
             modulo = "totempruebas";
             var b = document.createElement("script");
             b.type = "text/javascript";
@@ -784,6 +784,7 @@ function limpiar_consulta() {
     vias.setVisible(false);
     predio.setVisible(true);
     document.getElementById('panel_atr').style.display = 'none';
+    document.getElementById("pestanastotem").style.display = "none";
     document.getElementById('tablaatributospuntosaaa').style.display = 'none';
     document.getElementById('botonmaximizarpuntosaaa').style.display = 'none';
     document.getElementById('botoncerrarstreetview').style.display = 'none';
@@ -1399,7 +1400,61 @@ function listaprediototem() {
 }
 }
 
-function cambiopest() {
-   varpest="hacienda";
-    document.getElementById("panel_atr_totem").style.display = "block";
+function cambiocatastro() {
+    document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
+    document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
+    document.getElementById("pestc").style.backgroundColor = "#639BB3";
+    document.getElementById("panel_atr_totem").style.display = "none";
+    document.getElementById("panel_atr_totem_catastro").style.display = "block";
 }
+function cambiohacienda() {
+    document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
+    document.getElementById("pesth").style.backgroundColor = "#639BB3";
+    document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
+    document.getElementById("panel_atr_totem").style.display = "block";
+    document.getElementById("panel_atr_totem_catastro").style.display = "none";
+}
+
+
+function menutotem() {
+    document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
+    document.getElementById("pesth").style.backgroundColor = "#639BB3";
+    document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
+    document.getElementById("panel_atr_totem").style.display = "block";
+    document.getElementById("panel_atr_totem_catastro").style.display = "none"
+    document.getElementById("inputdirecciontotemp").value ="";
+    document.getElementById("volvertotem").style.display = "none";
+    document.getElementById("menu_totemp").style.display = "block";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1303,6 +1303,7 @@ function addressSelect(event, ui) {
         document.getElementById("consultas_totemp").style.display = "none"; 
         document.getElementById("menu_predio").style.display = "none"; 
         document.getElementById("pestanastotem").style.display = "block";
+        document.getElementById("volvertotem").style.display = "block";
         $.ajax({
             url: url,
             success: function (data) {
@@ -1389,7 +1390,86 @@ function addressSelect(event, ui) {
                     }
                     document.getElementById("panel_atr_totem").style.display = "block";
            
+                //Tabla Catastro      
+                    var table = document.getElementById("tblatt_totem_catastro");
+                    table.innerHTML = "";
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    cell1.colSpan = 2;
+                    cell1.innerHTML = "<b>INFORMACION DEL PREDIO</b>";
+                    var select = [];
+                    var sel = [];
+                    var imag = [];
+                    var stv = [];
+                    var ig = [];
+                    var codfoto = values.codigo_ant.substring(0, 17);
+                    var direccion = ui.item.direccionoriginal;
+                    var matricula = search("preproduccion:ConsultaMatriculaTotem", direccion);
+                    if (values.ph_calc==1){
+                        var datoshaciendaph = search("preproduccion:ConsultaHaciendaPh", direccion);
+                        var areaterreno = datoshaciendaph["0"][0];
+                        var areaconstruida = datoshaciendaph["0"][1];
+                        var impuestopredial = datoshaciendaph["0"][2];
+                        var avaluohacienda = datoshaciendaph["0"][3];   
+                    }
+                    else{
+                        var areaterreno = values.area_terreno_hacienda;
+                        var areaconstruida = values.area_construida_hacienda; 
+                        var impuestopredial = values.impuesto_hacienda; 
+                        var avaluohacienda = values.avaluo_hacienda;
+                    } 
+                   
+                            select[0] = "<b>Dirección</b>";
+                            select[1] = "<b>Referencia Catastral</b>";
+                            select[2] = "<b>Avalúo Catastral</b>";
+                            select[3] = "<b>Área de Terreno</b>";
+                            select[4] = "<b>Área Construida</b>";
+                            select[5] = "<b>Matricula Inmobiliaria</b>";
+                            select[6] = "<b>Fotografias</b>";
+                            sel[0] = ui.item.direccionoriginal;
+                            sel[1] = arregloDeSubCadenas[0];       
+                            sel[2] = avaluohacienda+" millones"; 
+                            sel[3] = areaterreno+" metros cuadrados";
+                            sel[4] = areaconstruida+" metros cuadrados";
+                            sel[5] = matricula;
+                            sel[6] = document.createElement("a");
+                            sel[6].id = "img1";
+                            sel[6].style = "width: 30px; height: 50px;";
+                            sel[6].target = "marco";
+                            sel[6].setAttribute("onclick", "open_streetview()");
+                            sel[6].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            imag[6] = document.createElement("img");
+                            imag[6].id = "im1";
+                            imag[6].className = "pequeña";
+                            imag[6].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            stv[6] = document.createElement("a");
+                            stv[6].id = "imgstreet1";
+                            stv[6].target = "marco";
+                            stv[6].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                            stv[6].setAttribute("onclick", "open_streetview()");
+                            ig[6] = document.createElement("img");
+                            ig[6].src = "./imagenes/streetview.png";
+                            var campos = 6;
+                    
                 
+                    for (i = 0; i < select.length; i++) {
+                        row = table.insertRow(i + 1);
+                        cell1 = row.insertCell(0);
+                        cell2 = row.insertCell(1);
+                        cell1.innerHTML = select[i];
+
+                        if (i === campos) {
+                            cell2.appendChild(sel[i]);
+                            //cell2.appendChild(imag[i]);
+                            sel[i].appendChild(imag[i]);
+                            cell2.appendChild(stv[i]);
+                            //cell2.appendChild(ig[i]);
+                            stv[i].appendChild(ig[i]);
+
+                        } else {
+                            cell2.innerHTML = sel[i];
+                        }
+                    }                 
 
                 }
             }

@@ -1283,15 +1283,24 @@ select{
 
 #panel_atr_totem{
     position:absolute;
-    width:50em;
-    height:25em;
-    top:2em;
+    width:43em;
+    height:28em;
+    top:4em;
     left:0em;  
     font-size:11px;
     overflow:scroll;
 }
 
-
+#panel_atr_totem_catastro
+{
+    position:absolute;
+    width:43em;
+    height:28em;
+    top:4em;
+    left:0em;  
+    font-size:11px;
+    overflow:scroll;
+}
 /*#panel_atr{
     position:absolute;
     max-width:30em;
