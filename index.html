@@ -89,7 +89,7 @@
                 </td>
                 <td style="width:48px;">
                     <input id="dir1" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"  onKeypress="if (event.keyCode === 32)
-                            event.returnValue = false;">
+                                event.returnValue = false;">
                 </td>
                 <td style="width:50px;">
                     <select id="dir_g2" style="font-weight: bold" class="form-control input-xs">
@@ -101,12 +101,12 @@
                 </td>
                 <td style="width:48px;">
                     <input id="dir2" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" onKeypress="if (event.keyCode === 32)
-                            event.returnValue = false;">
+                                event.returnValue = false;">
                 </td>
                 <td style="width:6px;">-</td>
                 <td style="width:40px;">
                     <input id="dir3" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" onKeypress="if (event.keyCode === 32)
-                            event.returnValue = false;">
+                                event.returnValue = false;">
                 </td>
                 <td style="width:50px;">
                     <!--<img id="busca_direccion" src="./imagenes/buscar.jpg" onclick="busca_dir()">-->  
@@ -510,10 +510,10 @@
     <img id="subirshape" src="imagenes/subirshape.jpg" style="display: none" data-toggle="modal" data-target="#charge" title="Subir shapefile">
     <img id="valid" src="imagenes/validar.jpg" onclick="validate(id)" style="display: none" data-toggle="modal" data-target="#validate" title="Validar Informacion subida">
     <img id="deshacer" src="imagenes/deshacer.jpg" onclick="validate(id)" style="display: none" data-toggle="modal" data-target="#validate" title="Deshacer cambios">
-    
+
     <img id="update" src="imagenes/subirshape.jpg" style="display: none" data-toggle="modal" data-target="#myModalC" title="Actualizar Base de datos">
     <img id="updcsv" src="imagenes/csvsql.jpg" style="display: none" data-toggle="modal" data-target="#chargecsv" title="Actualizar Base de datos">
-    
+
     <div id="menu_circular" hidden="hidden">
         <!--<img id="submenu" src="./imagenes/submenu.png">
         <img id="cerrar_submenu"  src="./imagenes/cerrar_submenu.png" onclick="cerrar_menu()">
@@ -682,20 +682,20 @@
     <!--menu de pruebas totem-->
     <div id="menu_totemp" hidden="hidden">
         <div style="position:absolute; top:2em; left:30em;">
-        <ul>
-            <li id="prediototem" onclick="mostrartotem(id)">Consultar Predio</li> 
-            <li id="manzana" onclick="mostrartotem(id)">Consultar Manzana</li>
-            <li id="barrio" onclick="mostrartotem(id)">Consultar Barrio</li>
-            <!--<li id="referencia" onclick="mostrartotem(id)">Referencia Catastral</li>-->
-            <li id="localidad" onclick="mostrartotem(id)">Localidad</li>    
-            <li id="sitiototem" onclick="mostrartotem(id)">Consultar Sitio de Interés</li>
-        </ul>
+            <ul>
+                <li id="prediototem" onclick="mostrartotem(id)">Consultar Predio</li> 
+                <li id="manzana" onclick="mostrartotem(id)">Consultar Manzana</li>
+                <li id="barrio" onclick="mostrartotem(id)">Consultar Barrio</li>
+                <!--<li id="referencia" onclick="mostrartotem(id)">Referencia Catastral</li>-->
+                <li id="localidad" onclick="mostrartotem(id)">Localidad</li>    
+                <li id="sitiototem" onclick="mostrartotem(id)">Consultar Sitio de Interés</li>
+            </ul>
         </div>
     </div>
 
 
     <div id="menu_predio" hidden="hidden">
-         <img id="giftotem" src="image/avatar_03.gif" style="position:absolute; top:10em; left:0px; width:400px; height:auto;">
+        <img id="giftotem" src="image/avatar_03.gif" style="position:absolute; top:10em; left:0px; width:400px; height:auto;">
         <!--<div class="dropdown" style="position:absolute; top:8em; left:35em; display: block;">
             <button class="btn btn-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="width:15em; font-size: 56px;">Seleccione el tipo de busqueda
             <span class="caret"></span></button>
@@ -705,26 +705,25 @@
              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" style="color:white">Buscar Matricula Inmobiliaria</a></li>
            </ul>
         </div>-->
-            
-            <div class="demo-section k-content" style="position:absolute; top:8em; left:45em; width:40%;">
-                <ul id="fieldlist">
-                    <li>
-                        <select class="form-control" style="font-family:tahoma; color:white; font-size:30px; background-color:rgba(99,155,179,1);"  id="sel1" onchange="listaprediototem()">
-                            <option style="font-family:tahoma; font-size:30px; height:40%;">Seleccione el tipo de Busqueda</option>
-                            <option>Busqueda por Dirección</option>
-                            <option>Busqueda por Matricula Inmobiliaria</option>
-                            <option>Busqueda por Referencia Catastral</option>
-                        </select>
-                    </li>
-                    <li>
-                        <input id="products" disabled="disabled" style="width: 100%; margin-top:5em; padding-top:5em;"/>
-                    </li>
-                    
-                </ul>
-                 <div id="consultas_totemp" hidden="hidden"style="position: absolute;top:0px;left:0px; width:100%;">
-                 <div class="input-group textarea" style="width: 100%; margin-top:0em; padding-top:0em;"><input type="text" class="direccion" id="inputdirecciontotemp" style="position:absolute; top:0%; left:0%; width:100%; font-family:tahoma; font-size: 30px; margin-top:5em; padding-top:0.5em;" placeholder="Buscar direccion Ejemplo: C 19 22 21 ó K 24 56 32"><img id="buscar_dir" src="imagenes/buscar_dir.png" onclick="buscardirboton()" style="position:absolute; top:11em; right:0.5em; width:7%;"></div>
-                 </div>
-            </div>      
+
+        <div class="demo-section k-content" style="position:absolute; top:8em; left:45em; width:40%;">
+            <ul id="fieldlist">
+                <li>
+                    <select class="form-control" style="font-family:tahoma; color:white; font-size:30px; background-color:rgba(99,155,179,1);"  id="sel1" onchange="listaprediototem()">
+                        <option style="font-family:tahoma; font-size:30px; height:40%;">Seleccione el tipo de Busqueda</option>
+                        <option>Busqueda por Dirección</option>
+                        <option>Busqueda por Matricula Inmobiliaria</option>
+                        <option>Busqueda por Referencia Catastral</option>
+                    </select>
+                </li>
+                <li>
+                    <input id="products" disabled="disabled" style="width: 100%; margin-top:5em; padding-top:5em;"/>
+                    <div class="input-group textarea" style="width: 100%; margin-top:0em; padding-top:0em;"><input type="text" class="direccion" id="inputdirecciontotemp" style="position:absolute; top:0%; left:0%; width:100%; font-family:tahoma; font-size: 30px; margin-top:5em; padding-top:0.5em; display: none" placeholder="Buscar direccion Ejemplo: C 19 22 21 ó K 24 56 32"></div>
+                    <div class="input-group textarea" style="width: 100%; margin-top:0em; padding-top:0em;"><input type="text" class="direccion" id="inputrefcatotemp" style="position:absolute; top:0%; left:0%; width:100%; font-family:tahoma; font-size: 30px; margin-top:5em; padding-top:0.5em; display: none" placeholder="Buscar referncia Ejemplo: 010902700028000"><img id="buscar_ref" src="imagenes/buscar_dir.png" onclick="buscardirboton()" style="position:absolute; top:11em; right:0.5em; width:7%;"></div>
+                </li>
+
+            </ul>
+        </div>      
     </div>
 
 
@@ -741,23 +740,23 @@
     </div>
 
     <!--totempruebas-->
-     
-     
-<div id="pestanastotem" style="position:absolute;top:12em;left:10px;" class="container" hidden="hidden">
-  <!--<h3>INFORMACION DEL PREDIO</h3>-->
-  <ul class="nav nav-tabs" style="border-bottom: 0px; padding:0px;">
-    <li><a href="#" style="font-size:20px; color:white; background-color: #639BB3; width:6.5em;">Hacienda</a>      
-      </li>
-    <li><a href="#" style="font-size:20px; color:white; background-color: #a6a6a6; width:6.5em;">Catastro</a></li>
-    <li><a href="#" style="font-size:20px; color:white; background-color: #a6a6a6; width:6.5em;">Planeación</a></li>
-  </ul>
-  <br>
-  <div id="panel_atr_totem">
-        <table class="table table-striped table-bordered table-condensed" id="tblatt_totem_hacienda" style="background-color: #f2f2f2"></table>
-        <!--<button id="botonminimizar" hidden="hidden" onclick="ocultarpanelatributos();" style="background:url('./imagenes/minimizar.png'); background-repeat:no-repeat;"></button>-->
-      </div>
-</div>
- 
+
+
+    <div id="pestanastotem" style="position:absolute;top:12em;left:10px;" class="container" hidden="hidden">
+        <!--<h3>INFORMACION DEL PREDIO</h3>-->
+        <ul class="nav nav-tabs" style="border-bottom: 0px; padding:0px;">
+            <li><a href="#" style="font-size:20px; color:white; background-color: #639BB3; width:6.5em;">Hacienda</a>      
+            </li>
+            <li><a href="#" style="font-size:20px; color:white; background-color: #a6a6a6; width:6.5em;">Catastro</a></li>
+            <li><a href="#" style="font-size:20px; color:white; background-color: #a6a6a6; width:6.5em;">Planeación</a></li>
+        </ul>
+        <br>
+        <div id="panel_atr_totem">
+            <table class="table table-striped table-bordered table-condensed" id="tblatt_totem_hacienda" style="background-color: #f2f2f2"></table>
+            <!--<button id="botonminimizar" hidden="hidden" onclick="ocultarpanelatributos();" style="background:url('./imagenes/minimizar.png'); background-repeat:no-repeat;"></button>-->
+        </div>
+    </div>
+
 
 
     <div id="exp1" hidden="hidden" style="position:absolute; top:46%; left:48%; width:24%; background-color: rgba(229,227,230,0)">
