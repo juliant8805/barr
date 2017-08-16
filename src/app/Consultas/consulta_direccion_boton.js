@@ -1,6 +1,6 @@
 
 function buscardirboton(){
-    var values = document.getElementById("inputdirecciontotem").value;
+    var values = document.getElementById("inputdirecciontotemp").value;
     var codigoreg1 = search("preproduccion:buscar_dir_boton", values);
     //console.log(codigoreg1);
     if (codigoreg1.length === 0 || !(codigoreg1)){

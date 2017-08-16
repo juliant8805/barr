@@ -1,11 +1,8 @@
-filename = r'regarchivo1.csv'
-char1 = ';\n'
-char2 = '\n'
-filer = open(filename, "r")
+filer = open(r'regarchivo1.csv', "r")
 filew = open('reg2.csv', "w")
 buff = filer.read()
-rbuff = buff.replace(char1, char2)
-pbuff = rbuff.replace('\n\n', '')
+rbuff = buff.replace(';\n', '\n')
+pbuff = rbuff.replace('\n\n', '\n')
 rbuff = pbuff.replace('Ñ', 'N')
 pbuff = rbuff.replace('Á', 'A')
 rbuff = pbuff.replace('É', 'E')
@@ -18,12 +15,12 @@ rbuff = pbuff.replace('\0', '')
 filew.write(rbuff)
 filer.close()
 filew.close()
-filename = r'regarchivo0.csv'
-filer = open(filename, "r")
+
+filer = open(r'regarchivo0.csv', "r")
 filew = open('reg1.csv', "w")
 buff = filer.read()
-rbuff = buff.replace(char1, char2)
-pbuff = rbuff.replace('\n\n', '')
+rbuff = buff.replace(';\n', '\n')
+pbuff = rbuff.replace('\n\n', '\n')
 rbuff = pbuff.replace('Ñ', 'N')
 pbuff = rbuff.replace('Á', 'A')
 rbuff = pbuff.replace('É', 'E')
@@ -36,5 +33,3 @@ rbuff = pbuff.replace('\0', '')
 filew.write(rbuff)
 filer.close()
 filew.close()
-import os
-os.system("start C:\\Bitnami\\wampstack-5.6.30-2\\apache2\\htdocs\\barranquilla\\import\\files\\bat.bat")

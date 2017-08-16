@@ -133,7 +133,60 @@ $(document).on('ready', function () {
             var h = document.getElementsByTagName("head")[0];
             h || (h = document.body.parentNode.appendChild(document.createElement("head")));
             h.appendChild(g);
-        } else if (select[0][7] === true) {
+        } 
+        
+        else if (select[0][6] === true) {
+            document.getElementById("menu_circular").style.display = "block";
+            document.getElementById("tipo_usuario").style.display = "block";
+            document.getElementById("manual").style.display = "block";
+            document.getElementById("icono_matricula").style.display = "block";
+            document.getElementById("icono_codigo").style.display = "block";
+            document.getElementById("propietario").style.display = "block";
+            document.getElementById("cedula").style.display = "block";
+            document.getElementById("Rango Area Construccion").style.display = "block";
+            document.getElementById("Tipo Construccion").style.display = "block";
+            document.getElementById("predios_construidos").style.display = "block";
+            document.getElementById("Distrito vs Prestadores AAA").style.display = "block";
+            document.getElementById("plusvalia").style.display = "block";
+            document.getElementById("predios_actualizacion").style.display = "block";
+            document.getElementById("Rango Area Terreno").style.display = "block";
+            document.getElementById("Calidad Construcciones").style.display = "block";
+            document.getElementById("boton_geocoder").style.display = "block";
+            document.getElementById("boton_comparacion").style.display = "block";
+            //document.getElementById("Avaluo Catastral").style.display = "block";
+            modulo = "catastro";
+            //new
+            var b = document.createElement("script");
+            b.type = "text/javascript";
+            b.charset = "UTF-8";
+            b.src = "src/app/catastro/ConsultasCatastro.js";
+            var a = document.getElementsByTagName("head")[0];
+            a || (a = document.body.parentNode.appendChild(document.createElement("head")));
+            a.appendChild(b);
+            var d = document.createElement("script");
+            d.type = "text/javascript";
+            d.charset = "UTF-8";
+            d.src = "sql/js_sql.js";
+            var c = document.getElementsByTagName("head")[0];
+            c || (c = document.body.parentNode.appendChild(document.createElement("head")));
+            c.appendChild(d);
+            var e = document.createElement("script");
+            e.type = "text/javascript";
+            e.charset = "UTF-8";
+            e.src = "gesstor/gesstor.js";
+            var f = document.getElementsByTagName("head")[0];
+            f || (f = document.body.parentNode.appendChild(document.createElement("head")));
+            f.appendChild(e);
+            /*  var e = document.createElement("script");
+             e.type = "text/javascript";
+             e.charset = "UTF-8";
+             e.src = "src/app/app/Consultas/sinconsulta.js";
+             var f = document.getElementsByTagName("head")[0];
+             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
+             f.appendChild(f);*/
+        }
+        
+        else if (select[0][7] === true) {
             //document.getElementById("metrotel").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
@@ -171,7 +224,7 @@ $(document).on('ready', function () {
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
         } else if (select[0][16] === true) {
-            modulo = "planeacion";
+            modulo = "planeacionmisional";
             //var sele = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%'");
             //console.log(sele);
             /*if (parseInt(sele[0][0]) > 0) {
@@ -336,7 +389,71 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-        } else {
+        } 
+        
+        else if (select[0][17] === true) {
+            document.getElementById("Avaluo Catastral").style.display = "block";
+            document.getElementById("Incremento Avaluo").style.display = "block";
+            document.getElementById("menu_circular").style.display = "block";
+            document.getElementById("tipo_usuario").style.display = "block";
+            document.getElementById("manual").style.display = "block";
+            document.getElementById("Tipo de Contribuyente").style.display = "block";
+            //document.getElementById("predios_exentos_2016").style.display = "block";
+            document.getElementById("Tipo Propietario").style.display = "block";
+            document.getElementById("Impuesto Camara").style.display = "block";
+            //document.getElementById("icono_matricula").style.display = "block";
+            document.getElementById("icono_codigo").style.display = "block";
+            document.getElementById("propietario").style.display = "block";
+            document.getElementById("Tipo Construccion").style.display = "block";
+            document.getElementById("oficial_vs_AAA_uso").style.display = "block";
+            document.getElementById("uso_electricaribe").style.display = "block";
+            document.getElementById("boton_comparacion").style.display = "block";
+            document.getElementById("boton_geocoder").style.display = "block";
+            //hacienda consultas
+            modulo = "hacienda";
+            var b = document.createElement("script");
+            b.type = "text/javascript";
+            b.charset = "UTF-8";
+            b.src = "src/app/hacienda/ConsultasHacienda.js";
+            var a = document.getElementsByTagName("head")[0];
+            a || (a = document.body.parentNode.appendChild(document.createElement("head")));
+            a.appendChild(b);
+            var d = document.createElement("script");
+            d.type = "text/javascript";
+            d.charset = "UTF-8";
+            d.src = "sql/js_sql.js";
+            var c = document.getElementsByTagName("head")[0];
+            c || (c = document.body.parentNode.appendChild(document.createElement("head")));
+            c.appendChild(d);
+            var e = document.createElement("script");
+            e.type = "text/javascript";
+            e.charset = "UTF-8";
+            e.src = "gesstor/gesstor.js";
+            var f = document.getElementsByTagName("head")[0];
+            f || (f = document.body.parentNode.appendChild(document.createElement("head")));
+            f.appendChild(e);
+        }
+        
+        else if (select[0][19] === true) {
+            //totem pruebas
+            document.getElementById("lista_general").style.display = "none";
+            document.getElementById("barra_direccion").style.display = "none";
+            document.getElementById("tipo_usuario").style.display = "none";
+            document.getElementById("salida").style.display = "none";
+            document.getElementById("menu_totemp").style.display = "block"; 
+            modulo = "totempruebas";
+            var b = document.createElement("script");
+            b.type = "text/javascript";
+            b.charset = "UTF-8";
+            b.src = "src/app/Totems/Totems.js";
+            var a = document.getElementsByTagName("head")[0];
+            a || (a = document.body.parentNode.appendChild(document.createElement("head")));
+            a.appendChild(b);
+            //window.oncontextmenu = function() { return false; }
+        }
+        
+        
+        else {
             document.getElementById("lista_general").style.display = "none";
             document.getElementById("barra_direccion").style.display = "none";
             document.getElementById("tipo_usuario").style.display = "none";
@@ -579,7 +696,34 @@ function mostrartotem(consulta) {
         document.getElementById('consultas_totem').style.display = 'block';
         var x = document.getElementById("audiomanzana"); 
         x.play();    
-    } 
+    }
+     else if (consulta == 'prediototem')
+         {  
+            document.getElementById("inputsitiototem").value ="";
+            document.getElementById("inputmanzanatotem").value ="";
+            document.getElementById("inputlocalidadtotem").value ="";
+            document.getElementById("inputbarriototem").value ="";
+            document.getElementById("inputdirecciontotem").value =""; 
+            document.getElementById('inputlocalidadtotem').style.display = 'none';
+            document.getElementById('inputmanzanatotem').style.display = 'none';
+            document.getElementById('inputsitiototem').style.display = 'none';
+            document.getElementById('inputbarriototem').style.display = 'none';
+            document.getElementById('menu_totemp').style.display = 'none';
+            document.getElementById('menu_predio').style.display = 'block';
+            //document.getElementById('submenuprediototem').style.display = 'block';
+            //document.getElementById('inputdirecciontotem').style.display = 'block';
+            //document.getElementById('consultas_totem').style.display = 'block';
+         }
+       else if (consulta == 'direcciontotemp')
+           {
+               document.getElementById('menu_predio').style.display = 'none';
+               document.getElementById('submenuprediototem').style.display = 'none';
+               document.getElementById('inputdirecciontotem').style.display = 'none'; 
+               document.getElementById('menu_totemp').style.display = 'none'; 
+               document.getElementById('consultas_totem').style.display = 'none';
+               document.getElementById('consultas_totemp').style.display = 'block';        
+               
+           }
 }
 
 function menu_principal() {
@@ -1245,4 +1389,17 @@ function existeUrl(url) {
     http.open('HEAD', url, false);
     http.send();
     return http.status!=404;
+}
+
+function listaprediototem() {
+    var x = document.getElementById("sel1").value;
+    if (x == 'Busqueda por Dirección'){
+    document.getElementById("consultas_totemp").style.display = "block";
+   document.getElementById("products").style.display = "none";
+}
+}
+
+function cambiopest() {
+   varpest="hacienda";
+    document.getElementById("panel_atr_totem").style.display = "block";
 }

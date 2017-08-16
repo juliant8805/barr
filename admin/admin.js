@@ -10,173 +10,219 @@ window.onload = function () {
     if (select === undefined) {
         location.href = "barranquilla.html";
     }
+    var usuarios = search("preproduccion:consultausuarios");
+//console.log(usuarios);
+    $.ajax({
+        success: function (data) {
+            var table = document.getElementById("tblatt");
+            table.innerHTML = "";
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            cell1.colSpan = 4;
+            cell1.innerHTML = "<b>LISTADO DE USUARIOS</b>";
+            var select = [];
+            var sel = [];
+            var col3 = [];
+            var col4 = [];
+            select[0] = "<b>NOMBRE</b>";
+            sel[0] = "<b>USUARIO</b>";
+            col3[0] = "<b>e-mail</b>";
+            col4[0] = "<b>FECHA DE EXPIRACIÓN</b>";
+            for (i = 1; i < usuarios.length; i++) {
+                select[i] = usuarios[i]["0"];
+                sel[i] = usuarios[i][2];
+                col3[i] = usuarios[i][1];
+                col4[i] = usuarios[i][3];
+            }
+            for (i = 0; i < usuarios.length; i++) {
+                row = table.insertRow(i + 1);
+                cell1 = row.insertCell(0);
+                cell2 = row.insertCell(1);
+                cell3 = row.insertCell(2);
+                cell4 = row.insertCell(3);
+                cell1.innerHTML = select[i];
+                cell2.innerHTML = sel[i];
+                cell3.innerHTML = col3[i];
+                cell4.innerHTML = col4[i];
+            }
+        }
+    });
 };
-function changeprofile(c){
+function checksui() {
+    document.getElementById("planeacionConsul").className = 'btn btn-success';
+    document.getElementById("planeacion").className = 'btn btn-success';
+}
+
+function checkplaneacion() {
+    document.getElementById("sui").className = 'btn btn-warning';
+}
+
+function changeprofile(c) {
     //console.log(char);
-    if (document.getElementById("dependencia"+c).value !== ""){
+    if (document.getElementById("dependencia" + c).value !== "") {
         $("#labelP").removeAttr("hidden").show();
         $("#table").removeAttr("hidden").show();
-    }else if(document.getElementById("dependencia"+c).value === ""){
+    } else if (document.getElementById("dependencia" + c).value === "") {
         $("#labelP").hide();
         $("#table").hide();
     }
-    document.getElementById("catastro"+c).className = "btn btn-primary";
-    document.getElementById("catastroConsul"+c).className = "btn btn-success";
-    document.getElementById("sui"+c).className = "btn btn-warning";
-    document.getElementById("pot"+c).className = "btn btn-danger";
-    document.getElementById("planeacion"+c).className = "btn btn-primary";
-    document.getElementById("hacienda"+c).className = "btn btn-primary";
-    document.getElementById("sistemas"+c).className = "btn btn-warning";
-    document.getElementById("gestor"+c).className = "btn btn-danger";
-    document.getElementById("planeacionConsul"+c).className = "btn btn-success";
-    document.getElementById("haciendaConsul"+c).className = "btn btn-success";
-    if (document.getElementById("dependencia"+c).value === "Planeación"){
-        $("#th1"+c).hide();
-        $("#th11"+c).hide();
-        $("#th12"+c).hide();
-        $("#c11"+c).hide();
-        $("#c12"+c).hide();
-        $("#th2"+c).removeAttr("hidden").show();
-        $("#th21"+c).removeAttr("hidden").show();
-        $("#th22"+c).removeAttr("hidden").show();
-        $("#th23"+c).removeAttr("hidden").show();
-        $("#c21"+c).removeAttr("hidden").show();
-        $("#c22"+c).removeAttr("hidden").show();
-        $("#c23"+c).removeAttr("hidden").show();
-        $("#th3"+c).hide();
-        $("#th31"+c).hide();
-        $("#th32"+c).hide();
-        $("#c31"+c).hide();
-        $("#c32"+c).hide();
-        $("#th4"+c).hide();
-        $("#c4"+c).hide();
-        $("#th5"+c).hide();
-        $("#c5"+c).hide();
-        $("#th6"+c).hide();
-        $("#c6"+c).hide();
-    }else if (document.getElementById("dependencia"+c).value === "Hacienda"){
-        $("#th1"+c).hide();
-        $("#th11"+c).hide();
-        $("#th12"+c).hide();
-        $("#c11"+c).hide();
-        $("#c12"+c).hide();
-        $("#th2"+c).hide();
-        $("#th21"+c).hide();
-        $("#th22"+c).hide();
-        $("#th23"+c).hide();
-        $("#c21"+c).hide();
-        $("#c22"+c).hide();
-        $("#c23"+c).hide();
-        $("#th3"+c).removeAttr("hidden").show();
-        $("#th31"+c).removeAttr("hidden").show();
-        $("#th32"+c).removeAttr("hidden").show();
-        $("#c31"+c).hide();
-        $("#c32"+c).removeAttr("hidden").show();
-        $("#th4"+c).hide();
-        $("#c4"+c).removeAttr("hidden").show();
-        $("#th5"+c).hide();
-        $("#c5"+c).hide();
-        $("#th6"+c).hide();
-        $("#c6"+c).hide();
-    }else if (document.getElementById("dependencia"+c).value === "Catastro"){
-        $("#th1"+c).removeAttr("hidden").show();
-        $("#th11"+c).removeAttr("hidden").show();
-        $("#th12"+c).removeAttr("hidden").show();
-        $("#c11"+c).removeAttr("hidden").show();
-        $("#c12"+c).removeAttr("hidden").show();
-        $("#th2"+c).hide();
-        $("#th21"+c).hide();
-        $("#th22"+c).hide();
-        $("#th23"+c).hide();
-        $("#c21"+c).hide();
-        $("#c22"+c).hide();
-        $("#c23"+c).hide();
-        $("#th3"+c).hide();
-        $("#th31"+c).hide();
-        $("#th32"+c).hide();
-        $("#c31"+c).hide();
-        $("#c32"+c).hide();
-        $("#th4"+c).hide();
-        $("#c4"+c).hide();
-        $("#th5"+c).hide();
-        $("#c5"+c).hide();
-        $("#th6"+c).hide();
-        $("#c6"+c).hide();
-    }else if (document.getElementById("dependencia"+c).value === "GESSTOR"){
-        $("#th1"+c).hide();
-        $("#th11"+c).hide();
-        $("#th12"+c).hide();
-        $("#c11"+c).hide();
-        $("#c12"+c).hide();
-        $("#th2"+c).hide();
-        $("#th21"+c).hide();
-        $("#th22"+c).hide();
-        $("#th23"+c).hide();
-        $("#c21"+c).hide();
-        $("#c22"+c).hide();
-        $("#c23"+c).hide();
-        $("#th3"+c).hide();
-        $("#th31"+c).hide();
-        $("#th32"+c).hide();
-        $("#c31"+c).hide();
-        $("#c32"+c).hide();
-        $("#th4"+c).hide();
-        $("#c4"+c).hide();
-        $("#th5"+c).removeAttr("hidden").show();
-        $("#c5"+c).hide();
-        $("#th6"+c).hide();
-        $("#c6"+c).removeAttr("hidden").show();
-        document.getElementById("gestor"+c).className = "btn btn-danger active";
-    }else if (document.getElementById("dependencia"+c).value === "Sistemas"){
-        $("#th1"+c).hide();
-        $("#th11"+c).hide();
-        $("#th12"+c).hide();
-        $("#c11"+c).hide();
-        $("#c12"+c).hide();
-        $("#th2"+c).hide();
-        $("#th21"+c).hide();
-        $("#th22"+c).hide();
-        $("#th23"+c).hide();
-        $("#c21"+c).hide();
-        $("#c22"+c).hide();
-        $("#c23"+c).hide();
-        $("#th3"+c).hide();
-        $("#th31"+c).hide();
-        $("#th32"+c).hide();
-        $("#c31"+c).hide();
-        $("#c32"+c).hide();
-        $("#th4"+c).removeAttr("hidden").show();
-        $("#c4"+c).hide();
-        $("#th5"+c).hide();
-        $("#c5"+c).removeAttr("hidden").show();
-        $("#th6"+c).hide();
-        $("#c6"+c).hide();
-        document.getElementById("sistemas"+c).className = "btn btn-warning active";
-    }else if (document.getElementById("dependencia"+c).value === "Totem"){
-        $("#th1"+c).hide();
-        $("#th11"+c).hide();
-        $("#th12"+c).hide();
-        $("#c11"+c).hide();
-        $("#c12"+c).hide();
-        $("#th2"+c).hide();
-        $("#th21"+c).hide();
-        $("#th22"+c).hide();
-        $("#th23"+c).hide();
-        $("#c21"+c).hide();
-        $("#c22"+c).hide();
-        $("#c23"+c).hide();
-        $("#th3"+c).hide();
-        $("#th31"+c).hide();
-        $("#th32"+c).hide();
-        $("#c31"+c).removeAttr("hidden").show();
-        $("#c32"+c).hide();
-        $("#th4"+c).hide();
-        $("#c4"+c).hide();
-        $("#th5"+c).hide();
-        $("#c5"+c).hide();
-        $("#th6"+c).removeAttr("hidden").show();
-        $("#c6"+c).hide();
-        document.getElementById("pot"+c).className = "btn btn-danger active";
+    document.getElementById("catastro" + c).className = "btn btn-primary";
+    document.getElementById("catastroConsul" + c).className = "btn btn-success";
+    document.getElementById("sui" + c).className = "btn btn-warning";
+    document.getElementById("pot" + c).className = "btn btn-danger";
+    document.getElementById("planeacion" + c).className = "btn btn-primary";
+    document.getElementById("hacienda" + c).className = "btn btn-primary";
+    document.getElementById("sistemas" + c).className = "btn btn-warning";
+    document.getElementById("gestor" + c).className = "btn btn-danger";
+    document.getElementById("planeacionConsul" + c).className = "btn btn-success";
+    document.getElementById("haciendaConsul" + c).className = "btn btn-success";
+    if (document.getElementById("dependencia" + c).value === "Planeación") {
+        $("#th1" + c).hide();
+        $("#th11" + c).hide();
+        $("#th12" + c).hide();
+        $("#c11" + c).hide();
+        $("#c12" + c).hide();
+        $("#th2" + c).removeAttr("hidden").show();
+        $("#th21" + c).removeAttr("hidden").show();
+        $("#th22" + c).removeAttr("hidden").show();
+        $("#th23" + c).removeAttr("hidden").show();
+        $("#c21" + c).removeAttr("hidden").show();
+        $("#c22" + c).removeAttr("hidden").show();
+        $("#c23" + c).removeAttr("hidden").show();
+        $("#th3" + c).hide();
+        $("#th31" + c).hide();
+        $("#th32" + c).hide();
+        $("#c31" + c).hide();
+        $("#c32" + c).hide();
+        $("#th4" + c).hide();
+        $("#c4" + c).hide();
+        $("#th5" + c).hide();
+        $("#c5" + c).hide();
+        $("#th6" + c).hide();
+        $("#c6" + c).hide();
+    } else if (document.getElementById("dependencia" + c).value === "Hacienda") {
+        $("#th1" + c).hide();
+        $("#th11" + c).hide();
+        $("#th12" + c).hide();
+        $("#c11" + c).hide();
+        $("#c12" + c).hide();
+        $("#th2" + c).hide();
+        $("#th21" + c).hide();
+        $("#th22" + c).hide();
+        $("#th23" + c).hide();
+        $("#c21" + c).hide();
+        $("#c22" + c).hide();
+        $("#c23" + c).hide();
+        $("#th3" + c).removeAttr("hidden").show();
+        $("#th31" + c).removeAttr("hidden").show();
+        $("#th32" + c).removeAttr("hidden").show();
+        $("#c31" + c).hide();
+        $("#c32" + c).removeAttr("hidden").show();
+        $("#th4" + c).hide();
+        $("#c4" + c).removeAttr("hidden").show();
+        $("#th5" + c).hide();
+        $("#c5" + c).hide();
+        $("#th6" + c).hide();
+        $("#c6" + c).hide();
+    } else if (document.getElementById("dependencia" + c).value === "Catastro") {
+        $("#th1" + c).removeAttr("hidden").show();
+        $("#th11" + c).removeAttr("hidden").show();
+        $("#th12" + c).removeAttr("hidden").show();
+        $("#c11" + c).removeAttr("hidden").show();
+        $("#c12" + c).removeAttr("hidden").show();
+        $("#th2" + c).hide();
+        $("#th21" + c).hide();
+        $("#th22" + c).hide();
+        $("#th23" + c).hide();
+        $("#c21" + c).hide();
+        $("#c22" + c).hide();
+        $("#c23" + c).hide();
+        $("#th3" + c).hide();
+        $("#th31" + c).hide();
+        $("#th32" + c).hide();
+        $("#c31" + c).hide();
+        $("#c32" + c).hide();
+        $("#th4" + c).hide();
+        $("#c4" + c).hide();
+        $("#th5" + c).hide();
+        $("#c5" + c).hide();
+        $("#th6" + c).hide();
+        $("#c6" + c).hide();
+    } else if (document.getElementById("dependencia" + c).value === "GESSTOR") {
+        $("#th1" + c).hide();
+        $("#th11" + c).hide();
+        $("#th12" + c).hide();
+        $("#c11" + c).hide();
+        $("#c12" + c).hide();
+        $("#th2" + c).hide();
+        $("#th21" + c).hide();
+        $("#th22" + c).hide();
+        $("#th23" + c).hide();
+        $("#c21" + c).hide();
+        $("#c22" + c).hide();
+        $("#c23" + c).hide();
+        $("#th3" + c).hide();
+        $("#th31" + c).hide();
+        $("#th32" + c).hide();
+        $("#c31" + c).hide();
+        $("#c32" + c).hide();
+        $("#th4" + c).hide();
+        $("#c4" + c).hide();
+        $("#th5" + c).removeAttr("hidden").show();
+        $("#c5" + c).hide();
+        $("#th6" + c).hide();
+        $("#c6" + c).removeAttr("hidden").show();
+        document.getElementById("gestor" + c).className = "btn btn-danger active";
+    } else if (document.getElementById("dependencia" + c).value === "Sistemas") {
+        $("#th1" + c).hide();
+        $("#th11" + c).hide();
+        $("#th12" + c).hide();
+        $("#c11" + c).hide();
+        $("#c12" + c).hide();
+        $("#th2" + c).hide();
+        $("#th21" + c).hide();
+        $("#th22" + c).hide();
+        $("#th23" + c).hide();
+        $("#c21" + c).hide();
+        $("#c22" + c).hide();
+        $("#c23" + c).hide();
+        $("#th3" + c).hide();
+        $("#th31" + c).hide();
+        $("#th32" + c).hide();
+        $("#c31" + c).hide();
+        $("#c32" + c).hide();
+        $("#th4" + c).removeAttr("hidden").show();
+        $("#c4" + c).hide();
+        $("#th5" + c).hide();
+        $("#c5" + c).removeAttr("hidden").show();
+        $("#th6" + c).hide();
+        $("#c6" + c).hide();
+        document.getElementById("sistemas" + c).className = "btn btn-warning active";
+    } else if (document.getElementById("dependencia" + c).value === "Totem") {
+        $("#th1" + c).hide();
+        $("#th11" + c).hide();
+        $("#th12" + c).hide();
+        $("#c11" + c).hide();
+        $("#c12" + c).hide();
+        $("#th2" + c).hide();
+        $("#th21" + c).hide();
+        $("#th22" + c).hide();
+        $("#th23" + c).hide();
+        $("#c21" + c).hide();
+        $("#c22" + c).hide();
+        $("#c23" + c).hide();
+        $("#th3" + c).hide();
+        $("#th31" + c).hide();
+        $("#th32" + c).hide();
+        $("#c31" + c).removeAttr("hidden").show();
+        $("#c32" + c).hide();
+        $("#th4" + c).hide();
+        $("#c4" + c).hide();
+        $("#th5" + c).hide();
+        $("#c5" + c).hide();
+        $("#th6" + c).removeAttr("hidden").show();
+        $("#c6" + c).hide();
+        document.getElementById("pot" + c).className = "btn btn-danger active";
     }
 }
 function Sourceuser(requestString, responseFunc) {
@@ -441,7 +487,7 @@ function actualizar() {
                             <FeatureId fid="usuario.' + userid + '"/>\
                         </Filter>\
                         <Property>\
-                            <Name>totem</Name>\
+                            <Name>totem_hac</Name>\
                             <Value>' + potE + '</Value>\
                         </Property>\
                         <Filter>\
@@ -608,7 +654,7 @@ function guardar() {
      <catastrom>' + catastro + '</catastrom>\
      <catastroc>' + catastroConsul + '</catastroc>\
      <sui>' + sui + '</sui>\
-     <totem>' + pot + '</totem>\
+     <totem_hac>' + pot + '</totem_hac>\
      <planeacionm>' + planeacion + '</planeacionm>\
      <haciendam>' + hacienda + '</haciendam>\
      <sistemas>' + sistemas + '</sistemas>\

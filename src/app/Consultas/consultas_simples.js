@@ -291,7 +291,7 @@ function addressSource(requestString, responseFunc) {
         //console.log(4);
         var tempname = "preproduccion:codigo_autocompletar";
         var temp = "codigo";
-    } else if ($("#direccion")["0"].value !== "" || $("#inputdirecciontotem")["0"].value !== "") {
+    } else if ($("#direccion")["0"].value !== "" || $("#inputdirecciontotem")["0"].value !== "" || $("#inputdirecciontotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_direccion_registro1";
         var temp = "direccion";
     }
@@ -1195,6 +1195,8 @@ function addressSelect(event, ui) {
         else if (modulo === 'totem') {
         predio.setVisible(true);
         document.getElementById("consultas_totem").style.display = "none"; 
+        document.getElementById("consultas_totemp").style.display = "none"; 
+        document.getElementById("menu_predio").style.display = "none"; 
         $.ajax({
             url: url,
             success: function (data) {
@@ -1286,6 +1288,108 @@ function addressSelect(event, ui) {
                     document.getElementById("panel_atr").style.display = "block";
                     document.getElementById("botonminimizar").style.display = "block";
                     document.getElementById("panel_atr").style.maxHeight = "40em";
+
+                }
+            }
+
+        });
+
+    }
+    
+    
+    else if (modulo === 'totempruebas') {
+        predio.setVisible(true);
+        document.getElementById("consultas_totem").style.display = "none"; 
+        document.getElementById("consultas_totemp").style.display = "none"; 
+        document.getElementById("menu_predio").style.display = "none"; 
+        document.getElementById("pestanastotem").style.display = "block";
+        $.ajax({
+            url: url,
+            success: function (data) {
+                //console.log(data);
+                var features = format[0].readFeatures(data);
+                if (features && features.length >= 1 && features[0]) {
+                    var feature = features[0];
+                    var values = feature.getProperties();
+                    var table = document.getElementById("tblatt_totem_hacienda");
+                    table.innerHTML = "";
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    cell1.colSpan = 2;
+                    cell1.innerHTML = "<b>INFORMACION DEL PREDIO</b>";
+                    var select = [];
+                    var sel = [];
+                    var imag = [];
+                    var stv = [];
+                    var ig = [];
+                    var codfoto = values.codigo_ant.substring(0, 17);
+                    var ph = values.ph;
+                    if (ph >= 800){
+                    var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
+                    ref_cat =ref_cat["0"]["0"];
+                    }
+                    else{
+                    var ref_cat = values.ref_catastral; 
+                    }
+                    ref_cat = "'"+ref_cat+"'";
+                    var arregloDeSubCadenas = enviarRef(eval(ref_cat)); 
+                    //console.log(arregloDeSubCadenas[3]);
+                    if(arregloDeSubCadenas[3] == 0){
+                        var estado = "SIN PENDIENTES";
+                    }
+                    else{
+                        var estado = "TIENE DEUDA";
+                    }
+                            select[0] = "<b>Dirección</b>";
+                            select[1] = "<b>Referencia Catastral</b>";
+                            select[2] = "<b>Impuesto Predial</b>";
+                            select[3] = "<br><b>Enviar Reporte por email</b>";
+                            select[4] = "<b>Fotografias</b>";
+                            sel[0] = ui.item.direccionoriginal;
+                            sel[1] = arregloDeSubCadenas[0];       
+                            sel[2] = estado; 
+                            sel[3] = "<div><br><input type='text' style='width:100%;' id='inputemail' placeholder='Ejemplo: pepitoperez@gmail.com'><br><br><input type='button' class='btn btn-primary'' onclick='??()' id='envem' value='Enviar'></div>";
+                            sel[4] = document.createElement("a");
+                            sel[4].id = "img1";
+                            sel[4].style = "width: 30px; height: 50px;";
+                            sel[4].target = "marco";
+                            sel[4].setAttribute("onclick", "open_streetview()");
+                            sel[4].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            imag[4] = document.createElement("img");
+                            imag[4].id = "im1";
+                            imag[4].className = "pequeña";
+                            imag[4].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            stv[4] = document.createElement("a");
+                            stv[4].id = "imgstreet1";
+                            stv[4].target = "marco";
+                            stv[4].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                            stv[4].setAttribute("onclick", "open_streetview()");
+                            ig[4] = document.createElement("img");
+                            ig[4].src = "./imagenes/streetview.png";
+                            var campos = 4;
+                    
+                
+                    for (i = 0; i < select.length; i++) {
+                        row = table.insertRow(i + 1);
+                        cell1 = row.insertCell(0);
+                        cell2 = row.insertCell(1);
+                        cell1.innerHTML = select[i];
+
+                        if (i === campos) {
+                            cell2.appendChild(sel[i]);
+                            //cell2.appendChild(imag[i]);
+                            sel[i].appendChild(imag[i]);
+                            cell2.appendChild(stv[i]);
+                            //cell2.appendChild(ig[i]);
+                            stv[i].appendChild(ig[i]);
+
+                        } else {
+                            cell2.innerHTML = sel[i];
+                        }
+                    }
+                    document.getElementById("panel_atr_totem").style.display = "block";
+           
+                
 
                 }
             }
