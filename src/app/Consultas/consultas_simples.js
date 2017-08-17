@@ -265,7 +265,7 @@ $("#input_predioshasusos").autocomplete({
 });
 
 function addressSource(requestString, responseFunc) {
-    console.log(requestString);
+    //console.log(requestString);
     //globalstyle = "sinconsulta";
     predio.setVisible(true);
     //console.log(requestString);
@@ -414,7 +414,7 @@ function addressSource(requestString, responseFunc) {
                 }
             } else {
                 geojson.forEachFeature(function (feat) {
-                    console.log(feat);
+                    //console.log(feat);
                     arr.push({
                         label: feat.get(temp),
                         value: feat.get(temp),
@@ -439,6 +439,13 @@ function addressSource(requestString, responseFunc) {
                 try {
                     responseFunc(arr);
                 } catch (err) {
+                    var arreglado = {};
+                    arreglado.item = arr["0"];
+                    try {
+                        addressSelect(1, arreglado);
+                    } catch (err) {
+                        alert("GESSTOR INFORMA:</br></br>La información se encuentra en la base de datos alfanumérica y no en la base de datos geográfica, este caso se presenta por diferencia de vigencias de  información</br>");
+                    }
                 }
             } else {
                 if (temp === 'direcci') {
@@ -1287,7 +1294,7 @@ function addressSelect(event, ui) {
         });
 
     } else if (modulo === 'totempruebas') {
-        console.log("1");
+        //console.log("1");
         predio.setVisible(true);
         document.getElementById("consultas_totem").style.display = "none";
         //document.getElementById("consultas_totemp").style.display = "none"; 
@@ -1377,8 +1384,8 @@ function addressSelect(event, ui) {
                         }
                     }
                     document.getElementById("panel_atr_totem").style.display = "block";
-           
-                //Tabla Catastro      
+
+                    //Tabla Catastro      
                     var table = document.getElementById("tblatt_totem_catastro");
                     table.innerHTML = "";
                     var row = table.insertRow(0);
@@ -1393,53 +1400,52 @@ function addressSelect(event, ui) {
                     var codfoto = values.codigo_ant.substring(0, 17);
                     var direccion = ui.item.direccionoriginal;
                     var matricula = search("preproduccion:ConsultaMatriculaTotem", direccion);
-                    if (values.ph_calc==1){
+                    if (values.ph_calc == 1) {
                         var datoshaciendaph = search("preproduccion:ConsultaHaciendaPh", direccion);
                         var areaterreno = datoshaciendaph["0"][0];
                         var areaconstruida = datoshaciendaph["0"][1];
                         var impuestopredial = datoshaciendaph["0"][2];
-                        var avaluohacienda = datoshaciendaph["0"][3];   
-                    }
-                    else{
+                        var avaluohacienda = datoshaciendaph["0"][3];
+                    } else {
                         var areaterreno = values.area_terreno_hacienda;
-                        var areaconstruida = values.area_construida_hacienda; 
-                        var impuestopredial = values.impuesto_hacienda; 
+                        var areaconstruida = values.area_construida_hacienda;
+                        var impuestopredial = values.impuesto_hacienda;
                         var avaluohacienda = values.avaluo_hacienda;
-                    } 
-                   
-                            select[0] = "<b>Dirección</b>";
-                            select[1] = "<b>Referencia Catastral</b>";
-                            select[2] = "<b>Avalúo Catastral</b>";
-                            select[3] = "<b>Área de Terreno</b>";
-                            select[4] = "<b>Área Construida</b>";
-                            select[5] = "<b>Matricula Inmobiliaria</b>";
-                            select[6] = "<b>Fotografias</b>";
-                            sel[0] = ui.item.direccionoriginal;
-                            sel[1] = arregloDeSubCadenas[0];       
-                            sel[2] = avaluohacienda+" millones"; 
-                            sel[3] = areaterreno+" metros cuadrados";
-                            sel[4] = areaconstruida+" metros cuadrados";
-                            sel[5] = matricula;
-                            sel[6] = document.createElement("a");
-                            sel[6].id = "img1";
-                            sel[6].style = "width: 30px; height: 50px;";
-                            sel[6].target = "marco";
-                            sel[6].setAttribute("onclick", "open_streetview()");
-                            sel[6].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                            imag[6] = document.createElement("img");
-                            imag[6].id = "im1";
-                            imag[6].className = "pequeña";
-                            imag[6].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                            stv[6] = document.createElement("a");
-                            stv[6].id = "imgstreet1";
-                            stv[6].target = "marco";
-                            stv[6].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
-                            stv[6].setAttribute("onclick", "open_streetview()");
-                            ig[6] = document.createElement("img");
-                            ig[6].src = "./imagenes/streetview.png";
-                            var campos = 6;
-                    
-                
+                    }
+
+                    select[0] = "<b>Dirección</b>";
+                    select[1] = "<b>Referencia Catastral</b>";
+                    select[2] = "<b>Avalúo Catastral</b>";
+                    select[3] = "<b>Área de Terreno</b>";
+                    select[4] = "<b>Área Construida</b>";
+                    select[5] = "<b>Matricula Inmobiliaria</b>";
+                    select[6] = "<b>Fotografias</b>";
+                    sel[0] = ui.item.direccionoriginal;
+                    sel[1] = arregloDeSubCadenas[0];
+                    sel[2] = avaluohacienda + " millones";
+                    sel[3] = areaterreno + " metros cuadrados";
+                    sel[4] = areaconstruida + " metros cuadrados";
+                    sel[5] = matricula;
+                    sel[6] = document.createElement("a");
+                    sel[6].id = "img1";
+                    sel[6].style = "width: 30px; height: 50px;";
+                    sel[6].target = "marco";
+                    sel[6].setAttribute("onclick", "open_streetview()");
+                    sel[6].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    imag[6] = document.createElement("img");
+                    imag[6].id = "im1";
+                    imag[6].className = "pequeña";
+                    imag[6].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    stv[6] = document.createElement("a");
+                    stv[6].id = "imgstreet1";
+                    stv[6].target = "marco";
+                    stv[6].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                    stv[6].setAttribute("onclick", "open_streetview()");
+                    ig[6] = document.createElement("img");
+                    ig[6].src = "./imagenes/streetview.png";
+                    var campos = 6;
+
+
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
@@ -1457,7 +1463,7 @@ function addressSelect(event, ui) {
                         } else {
                             cell2.innerHTML = sel[i];
                         }
-                    }                 
+                    }
 
                 }
             }

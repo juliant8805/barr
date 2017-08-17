@@ -31,12 +31,11 @@ function buscardirboton() {
             type: "GET",
             dataType: "json",
             success: function (data, status, xhr) {
-                console.log(data);
+                //console.log(data);
                 var geojson = new ol.source.GeoJSON({
                     object: data
                 });
                 var arr = [];
-                console.log(data);
                 geojson.forEachFeature(function (feat) {
                     arr.push({
                         label: feat.get(temp),
