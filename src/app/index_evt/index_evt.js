@@ -432,7 +432,7 @@ $(document).on('ready', function () {
             document.getElementById("barra_direccion").style.display = "none";
             document.getElementById("tipo_usuario").style.display = "none";
             document.getElementById("salida").style.display = "none";
-            document.getElementById("menu_totemp").style.display = "block";  
+            document.getElementById("menu_totemp").style.display = "block";
             modulo = "totempruebas";
             var b = document.createElement("script");
             b.type = "text/javascript";
@@ -1354,30 +1354,25 @@ function habilitar(value)
         document.getElementById("botondoc").style.display = "none";
     }
 }
-
 function enviargesstor()
 {
     alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
 }
-
 function comparacion()
 {
     window.open('./control/comp/comp.html', '_blank');
 }
-
 function cerrardirec()
 {
     document.getElementById("consultas_totem").style.display = "none";
     document.getElementById("exp1").style.display = "none";
 }
-
 function existeUrl(url) {
     var http = new XMLHttpRequest();
     http.open('HEAD', url, false);
     http.send();
     return http.status !== 404;
 }
-
 function listaprediototem() {
     document.getElementById("inputdirecciontotemp").value = "";
     document.getElementById("inputrefcatotemp").value = "";
@@ -1386,7 +1381,7 @@ function listaprediototem() {
         document.getElementById("buscar_ref").style.display = "block";
         document.getElementById("inputdirecciontotemp").value = "";
         document.getElementById("inputrefcatotemp").value = "";
-        document.getElementById("inputrefcatotemp").value = "";     
+        document.getElementById("inputrefcatotemp").value = "";
         document.getElementById("products").style.display = "none";
         document.getElementById("inputdirecciontotemp").style.display = "block";
         document.getElementById("inputrefcatotemp").style.display = "none";
@@ -1394,7 +1389,7 @@ function listaprediototem() {
     } else if (x === 'Busqueda por Referencia Catastral') {
         document.getElementById("inputdirecciontotemp").value = "";
         document.getElementById("inputrefcatotemp").value = "";
-        document.getElementById("inputrefcatotemp").value = "";  
+        document.getElementById("inputrefcatotemp").value = "";
         document.getElementById("inputdirecciontotemp").style.display = "none";
         document.getElementById("products").style.display = "none";
         document.getElementById("inputrefcatotemp").style.display = "block";
@@ -1402,14 +1397,13 @@ function listaprediototem() {
     } else if (x === 'Busqueda por Matricula Inmobiliaria') {
         document.getElementById("inputdirecciontotemp").value = "";
         document.getElementById("inputrefcatotemp").value = "";
-        document.getElementById("inputrefcatotemp").value = "";  
+        document.getElementById("inputrefcatotemp").value = "";
         document.getElementById("inputdirecciontotemp").style.display = "none";
         document.getElementById("products").style.display = "none";
         document.getElementById("inputrefcatotemp").style.display = "none";
         document.getElementById("inputmatriculatotemp").style.display = "block";
-    } 
+    }
 }
-
 function cambiocatastro() {
     document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
     document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
@@ -1434,53 +1428,46 @@ function cambioplaneacion() {
     document.getElementById("panel_atr_totem_catastro").style.display = "none";
     document.getElementById("panel_atr_totem_planeacion").style.display = "block";
 }
-
-
 function menutotem() {
     document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
     document.getElementById("pesth").style.backgroundColor = "#639BB3";
     document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
     document.getElementById("panel_atr_totem").style.display = "block";
-    document.getElementById("panel_atr_totem_catastro").style.display = "none"
-    document.getElementById("inputdirecciontotemp").value ="";
+    document.getElementById("panel_atr_totem_catastro").style.display = "none";
+    document.getElementById("inputdirecciontotemp").value = "";
     document.getElementById("volvertotem").style.display = "none";
     document.getElementById("menu_totemp").style.display = "block";
 }
-
-function enviarcorreo(){
-    var correo = document.getElementById("inputemail").value;
-    alert("<br>La información fue enviada al correo electrónico:<br><br>"+correo+"<br><br><br><br>");
+function enviarcorreo(ref) {
+    //console.log(ref);
+    //var dat = enviarRef(ref);
+    //console.log(dat);
+    document.getElementById("inputemail").value;
+    var urls = "./mail/envio_mail.php";
+    var req = new ajaxRequest();
+    var url = urls + "?c=" + document.getElementById("inputemail").value + "&ref=" + ref;
+    req.open("GET", url, false);
+    req.send();
+    alert("<br>La información fue enviada al correo electrónico:<br><br>" + document.getElementById("inputemail").value + "<br><br><br><br>");
 }
-
-function volvertotemboton(){
+function volvertotemboton() {
     document.getElementById("volver").style.display = "none";
     document.getElementById("menu_predio").style.display = "none";
     document.getElementById("menu_totemp").style.display = "block";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function ajaxRequest() {
+    try {
+        var request = new XMLHttpRequest();
+    } catch (e1) {
+        try {
+            request = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e2) {
+            try {
+                request = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e3) {
+                request = false;
+            }
+        }
+    }
+    return request;
+}

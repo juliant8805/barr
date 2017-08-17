@@ -316,12 +316,10 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#cedul")["0"].value !== "") {
         var tempname = "preproduccion:buscar_cedula_reg";
         var temp = "cedula";
-    } 
-    else if ($("#inputrefcatotemp")["0"].value !== "") {
+    } else if ($("#inputrefcatotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_referencia_reg";
         var temp = "referencia_cat";
-    }
-    else if ($("#matricula")["0"].value !== "" || $("inputmatriculatotemp"["0"].value !== "")) {
+    } else if ($("#matricula")["0"].value !== "" || $("inputmatriculatotemp"["0"].value !== "")) {
         var tempname = "preproduccion:buscar_matricula_reg";
         var temp = "matricula";
     } else if ($("#address1")["0"].value !== "" || $("#inputsitiototem")["0"].value !== "") {
@@ -348,7 +346,7 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#input_predioshasusos")["0"].value !== "") {
         var tempname = "preproduccion:predioshasusos_autocompletar";
         var temp = "referencia";
-    } 
+    }
     var wfsParams = {
         service: 'WFS',
         version: '2.0.0',
@@ -1231,7 +1229,7 @@ function addressSelect(event, ui) {
                     var ph = values.ph;
                     if (ph >= 800) {
                         var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
-                        console.log(ui.item.direccionoriginal);
+                        //console.log(ui.item.direccionoriginal);
                         ref_cat = ref_cat["0"]["0"];
                     } else {
                         var ref_cat = values.ref_catastral;
@@ -1304,9 +1302,7 @@ function addressSelect(event, ui) {
 
         });
 
-    } 
-    
-        else if (modulo === 'totempruebas') {
+    } else if (modulo === 'totempruebas') {
         predio.setVisible(true);
         document.getElementById("consultas_totem").style.display = "none";
         document.getElementById("menu_totemp").style.display = "none";
@@ -1338,14 +1334,13 @@ function addressSelect(event, ui) {
                     var ph = values.ph;
                     if (ph >= 800) {
                         var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
-                        ref_cat = ref_cat["0"]["0"];
+                        var ref_c = ref_cat["0"]["0"];
                     } else {
-                        var ref_cat = values.ref_catastral;
+                        var ref_c = values.ref_catastral;
                     }
-                    ref_cat = "'" + ref_cat + "'";
-                    var arregloDeSubCadenas = enviarRef(eval(ref_cat));
-                    //console.log(arregloDeSubCadenas[3]);
-                    if (arregloDeSubCadenas[3] == 0) {
+                    var ref_c = "'" + ref_c + "'";
+                    var arregloDeSubCadenas = enviarRef(eval(ref_c));
+                     if (arregloDeSubCadenas[3] === 0) {
                         var estado = "SIN DEUDA";
                         //document.getElementById("debe").style.display = "none";
                         //document.getElementById("sindeuda").style.display = "block";
@@ -1354,20 +1349,22 @@ function addressSelect(event, ui) {
                         //document.getElementById("debe").style.display = "block";
                         //document.getElementById("sindeuda").style.display = "none";
                     }
+                    var men = arregloDeSubCadenas.join(",");
+                    men = men.replace(/ /g, "?");
+                    //console.log(men);
                     select[0] = "<b>Dirección</b>";
                     select[1] = "<b>Referencia Catastral</b>";
                     select[2] = "<b>Impuesto Predial</b>";
                     select[3] = "<br><b>Enviar Reporte por email</b>";
                     select[4] = "<b>Fotografias</b>";
                     sel[0] = ui.item.direccionoriginal;
-                    sel[1] = arregloDeSubCadenas[0];        
-                    if (estado == "DEUDOR"){
-                    sel[2] = estado + "&nbsp;&nbsp;<img id='debe' src='./imagenes/debe.png'>";
+                    sel[1] = arregloDeSubCadenas[0];
+                    if (estado === "DEUDOR") {
+                        sel[2] = estado + "&nbsp;&nbsp;<img id='debe' src='./imagenes/debe.png'>";
+                    } else {
+                        sel[2] = estado + "&nbsp;&nbsp;<img id='sindeuda' src='./imagenes/sin_deuda.png'>";
                     }
-                    else {
-                     sel[2] = estado + "&nbsp;&nbsp;<img id='sindeuda' src='./imagenes/sin_deuda.png'>";   
-                    }                
-                    sel[3] = "<div><br><input type='text' style='width:100%;' id='inputemail' placeholder='Ejemplo: pepitoperez@gmail.com'><br><br><input type='button' class='btn btn-primary'' onclick='enviarcorreo()' id='envem' value='Enviar'></div>";
+                    sel[3] = "<div><br><input type='email' style='width:100%;' id='inputemail' placeholder='Ejemplo: pepitoperez@gmail.com'><br><br><input type='button' class='btn btn-primary' onclick='enviarcorreo(this.id)' id=" + men + " value='Enviar'></div>";
                     sel[4] = document.createElement("a");
                     sel[4].id = "img1";
                     sel[4].style = "width: 30px; height: 50px;";
@@ -1386,7 +1383,7 @@ function addressSelect(event, ui) {
                     ig[4] = document.createElement("img");
                     ig[4].src = "./imagenes/streetview.png";
                     var campos = 4;
-    
+
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
@@ -1424,7 +1421,7 @@ function addressSelect(event, ui) {
                     var codigo = values.codigo;
                     var referencia = arregloDeSubCadenas[0];
                     var matricula = search("preproduccion:ConsultaMatriculaTotem", referencia);
-                    if (values.ph_calc==1){
+                    if (values.ph_calc == 1) {
                         var datoshaciendaph = search("preproduccion:ConsultaHaciendaPh", referencia);
                         var areaterreno = datoshaciendaph["0"][0];
                         var areaconstruida = datoshaciendaph["0"][1];
@@ -1435,40 +1432,40 @@ function addressSelect(event, ui) {
                         var areaconstruida = values.area_construida_hacienda;
                         var impuestopredial = values.impuesto_hacienda;
                         var avaluohacienda = values.avaluo_hacienda;
-                    } 
-                            select[0] = "<b>Dirección</b>";
-                            select[1] = "<b>Referencia Catastral</b>";
-                            select[2] = "<b>Avalúo Catastral</b>";
-                            select[3] = "<b>Área de Terreno</b>";
-                            select[4] = "<b>Área Construida</b>";
-                            select[5] = "<b>Matricula Inmobiliaria</b>";
-                            select[6] = "<b>Fotografias</b>";
-                            sel[0] = ui.item.direccionoriginal;
-                            sel[1] = arregloDeSubCadenas[0];       
-                            sel[2] = avaluohacienda; 
-                            sel[3] = areaterreno+" metros cuadrados";
-                            sel[4] = areaconstruida+" metros cuadrados";
-                            sel[5] = matricula;
-                            sel[6] = document.createElement("a");
-                            sel[6].id = "img1";
-                            sel[6].style = "width: 30px; height: 50px;";
-                            sel[6].target = "marco";
-                            sel[6].setAttribute("onclick", "open_streetview()");
-                            sel[6].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                            imag[6] = document.createElement("img");
-                            imag[6].id = "im1";
-                            imag[6].className = "pequeña";
-                            imag[6].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                            stv[6] = document.createElement("a");
-                            stv[6].id = "imgstreet1";
-                            stv[6].target = "marco";
-                            stv[6].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
-                            stv[6].setAttribute("onclick", "open_streetview()");
-                            ig[6] = document.createElement("img");
-                            ig[6].src = "./imagenes/streetview.png";
-                            var campos = 6;
-                    
-                
+                    }
+                    select[0] = "<b>Dirección</b>";
+                    select[1] = "<b>Referencia Catastral</b>";
+                    select[2] = "<b>Avalúo Catastral</b>";
+                    select[3] = "<b>Área de Terreno</b>";
+                    select[4] = "<b>Área Construida</b>";
+                    select[5] = "<b>Matricula Inmobiliaria</b>";
+                    select[6] = "<b>Fotografias</b>";
+                    sel[0] = ui.item.direccionoriginal;
+                    sel[1] = arregloDeSubCadenas[0];
+                    sel[2] = avaluohacienda;
+                    sel[3] = areaterreno + " metros cuadrados";
+                    sel[4] = areaconstruida + " metros cuadrados";
+                    sel[5] = matricula;
+                    sel[6] = document.createElement("a");
+                    sel[6].id = "img1";
+                    sel[6].style = "width: 30px; height: 50px;";
+                    sel[6].target = "marco";
+                    sel[6].setAttribute("onclick", "open_streetview()");
+                    sel[6].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    imag[6] = document.createElement("img");
+                    imag[6].id = "im1";
+                    imag[6].className = "pequeña";
+                    imag[6].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    stv[6] = document.createElement("a");
+                    stv[6].id = "imgstreet1";
+                    stv[6].target = "marco";
+                    stv[6].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                    stv[6].setAttribute("onclick", "open_streetview()");
+                    ig[6] = document.createElement("img");
+                    ig[6].src = "./imagenes/streetview.png";
+                    var campos = 6;
+
+
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
@@ -1488,8 +1485,8 @@ function addressSelect(event, ui) {
                         }
                     }
 
-                    
-                     //Tabla Planeacion    
+
+                    //Tabla Planeacion    
                     var table = document.getElementById("tblatt_totem_planeacion");
                     table.innerHTML = "";
                     var row = table.insertRow(0);
@@ -1506,49 +1503,48 @@ function addressSelect(event, ui) {
                     var codigo = values.codigo;
                     var referencia = arregloDeSubCadenas[0];
                     var matricula = search("preproduccion:ConsultaMatriculaTotem", referencia);
-                    if (values.ph_calc==1){
+                    if (values.ph_calc == 1) {
                         var datoshaciendaph = search("preproduccion:ConsultaHaciendaPh", referencia);
                         var areaterreno = datoshaciendaph["0"][0];
                         var areaconstruida = datoshaciendaph["0"][1];
                         var impuestopredial = datoshaciendaph["0"][2];
-                        var avaluohacienda = datoshaciendaph["0"][3];   
-                    }
-                    else{
+                        var avaluohacienda = datoshaciendaph["0"][3];
+                    } else {
                         var areaterreno = values.area_terreno_hacienda;
-                        var areaconstruida = values.area_construida_hacienda; 
-                        var impuestopredial = values.impuesto_hacienda; 
+                        var areaconstruida = values.area_construida_hacienda;
+                        var impuestopredial = values.impuesto_hacienda;
                         var avaluohacienda = values.avaluo_hacienda;
-                    } 
-                            select[0] = "<b>Dirección</b>";
-                            select[1] = "<b>Referencia Catastral</b>";
-                            select[2] = "<b>Uso de Suelo</b>";
-                            select[3] = "<b>Código Postal</b>";
-                            select[4] = "<b>Bien Patrimonial</b>";
-                            select[5] = "<b>Fotografias</b>";
-                            sel[0] = ui.item.direccionoriginal;
-                            sel[1] = arregloDeSubCadenas[0];       
-                            sel[2] = values.norma_uso; 
-                            sel[3] = "Pendiente";
-                            sel[4] = "Pendiente";
-                            sel[5] = document.createElement("a");
-                            sel[5].id = "img1";
-                            sel[5].style = "width: 30px; height: 50px;";
-                            sel[5].target = "marco";
-                            sel[5].setAttribute("onclick", "open_streetview()");
-                            sel[5].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                            imag[5] = document.createElement("img");
-                            imag[5].id = "im1";
-                            imag[5].className = "pequeña";
-                            imag[5].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
-                            stv[5] = document.createElement("a");
-                            stv[5].id = "imgstreet1";
-                            stv[5].target = "marco";
-                            stv[5].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
-                            stv[5].setAttribute("onclick", "open_streetview()");
-                            ig[5] = document.createElement("img");
-                            ig[5].src = "./imagenes/streetview.png";
-                            var campos = 5;        
-                
+                    }
+                    select[0] = "<b>Dirección</b>";
+                    select[1] = "<b>Referencia Catastral</b>";
+                    select[2] = "<b>Uso de Suelo</b>";
+                    select[3] = "<b>Código Postal</b>";
+                    select[4] = "<b>Bien Patrimonial</b>";
+                    select[5] = "<b>Fotografias</b>";
+                    sel[0] = ui.item.direccionoriginal;
+                    sel[1] = arregloDeSubCadenas[0];
+                    sel[2] = values.norma_uso;
+                    sel[3] = "Pendiente";
+                    sel[4] = "Pendiente";
+                    sel[5] = document.createElement("a");
+                    sel[5].id = "img1";
+                    sel[5].style = "width: 30px; height: 50px;";
+                    sel[5].target = "marco";
+                    sel[5].setAttribute("onclick", "open_streetview()");
+                    sel[5].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    imag[5] = document.createElement("img");
+                    imag[5].id = "im1";
+                    imag[5].className = "pequeña";
+                    imag[5].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    stv[5] = document.createElement("a");
+                    stv[5].id = "imgstreet1";
+                    stv[5].target = "marco";
+                    stv[5].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                    stv[5].setAttribute("onclick", "open_streetview()");
+                    ig[5] = document.createElement("img");
+                    ig[5].src = "./imagenes/streetview.png";
+                    var campos = 5;
+
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
@@ -1566,9 +1562,9 @@ function addressSelect(event, ui) {
                         } else {
                             cell2.innerHTML = sel[i];
                         }
-                    }                 
-                                   
-                    
+                    }
+
+
                 }
             }
 
