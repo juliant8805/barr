@@ -450,6 +450,13 @@ function addressSource(requestString, responseFunc) {
                 try {
                     responseFunc(arr);
                 } catch (err) {
+                    var arreglado = {};
+                    arreglado.item = arr["0"];
+                    try {
+                        addressSelect(1, arreglado);
+                    } catch (err) {
+                        alert("GESSTOR INFORMA:</br></br>La información se encuentra en la base de datos alfanumérica y no en la base de datos geográfica, este caso se presenta por diferencia de vigencias de  información</br>");
+                    }
                 }
             } else {
                 if (temp === 'direcci') {
@@ -1399,8 +1406,8 @@ function addressSelect(event, ui) {
                         }
                     }
                     document.getElementById("panel_atr_totem").style.display = "block";
-           
-                //Tabla Catastro      
+
+                    //Tabla Catastro      
                     var table = document.getElementById("tblatt_totem_catastro");
                     table.innerHTML = "";
                     var row = table.insertRow(0);
@@ -1422,12 +1429,11 @@ function addressSelect(event, ui) {
                         var areaterreno = datoshaciendaph["0"][0];
                         var areaconstruida = datoshaciendaph["0"][1];
                         var impuestopredial = datoshaciendaph["0"][2];
-                        var avaluohacienda = datoshaciendaph["0"][3];   
-                    }
-                    else{
+                        var avaluohacienda = datoshaciendaph["0"][3];
+                    } else {
                         var areaterreno = values.area_terreno_hacienda;
-                        var areaconstruida = values.area_construida_hacienda; 
-                        var impuestopredial = values.impuesto_hacienda; 
+                        var areaconstruida = values.area_construida_hacienda;
+                        var impuestopredial = values.impuesto_hacienda;
                         var avaluohacienda = values.avaluo_hacienda;
                     } 
                             select[0] = "<b>Dirección</b>";
@@ -1480,7 +1486,7 @@ function addressSelect(event, ui) {
                         } else {
                             cell2.innerHTML = sel[i];
                         }
-                    }                 
+                    }
 
                     
                      //Tabla Planeacion    
