@@ -248,6 +248,16 @@ $("#matricula").autocomplete({
     source: addressSource,
     select: addressSelect
 });
+$("#inputmatriculatotemp").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: addressSelect
+});
+$("#inputrefcatotemp").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: addressSelect
+});
 $("#propietarios").autocomplete({
     minLength: 1,
     source: addressSource,
@@ -265,7 +275,7 @@ $("#input_predioshasusos").autocomplete({
 });
 
 function addressSource(requestString, responseFunc) {
-    console.log(requestString);
+    //console.log(requestString);
     //globalstyle = "sinconsulta";
     predio.setVisible(true);
     //console.log(requestString);
@@ -306,7 +316,12 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#cedul")["0"].value !== "") {
         var tempname = "preproduccion:buscar_cedula_reg";
         var temp = "cedula";
-    } else if ($("#matricula")["0"].value !== "") {
+    } 
+    else if ($("#inputrefcatotemp")["0"].value !== "") {
+        var tempname = "preproduccion:buscar_referencia_reg";
+        var temp = "referencia_cat";
+    }
+    else if ($("#matricula")["0"].value !== "" || $("inputmatriculatotemp"["0"].value !== "")) {
         var tempname = "preproduccion:buscar_matricula_reg";
         var temp = "matricula";
     } else if ($("#address1")["0"].value !== "" || $("#inputsitiototem")["0"].value !== "") {
@@ -333,10 +348,7 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#input_predioshasusos")["0"].value !== "") {
         var tempname = "preproduccion:predioshasusos_autocompletar";
         var temp = "referencia";
-    } else if (document.getElementById("inputrefcatotemp").value !== "") {
-        var tempname = "preproduccion:buscar_referencia_reg";
-        var temp = "referencia_cat";
-    }
+    } 
     var wfsParams = {
         service: 'WFS',
         version: '2.0.0',
@@ -414,7 +426,6 @@ function addressSource(requestString, responseFunc) {
                 }
             } else {
                 geojson.forEachFeature(function (feat) {
-                    console.log(feat);
                     arr.push({
                         label: feat.get(temp),
                         value: feat.get(temp),
@@ -1286,10 +1297,13 @@ function addressSelect(event, ui) {
 
         });
 
-    } else if (modulo === 'totempruebas') {
-        console.log("1");
+    } 
+    
+        else if (modulo === 'totempruebas') {
         predio.setVisible(true);
         document.getElementById("consultas_totem").style.display = "none";
+        document.getElementById("menu_totemp").style.display = "none";
+        document.getElementById("volver").style.display = "none";
         //document.getElementById("consultas_totemp").style.display = "none"; 
         document.getElementById("menu_predio").style.display = "none";
         document.getElementById("pestanastotem").style.display = "block";
@@ -1325,9 +1339,13 @@ function addressSelect(event, ui) {
                     var arregloDeSubCadenas = enviarRef(eval(ref_cat));
                     //console.log(arregloDeSubCadenas[3]);
                     if (arregloDeSubCadenas[3] == 0) {
-                        var estado = "SIN PENDIENTES";
+                        var estado = "SIN DEUDA";
+                        //document.getElementById("debe").style.display = "none";
+                        //document.getElementById("sindeuda").style.display = "block";
                     } else {
-                        var estado = "TIENE DEUDA";
+                        var estado = "DEUDOR";
+                        //document.getElementById("debe").style.display = "block";
+                        //document.getElementById("sindeuda").style.display = "none";
                     }
                     select[0] = "<b>Dirección</b>";
                     select[1] = "<b>Referencia Catastral</b>";
@@ -1335,9 +1353,14 @@ function addressSelect(event, ui) {
                     select[3] = "<br><b>Enviar Reporte por email</b>";
                     select[4] = "<b>Fotografias</b>";
                     sel[0] = ui.item.direccionoriginal;
-                    sel[1] = arregloDeSubCadenas[0];
-                    sel[2] = estado;
-                    sel[3] = "<div><br><input type='text' style='width:100%;' id='inputemail' placeholder='Ejemplo: pepitoperez@gmail.com'><br><br><input type='button' class='btn btn-primary'' onclick='??()' id='envem' value='Enviar'></div>";
+                    sel[1] = arregloDeSubCadenas[0];        
+                    if (estado == "DEUDOR"){
+                    sel[2] = estado + "&nbsp;&nbsp;<img id='debe' src='./imagenes/debe.png'>";
+                    }
+                    else {
+                     sel[2] = estado + "&nbsp;&nbsp;<img id='sindeuda' src='./imagenes/sin_deuda.png'>";   
+                    }                
+                    sel[3] = "<div><br><input type='text' style='width:100%;' id='inputemail' placeholder='Ejemplo: pepitoperez@gmail.com'><br><br><input type='button' class='btn btn-primary'' onclick='enviarcorreo()' id='envem' value='Enviar'></div>";
                     sel[4] = document.createElement("a");
                     sel[4].id = "img1";
                     sel[4].style = "width: 30px; height: 50px;";
@@ -1356,8 +1379,7 @@ function addressSelect(event, ui) {
                     ig[4] = document.createElement("img");
                     ig[4].src = "./imagenes/streetview.png";
                     var campos = 4;
-
-
+    
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
@@ -1392,9 +1414,11 @@ function addressSelect(event, ui) {
                     var ig = [];
                     var codfoto = values.codigo_ant.substring(0, 17);
                     var direccion = ui.item.direccionoriginal;
-                    var matricula = search("preproduccion:ConsultaMatriculaTotem", direccion);
+                    var codigo = values.codigo;
+                    var referencia = arregloDeSubCadenas[0];
+                    var matricula = search("preproduccion:ConsultaMatriculaTotem", referencia);
                     if (values.ph_calc==1){
-                        var datoshaciendaph = search("preproduccion:ConsultaHaciendaPh", direccion);
+                        var datoshaciendaph = search("preproduccion:ConsultaHaciendaPh", referencia);
                         var areaterreno = datoshaciendaph["0"][0];
                         var areaconstruida = datoshaciendaph["0"][1];
                         var impuestopredial = datoshaciendaph["0"][2];
@@ -1406,7 +1430,6 @@ function addressSelect(event, ui) {
                         var impuestopredial = values.impuesto_hacienda; 
                         var avaluohacienda = values.avaluo_hacienda;
                     } 
-                   
                             select[0] = "<b>Dirección</b>";
                             select[1] = "<b>Referencia Catastral</b>";
                             select[2] = "<b>Avalúo Catastral</b>";
@@ -1416,7 +1439,7 @@ function addressSelect(event, ui) {
                             select[6] = "<b>Fotografias</b>";
                             sel[0] = ui.item.direccionoriginal;
                             sel[1] = arregloDeSubCadenas[0];       
-                            sel[2] = avaluohacienda+" millones"; 
+                            sel[2] = avaluohacienda; 
                             sel[3] = areaterreno+" metros cuadrados";
                             sel[4] = areaconstruida+" metros cuadrados";
                             sel[5] = matricula;
@@ -1459,6 +1482,87 @@ function addressSelect(event, ui) {
                         }
                     }                 
 
+                    
+                     //Tabla Planeacion    
+                    var table = document.getElementById("tblatt_totem_planeacion");
+                    table.innerHTML = "";
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    cell1.colSpan = 2;
+                    cell1.innerHTML = "<b>INFORMACION DEL PREDIO</b>";
+                    var select = [];
+                    var sel = [];
+                    var imag = [];
+                    var stv = [];
+                    var ig = [];
+                    var codfoto = values.codigo_ant.substring(0, 17);
+                    var direccion = ui.item.direccionoriginal;
+                    var codigo = values.codigo;
+                    var referencia = arregloDeSubCadenas[0];
+                    var matricula = search("preproduccion:ConsultaMatriculaTotem", referencia);
+                    if (values.ph_calc==1){
+                        var datoshaciendaph = search("preproduccion:ConsultaHaciendaPh", referencia);
+                        var areaterreno = datoshaciendaph["0"][0];
+                        var areaconstruida = datoshaciendaph["0"][1];
+                        var impuestopredial = datoshaciendaph["0"][2];
+                        var avaluohacienda = datoshaciendaph["0"][3];   
+                    }
+                    else{
+                        var areaterreno = values.area_terreno_hacienda;
+                        var areaconstruida = values.area_construida_hacienda; 
+                        var impuestopredial = values.impuesto_hacienda; 
+                        var avaluohacienda = values.avaluo_hacienda;
+                    } 
+                            select[0] = "<b>Dirección</b>";
+                            select[1] = "<b>Referencia Catastral</b>";
+                            select[2] = "<b>Uso de Suelo</b>";
+                            select[3] = "<b>Código Postal</b>";
+                            select[4] = "<b>Bien Patrimonial</b>";
+                            select[5] = "<b>Fotografias</b>";
+                            sel[0] = ui.item.direccionoriginal;
+                            sel[1] = arregloDeSubCadenas[0];       
+                            sel[2] = values.norma_uso; 
+                            sel[3] = "Pendiente";
+                            sel[4] = "Pendiente";
+                            sel[5] = document.createElement("a");
+                            sel[5].id = "img1";
+                            sel[5].style = "width: 30px; height: 50px;";
+                            sel[5].target = "marco";
+                            sel[5].setAttribute("onclick", "open_streetview()");
+                            sel[5].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            imag[5] = document.createElement("img");
+                            imag[5].id = "im1";
+                            imag[5].className = "pequeña";
+                            imag[5].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                            stv[5] = document.createElement("a");
+                            stv[5].id = "imgstreet1";
+                            stv[5].target = "marco";
+                            stv[5].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                            stv[5].setAttribute("onclick", "open_streetview()");
+                            ig[5] = document.createElement("img");
+                            ig[5].src = "./imagenes/streetview.png";
+                            var campos = 5;        
+                
+                    for (i = 0; i < select.length; i++) {
+                        row = table.insertRow(i + 1);
+                        cell1 = row.insertCell(0);
+                        cell2 = row.insertCell(1);
+                        cell1.innerHTML = select[i];
+
+                        if (i === campos) {
+                            cell2.appendChild(sel[i]);
+                            //cell2.appendChild(imag[i]);
+                            sel[i].appendChild(imag[i]);
+                            cell2.appendChild(stv[i]);
+                            //cell2.appendChild(ig[i]);
+                            stv[i].appendChild(ig[i]);
+
+                        } else {
+                            cell2.innerHTML = sel[i];
+                        }
+                    }                 
+                                   
+                    
                 }
             }
 

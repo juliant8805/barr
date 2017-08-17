@@ -1284,7 +1284,7 @@ select{
 #panel_atr_totem{
     position:absolute;
     width:43em;
-    height:28em;
+    height:35em;
     top:4em;
     left:0em;  
     font-size:11px;
@@ -1292,6 +1292,17 @@ select{
 }
 
 #panel_atr_totem_catastro
+{
+    position:absolute;
+    width:43em;
+    height:28em;
+    top:4em;
+    left:0em;  
+    font-size:11px;
+    overflow:scroll;
+}
+
+#panel_atr_totem_planeacion
 {
     position:absolute;
     width:43em;

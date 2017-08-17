@@ -13,7 +13,7 @@ var ortofotourbana = new ol.layer.Tile({
     visible: true,
     minResolution:0,
     maxResolution:20,
-    opacity:0,
+    opacity:0.8,
     preload: Infinity,
     source: new ol.source.XYZ({
         url: "http://www.gesstor.com/ortofoto/{z}/{x}/{y}.png"
@@ -39,19 +39,19 @@ var streetmap = new ol.layer.Tile({
 });
 
 var bingarranque = new ol.layer.Image({
-                            visible: true,
-                            minResolution:20,
-                            opacity: 1,
-                            preload: Infinity,
-                            title: "BING",    
-                            source: new ol.source.ImageStatic({
-                                url: "/imagenes_base/Bing.png",
-                                projection: 'EPSG:3857',
-                                alwaysInRange: true,
-                                //imageSize: [1888, 940],
-                                imageExtent: [-8377346.467879, 1202426.862044, -8279545.277057, 1256384.963248]
-                            })
-                        });
+    visible: true,
+     minResolution:20,
+    opacity: 1,
+    preload: Infinity,
+    title: "BING",    
+    source: new ol.source.ImageStatic({
+    url: "/imagenes_base/Bing.png",
+    projection: 'EPSG:3857',
+    alwaysInRange: true,
+    //imageSize: [1888, 940],
+    imageExtent: [-8377346.467879, 1202426.862044, -8279545.277057, 1256384.963248]
+         })
+    });
 
 var bing = new ol.layer.Tile({
     visible: false,

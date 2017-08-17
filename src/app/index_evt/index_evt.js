@@ -694,7 +694,9 @@ function mostrartotem(consulta) {
         document.getElementById('inputsitiototem').style.display = 'none';
         document.getElementById('inputbarriototem').style.display = 'none';
         document.getElementById('menu_totemp').style.display = 'none';
+        document.getElementById('buscar_ref').style.display = 'none';
         document.getElementById('menu_predio').style.display = 'block';
+        document.getElementById("volver").style.display = 'block';
         //document.getElementById('submenuprediototem').style.display = 'block';
         //document.getElementById('inputdirecciontotem').style.display = 'block';
         //document.getElementById('consultas_totem').style.display = 'block';
@@ -1381,14 +1383,31 @@ function listaprediototem() {
     document.getElementById("inputrefcatotemp").value = "";
     var x = document.getElementById("sel1").value;
     if (x === 'Busqueda por Dirección') {
+        document.getElementById("buscar_ref").style.display = "block";
+        document.getElementById("inputdirecciontotemp").value = "";
+        document.getElementById("inputrefcatotemp").value = "";
+        document.getElementById("inputrefcatotemp").value = "";     
         document.getElementById("products").style.display = "none";
         document.getElementById("inputdirecciontotemp").style.display = "block";
         document.getElementById("inputrefcatotemp").style.display = "none";
+        document.getElementById("inputrefcatotemp").style.display = "none";
     } else if (x === 'Busqueda por Referencia Catastral') {
+        document.getElementById("inputdirecciontotemp").value = "";
+        document.getElementById("inputrefcatotemp").value = "";
+        document.getElementById("inputrefcatotemp").value = "";  
         document.getElementById("inputdirecciontotemp").style.display = "none";
         document.getElementById("products").style.display = "none";
         document.getElementById("inputrefcatotemp").style.display = "block";
-    }
+        document.getElementById("inputmatriculatotemp").style.display = "none";
+    } else if (x === 'Busqueda por Matricula Inmobiliaria') {
+        document.getElementById("inputdirecciontotemp").value = "";
+        document.getElementById("inputrefcatotemp").value = "";
+        document.getElementById("inputrefcatotemp").value = "";  
+        document.getElementById("inputdirecciontotemp").style.display = "none";
+        document.getElementById("products").style.display = "none";
+        document.getElementById("inputrefcatotemp").style.display = "none";
+        document.getElementById("inputmatriculatotemp").style.display = "block";
+    } 
 }
 
 function cambiocatastro() {
@@ -1396,6 +1415,7 @@ function cambiocatastro() {
     document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
     document.getElementById("pestc").style.backgroundColor = "#639BB3";
     document.getElementById("panel_atr_totem").style.display = "none";
+    document.getElementById("panel_atr_totem_planeacion").style.display = "none";
     document.getElementById("panel_atr_totem_catastro").style.display = "block";
 }
 function cambiohacienda() {
@@ -1404,6 +1424,15 @@ function cambiohacienda() {
     document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
     document.getElementById("panel_atr_totem").style.display = "block";
     document.getElementById("panel_atr_totem_catastro").style.display = "none";
+    document.getElementById("panel_atr_totem_planeacion").style.display = "none";
+}
+function cambioplaneacion() {
+    document.getElementById("pestp").style.backgroundColor = "#639BB3";
+    document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
+    document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
+    document.getElementById("panel_atr_totem").style.display = "none";
+    document.getElementById("panel_atr_totem_catastro").style.display = "none";
+    document.getElementById("panel_atr_totem_planeacion").style.display = "block";
 }
 
 
@@ -1418,10 +1447,16 @@ function menutotem() {
     document.getElementById("menu_totemp").style.display = "block";
 }
 
+function enviarcorreo(){
+    var correo = document.getElementById("inputemail").value;
+    alert("<br>La información fue enviada al correo electrónico:<br><br>"+correo+"<br><br><br><br>");
+}
 
-
-
-
+function volvertotemboton(){
+    document.getElementById("volver").style.display = "none";
+    document.getElementById("menu_predio").style.display = "none";
+    document.getElementById("menu_totemp").style.display = "block";
+}
 
 
 
