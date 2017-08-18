@@ -9,7 +9,6 @@ var BarrioStyle = new ol.style.Style({
     /*fill : new ol.style.Fill({
      color : "rgba(0,0,255,0.7)"
      })*/
-
     text: new ol.style.Text({
         font: '12px helvetica,sans-serif',
         scale: 1.5,
@@ -45,8 +44,6 @@ var PuntoStyle = new ol.style.Style({
         color: "rgba(0,255,255,0.3)"
     })
 });
-
-
 // A point marker style using a flag image as the icon.
 var flagStyle = new ol.style.Style({
     image: new ol.style.Icon({
@@ -273,7 +270,6 @@ $("#input_predioshasusos").autocomplete({
     source: addressSource,
     select: predioshasusosSelect
 });
-
 function addressSource(requestString, responseFunc) {
     //console.log(requestString);
     //globalstyle = "sinconsulta";
@@ -294,8 +290,6 @@ function addressSource(requestString, responseFunc) {
     });
     // Set up the parameters for our WFS call to the address_autocomplete
     // web service.
-
-
     //busqueda direccion y codigo en reg
     if (requestString.val === "direccion") {
         //console.log(4);
@@ -305,7 +299,6 @@ function addressSource(requestString, responseFunc) {
         var tempname = "preproduccion:buscar_direccion_registro1";
         var temp = "direccion";
     }
-
     //busqueda cod en reg 
     else if ($("#codigo")["0"].value !== "") {
         var tempname = "preproduccion:buscar_cod_reg";
@@ -507,10 +500,7 @@ function addressSource(requestString, responseFunc) {
                             document.getElementById("manzana").value = "";
                             document.getElementById("input_ladomanzana").value = "";
                             document.getElementById("input_predioshasusos").value = "";
-
                         }
-
-                        // responseFunc(arr);    
                     }
                 }
             }
@@ -643,13 +633,11 @@ function addressSelect(event, ui) {
                     stv[7].setAttribute("onclick", "open_streetview()");
                     ig[7] = document.createElement("img");
                     ig[7].src = "./imagenes/streetview.png";
-
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
                         cell2 = row.insertCell(1);
                         cell1.innerHTML = select[i];
-
                         if (i === 7) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
@@ -657,7 +645,6 @@ function addressSelect(event, ui) {
                             cell2.appendChild(stv[i]);
                             //cell2.appendChild(ig[i]);
                             stv[i].appendChild(ig[i]);
-
                         } else {
                             cell2.innerHTML = sel[i];
                         }
@@ -690,7 +677,6 @@ function addressSelect(event, ui) {
                         cell1.innerHTML = "<b>PROPIETARIO</b>";
                         var select = [];
                         var sel = [];
-
                         for (i = 0; i < cantprop.length; i++) {
                             var tablaph = ("<table max-width=20 border=1>");
                             for (i = 0; i < cantprop.length; i++) {
@@ -706,7 +692,6 @@ function addressSelect(event, ui) {
                         sel[0] = dataprop;
                         sel[1] = cantprop.length;
                         sel[2] = tablaph;
-
                         for (i = 0; i < select.length; i++) {
                             row = table.insertRow(i + 1);
                             cell1 = row.insertCell(0);
@@ -719,7 +704,6 @@ function addressSelect(event, ui) {
                                 cell2.innerHTML = sel[i];
                             }
                         }
-
                     } else {
                         var feature = features[0];
                         var values = feature.getProperties();
@@ -758,7 +742,6 @@ function addressSelect(event, ui) {
                             }
                             tablaprop += ("</table>");
                         }
-
                         select[0] = "<b>Codigo Manzana</b>";
                         select[1] = "<b>Codigo Catastral Nuevo</b>";
                         select[2] = "<b>Codigo Catastral Anterior</b>";
@@ -807,13 +790,11 @@ function addressSelect(event, ui) {
                         stv[15].setAttribute("onclick", "open_streetview()");
                         ig[15] = document.createElement("img");
                         ig[15].src = "./imagenes/streetview.png";
-
                         for (i = 0; i < select.length; i++) {
                             row = table.insertRow(i + 1);
                             cell1 = row.insertCell(0);
                             cell2 = row.insertCell(1);
                             cell1.innerHTML = select[i];
-
                             if (i === 15) {
                                 cell2.appendChild(sel[i]);
                                 //cell2.appendChild(imag[i]);
@@ -856,7 +837,6 @@ function addressSelect(event, ui) {
                         cell1.innerHTML = "<b>PROPIETARIO</b>";
                         var select = [];
                         var sel = [];
-
                         for (i = 0; i < cantprop.length; i++) {
                             var tablaph = ("<table max-width=20 border=1>");
                             for (i = 0; i < cantprop.length; i++) {
@@ -872,7 +852,6 @@ function addressSelect(event, ui) {
                         sel[0] = dataprop;
                         sel[1] = cantprop.length;
                         sel[2] = tablaph;
-
                         for (i = 0; i < select.length; i++) {
                             row = table.insertRow(i + 1);
                             cell1 = row.insertCell(0);
@@ -930,51 +909,39 @@ function addressSelect(event, ui) {
                         if (estacueducto == 11) {
                             estacueducto = 'Industria (11)';
                         }
-                        ;
                         if (estacueducto == 12) {
                             estacueducto = 'Comercial (12)';
                         }
-                        ;
                         if (estacueducto == 13) {
                             estacueducto = 'Especial (13)';
                         }
-                        ;
                         if (estacueducto == 14) {
                             estacueducto = 'Oficial (14)';
                         }
-                        ;
                         if (estalcantarillado == 11) {
                             estalcantarillado = 'Industria (11)';
                         }
-                        ;
                         if (estalcantarillado == 12) {
                             estalcantarillado = 'Comercial (12)';
                         }
-                        ;
                         if (estalcantarillado == 13) {
                             estalcantarillado = 'Especial (13)';
                         }
-                        ;
                         if (estalcantarillado == 14) {
                             estalcantarillado = 'Oficial (14)';
                         }
-                        ;
                         if (estaseo == 11) {
                             estaseo = 'Industria (11)';
                         }
-                        ;
                         if (estaseo == 12) {
                             estaseo = 'Comercial (12)';
                         }
-                        ;
                         if (estaseo == 13) {
                             estaseo = 'Especial (13)';
                         }
-                        ;
                         if (estaseo == 14) {
                             estaseo = 'Oficial (14)';
                         }
-                        ;
                         select[0] = "<b>Codigo Manzana</b>";
                         select[1] = "<b>Codigo Catastral Nuevo</b>";
                         select[2] = "<b>Codigo Catastral Anterior</b>";
@@ -1036,7 +1003,6 @@ function addressSelect(event, ui) {
                             cell1 = row.insertCell(0);
                             cell2 = row.insertCell(1);
                             cell1.innerHTML = select[i];
-
                             if (i === 19) {
                                 cell2.appendChild(sel[i]);
                                 //cell2.appendChild(imag[i]);
@@ -1072,52 +1038,39 @@ function addressSelect(event, ui) {
                     if (estacueducto == 11) {
                         estacueducto = 'Industria (11)';
                     }
-                    ;
                     if (estacueducto == 12) {
                         estacueducto = 'Comercial (12)';
                     }
-                    ;
                     if (estacueducto == 13) {
                         estacueducto = 'Especial (13)';
                     }
-                    ;
                     if (estacueducto == 14) {
                         estacueducto = 'Oficial (14)';
                     }
-                    ;
                     if (estalcantarillado == 11) {
                         estalcantarillado = 'Industria (11)';
                     }
-                    ;
                     if (estalcantarillado == 12) {
                         estalcantarillado = 'Comercial (12)';
                     }
-                    ;
                     if (estalcantarillado == 13) {
                         estalcantarillado = 'Especial (13)';
                     }
-                    ;
                     if (estalcantarillado == 14) {
                         estalcantarillado = 'Oficial (14)';
                     }
-                    ;
                     if (estaseo == 11) {
                         estaseo = 'Industria (11)';
                     }
-                    ;
                     if (estaseo == 12) {
                         estaseo = 'Comercial (12)';
                     }
-                    ;
                     if (estaseo == 13) {
                         estaseo = 'Especial (13)';
                     }
-                    ;
                     if (estaseo == 14) {
                         estaseo = 'Oficial (14)';
                     }
-                    ;
-
                     var table = document.getElementById("tblatt");
                     table.innerHTML = "";
                     var row = table.insertRow(0);
@@ -1204,7 +1157,7 @@ function addressSelect(event, ui) {
     } else if (modulo === 'totem') {
         predio.setVisible(true);
         document.getElementById("consultas_totem").style.display = "none";
-        document.getElementById("consultas_totemp").style.display = "none";
+        //document.getElementById("consultas_totemp").style.display = "none";
         document.getElementById("menu_predio").style.display = "none";
         $.ajax({
             url: url,
@@ -1242,7 +1195,7 @@ function addressSelect(event, ui) {
                     sel[1] = arregloDeSubCadenas[0];
                     for (i = 0; i < arregloDeSubCadenas.length - 1; i = i + 6) {
                         select[i + 2] = "<b></b>";
-                        select[i + 3] = "<b>Destino Económico (" + arregloDeSubCadenas[i + 5] + ")</b>"
+                        select[i + 3] = "<b>Destino Económico (" + arregloDeSubCadenas[i + 5] + ")</b>";
                         select[i + 4] = "<b>Estrato (" + arregloDeSubCadenas[i + 5] + ")</b>";
                         select[i + 5] = "<b>Valor Capital Impuesto Predial (" + arregloDeSubCadenas[i + 5] + ")</b>";
                         select[i + 6] = "<b>Valor Intereses Impuesto Predial (" + arregloDeSubCadenas[i + 5] + ")</b>";
@@ -1274,13 +1227,11 @@ function addressSelect(event, ui) {
                     ig[p] = document.createElement("img");
                     ig[p].src = "./imagenes/streetview.png";
                     var campos = sel.length - 1;
-
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
                         cell2 = row.insertCell(1);
                         cell1.innerHTML = select[i];
-
                         if (i === campos) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
@@ -1288,7 +1239,6 @@ function addressSelect(event, ui) {
                             cell2.appendChild(stv[i]);
                             //cell2.appendChild(ig[i]);
                             stv[i].appendChild(ig[i]);
-
                         } else {
                             cell2.innerHTML = sel[i];
                         }
@@ -1296,12 +1246,9 @@ function addressSelect(event, ui) {
                     document.getElementById("panel_atr").style.display = "block";
                     document.getElementById("botonminimizar").style.display = "block";
                     document.getElementById("panel_atr").style.maxHeight = "40em";
-
                 }
             }
-
         });
-
     } else if (modulo === 'totempruebas') {
         predio.setVisible(true);
         document.getElementById("consultas_totem").style.display = "none";
@@ -1340,15 +1287,6 @@ function addressSelect(event, ui) {
                     }
                     var ref_c = "'" + ref_c + "'";
                     var arregloDeSubCadenas = enviarRef(eval(ref_c));
-                     if (arregloDeSubCadenas[3] === 0) {
-                        var estado = "SIN DEUDA";
-                        //document.getElementById("debe").style.display = "none";
-                        //document.getElementById("sindeuda").style.display = "block";
-                    } else {
-                        var estado = "DEUDOR";
-                        //document.getElementById("debe").style.display = "block";
-                        //document.getElementById("sindeuda").style.display = "none";
-                    }
                     var men = arregloDeSubCadenas.join(",");
                     men = men.replace(/ /g, "?");
                     //console.log(men);
@@ -1359,10 +1297,12 @@ function addressSelect(event, ui) {
                     select[4] = "<b>Fotografias</b>";
                     sel[0] = ui.item.direccionoriginal;
                     sel[1] = arregloDeSubCadenas[0];
-                    if (estado === "DEUDOR") {
-                        sel[2] = estado + "&nbsp;&nbsp;<img id='debe' src='./imagenes/debe.png'>";
+                    if (arregloDeSubCadenas[3] === '0') {
+                        var estado = "SIN DEUDA";
+                        sel[2] = estado + "&nbsp;&nbsp;<img src='./imagenes/sin_deuda.png'>";
                     } else {
-                        sel[2] = estado + "&nbsp;&nbsp;<img id='sindeuda' src='./imagenes/sin_deuda.png'>";
+                        var estado = "DEUDOR";
+                        sel[2] = estado + "&nbsp;&nbsp;<img src='./imagenes/debe.png'>";
                     }
                     sel[3] = "<div><br><input type='email' style='width:100%;' id='inputemail' placeholder='Ejemplo: pepitoperez@gmail.com'><br><br><input type='button' class='btn btn-primary' onclick='enviarcorreo(this.id)' id=" + men + " value='Enviar'></div>";
                     sel[4] = document.createElement("a");
@@ -1383,13 +1323,11 @@ function addressSelect(event, ui) {
                     ig[4] = document.createElement("img");
                     ig[4].src = "./imagenes/streetview.png";
                     var campos = 4;
-
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
                         cell2 = row.insertCell(1);
                         cell1.innerHTML = select[i];
-
                         if (i === campos) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
@@ -1403,7 +1341,6 @@ function addressSelect(event, ui) {
                         }
                     }
                     document.getElementById("panel_atr_totem").style.display = "block";
-
                     //Tabla Catastro      
                     var table = document.getElementById("tblatt_totem_catastro");
                     table.innerHTML = "";
@@ -1464,8 +1401,6 @@ function addressSelect(event, ui) {
                     ig[6] = document.createElement("img");
                     ig[6].src = "./imagenes/streetview.png";
                     var campos = 6;
-
-
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
@@ -1484,8 +1419,6 @@ function addressSelect(event, ui) {
                             cell2.innerHTML = sel[i];
                         }
                     }
-
-
                     //Tabla Planeacion    
                     var table = document.getElementById("tblatt_totem_planeacion");
                     table.innerHTML = "";
@@ -1544,13 +1477,11 @@ function addressSelect(event, ui) {
                     ig[5] = document.createElement("img");
                     ig[5].src = "./imagenes/streetview.png";
                     var campos = 5;
-
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
                         cell2 = row.insertCell(1);
                         cell1.innerHTML = select[i];
-
                         if (i === campos) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
@@ -1563,16 +1494,11 @@ function addressSelect(event, ui) {
                             cell2.innerHTML = sel[i];
                         }
                     }
-
-
                 }
             }
 
         });
-
     }
-
-
     try {
         if (globalstyle) {
             rangoarea(globalstyle);
@@ -1772,7 +1698,6 @@ function ladomanzanaSelect(event, ui) {
                 cell1.innerHTML = select[i];
                 if (i === 6) {
                     cell2.appendChild(sel[i]);
-
                     cell2.appendChild(stv[i]);
                     ;
                     stv[i].appendChild(ig[i]);
@@ -1890,13 +1815,8 @@ function propietariosSelect(event, ui) {
     dataprop = ui.item.feature.features["0"].properties.propietario;
     var cantprop = search("preproduccion:CantidadPropietarios", dataprop);
     if (cantprop.length > 1) {
-        alert("mas de uno")
+        alert("mas de uno");
     } else {
         addressSelect();
     }
 }
-
-
-
-
-
