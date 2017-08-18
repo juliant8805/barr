@@ -312,7 +312,7 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#inputrefcatotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_referencia_reg";
         var temp = "referencia_cat";
-    } else if ($("#matricula")["0"].value !== "" || $("inputmatriculatotemp"["0"].value !== "")) {
+    } else if ($("#matricula")["0"].value !== "" || $("#inputmatriculatotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_matricula_reg";
         var temp = "matricula";
     } else if ($("#address1")["0"].value !== "" || $("#inputsitiototem")["0"].value !== "") {

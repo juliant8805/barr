@@ -458,7 +458,7 @@ $(document).on('ready', function () {
             a.appendChild(b);
             window.oncontextmenu = function () {
                 return false;
-            }
+            };
         }
         //$("#map").removeAttr("hidden").show();
         $("#logos_cabezote").removeAttr("hidden").show();
