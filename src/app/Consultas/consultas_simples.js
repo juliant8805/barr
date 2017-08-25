@@ -235,6 +235,16 @@ $("#manzana").autocomplete({
     source: addressSource,
     select: manzanaSelect
 });
+$("#inputmanzanatotemp").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: manzanaSelect
+});
+$("#inputbarriototemp").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: PoligonSelect
+});
 $("#codigo").autocomplete({
     minLength: 1,
     source: addressSource,
@@ -321,7 +331,7 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#direccion_gestor")["0"].value !== "") {
         var tempname = "preproduccion:buscar_dir_gestor";
         var temp = "direcci";
-    } else if ($("#barrio")["0"].value !== "" || $("#inputbarriototem")["0"].value !== "") {
+    } else if ($("#barrio")["0"].value !== "" || $("#inputbarriototem")["0"].value !== "" || $("#inputbarriototemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_barrio";
         var temp = "nombre";
     } else if ($("#comuna")["0"].value !== "") {
@@ -330,7 +340,7 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#localidad")["0"].value !== "" || $("#inputlocalidadtotem")["0"].value !== "") {
         var tempname = "preproduccion:buscar_localidad";
         var temp = "nombre";
-    } else if ($("#manzana")["0"].value !== "" || $("#inputmanzanatotem")["0"].value !== "") {
+    } else if ($("#manzana")["0"].value !== "" || $("#inputmanzanatotem")["0"].value !== "" || $("#inputmanzanatotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_manzana";
         var temp = "codigo";
     } else if ($("#input_ladomanzana")["0"].value !== "") {

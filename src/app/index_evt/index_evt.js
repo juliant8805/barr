@@ -682,8 +682,46 @@ function mostrartotem(consulta) {
         document.getElementById('consultas_totem').style.display = 'block';
         var x = document.getElementById("audiomanzana");
         x.play();
-    } else if (consulta == 'prediototem')
-    {
+    } else if (consulta == 'barriototem') {
+        document.getElementById("inputsitiototem").value = "";
+        document.getElementById("inputmanzanatotem").value = "";
+        document.getElementById("inputlocalidadtotem").value = "";
+        document.getElementById("inputbarriototem").value = "";
+        document.getElementById("inputdirecciontotem").value = "";
+        document.getElementById('exp1').style.display = 'none';
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'none';
+        document.getElementById('inputlocalidadtotem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'none';
+        document.getElementById('menu_totemp').style.display = 'none';
+        document.getElementById('menumanzanatotem').style.display = 'none';
+        document.getElementById('menubarriototem').style.display = 'block';
+        document.getElementById("volver").style.display = 'block';
+       // document.getElementById('inputmanzanatotem').style.display = 'block';
+       // document.getElementById('consultas_totem').style.display = 'block';
+        //var x = document.getElementById("audiomanzana");
+        //x.play();
+    } else if (consulta == 'manzanatotem') {
+        document.getElementById("inputsitiototem").value = "";
+        document.getElementById("inputmanzanatotem").value = "";
+        document.getElementById("inputlocalidadtotem").value = "";
+        document.getElementById("inputbarriototem").value = "";
+        document.getElementById("inputdirecciontotem").value = "";
+        document.getElementById('exp1').style.display = 'none';
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'none';
+        document.getElementById('inputlocalidadtotem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'none';
+        document.getElementById('menu_totemp').style.display = 'none';
+        document.getElementById('menumanzanatotem').style.display = 'block';
+        document.getElementById("volver").style.display = 'block';
+       // document.getElementById('inputmanzanatotem').style.display = 'block';
+       // document.getElementById('consultas_totem').style.display = 'block';
+        //var x = document.getElementById("audiomanzana");
+        //x.play();
+    } else if (consulta == 'prediototem')    {
         document.getElementById("inputsitiototem").value = "";
         document.getElementById("inputmanzanatotem").value = "";
         document.getElementById("inputlocalidadtotem").value = "";
@@ -770,6 +808,7 @@ function limpiar_consulta() {
     vias.setVisible(false);
     predio.setVisible(true);
     document.getElementById('panel_atr').style.display = 'none';
+    document.getElementById('panel_atr_totempbarrio').style.display = 'none';
     document.getElementById("pestanastotem").style.display = "none";
     document.getElementById('tablaatributospuntosaaa').style.display = 'none';
     document.getElementById('botonmaximizarpuntosaaa').style.display = 'none';
@@ -1453,6 +1492,7 @@ function enviarcorreo(ref) {
 function volvertotemboton() {
     document.getElementById("volver").style.display = "none";
     document.getElementById("menu_predio").style.display = "none";
+    document.getElementById("menumanzanatotem").style.display = "none";
     document.getElementById("menu_totemp").style.display = "block";
 }
 function ajaxRequest() {

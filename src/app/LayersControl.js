@@ -13,7 +13,7 @@ var ortofotourbana = new ol.layer.Tile({
     visible: true,
     minResolution:0,
     maxResolution:20,
-    opacity:0.8,
+    opacity:0,
     preload: Infinity,
     source: new ol.source.XYZ({
         url: "http://www.gesstor.com/ortofoto/{z}/{x}/{y}.png"
