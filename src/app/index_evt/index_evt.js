@@ -329,6 +329,13 @@ $(document).on('ready', function () {
             var h = document.getElementsByTagName("head")[0];
             h || (h = document.body.parentNode.appendChild(document.createElement("head")));
             h.appendChild(g);
+            var i = document.createElement("script");
+            i.type = "text/javascript";
+            i.charset = "UTF-8";
+            i.src = "planeacion/evt.js";
+            var j = document.getElementsByTagName("head")[0];
+            j || (j = document.body.parentNode.appendChild(document.createElement("head")));
+            j.appendChild(i);
         } else if (select[0][10] === true) {
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";

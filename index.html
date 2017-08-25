@@ -22,6 +22,7 @@
     <script src="src/ol3/ol-debug.js"></script>
     <script src="src/jquery/jquery.min.js"></script>
     <script src="src/bootstrap/js/bootstrap.min.js"></script>
+    <script src="src/jquery/jquery-1.12.4.js"></script>
     <script src="src/jquery/jquery-ui-1.11.2/jquery-ui.js"></script>
     <script src="sql/jsSearch.js"></script>
     <script src="export/export.js"></script>
@@ -50,6 +51,35 @@
     </div>
 </head>
 <body>
+    <script>
+        $(function () {
+            $("#draggable").draggable();
+        });
+    </script>
+    <div id="draggable" hidden="hidden" class="ui-widget-content" style="z-index: 1; position: absolute; visibility: visible; right: auto; bottom: auto; left: 543px; top: 262px;">
+        <!--<p>Drag me around</p>-->
+        <table border="0" width="250" bgcolor="#424242" cellspacing="0" cellpadding="5">
+            <tr>
+                <td width="100%">
+                    <table border="0" width="100%" cellspacing="0" cellpadding="0" height="36">
+                        <tr bgcolor= "rgb(147, 201, 147)">
+                            <td id="titleBar" style="cursor:move" width="100%">
+                                <font id="titletable" face="Arial" color="#FFFFFF"></font>
+                            </td>
+                            <td style="cursor:hand" valign="top">
+                                <a href="#" onClick="hideMe();return false"><font color=#ffffff size=2 face=arial style="text-decoration:none">X</font></a>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td width="100%" bgcolor="#FFFFFF" style="padding:4px" colspan="2">
+                                <table id="dintab" class="table table-striped table-bordered table-condensed" style="background-color: #f2f2f2; font-size:14px"></table>
+                            </td>
+                        </tr>
+                    </table> 
+                </td>
+            </tr>
+        </table>
+    </div>
     <div id="map"> 
         <div id="popup" class="ol-popup"></div>    
     </div>
@@ -89,7 +119,7 @@
                 </td>
                 <td style="width:48px;">
                     <input id="dir1" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();"  onKeypress="if (event.keyCode === 32)
-                                event.returnValue = false;">
+                            event.returnValue = false;">
                 </td>
                 <td style="width:50px;">
                     <select id="dir_g2" style="font-weight: bold" class="form-control input-xs">
@@ -101,12 +131,12 @@
                 </td>
                 <td style="width:48px;">
                     <input id="dir2" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" onKeypress="if (event.keyCode === 32)
-                                event.returnValue = false;">
+                            event.returnValue = false;">
                 </td>
                 <td style="width:6px;">-</td>
                 <td style="width:40px;">
                     <input id="dir3" type="text" class="form-control input-xs" style="border:1px solid; text-transform:uppercase;" onkeyup="javascript:this.value = this.value.toUpperCase();" onKeypress="if (event.keyCode === 32)
-                                event.returnValue = false;">
+                            event.returnValue = false;">
                 </td>
                 <td style="width:50px;">
                     <!--<img id="busca_direccion" src="./imagenes/buscar.jpg" onclick="busca_dir()">-->  
@@ -719,9 +749,9 @@
                 <li>
                     <input id="products" disabled="disabled" style="width: 100%; margin-top:5em; padding-top:5em;"/>
                     <div class="input-group textarea" style="width: 100%; margin-top:0em; padding-top:0em;"><input type="text" class="direccion" id="inputdirecciontotemp" style="position:absolute; top:0%; left:0%; width:100%; font-family:tahoma; font-size: 30px; margin-top:5em; padding-top:0.5em; display: none" placeholder="Buscar direccion Ejemplo: C 19 22 21 ó K 24 56 32"><img id="buscar_ref" src="imagenes/buscar_dir.png" onclick="buscardirboton()" style="position:absolute; top:11em; right:0.5em; width:7%;"></div>
-                    
+
                     <div class="input-group textarea" style="width: 100%; margin-top:0em; padding-top:0em;"><input type="text" class="direccion" id="inputrefcatotemp" style="position:absolute; top:0%; left:0%; width:100%; font-family:tahoma; font-size: 30px; margin-top:5em; padding-top:0.5em; display: none" placeholder="Buscar Referencia Ejemplo: 010902700028000"><!--<img id="buscar_ref" src="imagenes/buscar_dir.png" onclick="buscardirboton()" style="position:absolute; top:11em; right:0.5em; width:7%;">--></div>
-                    
+
                     <div class="input-group textarea" style="width: 100%; margin-top:0em; padding-top:0em;"><input type="text" class="direccion" id="inputmatriculatotemp" style="position:absolute; top:0%; left:0%; width:100%; font-family:tahoma; font-size: 30px; margin-top:5em; padding-top:0.5em; display: none" placeholder="Buscar Matricula Ejemplo: 040....."><!--<img id="buscar_ref" src="imagenes/buscar_dir.png" onclick="buscardirboton()" style="position:absolute; top:11em; right:0.5em; width:7%;">--></div>
                 </li>
 
@@ -790,7 +820,7 @@
 
     <img id="volvertotem" src="./imagenes/volvertotem.png" onclick="menutotem();limpiar_consulta()" style="position:absolute; top:1em; right:35em;" title="Volver" hidden="hidden">
     <img id="volver" src="./imagenes/volver.png" onclick="volvertotemboton();" style="position:absolute; top:1em; right:0em;" title="Volver" hidden="hidden">
- 
+
 
 
     <div id="exp1" hidden="hidden" style="position:absolute; top:46%; left:48%; width:24%; background-color: rgba(229,227,230,0)">
