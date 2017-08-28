@@ -49,21 +49,22 @@ function showtable(capas) {
     } else if (capas.target.innerHTML === "Amenaza Inundación") {
         var colum = search("preproduccion:NameColumns", 'amenazainundacion');
         var sel = search("preproduccion:selallamenazainundacion");
-        console.log(colum);
+        //console.log(colum);
+        //console.log(sel);
         var table = document.getElementById("dintab");
         table.innerHTML = "";
-            var row = table.insertRow(0);
-            for (j = 0; j < colum.length; j++) {
-                cell1 = row.insertCell(j);
-                //cell2 = row.insertCell(1);
-                cell1.innerHTML = colum[j];
+        var row = table.insertRow(0);
+        for (j = 0; j < colum.length; j++) {
+            cell1 = row.insertCell(j);
+            cell1.innerHTML = colum[j];
+        }
+        for (j = 0; j < sel.length; j++) {
+            var row = table.insertRow(j + 1);
+            for (k = 0; k < sel[0].length; k++) {
+                cell1 = row.insertCell(k);
+                cell1.innerHTML = sel[j][k];
             }
-            for (j = 0; j < sel.length; j++) {
-                var row = table.insertRow(j+1);
-                cell1 = row.insertCell(j);
-                //cell2 = row.insertCell(1);
-                cell1.innerHTML = sel[j];
-            }
+        }
 
     } else if (capas.target.innerHTML === "Remoción en Masa") {
 
