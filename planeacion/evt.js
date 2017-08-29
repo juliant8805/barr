@@ -65,6 +65,7 @@ function filtro() {
     }
 }
 function showtable(capas) {
+    document.getElementById("inpfil").value = "";
     document.getElementById('draggable').style.display = "block";
     document.getElementById('titletable').innerHTML = capas.target.innerHTML;
     var table = document.getElementById("dintab");

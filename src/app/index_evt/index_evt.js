@@ -479,15 +479,16 @@ $(document).on('ready', function () {
 });
 function validacionusuarios() {
     var ca = document.cookie.split('=');
-    try {
-        //var selec = select_query("SELECT * FROM usuario WHERE usuario ='" + ca[0] + "' AND contrasena ='" + ca[1] + "' AND estado='t';");
-        //console.log(selec);
-        var select = search("preproduccion:ValidateUser", ca[0], ca[1]);
-        document.getElementById("carga").style.display = "none";
-        document.getElementById("nombre_usuario").innerHTML = select[0][0].split(" ", 1);
-    } catch (err) {
+    if (ca["0"] === "") {
+        location.href = "barranquilla.html?ig=error";
+    } else {
+        try {
+            var select = search("preproduccion:ValidateUser", ca[0], ca[1]);
+            document.getElementById("carga").style.display = "none";
+            document.getElementById("nombre_usuario").innerHTML = select[0][0].split(" ", 1);
+        } catch (err) {}
+        return(select);
     }
-    return(select);
 }
 changestyles = 0;
 function password() {
@@ -705,8 +706,8 @@ function mostrartotem(consulta) {
         document.getElementById('menumanzanatotem').style.display = 'none';
         document.getElementById('menubarriototem').style.display = 'block';
         document.getElementById("volver").style.display = 'block';
-       // document.getElementById('inputmanzanatotem').style.display = 'block';
-       // document.getElementById('consultas_totem').style.display = 'block';
+        // document.getElementById('inputmanzanatotem').style.display = 'block';
+        // document.getElementById('consultas_totem').style.display = 'block';
         //var x = document.getElementById("audiomanzana");
         //x.play();
     } else if (consulta == 'manzanatotem') {
@@ -724,11 +725,11 @@ function mostrartotem(consulta) {
         document.getElementById('menu_totemp').style.display = 'none';
         document.getElementById('menumanzanatotem').style.display = 'block';
         document.getElementById("volver").style.display = 'block';
-       // document.getElementById('inputmanzanatotem').style.display = 'block';
-       // document.getElementById('consultas_totem').style.display = 'block';
+        // document.getElementById('inputmanzanatotem').style.display = 'block';
+        // document.getElementById('consultas_totem').style.display = 'block';
         //var x = document.getElementById("audiomanzana");
         //x.play();
-    } else if (consulta == 'prediototem')    {
+    } else if (consulta == 'prediototem') {
         document.getElementById("inputsitiototem").value = "";
         document.getElementById("inputmanzanatotem").value = "";
         document.getElementById("inputlocalidadtotem").value = "";
@@ -753,9 +754,8 @@ function mostrartotem(consulta) {
         document.getElementById('menu_totemp').style.display = 'none';
         document.getElementById('consultas_totem').style.display = 'none';
         document.getElementById('consultas_totemp').style.display = 'block';
-    }
-    else if (consulta == 'sitiototemp')
-      {
+    } else if (consulta == 'sitiototemp')
+    {
         document.getElementById("inputsitiototem").value = "";
         document.getElementById("inputmanzanatotem").value = "";
         document.getElementById("inputlocalidadtotem").value = "";
@@ -772,7 +772,7 @@ function mostrartotem(consulta) {
         document.getElementById('menubarriototem').style.display = 'none';
         document.getElementById('menusitiostotem').style.display = 'block';
         document.getElementById("volver").style.display = 'block';
-      }
+    }
 }
 
 function menu_principal() {
