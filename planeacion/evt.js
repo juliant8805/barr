@@ -1,3 +1,6 @@
+$(function () {
+    $("#draggable").draggable();
+});
 window.onload = function () {
     document.getElementById('CBarrios').addEventListener('click', showtable, false);
     document.getElementById('CLocalidades').addEventListener('click', showtable, false);
@@ -38,33 +41,61 @@ window.onload = function () {
     document.getElementById('CZonaDeclaradaPrado').addEventListener('click', showtable, false);
     document.getElementById('CZonaDeclaradaCentro').addEventListener('click', showtable, false);
 };
+function hideMe() {
+    document.getElementById('draggable').style.display = "none";
+}
+function filtro() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("inpfil");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("dintab");
+    tr = table.getElementsByTagName("tr");
+    var index = document.getElementById("selcolum").selectedIndex;
+    //console.log(tr[0].getElementsByTagName("td")[0]);
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[index];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
 function showtable(capas) {
     document.getElementById('draggable').style.display = "block";
     document.getElementById('titletable').innerHTML = capas.target.innerHTML;
-
+    var table = document.getElementById("dintab");
+    table.innerHTML = "";
+    var row = table.insertRow(0);
+    var x = document.getElementById("selcolum");
+    x.innerHTML = "";
     if (capas.target.innerHTML === "Barrios") {
 
     } else if (capas.target.innerHTML === "Localidades") {
 
     } else if (capas.target.innerHTML === "Amenaza Inundación") {
         var colum = search("preproduccion:NameColumns", 'amenazainundacion');
+        var option = [];
+        for (i = 0; i < colum.length; i++) {
+            option[i] = document.createElement("option");
+            option[i].text = colum[i];
+            x.add(option[i], i);
+        }
         var sel = search("preproduccion:selallamenazainundacion");
-        console.log(colum);
-        var table = document.getElementById("dintab");
-        table.innerHTML = "";
-            var row = table.insertRow(0);
-            for (j = 0; j < colum.length; j++) {
-                cell1 = row.insertCell(j);
-                //cell2 = row.insertCell(1);
-                cell1.innerHTML = colum[j];
+        for (j = 0; j < colum.length; j++) {
+            cell1 = row.insertCell(j);
+            cell1.innerHTML = colum[j];
+        }
+        for (j = 0; j < sel.length; j++) {
+            var row = table.insertRow(j + 1);
+            for (k = 0; k < sel[0].length; k++) {
+                cell1 = row.insertCell(k);
+                cell1.innerHTML = sel[j][k];
             }
-            for (j = 0; j < sel.length; j++) {
-                var row = table.insertRow(j+1);
-                cell1 = row.insertCell(j);
-                //cell2 = row.insertCell(1);
-                cell1.innerHTML = sel[j];
-            }
-
+        }
     } else if (capas.target.innerHTML === "Remoción en Masa") {
 
     } else if (capas.target.innerHTML === "Area Reserva Acueducto") {
