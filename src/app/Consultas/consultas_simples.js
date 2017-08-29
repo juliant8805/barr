@@ -200,6 +200,11 @@ $("#inputsitiototem").autocomplete({
     source: addressSource,
     select: PlaceSelect
 });
+$("#inputsitiostotemp").autocomplete({
+    minLength: 1,
+    source: addressSource,
+    select: PlaceSelect
+});
 $("#inputlocalidadtotem").autocomplete({
     minLength: 1,
     source: addressSource,
@@ -319,13 +324,16 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#cedul")["0"].value !== "") {
         var tempname = "preproduccion:buscar_cedula_reg";
         var temp = "cedula";
-    } else if ($("#inputrefcatotemp")["0"].value !== "") {
+    } else if ($("#inputmanzanatotemp")["0"].value !== "") {
+        var tempname = "preproduccion:buscar_manzana";
+        var temp = "codigo";
+    }  else if ($("#inputrefcatotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_referencia_reg";
         var temp = "referencia_cat";
     } else if ($("#matricula")["0"].value !== "" || $("#inputmatriculatotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_matricula_reg";
         var temp = "matricula";
-    } else if ($("#address1")["0"].value !== "" || $("#inputsitiototem")["0"].value !== "") {
+    } else if ($("#address1")["0"].value !== "" || $("#inputsitiototem")["0"].value !== "" || $("#inputsitiostotemp")["0"].value !== "") {
         var tempname = "preproduccion:sitios_autocompletar";
         var temp = "address1";
     } else if ($("#direccion_gestor")["0"].value !== "") {
@@ -340,10 +348,11 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#localidad")["0"].value !== "" || $("#inputlocalidadtotem")["0"].value !== "") {
         var tempname = "preproduccion:buscar_localidad";
         var temp = "nombre";
-    } else if ($("#manzana")["0"].value !== "" || $("#inputmanzanatotem")["0"].value !== "" || $("#inputmanzanatotemp")["0"].value !== "") {
+    } else if ($("#manzana")["0"].value !== "" || $("#inputmanzanatotem")["0"].value !== "") {
         var tempname = "preproduccion:buscar_manzana";
         var temp = "codigo";
-    } else if ($("#input_ladomanzana")["0"].value !== "") {
+    }   
+    else if ($("#input_ladomanzana")["0"].value !== "") {
         var tempname = "preproduccion:ladomanzana_autocompletar";
         var temp = "lado_manzanas";
     } else if ($("#input_predioshasusos")["0"].value !== "") {
@@ -1261,6 +1270,12 @@ function addressSelect(event, ui) {
         });
     } else if (modulo === 'totempruebas') {
         predio.setVisible(true);
+        document.getElementById("inputsitiostotemp").value = "";
+        document.getElementById("inputmanzanatotemp").value = "";
+        document.getElementById("inputbarriototemp").value = "";
+        document.getElementById("inputdirecciontotemp").value = "";
+        document.getElementById("inputmatriculatotemp").value = "";
+        document.getElementById("inputrefcatotemp").value = ""; 
         document.getElementById("consultas_totem").style.display = "none";
         document.getElementById("menu_totemp").style.display = "none";
         document.getElementById("volver").style.display = "none";
@@ -1307,6 +1322,8 @@ function addressSelect(event, ui) {
                     select[4] = "<b>Fotografias</b>";
                     sel[0] = ui.item.direccionoriginal;
                     sel[1] = arregloDeSubCadenas[0];
+                    //sel[1] = "Problema de conexion con el web service de Hacienda";
+                    
                     if (arregloDeSubCadenas[3] === '0') {
                         var estado = "SIN DEUDA";
                         sel[2] = estado + "&nbsp;&nbsp;<img src='./imagenes/sin_deuda.png'>";
@@ -1315,6 +1332,10 @@ function addressSelect(event, ui) {
                         sel[2] = estado + "&nbsp;&nbsp;<img src='./imagenes/debe.png'>";
                     }
                     sel[3] = "<div><br><input type='email' style='width:100%;' id='inputemail' placeholder='Ejemplo: pepitoperez@gmail.com'><br><br><input type='button' class='btn btn-primary' onclick='enviarcorreo(this.id)' id=" + men + " value='Enviar'></div>";
+                    
+                    //sel[3] = "Problema de conexion con el web service de Hacienda";
+                    
+                    
                     sel[4] = document.createElement("a");
                     sel[4].id = "img1";
                     sel[4].style = "width: 30px; height: 50px;";
@@ -1519,6 +1540,9 @@ function addressSelect(event, ui) {
 }
 
 function PlaceSelect(event, ui) {
+    document.getElementById('menusitiostotem').style.display = 'none';
+    document.getElementById('volver').style.display = 'none';
+    document.getElementById("volvertotem").style.display = "block";
     document.getElementById("exp1").style.display = "none";
     document.getElementById("consultas_totem").style.display = "none";
     var view = map.getView();

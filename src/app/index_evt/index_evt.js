@@ -753,8 +753,26 @@ function mostrartotem(consulta) {
         document.getElementById('menu_totemp').style.display = 'none';
         document.getElementById('consultas_totem').style.display = 'none';
         document.getElementById('consultas_totemp').style.display = 'block';
-
     }
+    else if (consulta == 'sitiototemp')
+      {
+        document.getElementById("inputsitiototem").value = "";
+        document.getElementById("inputmanzanatotem").value = "";
+        document.getElementById("inputlocalidadtotem").value = "";
+        document.getElementById("inputbarriototem").value = "";
+        document.getElementById("inputdirecciontotem").value = "";
+        document.getElementById('exp1').style.display = 'none';
+        document.getElementById('buscar_dir').style.display = 'none';
+        document.getElementById('inputdirecciontotem').style.display = 'none';
+        document.getElementById('inputsitiototem').style.display = 'none';
+        document.getElementById('inputlocalidadtotem').style.display = 'none';
+        document.getElementById('inputbarriototem').style.display = 'none';
+        document.getElementById('menu_totemp').style.display = 'none';
+        document.getElementById('menumanzanatotem').style.display = 'none';
+        document.getElementById('menubarriototem').style.display = 'none';
+        document.getElementById('menusitiostotem').style.display = 'block';
+        document.getElementById("volver").style.display = 'block';
+      }
 }
 
 function menu_principal() {
@@ -813,6 +831,9 @@ function limpiar_consulta() {
     construcciones.setVisible(true);
     unidades.setVisible(false);
     vias.setVisible(false);
+    arbol.setVisible(false);
+    arroyos.setVisible(false);
+    sitios.setVisible(false);
     predio.setVisible(true);
     document.getElementById('panel_atr').style.display = 'none';
     document.getElementById('panel_atr_totempbarrio').style.display = 'none';
@@ -824,6 +845,12 @@ function limpiar_consulta() {
     document.getElementById('mensaje').style.display = 'none';
     barrio.setVisible(false);
     localidad.setVisible(false);
+    document.getElementById('inputdirecciontotemp').value = "";
+    document.getElementById('inputmatriculatotemp').value = "";
+    document.getElementById('inputrefcatotemp').value = "";
+    document.getElementById('inputmanzanatotemp').value = "";
+    document.getElementById('inputsitiostotemp').value = "";
+    document.getElementById('inputbarriototemp').value = "";
     document.getElementById('address1').value = "";
     document.getElementById('barrio').value = "";
     document.getElementById('localidad').value = "";
@@ -1500,6 +1527,8 @@ function volvertotemboton() {
     document.getElementById("volver").style.display = "none";
     document.getElementById("menu_predio").style.display = "none";
     document.getElementById("menumanzanatotem").style.display = "none";
+    document.getElementById("menubarriototem").style.display = "none";
+    document.getElementById("menusitiostotem").style.display = "none";
     document.getElementById("menu_totemp").style.display = "block";
 }
 function ajaxRequest() {

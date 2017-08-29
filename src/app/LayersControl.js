@@ -637,8 +637,16 @@ var tuberia = new ol.layer.Tile({
     }), name: 'Tuberia'    
 });
 
+var arbol = new ol.layer.Tile({
+    visible: false,
+    source: new ol.source.TileWMS({
+        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        params: {LAYERS: 'preproduccion:arbol', STYLES: ''}
+    }), name: 'Arbol'    
+});
+
 var layerCartobasica = new ol.layer.Group({
-    layers: [tuberia, red_alta_tension, puente_l, muro, lineademarcacion, limitevia, laguna, curvanivel, construccionagual, cicloruta, cerca, canaldoble, canalsencillo, paramento, antejardin, paramento],
+    layers: [arbol, tuberia, red_alta_tension, puente_l, muro, lineademarcacion, limitevia, laguna, curvanivel, construccionagual, cicloruta, cerca, canaldoble, canalsencillo, paramento, antejardin, paramento],
     name: 'Cartografia Básica'
 });
 
