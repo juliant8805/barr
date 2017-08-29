@@ -1274,7 +1274,21 @@ select{
     font-size:11px;
     overflow:scroll;
 }
-
+#draggable{
+    z-index: 3;
+    top: 262px;
+    position:absolute;
+    max-width:200em;
+    /*max-height:100em;*/
+    bottom:1em;
+    left: 255px;
+    font-size:11px;
+    overflow:scroll;
+}
+.selcc{
+    color: black;
+    font-size:14px;
+}
 #panel_atr_totem{
     position:absolute;
     width:43em;
