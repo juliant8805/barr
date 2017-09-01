@@ -357,14 +357,14 @@ var zampariomagdalena = new ol.layer.Tile({
         params: {LAYERS: 'preproduccion:zampa_rio_magdalena_50m', STYLES: ''}
     }), name: 'Zampa Río Magdalena 50m'
 });
-
+/*
 var zonacentro = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:zonadeclaradcentro', STYLES: ''}
     }), name: 'Zona Declarada Centro'
-});
+});*/
 var puntosfotocontrol = new ol.layer.Tile({
     visible: true,
     source: new ol.source.TileWMS({
@@ -696,7 +696,7 @@ var layerespaciopublico = new ol.layer.Group({
     name: 'Espacio Público'
 });
 var layerPot = new ol.layer.Group({
-    layers: [zonacentro, zonadeclaradaprado, zampariomagdalena, zampacienaga, zampa30, zampa50, viastransmasivo, viasruralpropuesta, tratamientosurbanisticos, rondariomagdalena, rondaarroyos30, rondaarroyos15, altatension, redalcantarillado, acueductoprimaria, proteccionrural, proteccionliteral, normativosuso, instrumentosplanificacion, perimetrourbano, parquespropuestosrural, parquespropuestos, perfilviasurbanaspropuestas, malecon, limitesdistrital, intercambiadores, espacio_pubico, estacionestransmetro, clasificacionsuelo, cienaga_mallorquin, ciclorutaspropuestas, arroyos, areareservaalcantarillado, areareservaacueducto, remosionenmasa, amenazainundacion, localidad, barrio, ladomanzana],
+    layers: [/*zonacentro,*/ zonadeclaradaprado, zampariomagdalena, zampacienaga, zampa30, zampa50, viastransmasivo, viasruralpropuesta, tratamientosurbanisticos, rondariomagdalena, rondaarroyos30, rondaarroyos15, altatension, redalcantarillado, acueductoprimaria, proteccionrural, proteccionliteral, normativosuso, instrumentosplanificacion, perimetrourbano, parquespropuestosrural, parquespropuestos, perfilviasurbanaspropuestas, malecon, limitesdistrital, intercambiadores, espacio_pubico, estacionestransmetro, clasificacionsuelo, cienaga_mallorquin, ciclorutaspropuestas, arroyos, areareservaalcantarillado, areareservaacueducto, remosionenmasa, amenazainundacion, localidad, barrio, ladomanzana],
     name: 'POT'
 });
 var layerOrtofoto= new ol.layer.Group({

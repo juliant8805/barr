@@ -1280,9 +1280,10 @@ select{
     position:absolute;
     width:auto;
     height:auto;
-    /*max-width:200em;*/
+    max-width:1094px;
     /*max-height:100em;*/
     bottom:1em;
+    /*right: 1em;*/
     left: 255px;
     font-size:11px;
     overflow:scroll;
