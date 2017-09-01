@@ -98,7 +98,7 @@ map = new ol.Map({
     target: document.getElementById('map'),
     // use the Canvas renderer
     renderer: 'canvas',
-    layers: [layerBase, layerPot, /*layerPuntosFotocontrol,*/ layerCartobasica, /*layerEstratificacionOficial, layerprediosexentos2016, layermetrotel, layerindustriaycomercio, layerSUI,*/ layerCatastro, layerSitios, layerOrtofoto, highlight],
+    layers: [layerBase, layerPot, /*layerPuntosFotocontrol,*/ layerCartobasica, /*layerEstratificacionOficial, layerprediosexentos2016, layermetrotel, layerindustriaycomercio, layerSUI,*/ layerCatastro,   layerOrtofoto, layerSitios, highlight],
     view: new ol.View({
         center: center,
         zoom: zoom,
