@@ -1478,28 +1478,54 @@ function listaprediototem() {
     }
 }
 function cambiocatastro() {
+    if (document.getElementById("panel_atr_totem_catastro").style.display == "block"){
+      document.getElementById("panel_atr_totem_catastro").style.display = "none";
+      document.getElementById("pestc").style.backgroundColor = "#A6A6A6";
+      document.getElementById("pesth").style.display = "block";
+      document.getElementById("pestp").style.display = "block";
+    }
+    else{
+       document.getElementById("panel_atr_totem_catastro").style.display = "block";
+       document.getElementById("pestc").style.backgroundColor = "#639BB3";
+       document.getElementById("pesth").style.display = "none";
+       document.getElementById("pestp").style.display = "none";  
+    }
     document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
     document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
-    document.getElementById("pestc").style.backgroundColor = "#639BB3";
-    document.getElementById("panel_atr_totem").style.display = "none";
+    document.getElementById("panel_atr_totem_hacienda").style.display = "none";
     document.getElementById("panel_atr_totem_planeacion").style.display = "none";
-    document.getElementById("panel_atr_totem_catastro").style.display = "block";
 }
 function cambiohacienda() {
+    if (document.getElementById("panel_atr_totem_hacienda").style.display == "block"){
+      document.getElementById("panel_atr_totem_hacienda").style.display = 'none' 
+      document.getElementById("pesth").style.backgroundColor = "#A6A6A6";
+    }
+    else{
+       document.getElementById("panel_atr_totem_hacienda").style.display = "block";
+       document.getElementById("pesth").style.backgroundColor = "#639BB3";
+    }
     document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
-    document.getElementById("pesth").style.backgroundColor = "#639BB3";
     document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
-    document.getElementById("panel_atr_totem").style.display = "block";
     document.getElementById("panel_atr_totem_catastro").style.display = "none";
     document.getElementById("panel_atr_totem_planeacion").style.display = "none";
 }
 function cambioplaneacion() {
-    document.getElementById("pestp").style.backgroundColor = "#639BB3";
+    if (document.getElementById("panel_atr_totem_planeacion").style.display == "block"){
+      document.getElementById("panel_atr_totem_planeacion").style.display = "none"; 
+      document.getElementById("pestp").style.backgroundColor = "#A6A6A6";
+      document.getElementById("pesth").style.display = "block";
+      document.getElementById("pestc").style.display = "block";
+    }
+    else{
+       document.getElementById("panel_atr_totem_planeacion").style.display = "block";
+       document.getElementById("pestp").style.backgroundColor = "#639BB3";
+       document.getElementById("pesth").style.display = "none";
+       document.getElementById("pestc").style.display = "none";       
+    }
     document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
     document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
-    document.getElementById("panel_atr_totem").style.display = "none";
+    document.getElementById("panel_atr_totem_hacienda").style.display = "none";
     document.getElementById("panel_atr_totem_catastro").style.display = "none";
-    document.getElementById("panel_atr_totem_planeacion").style.display = "block";
 }
 function menutotem() {
     document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
@@ -1531,6 +1557,7 @@ function volvertotemboton() {
     document.getElementById("menusitiostotem").style.display = "none";
     document.getElementById("menu_totemp").style.display = "block";
 }
+
 function ajaxRequest() {
     try {
         var request = new XMLHttpRequest();
@@ -1547,3 +1574,15 @@ function ajaxRequest() {
     }
     return request;
 }
+
+function formatNumber (n) {
+	n = String(n).replace(/\D/g, "");
+  return n === '' ? n : Number(n).toLocaleString();
+}
+
+
+
+
+
+
+

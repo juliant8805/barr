@@ -1295,21 +1295,41 @@ select{
     position:absolute;
     width:43em;
     height:auto;
-    top:4em;
+    top:8em;
     left:0em;  
     font-size:11px;
-    overflow:scroll;
+    /*overflow:scroll;*/
 }
-
+#panel_atr_totem_hacienda
+{
+    position:absolute;
+    width:43em;
+    height:auto;
+    top:22em;
+    left:0em;  
+    font-size:11px;
+    z-index:1;
+    /*overflow:scroll;*/
+}
 #panel_atr_totem_catastro
 {
     position:absolute;
     width:43em;
     height:auto;
-    top:4em;
+    top:22em;
     left:0em;  
     font-size:11px;
-    overflow:scroll;
+    /*overflow:scroll;*/
+}
+#panel_atr_totem_planeacion
+{
+    position:absolute;
+    width:43em;
+    height:auto;
+    top:22em;
+    left:0em;  
+    font-size:11px;
+    /*overflow:scroll;*/
 }
 
 #panel_atr_totempbarrio
@@ -1317,17 +1337,6 @@ select{
     position:absolute;
     width:43em;
     height:80em;
-    top:4em;
-    left:0em;  
-    font-size:11px;
-    overflow:scroll;
-}
-
-#panel_atr_totem_planeacion
-{
-    position:absolute;
-    width:43em;
-    height:auto;
     top:4em;
     left:0em;  
     font-size:11px;

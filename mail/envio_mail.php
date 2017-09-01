@@ -26,7 +26,7 @@
             $re = str_replace('?', ' ', $ref);
             $mens = (explode(",", $re));
             $asunto = 'Información impuesto predial';
-            $mensaje = 'La relación de pagos que solicitó désde el púnto de atención digital es la siguiente:'.$UN_SALTO.$UN_SALTO
+            $mensaje = 'El estado de cuenta que solicitó desde el punto de atención digital es la siguiente:'.$UN_SALTO.$UN_SALTO
                     . ' Referencia catastral : ' . $mens[0].$UN_SALTO;
             for ($i = 1; $i < count($mens) - 1; $i = $i + 6) {
                 $mensaje = $mensaje.$UN_SALTO
