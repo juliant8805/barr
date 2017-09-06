@@ -277,18 +277,18 @@ $(document).on('ready', function () {
             //console.log(sele.length);
             if (sele.length > 0) {
                 //console.log(sele);
-                // document.getElementById("valid").style.display = "block";
+               document.getElementById("valid").style.display = "block";
             }
             //var sel = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%'");
             var sel = search("preproduccion:CountTable", 'post_%');
             //console.log(sel.length);
             if (sel.length > 0) {
-                // document.getElementById("deshacer").style.display = "block";
+               document.getElementById("deshacer").style.display = "block";
             }
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
-            //document.getElementById("subirshape").style.display = "block";
+            document.getElementById("subirshape").style.display = "block";
             document.getElementById("alineamiento").style.display = "block";
             document.getElementById("Usos_Permitidos").style.display = "block";
             document.getElementById("espacio_publico").style.display = "block";

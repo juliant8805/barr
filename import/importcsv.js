@@ -65,69 +65,11 @@ $(document).ready(function () {
             processData: false,
             //mientras enviamos el archivo
             beforeSend: function () {
-                //window.open('upload.php');
                 message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
                 showMessage(message);
             },
             //una vez finalizado correctamente
             success: function (data) {
-                console.log(data);
-                /*var res = data.split(",");
-                res.sort();
-                res.reverse();
-                var dbf = 0;
-                var prj = 0;
-                var shp = 0;
-                var shx = 0;
-                for (i = 0; i < res.length; i++) {
-                    //console.log(res[i]);
-                    var ar = res[i].split(".");
-                    if (ar[ar.length - 1] === "dbf") {
-                        dbf = dbf + 1;
-                    } else if (ar[ar.length - 1] === "prj") {
-                        prj = prj + 1;
-                    } else if (ar[ar.length - 1] === "shp") {
-                        shp = shp + 1;
-                    } else if (ar[ar.length - 1] === "shx") {
-                        shx = shx + 1;
-                    }
-                }
-                if (dbf < prj || dbf < shp || dbf < shx) {
-                    message = $("<span class='error'>No se puede realizar la carga por falta de archivo *.dbf</span>");
-                    showMessage(message);
-                    return;
-                } else if (prj < dbf || prj < shp || prj < shx) {
-                    message = $("<span class='error'>No se puede realizar la carga por falta de archivo *.prj</span>");
-                    showMessage(message);
-                    return;
-                } else if (shp < dbf || shp < prj || shp < shx) {
-                    message = $("<span class='error'>No se puede realizar la carga por falta de archivo *.shp</span>");
-                    showMessage(message);
-                    return;
-                } else if (shx < dbf || shx < prj || shx < shp) {
-                    message = $("<span class='error'>No se puede realizar la carga por falta de archivo *.shx</span>");
-                    showMessage(message);
-                    return;
-                }
-                for (i = 0; i < res.length; i++) {
-                    var ar = res[i].split(".");
-                    if (ar[ar.length - 1] === "shp") {
-                        upload_query(ar[0]);
-                    } else if (ar[ar.length - 1] === "prj") {
-                        for (j = 0; j < archivo.length; j++) {
-                            if (res[i] === archivo[j].name) {
-                                readFile(archivo[j], function (e) {
-                                    var shape = e.srcElement.onprogress.name.split(".")[0];
-                                    var select = select_query("SELECT ST_GeometryType(geom) FROM temp_" + shape + " LIMIT 1");
-                                    var sel = select[0][0].split("_");
-                                    select_query("ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry;UPDATE temp_" + shape + " SET geom = ST_Transform(geom, 4326);ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry('" + sel[1] + "', 4326);");
-                                });
-                            }
-                        }
-                    }
-                }
-                delfile("files");
-                document.getElementById("valid").style.display = "block";*/
                 var message = $("<span class='success'>Archivos subidos correctamente.</span>");
                 showMessage(message);
                 $('#chargecsv').modal('hide');
@@ -139,7 +81,6 @@ $(document).ready(function () {
                 showMessage(message);
             }
         });
-
     });
     $(".modal fade").change(function () {
         alert("d.");

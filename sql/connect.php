@@ -81,7 +81,7 @@ function uploadQuery($query) {
     $response = createResponse($cod, $text, $desc);
     return $response;
 }
-
+/*
 function updateQuery($query) {
 // Ejecuta un comando tipo UPDATE, INSERT, DELETE,... en la base de datos
 // $query = String con el comando	
@@ -147,7 +147,7 @@ function selectQuery($query) {
     pg_close($dbconn);
     // Devolver el resultado
     return $response;
-}
+}*/
 
 function createResponse($code, $text, $content) {
     // createResponse($code, $descrip, $content)

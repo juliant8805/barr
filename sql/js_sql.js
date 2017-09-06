@@ -1,9 +1,9 @@
-
-function update_query(query) {
+var urlsqlphp= "sql/connect.php";
+/*function update_query(query) {
     var c = "updateQuery";
     var xmlresp = doRequest(c, query);
     return responseContent(xmlresp);
-}
+}*/
 function upload_query(query) {
     var c = "uploadQuery";
     var xmlresp = doRequest(c, query);

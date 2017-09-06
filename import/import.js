@@ -94,9 +94,40 @@ $(document).ready(function () {
                             if (res[i] === archivo[j].name) {
                                 readFile(archivo[j], function (e) {
                                     var shape = e.srcElement.onprogress.name.split(".")[0];
-                                    var select = select_query("SELECT ST_GeometryType(geom) FROM temp_" + shape + " LIMIT 1");
-                                    var sel = select[0][0].split("_");
-                                    select_query("ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry;UPDATE temp_" + shape + " SET geom = ST_Transform(geom, 4326);ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry('" + sel[1] + "', 4326);");
+                                    //var select = select_query("SELECT ST_GeometryType(geom) FROM temp_" + shape + " LIMIT 1");
+                                    var select = $.ajax({
+                                        url: 'planeacion/valid.php',
+                                        type: 'POST',
+                                        // Form data
+                                        //datos del formulario
+                                        data: shape,
+                                        //necesario para subir archivos via ajax
+                                        cache: false,
+                                        contentType: false,
+                                        processData: false,
+                                        //mientras enviamos el archivo
+                                        /*beforeSend: function () {
+                                            message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
+                                            showMessage(message);
+                                        },*/
+                                        //una vez finalizado correctamente
+                                        success: function (data) {
+                                            return data;
+                                            /*var message = $("<span class='success'>Archivos subidos correctamente.</span>");
+                                            showMessage(message);
+                                            $('#chargecsv').modal('hide');
+                                            alert("Solicitud aceptada, en 24 horas se veran reflejados los cambios en la plataforma</br>");*/
+                                        },
+                                        //si ha ocurrido un error
+                                        error: function () {
+                                            return "error";
+                                            /*var message = $("<span class='error'>Ha ocurrido un error.</span>");
+                                            showMessage(message);*/
+                                        }
+                                    });
+                                    console.log(selelct);
+                                    //var sel = select[0][0].split("_");
+                                    //select_query("ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry;UPDATE temp_" + shape + " SET geom = ST_Transform(geom, 4326);ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry('" + sel[1] + "', 4326);");
                                 });
                             }
                         }
@@ -240,7 +271,7 @@ function valshp(valor) {
             }
         }
         validate('valid');
-    }else if (valor === 1) {
+    } else if (valor === 1) {
         var html = "<span class='info'>Archivos validados con exito</br>";
         var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%' ORDER BY table_name");
         for (i = 0; i < select.length; i++) {
