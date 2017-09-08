@@ -652,11 +652,11 @@ var layerCartobasica = new ol.layer.Group({
 
 //CAPS GROUP
 var layerCatastro = new ol.layer.Group({
-    layers: [predio_rural, manzana, predio, construcciones, unidades, vias, consolidado],
+    layers: [predio_rural, manzana, predio, construcciones, unidades, consolidado],
     name: 'Catastro'
 });
 var layerSitios = new ol.layer.Group({
-    layers: [sitios, puntos_aaa],
+    layers: [sitios, vias, puntos_aaa],
     name: 'Sitios'
 });
 var layerSUI = new ol.layer.Group({

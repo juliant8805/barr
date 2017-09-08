@@ -39,7 +39,7 @@ window.onload = function () {
     document.getElementById('CZampaCienagaMallorquin50m').addEventListener('click', showtable, false);
     document.getElementById('CZampaRíoMagdalena50m').addEventListener('click', showtable, false);
     document.getElementById('CZonaDeclaradaPrado').addEventListener('click', showtable, false);
-    document.getElementById('CZonaDeclaradaCentro').addEventListener('click', showtable, false);
+    //document.getElementById('CZonaDeclaradaCentro').addEventListener('click', showtable, false);
 };
 function hideMe() {
     document.getElementById('draggable').style.display = "none";

@@ -261,10 +261,10 @@ body{
 @media handheld, only screen and (min-width: 900px) {
     #boton_limpiar{
         position: absolute;
-        top:1em;
-        left:64%;
-        height:4em;
-        width:4em;
+        top: 2em;
+        left: 66%;
+        height: 2.5em;
+        width: 2.5em;
         margin-left: 0.5em;
         box-shadow: 1px -1px 1px rgba(0,0,0,0.1); -moz-box-shadow: 1px -1px 1px rgba(0,0,0,0.1);
         -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.1);

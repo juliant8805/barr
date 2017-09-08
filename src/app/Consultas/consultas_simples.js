@@ -1544,6 +1544,7 @@ function addressSelect(event, ui) {
 }
 
 function PlaceSelect(event, ui) {
+    vias.setVisible(true);
     document.getElementById('menusitiostotem').style.display = 'none';
     document.getElementById('volver').style.display = 'none';
     document.getElementById("volvertotem").style.display = "block";
