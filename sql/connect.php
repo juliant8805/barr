@@ -73,11 +73,11 @@ function delfile($dir) {
 
 function uploadQuery($query) {
     GLOBAL $host, $port, $data, $user, $pass, $db;
-    $quer = 'ogr2ogr -f "PostgreSQL" "PG:host=' . $host . ' user=' . $user . ' dbname=' . $data . ' password=' . $pass . ' port=' . $port . '" "C:/xampp/htdocs/gesstor/import/files/' . $query . '.shp" -lco GEOMETRY_NAME=geom -lco FID=gid -lco PRECISION=no -nlt PROMOTE_TO_MULTI -nln temp_' . $query . ' -overwrite';
+    $quer = 'ogr2ogr -f "PostgreSQL" "PG:host=' . $host . ' user=' . $user . ' dbname=' . $data . ' password=' . $pass . ' port=' . $port . '" "C:/Bitnami/wampstack-5.6.30-2/apache2/htdocs/barranquilla/import/shape/' . $query . '.shp" -lco GEOMETRY_NAME=geom -lco FID=gid -lco PRECISION=no -nlt PROMOTE_TO_MULTI -nln temp_' . $query . ' -overwrite';
     exec($quer, $out, $res);
     $cod = 0;
     $text = "OK";
-    $desc = 1;
+    $desc = $res + "out= " + $out;
     $response = createResponse($cod, $text, $desc);
     return $response;
 }

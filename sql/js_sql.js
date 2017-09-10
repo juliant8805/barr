@@ -19,7 +19,7 @@ function doRequest(comm, pars) {
     if (pars === "") {
         pars = "1";
     }
-    var url = urlsqlphp + "?db=" + db_name + "&c=" + comm + "&p=" + pars;
+    var url = urlsqlphp + "?c=" + comm + "&p=" + pars;
     //console.log(url);
     req.open("GET", url, false);
     req.send();

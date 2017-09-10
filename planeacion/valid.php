@@ -29,16 +29,20 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             move_uploaded_file($tmp_name, "reg".$key.".csv");
         }
     }*/
+    //print ($_POST["shape"]);
     $shape = $_POST["shape"];
+    $connString = 'host=104.154.211.159 dbname=Barranquilla user=postgres password=gesstorB2017';
     $db = pg_connect($connString);
-    $select = pg_exec($db, "SELECT ST_GeometryType(geom) FROM temp_".$shape." LIMIT 1");
-    $sel = explode(" ", $select[0][0]);
+    $result = pg_query($db, "SELECT ST_GeometryType(geom) FROM temp_".$shape." LIMIT 1");
+    $select = pg_fetch_row($result);
+    print ($select[0]);
+    $sel = explode("_", $select[0]);
     //var sel = select[0][0].split("_");
     pg_exec($db, "ALTER TABLE temp_".$shape." ALTER COLUMN geom TYPE geometry");
     pg_exec($db, "UPDATE temp_".$shape." SET geom = ST_Transform(geom, 4326)");
     pg_exec($db, "ALTER TABLE temp_".$shape." ALTER COLUMN geom TYPE geometry('".$sel[1]."', 4326)");
     //select_query("ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry;UPDATE temp_" + shape + " SET geom = ST_Transform(geom, 4326);ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry('" + sel[1] + "', 4326);");
-    
+    echo $sel[1];
     
     //exec("python.py");
     /*$arr = implode(",", $name);

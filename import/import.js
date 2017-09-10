@@ -32,6 +32,7 @@ $(document).ready(function () {
         $.ajax({
             url: 'import/upload.php',
             type: 'POST',
+            async : false,
             // Form data
             //datos del formulario
             data: archivos,
@@ -68,6 +69,7 @@ $(document).ready(function () {
                         shx = shx + 1;
                     }
                 }
+                //console.log("dbf=" + dbf + "prj=" + prj + "shp=" + shp + "shx=" + shx);
                 if (dbf < prj || dbf < shp || dbf < shx) {
                     message = $("<span class='error'>No se puede realizar la carga por falta de archivo *.dbf</span>");
                     showMessage(message);
@@ -88,44 +90,51 @@ $(document).ready(function () {
                 for (i = 0; i < res.length; i++) {
                     var ar = res[i].split(".");
                     if (ar[ar.length - 1] === "shp") {
-                        upload_query(ar[0]);
+                        /*var up = */upload_query(ar[0]);
+                        //console.log(up);
                     } else if (ar[ar.length - 1] === "prj") {
                         for (j = 0; j < archivo.length; j++) {
                             if (res[i] === archivo[j].name) {
                                 readFile(archivo[j], function (e) {
                                     var shape = e.srcElement.onprogress.name.split(".")[0];
+                                    //console.log(shape);
+                                    //var parametros = 'shape=' + shape;
+                                    var data = new FormData();
+                                    data.append('shape', shape);
                                     //var select = select_query("SELECT ST_GeometryType(geom) FROM temp_" + shape + " LIMIT 1");
                                     var select = $.ajax({
                                         url: 'planeacion/valid.php',
-                                        type: 'POST',
+                                        type: 'post',
                                         // Form data
                                         //datos del formulario
-                                        data: shape,
+                                        data: data,
+                                        async : false,
                                         //necesario para subir archivos via ajax
                                         cache: false,
                                         contentType: false,
                                         processData: false,
                                         //mientras enviamos el archivo
                                         /*beforeSend: function () {
-                                            message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
-                                            showMessage(message);
-                                        },*/
+                                         message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
+                                         showMessage(message);
+                                         },*/
                                         //una vez finalizado correctamente
                                         success: function (data) {
+                                            console.log(data);
                                             return data;
                                             /*var message = $("<span class='success'>Archivos subidos correctamente.</span>");
-                                            showMessage(message);
-                                            $('#chargecsv').modal('hide');
-                                            alert("Solicitud aceptada, en 24 horas se veran reflejados los cambios en la plataforma</br>");*/
+                                             showMessage(message);
+                                             $('#chargecsv').modal('hide');
+                                             alert("Solicitud aceptada, en 24 horas se veran reflejados los cambios en la plataforma</br>");*/
                                         },
                                         //si ha ocurrido un error
                                         error: function () {
-                                            return "error";
-                                            /*var message = $("<span class='error'>Ha ocurrido un error.</span>");
-                                            showMessage(message);*/
+                                            //return "error";
+                                            var message = $("<span class='error'>Ha ocurrido un error.</span>");
+                                            showMessage(message);
                                         }
                                     });
-                                    console.log(selelct);
+                                    console.log(select);
                                     //var sel = select[0][0].split("_");
                                     //select_query("ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry;UPDATE temp_" + shape + " SET geom = ST_Transform(geom, 4326);ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry('" + sel[1] + "', 4326);");
                                 });
@@ -133,7 +142,7 @@ $(document).ready(function () {
                         }
                     }
                 }
-                delfile("files");
+                delfile("shape");
                 document.getElementById("valid").style.display = "block";
                 var message = $("<span class='success'>Archivos subidos correctamente.</span>");
                 showMessage(message);
