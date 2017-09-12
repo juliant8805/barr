@@ -32,7 +32,7 @@ $(document).ready(function () {
         $.ajax({
             url: 'import/upload.php',
             type: 'POST',
-            async : false,
+            async: false,
             // Form data
             //datos del formulario
             data: archivos,
@@ -102,13 +102,13 @@ $(document).ready(function () {
                                     var data = new FormData();
                                     data.append('shape', shape);
                                     //var select = select_query("SELECT ST_GeometryType(geom) FROM temp_" + shape + " LIMIT 1");
-                                    var select = $.ajax({
+                                    /*var select = */$.ajax({
                                         url: 'planeacion/valid.php',
                                         type: 'post',
                                         // Form data
                                         //datos del formulario
                                         data: data,
-                                        async : false,
+                                        async: false,
                                         //necesario para subir archivos via ajax
                                         cache: false,
                                         contentType: false,
@@ -120,7 +120,7 @@ $(document).ready(function () {
                                          },*/
                                         //una vez finalizado correctamente
                                         success: function (data) {
-                                            console.log(data);
+                                            //console.log(data);
                                             return data;
                                             /*var message = $("<span class='success'>Archivos subidos correctamente.</span>");
                                              showMessage(message);
@@ -134,7 +134,7 @@ $(document).ready(function () {
                                             showMessage(message);
                                         }
                                     });
-                                    console.log(select);
+                                    //console.log(select);
                                     //var sel = select[0][0].split("_");
                                     //select_query("ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry;UPDATE temp_" + shape + " SET geom = ST_Transform(geom, 4326);ALTER TABLE temp_" + shape + " ALTER COLUMN geom TYPE geometry('" + sel[1] + "', 4326);");
                                 });
@@ -214,7 +214,8 @@ function validate(validar) {
          cell2.innerHTML = "Aqui tambien";
          */
     } else if (validar === "deshacer") {
-        var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%' ORDER BY table_name");
+        //var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%' ORDER BY table_name");
+        var select = search("preproduccion:seltablescharge", "post_%");
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
@@ -246,43 +247,48 @@ function validate(validar) {
 function valshp(valor) {
     if (valor === 0) {
         var html = "<span class='info'>Archivos validados con exito</br>";
-        var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%' ORDER BY table_name");
+        //var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%' ORDER BY table_name");
+        var select = search("preproduccion:seltablescharge", "temp_%");
         for (i = 0; i < select.length; i++) {
             //console.log(document.getElementById(select[i][0]));
             if (document.getElementById(select[i][0]).checked === true) {
                 //console.log(select[i][0].split('temp_')[1]);
-                update_query("DROP TABLE post_" + select[i][0].split('temp_')[1] + ";");
-                //var up = update_query("ALTER TABLE " + select[i][0].split('temp_')[1] + " RENAME TO post_" + select[i][0].split('temp_')[1] + ";");
-                var up = update_query("CREATE TABLE post_" + select[i][0].split('temp_')[1] + " AS SELECT * FROM " + select[i][0].split('temp_')[1] + ";");
-                //console.log(select[i][0]);
-                //console.log(up);
-                if (up) {
-                    //var lo = update_query("CREATE TABLE " + select[i][0].split('temp_')[1] + " .FROM temp_" + select[i][0].split('temp_')[1] + ";");
-                    update_query("DROP TABLE " + select[i][0].split('temp_')[1] + ";");
-                    var lo = update_query("CREATE TABLE " + select[i][0].split('temp_')[1] + " AS SELECT * FROM temp_" + select[i][0].split('temp_')[1] + ";");
-                    if (lo) {
-                        update_query("DROP TABLE temp_" + select[i][0].split('temp_')[1] + ";");
-                        //mensaj.innerHTML += "<br>" + select[i][0].split('temp_')[1];  // Agrego nueva linea antes
-                        //message += $("<span class='success'>El archivo " + select[i][0].split('temp_')[1] + "fue validado con exito</span>");
-                        html += " ...  " + select[i][0].split('temp_')[1] + "  ...</span></br>";
-                        mns(html);
-                        //console.log(a);
-                        //var mns = document.getElementById("mns");
-                    } else {
-                        var message = $("</br></br><span class='error'>Error al validar " + select[i][0].split('temp_')[1] + "</span>");
-                        mn(message);
+                var data = new FormData();
+                data.append('param', select[i][0].split('temp_')[1]);
+                var mensaje = $.ajax({
+                    url: 'planeacion/valshp0.php',
+                    type: 'post',
+                    data: data,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    //mientras enviamos el archivo
+                    beforeSend: function () {
+                        message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
+                        showMessage(message);
+                    },
+                    //una vez finalizado correctamente
+                    success: function (data) {
+                        //console.log(data);
+                        return data;
+                    },
+                    //si ha ocurrido un error
+                    error: function () {
+                        var message = $("<span class='error'>Ha ocurrido un error.</span>");
+                        showMessage(message);
                     }
-                } else {
-                    var message = $("</br></br><span class='error'>Ha ocurrido un error con el archivo " + select[i][0].split('temp_')[1] + "</span>");
-                    mn(message);
-                }
+                });
+                console.log(mensaje.responseText);
+                mns(mensaje.responseText);
                 document.getElementById("deshacer").style.display = "block";
             }
         }
         validate('valid');
     } else if (valor === 1) {
         var html = "<span class='info'>Archivos validados con exito</br>";
-        var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%' ORDER BY table_name");
+        //var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%' ORDER BY table_name");
+        var select = search("preproduccion:seltablescharge", "post_%");
         for (i = 0; i < select.length; i++) {
             if (document.getElementById(select[i][0]).checked === true) {
                 update_query("DROP TABLE " + select[i][0].split('post_')[1] + ";");

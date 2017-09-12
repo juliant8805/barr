@@ -1491,8 +1491,8 @@ function addressSelect(event, ui) {
                     select[2] = "<b>Bien Patrimonial</b>";
                     select[3] = "<b>Fotografias</b>";
                     sel[0] = values.norma_uso;
-                    sel[1] = "Pendiente";
-                    sel[2] = "Pendiente";
+                    sel[1] = "En Actualización";
+                    sel[2] = "En Actualización";
                     sel[3] = document.createElement("a");
                     sel[3].id = "img1";
                     sel[3].style = "width: 30px; height: 50px;";
