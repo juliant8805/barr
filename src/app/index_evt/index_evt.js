@@ -191,7 +191,7 @@ $(document).on('ready', function () {
             document.getElementById("estratificacion_oficial").style.display = "block";
             document.getElementById("oficial_vs_AAA").style.display = "block";
             document.getElementById("oficial_vs_AAA_uso").style.display = "block";
-            document.getElementById("uso_electricaribe").style.display = "block";
+            //document.getElementById("uso_electricaribe").style.display = "block";
             document.getElementById("disponibilidad_AAA").style.display = "block";
             document.getElementById("Nomenclatura Domiciliaria").style.display = "block";
             document.getElementById("icono_codigo").style.display = "block";
@@ -351,7 +351,7 @@ $(document).on('ready', function () {
             document.getElementById("propietario").style.display = "block";
             document.getElementById("Tipo Construccion").style.display = "block";
             document.getElementById("oficial_vs_AAA_uso").style.display = "block";
-            document.getElementById("uso_electricaribe").style.display = "block";
+            //document.getElementById("uso_electricaribe").style.display = "block";
             document.getElementById("boton_comparacion").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             modulo = "hacienda";
@@ -407,7 +407,7 @@ $(document).on('ready', function () {
             document.getElementById("propietario").style.display = "block";
             document.getElementById("Tipo Construccion").style.display = "block";
             document.getElementById("oficial_vs_AAA_uso").style.display = "block";
-            document.getElementById("uso_electricaribe").style.display = "block";
+            //document.getElementById("uso_electricaribe").style.display = "block";
             document.getElementById("boton_comparacion").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             //hacienda consultas
@@ -1480,50 +1480,55 @@ function listaprediototem() {
 function cambiocatastro() {
     if (document.getElementById("panel_atr_totem_catastro").style.display == "block"){
       document.getElementById("panel_atr_totem_catastro").style.display = "none";
-      document.getElementById("pestc").style.backgroundColor = "#A6A6A6";
+      //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
       document.getElementById("pesth").style.display = "block";
       document.getElementById("pestp").style.display = "block";
     }
     else{
        document.getElementById("panel_atr_totem_catastro").style.display = "block";
-       document.getElementById("pestc").style.backgroundColor = "#639BB3";
+       //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
        document.getElementById("pesth").style.display = "none";
        document.getElementById("pestp").style.display = "none";  
     }
-    document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
-    document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
+    //document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
+    //document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
     document.getElementById("panel_atr_totem_hacienda").style.display = "none";
     document.getElementById("panel_atr_totem_planeacion").style.display = "none";
 }
 function cambiohacienda() {
     if (document.getElementById("panel_atr_totem_hacienda").style.display == "block"){
       document.getElementById("panel_atr_totem_hacienda").style.display = 'none' 
-      document.getElementById("pesth").style.backgroundColor = "#A6A6A6";
+      document.getElementById("pestc").style.top = "0em";
+      document.getElementById("pestp").style.top = "0em";
+      //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
     }
     else{
        document.getElementById("panel_atr_totem_hacienda").style.display = "block";
-       document.getElementById("pesth").style.backgroundColor = "#639BB3";
+       document.getElementById("pestc").style.top = "13em";
+       document.getElementById("pestp").style.top = "13em";
+        
+       //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
     }
-    document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
-    document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
+    //document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
+    //document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
     document.getElementById("panel_atr_totem_catastro").style.display = "none";
     document.getElementById("panel_atr_totem_planeacion").style.display = "none";
 }
 function cambioplaneacion() {
     if (document.getElementById("panel_atr_totem_planeacion").style.display == "block"){
       document.getElementById("panel_atr_totem_planeacion").style.display = "none"; 
-      document.getElementById("pestp").style.backgroundColor = "#A6A6A6";
+      //document.getElementById("pestp").style.backgroundColor = "#A6A6A6";
       document.getElementById("pesth").style.display = "block";
       document.getElementById("pestc").style.display = "block";
     }
     else{
        document.getElementById("panel_atr_totem_planeacion").style.display = "block";
-       document.getElementById("pestp").style.backgroundColor = "#639BB3";
+       //document.getElementById("pestp").style.backgroundColor = "#639BB3";
        document.getElementById("pesth").style.display = "none";
        document.getElementById("pestc").style.display = "none";       
     }
-    document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
-    document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
+    //document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
+    //document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
     document.getElementById("panel_atr_totem_hacienda").style.display = "none";
     document.getElementById("panel_atr_totem_catastro").style.display = "none";
 }

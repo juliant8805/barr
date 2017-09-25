@@ -196,7 +196,7 @@ function rango(style) {
              viastransmasivo.setVisible(false);
              construcciones.setVisible(false);
              predio.setVisible(true);
-             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta");
+             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta</br>");
              var select = search("preproduccion:TotalPredios");
              var param = [['Áreas Protegidas'], ['Corredores Ecológicos'], ['Sin Informacion']];
              var total1 = search("preproduccion:SinInformacion");
@@ -214,7 +214,7 @@ function rango(style) {
              viastransmasivo.setVisible(false);
              construcciones.setVisible(false);
              predio.setVisible(true);
-             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta");
+             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta</br>");
              var select = search("preproduccion:TotalPredios");
              var param = [['Protección Urbanistica'], ['No Protegido'], ['Sin Informacion']];
              var total1 = search("preproduccion:SinInformacion");
@@ -236,10 +236,11 @@ function rango(style) {
              predio.setVisible(true);
              var select = search("preproduccion:TotalPredios");
              var param = [['Predios en Suelo de Expansión'], ['Predios en Suelo Rural'], ['Predios en Suelo Urbano']];
-             var total1 = search("preproduccion:ClasificacionUsoUrbanos", 'Suelo de Expansion');
+             var total1 = search("preproduccion:SinInformacion");
              var total2 = search("preproduccion:SinInformacion");
              var total3 = search("preproduccion:ClasificacionUsoUrbanos", 'Suelo Urbano');
              var totales = total1.concat(total2, total3);
+             console.log(totales);
              predio.getSource().updateParams({'STYLES': 'Clasificacion_Uso'});
              estdistica(select, style, param, totales);
              map.getView().fitExtent(predio.getExtent(), map.getSize());

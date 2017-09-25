@@ -178,7 +178,7 @@ function rango(style) {
         viastransmasivo.setVisible(false);
         construcciones.setVisible(false);
         predio.setVisible(true);
-        alert("GESSTOR INFORMA:</br></br>Esta consulta solo sirve de referencia para los predios que aparecen con área construida 0 en los registros planos.");
+        alert("GESSTOR INFORMA:</br></br>Esta consulta solo sirve de referencia para los predios que aparecen con área construida 0 en los registros planos.</br>");
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
             var param = [['Sin Novedad'], ['Posible Predio Para Actualizar']];
@@ -216,7 +216,7 @@ function rango(style) {
              viastransmasivo.setVisible(false);
              construcciones.setVisible(false);
              predio.setVisible(true);
-             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para establecer cuales predios generan Efecto de plusvalía");
+             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para establecer cuales predios generan Efecto de plusvalía</br>");
                 var select = search("preproduccion:TotalPredios");
                 var param = [['Generador de Plusvalia'], ['No Generador'], ['Sin Informacion']];
                 var total1 = search("preproduccion:SinInformacion");

@@ -8,7 +8,7 @@ function file() {
     if (queryexport.substring(0, 18) === "Rango Area Terreno"){
         var titulo = JSON.stringify(["Codigo Predial","Direccion", "Localidad","Barrio","Area Terreno M2","# Predios"]);
         if (queryexport === 'Rango Area Terreno G') {
-            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();
         } else {
             var select = search("preproduccion:ReportRangoArea", values);
@@ -18,7 +18,7 @@ function file() {
     else if (queryexport.substring(0, 17) === "Tipo Construccion"){
          var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Condicion Propiedad", "# Predios"]);
         if (queryexport === 'Tipo Construccion G') {
-            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();
         } else {
             var select = search("preproduccion:Reportph", values);
@@ -28,7 +28,7 @@ function file() {
     else if (queryexport.substring(0, 27) === "Distrito vs Prestadores AAA"){ 
         if (queryexport === 'Distrito vs Prestadores AAA G') {
             var titulo = JSON.stringify(["Codigo Predial", "Direccion"]);
-            alert("GESSTOR INFORMA:</br></br>El reporte corresponde a los predios de la base de prestadores AAA que no tienen código catastral");
+            alert("GESSTOR INFORMA:</br></br>El reporte corresponde a los predios de la base de prestadores AAA que no tienen código catastral</br>");
             var select = search("preproduccion:ReportPrediosSinCodigo");
             quitgif();
         } else {
@@ -40,7 +40,7 @@ function file() {
     else if (queryexport.substring(0, 19) === "predios_construidos"){
         var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Area Construida M2", "# Predios"]);
         if (queryexport === 'predios_construidos G') {
-            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();
         } else {
             var select = search("preproduccion:ReportAreaConstruida", values);
@@ -57,7 +57,7 @@ function file() {
     else if (queryexport.substring(0, 23) === "Rango Area Construccion"){
          var titulo = JSON.stringify(["Codigo Predial","Localidad","Barrio","Area Construida M2","# Predios"]);
         if (queryexport === 'Rango Area Construccion G') {
-            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();
         } else {
             var select = search("preproduccion:ReportRangoAreaConstruccion", values);
@@ -67,7 +67,7 @@ function file() {
     else if (queryexport.substring(0, 22) === "Calidad Construcciones"){       
         var titulo = JSON.stringify(["Codigo Predial","Localidad","Barrio","Puntaje Construccion"]);
         if (queryexport === 'Calidad Construcciones G') {
-            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();
         } else {
             var select = search("preproduccion:ReportCalidadConstruccion", values);
@@ -88,7 +88,7 @@ function file() {
     else if (queryexport.substring(0, 24) === "Tipo de Amenaza REMOCION"){
          var titulo = JSON.stringify(["Codigo Predial","Localidad","Barrio","Amenaza Remocion","# de Predios"]);
          if (queryexport === 'Tipo de Amenaza REMOCIONG') {
-            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();
         } else if (queryexport === 'Tipo de Amenaza REMOCIONF') {
             var select = search("preproduccion:ReportRemosion", values); 
@@ -98,7 +98,7 @@ function file() {
     else if (queryexport.substring(0, 23) === "estratificacion_oficial"){
          var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Estrato", "# Predios"]);
         if (queryexport === 'estratificacion_oficial G') {
-            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();
         } else {
             var select = search("preproduccion:ReportEstratificacion", values);
@@ -106,31 +106,31 @@ function file() {
     }
     
     else if (queryexport.substring(0, 15) === "espacio_publico"){
-        alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte");
+        alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte</br>");
         quitgif(); 
     }
     
      else if (queryexport.substring(0, 17) === "Clasificacion_Uso"){
-         alert("GESSTOR INFORMA:</br></br>El reporte corresponde a los predios urbanos que se encuentran en zona de expansión urbana");
+         alert("GESSTOR INFORMA:</br></br>El reporte corresponde a los predios urbanos que se encuentran en zona de expansión urbana</br>");
          quitgif(); 
          var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Uso", "# Predios"]);
          var select = search("preproduccion:ReportClasificacionUso");
     }
     
      else if (queryexport.substring(0, 30) === "Estructura Ecologica Principal"){
-         alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte");
+         alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte</br>");
          quitgif(); 
     }
     
     else if (queryexport.substring(0, 27) === "Area Proteccion Urbanistica"){
-         alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte");
+         alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte</br>");
          quitgif(); 
     }
      
     else if (queryexport.substring(0, 16) === "Avaluo Catastral"){
         var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Avaluo Catastral", "Direccion"]);
         if (queryexport === 'Avaluo Catastral G') {
-             alert("GESSTOR INFORMA:</br></br>La base es demasiado grande para exportarla completa, por favor primero filtre por Localidad, Barrio o Manzana");
+             alert("GESSTOR INFORMA:</br></br>La base es demasiado grande para exportarla completa, por favor primero filtre por Localidad, Barrio o Manzana</br>");
              quitgif(); 
         } 
         else {
@@ -149,17 +149,17 @@ function file() {
     }
     
     else if (queryexport.substring(0, 16) === "Tipo Propietario"){
-        alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte");
+        alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte</br>");
         quitgif(); 
     }
     
     else if (queryexport.substring(0, 15) === "Impuesto Camara"){
-        alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte");
+        alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte</br>");
         quitgif(); 
     }
     
     else if (queryexport.substring(0, 17) === "Incremento Avaluo"){
-        alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte");
+        alert("GESSTOR INFORMA:</br></br>No se encuentran datos alfanuméricos para generar el reporte</br>");
         quitgif(); 
     }
     
@@ -200,7 +200,7 @@ function file() {
     else if (queryexport.substring(0, 18) === "disponibilidad_AAA"){
         var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Prestador", "# Predios"]);
         if (queryexport == "disponibilidad_AAA G"){
-            alert("GESSTOR INFORMA:</br></br>La base es demasiado grande para exportarla completa, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base es demasiado grande para exportarla completa, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();    
         } else if (queryexport == "disponibilidad_AAA AcueductoF"){
           var select = search("preproduccion:ReportDisponibilidadAcueducto", values);
@@ -224,7 +224,7 @@ function file() {
     else if (queryexport.substring(0, 21) === "predios_actualizacion"){
         var titulo = JSON.stringify(["Codigo Predial", "Localidad","Barrio", "Area Construida M2", "# Predios"]);
         if (queryexport === 'predios_actualizacion G') {
-            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana");
+            alert("GESSTOR INFORMA:</br></br>La base de datos es demasiado grande y al exportarla completa puede tardar demasiado tiempo, por favor primero filtre por Localidad, Barrio o Manzana</br>");
             quitgif();
         } else {
             var select = search("preproduccion:ReportAreaConstruida", values);

@@ -42,7 +42,7 @@ function rango(style) {
     if (style === "Avaluo Catastral") {
         construcciones.setVisible(false);
         predio.setVisible(true);
-        alert("GESSTOR INFORMA:</br></br>Para el caso de esta consulta se suman las mejoras al total de predios debido a que son objeto de avalúo catastral");
+        alert("GESSTOR INFORMA:</br></br>Para el caso de esta consulta se suman las mejoras al total de predios debido a que son objeto de avalúo catastral</br>");
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPrediosHacienda");
             var param = [['0-20 millones'], ['20-50 millones'], ['50-100 millones'], ['100-500 millones'], ['mayor a 500 millones']];
@@ -132,7 +132,7 @@ function rango(style) {
         else if (style === "Impuesto Camara") {
         construcciones.setVisible(false);
              predio.setVisible(true);
-             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta");
+             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta</br></br>");
                 var select = search("preproduccion:TotalPredios");
                 var param = [['Sin Deuda'], ['Con Dueda'], ['Sin Informacion']];
                 var total1 = search("preproduccion:SinInformacion");
@@ -149,7 +149,7 @@ function rango(style) {
         else if (style === "Tipo Propietario") {
         construcciones.setVisible(false);
              predio.setVisible(true);
-             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta");
+             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta</br></br>");
                 var select = search("preproduccion:TotalPredios");
                 var param = [['Persona Natural'], ['Persona Juridica'], ['Sin Informacion']];
                 var total1 = search("preproduccion:SinInformacion");
@@ -166,7 +166,7 @@ function rango(style) {
         else if (style === "Incremento Avaluo") {
              construcciones.setVisible(false);
              predio.setVisible(true);
-             alert("GESSTOR INFORMA:</br></br>No se encuentra información de avalúos para vigencias anteriores a 2017");
+             alert("GESSTOR INFORMA:</br></br>No se encuentra información de avalúos para vigencias anteriores a 2017</br></br>");
                 var select = search("preproduccion:TotalPredios");
                 var param = [['Avalúo 2016'], ['Avalúo 2017'], ['Sin Informacion']];
                 var total1 = search("preproduccion:SinInformacion");
@@ -224,7 +224,7 @@ function rango(style) {
             predio.setVisible(true);
             if (document.getElementById("oficial_vs_AAA_uso").value === "Acueducto") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
-            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017</br></br>");
             var select = search("preproduccion:TotalPredios");
             var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
             var total1 = search("preproduccion:UsoDistritoPrestadoresAcueducto", 'Igual');
@@ -265,7 +265,7 @@ function rango(style) {
         }
          
          else if (document.getElementById("oficial_vs_AAA_uso").value === "Alcantarillado") {
-            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017</br></br>");
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
             var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];
@@ -306,7 +306,7 @@ function rango(style) {
          } 
          
          else if (document.getElementById("oficial_vs_AAA_uso").value === "Aseo") {
-            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017");
+            alert("GESSTOR INFORMA:</br></br>Información utilizada en esta consulta:</br>1. Base de Datos Catastral vigencia 01/03/2017</br>2. Base de datos prestadores AAA (84% de registros encontrados en la base catastral) vigencia 01/03/2017</br></br>");
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
             var select = search("preproduccion:TotalPredios");
             var param = [['Uso Coincidente'], ['P.Comercial-D.Residencial'], ['P.Residencial-D.Comercial'], ['Sin Informacion']];

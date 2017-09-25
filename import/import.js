@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    /*$("#all").val(this.checked);
+     $("#all").change(function () {
+     console.log("111");
+     $("input:checkbox").prop('checked', $(this).prop("checked"));
+     });*/
     $(".messages").hide();
     //función que observa los cambios del campo file y obtiene información
     $(':file').change(function ()
@@ -32,7 +37,7 @@ $(document).ready(function () {
         $.ajax({
             url: 'import/upload.php',
             type: 'POST',
-            async: false,
+            //async: false,
             // Form data
             //datos del formulario
             data: archivos,
@@ -42,6 +47,7 @@ $(document).ready(function () {
             processData: false,
             //mientras enviamos el archivo
             beforeSend: function () {
+                //alert("1");
                 //window.open('upload.php');
                 message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
                 showMessage(message);
@@ -121,7 +127,7 @@ $(document).ready(function () {
                                         //una vez finalizado correctamente
                                         success: function (data) {
                                             //console.log(data);
-                                            return data;
+                                            //return data;
                                             /*var message = $("<span class='success'>Archivos subidos correctamente.</span>");
                                              showMessage(message);
                                              $('#chargecsv').modal('hide');
@@ -154,9 +160,9 @@ $(document).ready(function () {
             }
         });
     });
-    $(".modal fade").change(function () {
-        alert("d.");
-    });
+    /*$(".modal fade").change(function () {
+     alert("d.");
+     });*/
 });
 $(".modal fade").change(function () {
     alert("Handler for .change() called.");
@@ -164,6 +170,7 @@ $(".modal fade").change(function () {
 //como la utilizamos demasiadas veces, creamos una función para 
 //evitar repetición de código
 function showMessage(message) {
+    //console.log(message);
     $(".messages").html("").show();
     $(".messages").html(message);
 }
@@ -173,7 +180,21 @@ function readFile(file, onLoadCallback) {
     reader.onprogress = file;
     reader.readAsText(file);
 }
+function selall() {
+    //console.log(document.getElementById('all').checked);
+    if (document.getElementById('all').checked === true) {
+       // console.log(1);
+        //$('input:checkbox').attr('checked', 'checked');
+        $('input:checkbox').prop('checked', true);
+    } else {
+        //console.log(2);
+        //$('input:checkbox').removeAttr('checked');
+        $('input:checkbox').prop('checked', false);
+    }
+}
 function validate(validar) {
+    //var a = $("<span class='success'>...</span>");
+    //mns(a);
     var table = document.getElementById("table");
     table.innerHTML = "";
     //$("table").children().remove()
@@ -184,23 +205,35 @@ function validate(validar) {
         //console.log(select);
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
+        cell1.colSpan = 2;
+        cell1.innerHTML = " Seleccionar todos ";
+        var elem = document.createElement("input");
+        elem.type = "checkbox";
+        elem.id = "all";
+        elem.setAttribute("onclick", "selall()");
+        cell1.appendChild(elem);
+
+
+        row = table.insertRow(1);
+        cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         cell1.innerHTML = " SHAPE ";
         cell2.innerHTML = " VALIDAR ";
         //filas=table.getRowCount();
-        for (i = 1; i <= select.length; i++) {
+        for (i = 2; i <= select.length + 1; i++) {
             //sel[i - 1] = select[i - 1][0];
             row = table.insertRow(i);
             cell1 = row.insertCell(0);
             cell2 = row.insertCell(1);
             cell1.target = "marco";
-            cell1.innerHTML = select[i - 1][0].split('temp_')[1].link("http://35.184.3.4:8080/geoserver/preproduccion/wms?service=WMS&version=1.1.0&request=GetMap&layers=preproduccion:" + select[i - 1][0] + "&styles=&bbox=-74.878721,10.9183800000001,-74.7586219999999,11.0510640000001&width=695&height=768&srs=EPSG:4326&format=application/openlayers");
+            cell1.innerHTML = select[i - 2][0].split('temp_')[1].link("http://35.184.3.4:8080/geoserver/preproduccion/wms?service=WMS&version=1.1.0&request=GetMap&layers=preproduccion:" + select[i - 2][0] + "&styles=&bbox=-74.878721,10.9183800000001,-74.7586219999999,11.0510640000001&width=695&height=768&srs=EPSG:4326&format=application/openlayers");
             cell1.getElementsByTagName("a")["0"].target = "_blank";
             //console.log(cell1.getElementsByTagName("a"));
             //console.log(cell1);
             var element1 = document.createElement("input");
             element1.type = "checkbox";
-            element1.id = select[i - 1][0];
+            element1.id = select[i - 2][0];
+            element1.name = "checkbox";
             //element1.setAttribute("onchange", "toggleSelect(" + select[i - 1][0] + ")");
             //element1.setAttribute("onchange", "toggleSelect()");
             cell2.appendChild(element1);
@@ -216,20 +249,34 @@ function validate(validar) {
     } else if (validar === "deshacer") {
         //var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%' ORDER BY table_name");
         var select = search("preproduccion:seltablescharge", "post_%");
+        if (select.length === 0) {
+            document.getElementById("deshacer").style.display = "none";
+        }
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
+        cell1.colSpan = 2;
+        cell1.innerHTML = " Seleccionar todos ";
+        var elem = document.createElement("input");
+        elem.type = "checkbox";
+        elem.id = "all";
+        elem.setAttribute("onclick", "selall()");
+        cell1.appendChild(elem);
+        
+        row = table.insertRow(1);
+        cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         cell1.innerHTML = " SHAPE ";
         cell2.innerHTML = " DESHACER ";
-        for (i = 1; i <= select.length; i++) {
+        for (i = 2; i <= select.length + 1; i++) {
             row = table.insertRow(i);
             cell1 = row.insertCell(0);
             cell2 = row.insertCell(1);
             cell1.target = "marco";
-            cell1.innerHTML = select[i - 1][0].split('post_')[1];
+            cell1.innerHTML = select[i - 2][0].split('post_')[1];
             var element1 = document.createElement("input");
             element1.type = "checkbox";
-            element1.id = select[i - 1][0];
+            element1.id = select[i - 2][0];
+            element1.name = "checkbox";
             cell2.appendChild(element1);
         }
         document.getElementById("mbutt").setAttribute("onclick", "valshp(" + 1 + ")");
@@ -246,7 +293,7 @@ function validate(validar) {
 //}
 function valshp(valor) {
     if (valor === 0) {
-        var html = "<span class='info'>Archivos validados con exito</br>";
+        //var html = $("<span class='info'>Archivos validados con exito</br>");
         //var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'temp_%' ORDER BY table_name");
         var select = search("preproduccion:seltablescharge", "temp_%");
         for (i = 0; i < select.length; i++) {
@@ -264,10 +311,10 @@ function valshp(valor) {
                     contentType: false,
                     processData: false,
                     //mientras enviamos el archivo
-                    beforeSend: function () {
-                        message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
-                        showMessage(message);
-                    },
+                    /*beforeSend: function () {
+                     message = $("<span class='before'>Confirmando cambios, por favor espere...</span>");
+                     mns(message);
+                     },*/
                     //una vez finalizado correctamente
                     success: function (data) {
                         //console.log(data);
@@ -276,35 +323,64 @@ function valshp(valor) {
                     //si ha ocurrido un error
                     error: function () {
                         var message = $("<span class='error'>Ha ocurrido un error.</span>");
-                        showMessage(message);
+                        mn(message);
                     }
                 });
-                console.log(mensaje.responseText);
-                mns(mensaje.responseText);
-                document.getElementById("deshacer").style.display = "block";
+                //console.log(mensaje.responseText);
+                var mensa = mensaje.responseText.split('&');
+                if (mensa[0] === '1') {
+                    var html = $("<span class='info'>Cambios confirmados con exito</br>" + mensa[1]);
+                    //html += mensa[1];
+                    mns(html);
+                    document.getElementById("deshacer").style.display = "block";
+                } else if (mensa[0] === '2') {
+                    mn(mensa[1]);
+                }
             }
         }
         validate('valid');
     } else if (valor === 1) {
-        var html = "<span class='info'>Archivos validados con exito</br>";
+        //var html = $("<span class='info'>Archivos validados con exito</br>");
         //var select = select_query("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%' ORDER BY table_name");
         var select = search("preproduccion:seltablescharge", "post_%");
         for (i = 0; i < select.length; i++) {
             if (document.getElementById(select[i][0]).checked === true) {
-                update_query("DROP TABLE " + select[i][0].split('post_')[1] + ";");
-                var up = update_query("CREATE TABLE " + select[i][0].split('post_')[1] + " AS SELECT * FROM post_" + select[i][0].split('post_')[1] + ";");
-                if (up) {
-                    var lo = update_query("DROP TABLE post_" + select[i][0].split('post_')[1] + ";");
-                    if (lo) {
-                        html += " ...  " + select[i][0].split('post_')[1] + "  ...</span></br>";
-                        mns(html);
-                    } else {
-                        var message = $("</br></br><span class='error'>Error al validar " + select[i][0].split('post_')[1] + "</span>");
+                //console.log(select[i][0].split('post_')[1]);
+                var data = new FormData();
+                data.append('param', select[i][0].split('post_')[1]);
+                var mensaje = $.ajax({
+                    url: 'planeacion/valshp1.php',
+                    type: 'post',
+                    data: data,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    //mientras enviamos el archivo
+                    /*beforeSend: function () {
+                     message = $("<span class='before'>Deshaciendo cambios, por favor espere...</span>");
+                     mns(message);
+                     },*/
+                    //una vez finalizado correctamente
+                    success: function (data) {
+                        //console.log(data);
+                        return data;
+                    },
+                    //si ha ocurrido un error
+                    error: function () {
+                        var message = $("<span class='error'>Ha ocurrido un error.</span>");
                         mn(message);
                     }
-                } else {
-                    var message = $("</br></br><span class='error'>Ha ocurrido un error con el archivo " + select[i][0].split('post_')[1] + "</span>");
-                    mn(message);
+                });
+                //console.log(mensaje.responseText);
+                var mensa = mensaje.responseText.split('&');
+                if (mensa[0] === '1') {
+                    var html = $("<span class='info'>cambios deshechos</br>" + mensa[1]);
+                    //html += mensa[1];
+                    mns(html);
+                    document.getElementById("deshacer").style.display = "block";
+                } else if (mensa[0] === '2') {
+                    mn(mensa[1]);
                 }
             }
         }
@@ -312,6 +388,7 @@ function valshp(valor) {
     }
 }
 function mns(message) {
+    //console.log(message);
     $(".message").html("").show();
     $(".message").html(message);
 }
