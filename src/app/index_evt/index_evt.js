@@ -277,13 +277,13 @@ $(document).on('ready', function () {
             //console.log(sele.length);
             if (sele.length > 0) {
                 //console.log(sele);
-               document.getElementById("valid").style.display = "block";
+                document.getElementById("valid").style.display = "block";
             }
             //var sel = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%'");
             var sel = search("preproduccion:CountTable", 'post_%');
             //console.log(sel.length);
             if (sel.length > 0) {
-               document.getElementById("deshacer").style.display = "block";
+                document.getElementById("deshacer").style.display = "block";
             }
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
@@ -486,7 +486,8 @@ function validacionusuarios() {
             var select = search("preproduccion:ValidateUser", ca[0], ca[1]);
             document.getElementById("carga").style.display = "none";
             document.getElementById("nombre_usuario").innerHTML = select[0][0].split(" ", 1);
-        } catch (err) {}
+        } catch (err) {
+        }
         return(select);
     }
 }
@@ -1400,36 +1401,29 @@ function alertDGC(mensaje) {
 window.alert = function (message) {
     alertDGC(message);
 };
-function habilitar(value)
+function habilitar(id, value)
 {
-    if (document.getElementById("checkconstruccion").checked == true)
+    if (document.getElementById(id).checked === true)
     {
-        document.getElementById("botonlicconstruc").style.display = "block";
+        document.getElementById(value).style.display = "block";
     } else {
-        document.getElementById("botonlicconstruc").style.display = "none";
-    }
-    if (document.getElementById("checkservpublico").checked == true)
-    {
-        document.getElementById("botonservpublico").style.display = "block";
-    } else {
-        document.getElementById("botonservpublico").style.display = "none";
-    }
-    if (document.getElementById("checkfotografia").checked == true)
-    {
-        document.getElementById("botonfotografia").style.display = "block";
-    } else {
-        document.getElementById("botonfotografia").style.display = "none";
-    }
-    if (document.getElementById("checkdoc").checked == true)
-    {
-        document.getElementById("botondoc").style.display = "block";
-    } else {
-        document.getElementById("botondoc").style.display = "none";
+        document.getElementById(value).style.display = "none";
     }
 }
-function enviargesstor()
-{
-    alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
+function enviargesstor() {
+    var archiv = document.getElementById("datfil0");
+    var archivo = archiv.files;
+    var archiv1 = document.getElementById("datfil1");
+    var archivo1 = archiv1.files;
+    if (!document.getElementById("raddir").value || !document.getElementById("radest").value || !document.getElementById("raduso").value || archivo.length !== 1 || archivo1.length !== 1) {
+        console.log("1");
+        return false;
+    } else {
+        console.log("2");
+        
+    }
+    //alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
+
 }
 function comparacion()
 {
@@ -1478,17 +1472,16 @@ function listaprediototem() {
     }
 }
 function cambiocatastro() {
-    if (document.getElementById("panel_atr_totem_catastro").style.display == "block"){
-      document.getElementById("panel_atr_totem_catastro").style.display = "none";
-      //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
-      document.getElementById("pesth").style.display = "block";
-      document.getElementById("pestp").style.display = "block";
-    }
-    else{
-       document.getElementById("panel_atr_totem_catastro").style.display = "block";
-       //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
-       document.getElementById("pesth").style.display = "none";
-       document.getElementById("pestp").style.display = "none";  
+    if (document.getElementById("panel_atr_totem_catastro").style.display == "block") {
+        document.getElementById("panel_atr_totem_catastro").style.display = "none";
+        //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
+        document.getElementById("pesth").style.display = "block";
+        document.getElementById("pestp").style.display = "block";
+    } else {
+        document.getElementById("panel_atr_totem_catastro").style.display = "block";
+        //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
+        document.getElementById("pesth").style.display = "none";
+        document.getElementById("pestp").style.display = "none";
     }
     //document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
     //document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
@@ -1496,18 +1489,17 @@ function cambiocatastro() {
     document.getElementById("panel_atr_totem_planeacion").style.display = "none";
 }
 function cambiohacienda() {
-    if (document.getElementById("panel_atr_totem_hacienda").style.display == "block"){
-      document.getElementById("panel_atr_totem_hacienda").style.display = 'none' 
-      document.getElementById("pestc").style.top = "0em";
-      document.getElementById("pestp").style.top = "0em";
-      //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
-    }
-    else{
-       document.getElementById("panel_atr_totem_hacienda").style.display = "block";
-       document.getElementById("pestc").style.top = "13em";
-       document.getElementById("pestp").style.top = "13em";
-        
-       //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
+    if (document.getElementById("panel_atr_totem_hacienda").style.display == "block") {
+        document.getElementById("panel_atr_totem_hacienda").style.display = 'none'
+        document.getElementById("pestc").style.top = "0em";
+        document.getElementById("pestp").style.top = "0em";
+        //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
+    } else {
+        document.getElementById("panel_atr_totem_hacienda").style.display = "block";
+        document.getElementById("pestc").style.top = "13em";
+        document.getElementById("pestp").style.top = "13em";
+
+        //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
     }
     //document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
     //document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
@@ -1515,17 +1507,16 @@ function cambiohacienda() {
     document.getElementById("panel_atr_totem_planeacion").style.display = "none";
 }
 function cambioplaneacion() {
-    if (document.getElementById("panel_atr_totem_planeacion").style.display == "block"){
-      document.getElementById("panel_atr_totem_planeacion").style.display = "none"; 
-      //document.getElementById("pestp").style.backgroundColor = "#A6A6A6";
-      document.getElementById("pesth").style.display = "block";
-      document.getElementById("pestc").style.display = "block";
-    }
-    else{
-       document.getElementById("panel_atr_totem_planeacion").style.display = "block";
-       //document.getElementById("pestp").style.backgroundColor = "#639BB3";
-       document.getElementById("pesth").style.display = "none";
-       document.getElementById("pestc").style.display = "none";       
+    if (document.getElementById("panel_atr_totem_planeacion").style.display == "block") {
+        document.getElementById("panel_atr_totem_planeacion").style.display = "none";
+        //document.getElementById("pestp").style.backgroundColor = "#A6A6A6";
+        document.getElementById("pesth").style.display = "block";
+        document.getElementById("pestc").style.display = "block";
+    } else {
+        document.getElementById("panel_atr_totem_planeacion").style.display = "block";
+        //document.getElementById("pestp").style.backgroundColor = "#639BB3";
+        document.getElementById("pesth").style.display = "none";
+        document.getElementById("pestc").style.display = "none";
     }
     //document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
     //document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
@@ -1580,9 +1571,9 @@ function ajaxRequest() {
     return request;
 }
 
-function formatNumber (n) {
-	n = String(n).replace(/\D/g, "");
-  return n === '' ? n : Number(n).toLocaleString();
+function formatNumber(n) {
+    n = String(n).replace(/\D/g, "");
+    return n === '' ? n : Number(n).toLocaleString();
 }
 
 
