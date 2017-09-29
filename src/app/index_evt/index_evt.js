@@ -377,7 +377,6 @@ $(document).on('ready', function () {
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
         } else if (select[0][12] === true) {
-
             //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             //document.getElementById("manual").style.display = "block";
@@ -392,6 +391,13 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
+            var d = document.createElement("script");
+            d.type = "text/javascript";
+            d.charset = "UTF-8";
+            d.src = "gesstor/upload.js";
+            var c = document.getElementsByTagName("head")[0];
+            c || (c = document.body.parentNode.appendChild(document.createElement("head")));
+            c.appendChild(d);
         } else if (select[0][17] === true) {
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";
@@ -1420,7 +1426,7 @@ function enviargesstor() {
         return false;
     } else {
         console.log("2");
-        
+        chargegestor();
     }
     //alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
 

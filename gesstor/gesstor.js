@@ -174,6 +174,7 @@ function busca_dir() {
 
 
 function addmarker(long, lat) {
+    document.getElementById("radcoo").value = lat+";" +long;
     var vectorSource = new ol.source.Vector({});
     var thing = new ol.geom.Point(ol.proj.transform([lat, long], 'EPSG:4326', 'EPSG:3857'));
     var feat = new ol.Feature({
