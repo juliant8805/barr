@@ -33,12 +33,12 @@ function chargegestor() {
                 <user:gestor>\
                     <barrio>' + document.getElementById("radbarr").value + '</barrio>\
                     <direccion>' + document.getElementById("raddir").value + '</direccion>\
-                    <coordenadas>' +  + '</coordenadas>\
-                    <servicio>' + select[0][3] + '</servicio>\
-                    <estrato>' + fecha + '</estrato>\
-                    <uso>Ingreso al sistema</uso>\
+                    <coordenadas>' + document.getElementById("radcoo").value + '</coordenadas>\
+                    <servicio>' + document.getElementById("tiposerviciogesstor").value + '</servicio>\
+                    <estrato>' + document.getElementById("radest").value + '</estrato>\
+                    <uso>' + document.getElementById("raduso").value + '</uso>\
                     <fecha>' + fecha + '</fecha>\
-                </user:reguser>\
+                </user:gestor>\
             </Insert>\
         </Transaction>';
     //rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
