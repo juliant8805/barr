@@ -47,8 +47,10 @@ function resetpass() {
 }
 function onload() {
     var cookies = document.cookie.split(";");
+    //console.log(cookies);
     for (var i = 0; i < cookies.length; i++)
     {
+        console.log(cookies[i].split("=")[0]);
         deleteCookie(cookies[i].split("=")[0]);
     }
     var val = document.location.href;
@@ -73,9 +75,14 @@ function setC(name, value, expirydays) {
     d.setTime(d.getTime() + (expirydays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toGMTString();
     //console.log(name + "=" + value + "; " + expires+";path=/");
+    //console.log(name+ "=" + value + "; " + expires + "; domain=.gesstorbarranquilla.com" + "; path=/");
+    //document.cookie = name + "=" + value + "; " + expires + ";path=/";
+    //var domain = location.hostname
+    document.cookie = name+ "=" + value+ "; " + expires + "; domain=.gesstorbarranquilla.com" + "; path=/";
     document.cookie = name + "=" + value + "; " + expires + ";path=/";
 }
 function deleteCookie(name) {
+    //console.log(name);
     setC(name, "", -1);
 }
 function setCookie(cname, cvalue, exdays) {

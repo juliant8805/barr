@@ -656,6 +656,9 @@ map.on('singleclick', function (evt) {
                             ig[p].src = "./imagenes/streetview.png";
                             var campos = sel.length-1;
                     }
+                        else if (modulo == 'totempruebas') {
+                           
+                    }
 
                         for (i = 0; i < select.length; i++) {
                             row = table.insertRow(i + 1);
@@ -676,7 +679,9 @@ map.on('singleclick', function (evt) {
                             }
                         } 
                     }  
+                    if(modulo!='totempruebas'){
                     document.getElementById("panel_atr").style.display = "block";
+                    }
                     document.getElementById("botonminimizar").style.display = "block";
                     document.getElementById("panel_atr").style.maxHeight = "40em";
 
@@ -704,6 +709,7 @@ map.on('singleclick', function (evt) {
         
         });
     }
+      
     if (url2 && estacionestransmetro.values_.visible==true) {
         if (infoFormat === 'text/html') {
             popup.setPosition(evt.coordinate);
@@ -937,3 +943,4 @@ var formatLength = function (line) {
     return output;
 };
 addInteraction();
+

@@ -1317,7 +1317,7 @@ select{
     position:absolute;
     width:43em;
     height:auto;
-    top:22em;
+    top:24.5em;
     left:0em;  
     font-size:11px;
     /*overflow:scroll;*/
@@ -1327,7 +1327,7 @@ select{
     position:absolute;
     width:43em;
     height:auto;
-    top:22em;
+    top:27.5em;
     left:0em;  
     font-size:11px;
     /*overflow:scroll;*/
@@ -1842,6 +1842,7 @@ div#menu_predio{
 
     height: 54px;
 }
+
 div#menumanzanatotem{
     position: absolute;
     top:0px;

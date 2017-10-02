@@ -440,6 +440,7 @@ $(document).on('ready', function () {
             document.getElementById("tipo_usuario").style.display = "none";
             document.getElementById("salida").style.display = "none";
             document.getElementById("menu_totemp").style.display = "block";
+            //document.getElementById("ayuda").style.display = "block";
             modulo = "totempruebas";
             var b = document.createElement("script");
             b.type = "text/javascript";
@@ -1039,7 +1040,14 @@ function abrir_manual() {
         /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
          '_blank' // <- This is what makes it open in a new window.
          );*/
-    } else if (modulo == 'sui') {
+    } 
+    else if (modulo == 'planeacionmisional') {
+        window.open('./documentos/manual_misional_planeacion.pdf', '_blank', 'fullscreen=yes');
+        /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
+         '_blank' // <- This is what makes it open in a new window.
+         );*/
+    } 
+    else if (modulo == 'sui') {
         window.open('./documentos/manual_sui.pdf', '_blank', 'fullscreen=yes');
         /* window.open(
          'http://35.184.3.4/gesstor/documentos/manual_sui.pdf',
@@ -1483,12 +1491,17 @@ function cambiocatastro() {
       //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
       document.getElementById("pesth").style.display = "block";
       document.getElementById("pestp").style.display = "block";
+      document.getElementById("pestp").style.top = "0em";
+      document.getElementById("pestc").style.top = "0em";
+      document.getElementById("pesth").style.top = "0em";
     }
     else{
        document.getElementById("panel_atr_totem_catastro").style.display = "block";
+       document.getElementById("pestc").style.top = "0em"; 
+       document.getElementById("pestp").style.top = "8em";
        //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
-       document.getElementById("pesth").style.display = "none";
-       document.getElementById("pestp").style.display = "none";  
+       //document.getElementById("pesth").style.display = "none";
+       //document.getElementById("pestp").style.display = "none";  
     }
     //document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
     //document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
@@ -1500,12 +1513,13 @@ function cambiohacienda() {
       document.getElementById("panel_atr_totem_hacienda").style.display = 'none' 
       document.getElementById("pestc").style.top = "0em";
       document.getElementById("pestp").style.top = "0em";
+      document.getElementById("pesth").style.top = "0em";
       //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
     }
     else{
        document.getElementById("panel_atr_totem_hacienda").style.display = "block";
-       document.getElementById("pestc").style.top = "13em";
-       document.getElementById("pestp").style.top = "13em";
+       document.getElementById("pestc").style.top = "13.5em";
+       document.getElementById("pestp").style.top = "13.5em";
         
        //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
     }
@@ -1520,12 +1534,20 @@ function cambioplaneacion() {
       //document.getElementById("pestp").style.backgroundColor = "#A6A6A6";
       document.getElementById("pesth").style.display = "block";
       document.getElementById("pestc").style.display = "block";
+      document.getElementById("pesth").style.top = "0em";
+      document.getElementById("pestc").style.top = "0em";
+      document.getElementById("pestp").style.top = "0em";
     }
     else{
        document.getElementById("panel_atr_totem_planeacion").style.display = "block";
+       document.getElementById("panel_atr_totem_hacienda").style.display = "none"; 
        //document.getElementById("pestp").style.backgroundColor = "#639BB3";
-       document.getElementById("pesth").style.display = "none";
-       document.getElementById("pestc").style.display = "none";       
+       document.getElementById("pesth").style.display = "block";
+       document.getElementById("pestc").style.display = "block"; 
+       document.getElementById("pesth").style.top = "0em";
+       document.getElementById("pestc").style.top = "0em";
+       document.getElementById("pestp").style.top = "0em";
+       //document.getElementById("pestp").style.top = "13em";
     }
     //document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
     //document.getElementById("pestc").style.backgroundColor = "#a6a6a6";

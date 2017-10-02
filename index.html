@@ -97,7 +97,7 @@
     <div id="mouse-position" hidden="hidden"></div>
     <div id="barratransparencia" hidden="hidden">
         <br>
-        <input type="range" min="0" max="1" step="0.1" value="0" onchange="ortofotourbana.setOpacity(Number(this.value))"/>
+        <input type="range" min="0" max="1" step="0.1" value="0.6" onchange="ortofotourbana.setOpacity(Number(this.value))"/>
     </div>
     <div id="leyenda_transmetro" hidden="hidden">
         <div><img img id="leyenda_troncales" src="./imagenes/leyenda_troncales.png"></div>
@@ -835,7 +835,7 @@
     <img id="volvertotem" src="./imagenes/volvertotem.png" onclick="menutotem();limpiar_consulta()" style="position:absolute; top:1em; right:35em;" title="Volver" hidden="hidden">
     <img id="volver" src="./imagenes/volver.png" onclick="volvertotemboton();" style="position:absolute; top:1em; right:0em;" title="Volver" hidden="hidden">
 
-
+    <!--<img id="ayuda" hidden="hidden" src="./imagenes/ayuda.png" onclick="chat()" style="position:absolute; top:20em; right:2em; width:3em; z-index:0; " title="Ayuda">-->
 
     <div id="exp1" hidden="hidden" style="position:absolute; top:46%; left:48%; width:24%; background-color: rgba(229,227,230,0)">
         <img id="giftotem" src="imagenes/menu_exp.png">
@@ -876,13 +876,14 @@
     <script src="src/app/Consultas/transmasivo.js"></script>
     <!--<script src="lib/app.js"></script>-->
     <script src="src/app/app.js"></script>
+    <!--<script src="src/app/chat.js"></script>-->
     <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVqdOguCkHRfnpdFmfkFqL6SdPyBpYZQw">
     </script>
 
-    <!--chat en linea
-        <script type="text/javascript">     
+    <!--chat en linea-->
+  <!--      <script type="text/javascript">     
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
