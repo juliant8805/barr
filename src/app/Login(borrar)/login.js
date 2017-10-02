@@ -1,9 +1,8 @@
 function onload(){
-    var cookies2 = $.cookie();
     var cookies = document.cookie.split(";");
-    console.log("lll");
-    for (var i = 0; i <= cookies.length; i++)
+    for (var i = 0; i < cookies.length; i++)
         deleteCookie(cookies[i].split("=")[0]);
+
     var val = document.location.href;
     var validar = val.split("?");
     if (validar[1] === "ig=error")
@@ -23,7 +22,6 @@ function setC(name, value, expirydays) {
 }
 
 function deleteCookie(name){
-    console.log(name);
   setC(name,"",-1);
 }
 function setCookie(cname, cvalue, exdays) {

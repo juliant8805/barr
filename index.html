@@ -417,50 +417,59 @@
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Solicitud de Servicio Público</h4>
-                </div>
-                <div class="modal-body">
-                    <label>Barrio:</label><br>
-                    <input type="text" name="Barrio"><br>
-                    <label>Dirección:</label><br>
-                    <input type="text" name="Direccion"><br>
-                    <label>Coordenadas:</label><br> 
-                    <input type="text" name="Coordenadas"><br>
-                    <label>Tipo de Servicio Público:</label><br>     
-                    <select id="tiposerviciogesstor">
-                        <option value="Acueducto">Acueducto</option>
-                        <option value="Alcantarillado">Alcantarillado</option>
-                        <option value="Alcantarillado">Energia</option>
-                        <option value="Gas">Gas</option>
-                    </select><br><br> 
-                    <label>Estrato de Referencia:&nbsp&nbsp&nbsp</label><br>
-                    <input type="text" name="EstratoR"><br>
-                    <label>Uso de Referencia:&nbsp&nbsp&nbsp</label><br>
-                    <input type="text" name="UsoR"><br>
-                    <label>Certificado de Uso:&nbsp&nbsp&nbsp</label><br>  
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Certificado de Uso</button><br><br> 
-                    <label>Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>     
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Certificado de Estratificación</button><br><br>
-
-                    <input type="checkbox" id="checkconstruccion" onchange="habilitar(this.checked);" unchecked><label>Licencia de Construcción:</label><br>  
-                    <div id="botonlicconstruc" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Licencia de Construcción</button></div>
-
-                    <input type="checkbox" id="checkservpublico" onchange="habilitar(this.checked);" unchecked><label>Recibo de Servicio Público:</label><br>  
-                    <div id="botonservpublico" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Recibo de Servicio Público</button></div>
-
-                    <input type="checkbox" id="checkfotografia" onchange="habilitar(this.checked);" unchecked><label>Fotografía del Predio:</label><br>  
-                    <div id="botonfotografia" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Fotografía del Predio</button></div>
-
-                    <input type="checkbox" id="checkdoc" onchange="habilitar(this.checked);" unchecked><label>Otro Documento:</label><br> 
-                    <div id="botondoc" hidden="hidden"><button type="button" class="btn btn-success" data-dismiss="modal">Adjuntar Documento</button></div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal" onclick="enviargesstor()">Enviar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                </div>
+                <form class="form-horizontal" method="post" onsubmit="return false;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Solicitud de Servicio Público</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Barrio:</label><br>
+                        <input type="text" id="radbarr"><br>
+                        <label>Dirección:</label><br>
+                        <input id="raddir" type="text" name="Direccion" required="required"><br>
+                        <label>Coordenadas:</label><br> 
+                        <input type="text" id="radcoo"><br>
+                        <label>Tipo de Servicio Público:</label><br>     
+                        <select id="tiposerviciogesstor">
+                            <option value="Acueducto">Acueducto</option>
+                            <option value="Alcantarillado">Alcantarillado</option>
+                            <option value="Alcantarillado">Energia</option>
+                            <option value="Gas">Gas</option>
+                        </select><br><br> 
+                        <label>Estrato de Referencia:&nbsp&nbsp&nbsp</label><br>
+                        <input id="radest" type="text" name="EstratoR" required="required"><br>
+                        <label>Uso de Referencia:&nbsp&nbsp&nbsp</label><br>
+                        <input id="raduso" type="text" name="UsoR" required="required"><br>
+                        <label>Certificado de Uso:&nbsp&nbsp&nbsp</label><br>
+                        <div class="controls">
+                                <input type="file" id="datfil0" name="archivo" required="required">
+                        </div>
+                        <label>Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>     
+                        <div class="controls">
+                                <input type="file" id="datfil1" name="archivo" required="required">
+                        </div>
+                        <input type="checkbox" id="checkconstruccion" onchange="habilitar(this.id,'datfil2');" unchecked><label>Licencia de Construcción:</label><br>  
+                         <div class="controls">
+                                <input type="file" id="datfil2" name="archivo" style="display: none;">
+                        </div>
+                        <input type="checkbox" id="checkservpublico" onchange="habilitar(this.id,'datfil3');" unchecked><label>Recibo de Servicio Público:</label><br>  
+                         <div class="controls">
+                                <input type="file" id="datfil3" name="archivo" style="display: none;">
+                        </div>
+                        <input type="checkbox" id="checkfotografia" onchange="habilitar(this.id,'datfil4');" unchecked><label>Fotografía del Predio:</label><br>  
+                         <div class="controls">
+                                <input type="file" id="datfil4" name="archivo" style="display: none;">
+                        </div>
+                        <input type="checkbox" id="checkdoc" onchange="habilitar(this.id,'datfil5');" unchecked><label>Otro Documento:</label><br> 
+                         <div class="controls">
+                                <input type="file" id="datfil5" name="archivo" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info" onclick="enviargesstor()">Enviar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
             </div>
 
         </div>
@@ -795,42 +804,42 @@
         </div>     
     </div>
 
-   <div id="menusitiostotem" hidden="hidden">
+    <div id="menusitiostotem" hidden="hidden">
         <img id="giftotem" src="image/avatar_03.gif" style="position:absolute; top:10em; left:0px; width:400px; height:auto;">
         <div  class="demo-section k-content"  style="position:absolute; top:8em; left:45em; width:40%;">
-        <label class="form-control" style="font-family:tahoma; color:white; font-size:30px; background-color:rgba(99,155,179,1); text-align: center;">Ingrese el Nombre del Sitio de Interés</label>             
-        <div class="input-group textarea" style="width: 100%; margin-top:0em; padding-top:0em;"><input type="text" class="direccion" id="inputsitiostotemp" style="position:absolute; top:0%; left:0%; width:100%; font-family:tahoma; font-size: 30px; margin-top:5em; padding-top:0.5em; text-align: center;" placeholder="Buscar Sitio: Ejemplo: Alcaldia"></div>         
+            <label class="form-control" style="font-family:tahoma; color:white; font-size:30px; background-color:rgba(99,155,179,1); text-align: center;">Ingrese el Nombre del Sitio de Interés</label>             
+            <div class="input-group textarea" style="width: 100%; margin-top:0em; padding-top:0em;"><input type="text" class="direccion" id="inputsitiostotemp" style="position:absolute; top:0%; left:0%; width:100%; font-family:tahoma; font-size: 30px; margin-top:5em; padding-top:0.5em; text-align: center;" placeholder="Buscar Sitio: Ejemplo: Alcaldia"></div>         
         </div>     
     </div>
 
-  <!--tabla barrio totemp-->
-  <div id="panel_atr_totempbarrio" style="position:absolute;top:9em;left:10px;" class="container" hidden="hidden">
+    <!--tabla barrio totemp-->
+    <div id="panel_atr_totempbarrio" style="position:absolute;top:9em;left:10px;" class="container" hidden="hidden">
         <table class="table table-striped table-bordered table-condensed" id="tblatt_totemp_barrio" style="background-color: #f2f2f2; font-size:14px"></table>
         <!--<button id="botonminimizar" hidden="hidden" onclick="ocultarpanelatributos();" style="background:url('./imagenes/minimizar.png'); background-repeat:no-repeat;"></button>-->
     </div>
 
 
     <div id="pestanastotem" hidden="hidden">
-    <div style="position:absolute;top:0em;left:10px;" class="container">     
-        <div id="panel_atr_totem">
-            <table class="table table-condensed" id="tblatt_totem_general" style="background-color:#FFFFFF; font-size:14px"></table>
+        <div style="position:absolute;top:0em;left:10px;" class="container">     
+            <div id="panel_atr_totem">
+                <table class="table table-condensed" id="tblatt_totem_general" style="background-color:#FFFFFF; font-size:14px"></table>
+            </div>
+            <div id="panel_atr_totem_hacienda" hidden="hidden">
+                <table class="table table-striped table-bordered table-condensed" id="tblatt_totem_hacienda" style="background-color: #f2f2f2; font-size:14px"></table>
+            </div>
+            <div id="panel_atr_totem_catastro" hidden="hidden">
+                <table class="table table-striped table-bordered table-condensed" id="tblatt_totem_catastro" style="background-color: #f2f2f2; font-size:14px"></table>
+            </div>
+            <div id="panel_atr_totem_planeacion" hidden="hidden">
+                <table class="table table-striped table-bordered table-condensed" id="tblatt_totem_planeacion" style="background-color: #f2f2f2; font-size:14px"></table>
+            </div>
         </div>
-        <div id="panel_atr_totem_hacienda" hidden="hidden">
-            <table class="table table-striped table-bordered table-condensed" id="tblatt_totem_hacienda" style="background-color: #f2f2f2; font-size:14px"></table>
-        </div>
-        <div id="panel_atr_totem_catastro" hidden="hidden">
-            <table class="table table-striped table-bordered table-condensed" id="tblatt_totem_catastro" style="background-color: #f2f2f2; font-size:14px"></table>
-        </div>
-        <div id="panel_atr_totem_planeacion" hidden="hidden">
-            <table class="table table-striped table-bordered table-condensed" id="tblatt_totem_planeacion" style="background-color: #f2f2f2; font-size:14px"></table>
-        </div>
-    </div>
-       <ul class="nav nav-pills nav-stacked" style="border-bottom: 0px; padding:0px; position:absolute; top:15.2em;left:10px;">
+        <ul class="nav nav-pills nav-stacked" style="border-bottom: 0px; padding:0px; position:absolute; top:15.2em;left:10px;">
             <li onclick="cambiohacienda()"><a id="pesth" href="#" style="font-size:20px; color:white; background-color: #5BC0DE; width:23.6em; height:1.4em; padding:0px 15px; text-align:right; border-radius:0px;">Hacienda&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="caret"></span></a></li>
             <li onclick="cambiocatastro()"><a id="pestc" href="#" style="font-size:20px; color:white; background-color: #56B899; width:23.6em; height:1.4em; padding:0px 15px; text-align:right; border-radius:0px;">Catastro&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="caret"></span></a></li>
             <li onclick="cambioplaneacion()"><a id="pestp" href="#" style="font-size:20px; color:white; background-color: #ff6666; width:23.6em; height:1.4em; padding:0px 15px; text-align:right; border-radius:0px;">Planeación&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="caret"></span></a></li>
         </ul>
-</div>
+    </div>
 
     <img id="volvertotem" src="./imagenes/volvertotem.png" onclick="menutotem();limpiar_consulta()" style="position:absolute; top:1em; right:35em;" title="Volver" hidden="hidden">
     <img id="volver" src="./imagenes/volver.png" onclick="volvertotemboton();" style="position:absolute; top:1em; right:0em;" title="Volver" hidden="hidden">

@@ -277,13 +277,13 @@ $(document).on('ready', function () {
             //console.log(sele.length);
             if (sele.length > 0) {
                 //console.log(sele);
-               document.getElementById("valid").style.display = "block";
+                document.getElementById("valid").style.display = "block";
             }
             //var sel = select_query("SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'post_%'");
             var sel = search("preproduccion:CountTable", 'post_%');
             //console.log(sel.length);
             if (sel.length > 0) {
-               document.getElementById("deshacer").style.display = "block";
+                document.getElementById("deshacer").style.display = "block";
             }
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
@@ -377,7 +377,6 @@ $(document).on('ready', function () {
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
         } else if (select[0][12] === true) {
-
             //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             //document.getElementById("manual").style.display = "block";
@@ -392,6 +391,13 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
+            var d = document.createElement("script");
+            d.type = "text/javascript";
+            d.charset = "UTF-8";
+            d.src = "gesstor/upload.js";
+            var c = document.getElementsByTagName("head")[0];
+            c || (c = document.body.parentNode.appendChild(document.createElement("head")));
+            c.appendChild(d);
         } else if (select[0][17] === true) {
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";
@@ -487,7 +493,8 @@ function validacionusuarios() {
             var select = search("preproduccion:ValidateUser", ca[0], ca[1]);
             document.getElementById("carga").style.display = "none";
             document.getElementById("nombre_usuario").innerHTML = select[0][0].split(" ", 1);
-        } catch (err) {}
+        } catch (err) {
+        }
         return(select);
     }
 }
@@ -1408,36 +1415,29 @@ function alertDGC(mensaje) {
 window.alert = function (message) {
     alertDGC(message);
 };
-function habilitar(value)
+function habilitar(id, value)
 {
-    if (document.getElementById("checkconstruccion").checked == true)
+    if (document.getElementById(id).checked === true)
     {
-        document.getElementById("botonlicconstruc").style.display = "block";
+        document.getElementById(value).style.display = "block";
     } else {
-        document.getElementById("botonlicconstruc").style.display = "none";
-    }
-    if (document.getElementById("checkservpublico").checked == true)
-    {
-        document.getElementById("botonservpublico").style.display = "block";
-    } else {
-        document.getElementById("botonservpublico").style.display = "none";
-    }
-    if (document.getElementById("checkfotografia").checked == true)
-    {
-        document.getElementById("botonfotografia").style.display = "block";
-    } else {
-        document.getElementById("botonfotografia").style.display = "none";
-    }
-    if (document.getElementById("checkdoc").checked == true)
-    {
-        document.getElementById("botondoc").style.display = "block";
-    } else {
-        document.getElementById("botondoc").style.display = "none";
+        document.getElementById(value).style.display = "none";
     }
 }
-function enviargesstor()
-{
-    alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
+function enviargesstor() {
+    var archiv = document.getElementById("datfil0");
+    var archivo = archiv.files;
+    var archiv1 = document.getElementById("datfil1");
+    var archivo1 = archiv1.files;
+    if (!document.getElementById("raddir").value || !document.getElementById("radest").value || !document.getElementById("raduso").value || archivo.length !== 1 || archivo1.length !== 1) {
+        console.log("1");
+        return false;
+    } else {
+        console.log("2");
+        chargegestor();
+    }
+    //alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
+
 }
 function comparacion()
 {
@@ -1602,9 +1602,9 @@ function ajaxRequest() {
     return request;
 }
 
-function formatNumber (n) {
-	n = String(n).replace(/\D/g, "");
-  return n === '' ? n : Number(n).toLocaleString();
+function formatNumber(n) {
+    n = String(n).replace(/\D/g, "");
+    return n === '' ? n : Number(n).toLocaleString();
 }
 
 
