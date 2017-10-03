@@ -1,5 +1,5 @@
 function chargegestor() {
-    console.log("3");
+    //console.log("3");
     var f = new Date();
     //var hora = f.getHours
     if ((f.getMonth() + 1) < 10) {
@@ -49,14 +49,66 @@ function chargegestor() {
         contentType: "text/xml",
         async: false,
         data: arrayResult,
+        beforeSend: function () {
+            //alert("1");
+            //window.open('upload.php');
+            var message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
+            showMessage(message);
+        },
         success: function (xml) {
             //console.log(xml);
-            //alert('success');
+            var message = "";
+            var archivos = document.getElementById("datfil0");
+            var archivo = [];
+            archivo[0] = archivos.files;
+            
+            archivos = document.getElementById("datfil1");
+            archivo[1] = archivos.files;
+            archivos = document.getElementById("datfil2");
+            archivo[2] = archivos.files;
+            archivos = document.getElementById("datfil3");
+            archivo[3] = archivos.files;
+            archivos = document.getElementById("datfil4");
+            archivo[4] = archivos.files;
+            archivos = document.getElementById("datfil5");
+            archivo[5] = archivos.files;
+            
+            var archivos = new FormData();
+            console.log(archivo);
+            for (i = 0; i < 2; i++) {
+                console.log("for" + i);
+                archivos.append('archivo' + i, archivo[i]);
+            }
+            console.log(archivos);
+            var rr = $.ajax({
+                url: 'gesstor/upload.php',
+                type: 'POST',
+                data: archivos,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                    message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
+                    showMessage(message);
+                },
+                success: function (xml) {
+
+                },
+                error: function (xml) {
+                    console.log('error');
+                }
+            });
+            console.log(rr);
+            var messag = $("<span class='success'>Archivos subidos correctamente.</span>");
+            showMessage(messag);
         },
         error: function (xml) {
             console.log('error');
         }
-        //console.log(arrayResult);
     });
     console.log(res);
+}
+function showMessage(message) {
+    $(".messages").html("").show();
+    $(".messages").html(message);
 }

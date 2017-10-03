@@ -1430,10 +1430,10 @@ function enviargesstor() {
     var archiv1 = document.getElementById("datfil1");
     var archivo1 = archiv1.files;
     if (!document.getElementById("raddir").value || !document.getElementById("radest").value || !document.getElementById("raduso").value || archivo.length !== 1 || archivo1.length !== 1) {
-        console.log("1");
+        //console.log("1");
         return false;
     } else {
-        console.log("2");
+        //console.log("2");
         chargegestor();
     }
     //alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
