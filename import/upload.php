@@ -7,8 +7,9 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     if (!is_dir("shape/"))
         mkdir("shape/", 0777);
     $name = [];
-    //print_r ($_FILES);
+    print_r ($_FILES[archivo0]['tmp_name']);
         foreach ($_FILES as $key => $error) {
+            print_r ($key);
             $tmp_name = $_FILES[$key]['tmp_name'];
             //print_r($tmp_name);
             // basename() may prevent filesystem traversal attacks;

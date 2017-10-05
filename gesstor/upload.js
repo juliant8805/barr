@@ -56,12 +56,10 @@ function chargegestor() {
             showMessage(message);
         },
         success: function (xml) {
-            //console.log(xml);
             var message = "";
             var archivos = document.getElementById("datfil0");
             var archivo = [];
             archivo[0] = archivos.files;
-            
             archivos = document.getElementById("datfil1");
             archivo[1] = archivos.files;
             archivos = document.getElementById("datfil2");
@@ -72,16 +70,14 @@ function chargegestor() {
             archivo[4] = archivos.files;
             archivos = document.getElementById("datfil5");
             archivo[5] = archivos.files;
-            
             var archivos = new FormData();
-            console.log(archivo);
-            for (i = 0; i < 2; i++) {
-                console.log("for" + i);
-                archivos.append('archivo' + i, archivo[i]);
+            for (i = 0; i < 6; i++) {
+                archivos.append('archivo' + i, archivo[i][0]);
             }
-            console.log(archivos);
+            var select = search("preproduccion:selgestor");
+            console.log(select[0][0]);
             var rr = $.ajax({
-                url: 'gesstor/upload.php',
+                url: 'gesstor/upload.php?id='+select[0][0],
                 type: 'POST',
                 data: archivos,
                 cache: false,
@@ -92,13 +88,12 @@ function chargegestor() {
                     showMessage(message);
                 },
                 success: function (xml) {
-
                 },
                 error: function (xml) {
                     console.log('error');
                 }
             });
-            console.log(rr);
+            //console.log(rr);
             var messag = $("<span class='success'>Archivos subidos correctamente.</span>");
             showMessage(messag);
         },
@@ -106,7 +101,7 @@ function chargegestor() {
             console.log('error');
         }
     });
-    console.log(res);
+    //console.log(res);
 }
 function showMessage(message) {
     $(".messages").html("").show();

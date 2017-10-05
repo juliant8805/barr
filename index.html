@@ -433,7 +433,8 @@
                         <select id="tiposerviciogesstor">
                             <option value="Acueducto">Acueducto</option>
                             <option value="Alcantarillado">Alcantarillado</option>
-                            <option value="Alcantarillado">Energia</option>
+                            <option value="Aseo">Aseo</option>
+                            <option value="Energia">Energia</option>
                             <option value="Gas">Gas</option>
                         </select><br><br> 
                         <label>Estrato de Referencia:&nbsp&nbsp&nbsp</label><br>
@@ -442,34 +443,44 @@
                         <input id="raduso" type="text" name="UsoR" required="required"><br>
                         <label>Certificado de Uso:&nbsp&nbsp&nbsp</label><br>
                         <div class="controls">
-                                <input type="file" id="datfil0" name="archivo" required="required">
+                            <input type="file" id="datfil0" name="archivo" required="required">
                         </div>
-                        <label>Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>     
+                        <label>Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>
                         <div class="controls">
+                            <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil1" name="archivo" required="required">
+                            </form>
                         </div>
-                        <input type="checkbox" id="checkconstruccion" onchange="habilitar(this.id,'datfil2');" unchecked><label>Licencia de Construcción:</label><br>  
-                         <div class="controls">
+                        <input type="checkbox" id="checkconstruccion" onchange="habilitar(this.id, 'datfil2');" unchecked><label>Licencia de Construcción:</label><br>  
+                        <div class="controls">
+                            <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil2" name="archivo" style="display: none;">
+                            </form>
                         </div>
-                        <input type="checkbox" id="checkservpublico" onchange="habilitar(this.id,'datfil3');" unchecked><label>Recibo de Servicio Público:</label><br>  
-                         <div class="controls">
+                        <input type="checkbox" id="checkservpublico" onchange="habilitar(this.id, 'datfil3');" unchecked><label>Recibo de Servicio Público:</label><br>  
+                        <div class="controls">
+                            <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil3" name="archivo" style="display: none;">
+                            </form>
                         </div>
-                        <input type="checkbox" id="checkfotografia" onchange="habilitar(this.id,'datfil4');" unchecked><label>Fotografía del Predio:</label><br>  
-                         <div class="controls">
+                        <input type="checkbox" id="checkfotografia" onchange="habilitar(this.id, 'datfil4');" unchecked><label>Fotografía del Predio:</label><br>  
+                        <div class="controls">
+                            <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil4" name="archivo" style="display: none;">
+                            </form>
                         </div>
-                        <input type="checkbox" id="checkdoc" onchange="habilitar(this.id,'datfil5');" unchecked><label>Otro Documento:</label><br> 
-                         <div class="controls">
+                        <input type="checkbox" id="checkdoc" onchange="habilitar(this.id, 'datfil5');" unchecked><label>Otro Documento:</label><br> 
+                        <div class="controls">
+                            <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil5" name="archivo" style="display: none;">
+                            </form>
                         </div>
+                        <div class="messages"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-info" onclick="enviargesstor()">Enviar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
-                    <div class="messages"></div>
                 </form>
             </div>
 
@@ -893,17 +904,17 @@
     </script>
 
     <!--chat en linea-->
-  <!--      <script type="text/javascript">     
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/59a05d0e4fe3a1168ead9c09/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>-->
+    <!--      <script type="text/javascript">     
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/59a05d0e4fe3a1168ead9c09/default';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+      })();
+      </script>-->
 
 
 </body>
