@@ -382,7 +382,7 @@ $(document).on('ready', function () {
             //document.getElementById("manual").style.display = "block";
             document.getElementById("icono_codigo").style.display = "block";
             //document.getElementById("dir_gestor").style.display = "block";
-            document.getElementById("boton_geocoder").style.display = "block";
+            //document.getElementById("boton_geocoder").style.display = "block";
             modulo = "gestor";
             var b = document.createElement("script");
             b.type = "text/javascript";
@@ -398,6 +398,18 @@ $(document).on('ready', function () {
             var c = document.getElementsByTagName("head")[0];
             c || (c = document.body.parentNode.appendChild(document.createElement("head")));
             c.appendChild(d);
+            var d = document.createElement("script");
+            d.type = "text/javascript";
+            d.charset = "UTF-8";
+            d.src = "totem/totem.js";
+            var c = document.getElementsByTagName("head")[0];
+            c || (c = document.body.parentNode.appendChild(document.createElement("head")));
+            c.appendChild(d);
+            document.getElementById("menu_totemp").style.display = "block";
+            document.getElementById("lista_general").style.display = "none";
+            document.getElementById("manzanatotem").style.display = "none";
+            document.getElementById("barriototem").style.display = "none";
+            document.getElementById("sitiototemp").style.display = "none";
         } else if (select[0][17] === true) {
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";

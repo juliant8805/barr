@@ -327,7 +327,7 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#inputmanzanatotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_manzana";
         var temp = "codigo";
-    }  else if ($("#inputrefcatotemp")["0"].value !== "") {
+    } else if ($("#inputrefcatotemp")["0"].value !== "") {
         var tempname = "preproduccion:buscar_referencia_reg";
         var temp = "referencia_cat";
     } else if ($("#matricula")["0"].value !== "" || $("#inputmatriculatotemp")["0"].value !== "") {
@@ -351,8 +351,7 @@ function addressSource(requestString, responseFunc) {
     } else if ($("#manzana")["0"].value !== "" || $("#inputmanzanatotem")["0"].value !== "") {
         var tempname = "preproduccion:buscar_manzana";
         var temp = "codigo";
-    }   
-    else if ($("#input_ladomanzana")["0"].value !== "") {
+    } else if ($("#input_ladomanzana")["0"].value !== "") {
         var tempname = "preproduccion:ladomanzana_autocompletar";
         var temp = "lado_manzanas";
     } else if ($("#input_predioshasusos")["0"].value !== "") {
@@ -473,8 +472,10 @@ function addressSource(requestString, responseFunc) {
                     codeAddress(viewParamsStr);
                 } else {
                     if ((tempname == "preproduccion:buscar_direccion_registro1") && (modulo !== 'totem')) {
-                        alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador:</br> <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'></br>");
-                        document.getElementById("direccion").value = "";
+                        if (modulo === "totempruebas") {
+                            alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador:</br> <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'></br>");
+                            document.getElementById("direccion").value = "";
+                        }// else {}
                     } else if (tempname == "preproduccion:buscar_barrio") {
                         alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de Barrio Ingresado, por favor verifique que el nombre ingresado sea correcto. Ejemplo:</br></br> La Concepcion</br>Paseo de La Castella</br>Zona Franca</br>etc.</br>");
                         document.getElementById("barrio").value = "";
@@ -755,8 +756,7 @@ function addressSelect(event, ui) {
                 }
             }
         });
-    } 
-    else if (modulo === 'catastro') {
+    } else if (modulo === 'catastro') {
         predio.setVisible(true);
         $.ajax({
             url: url,
@@ -1358,7 +1358,7 @@ function addressSelect(event, ui) {
         document.getElementById("inputbarriototemp").value = "";
         document.getElementById("inputdirecciontotemp").value = "";
         document.getElementById("inputmatriculatotemp").value = "";
-        document.getElementById("inputrefcatotemp").value = "";  
+        document.getElementById("inputrefcatotemp").value = "";
         document.getElementById("consultas_totem").style.display = "none";
         document.getElementById("menu_totemp").style.display = "none";
         document.getElementById("volver").style.display = "none";
@@ -1436,7 +1436,7 @@ function addressSelect(event, ui) {
                         } else {
                             cell2.innerHTML = sel[i];
                         }
-                    }                 
+                    }
                     //Tabla Hacienda
                     var table = document.getElementById("tblatt_totem_hacienda");
                     table.innerHTML = "";
@@ -1481,7 +1481,7 @@ function addressSelect(event, ui) {
                     stv[2].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
                     stv[2].setAttribute("onclick", "open_streetview()");
                     ig[2] = document.createElement("img");
-                    ig[2].src = "./imagenes/streetview.png";                                     
+                    ig[2].src = "./imagenes/streetview.png";
                     var campos = 2;
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
@@ -1499,7 +1499,7 @@ function addressSelect(event, ui) {
                         } else {
                             cell2.innerHTML = sel[i];
                         }
-                    }                   
+                    }
                     //Tabla Catastro      
                     var table = document.getElementById("tblatt_totem_catastro");
                     table.innerHTML = "";
@@ -1514,7 +1514,7 @@ function addressSelect(event, ui) {
                     var ig = [];
                     var codigo = values.codigo;
                     avaluohacienda = formatNumber(avaluohacienda);
-                    var matricula = search("preproduccion:ConsultaMatriculaTotem", referencia); 
+                    var matricula = search("preproduccion:ConsultaMatriculaTotem", referencia);
                     select[0] = "<b>Avalúo Catastral</b>";
                     select[1] = "<b>Área Construida</b>";
                     select[2] = "<b>Matricula Inmobiliaria</b>";
@@ -1615,6 +1615,9 @@ function addressSelect(event, ui) {
             }
 
         });
+    } else if (modulo === 'gestor') {
+        document.getElementById("volver").style.display = "none";
+        document.getElementById("menu_predio").style.display = "none";
     }
     document.getElementById("panel_atr_totem").style.display = "block";
     try {

@@ -4,7 +4,13 @@ function buscardirboton() {
         var codigoreg1 = search("preproduccion:buscar_dir_boton", values);
         //console.log(codigoreg1);
         if (codigoreg1.length === 0 || !(codigoreg1)) {
-            alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador:</br> <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'>");
+            if (modulo === "totempruebas") {
+                alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador:</br> <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'>");
+            } else {
+                document.getElementById("menu_predio").style.display = "none";
+                document.getElementById("volver").style.display = "none";
+                busqueda("boton_geocoder");
+            }
         }
         var querystr = (codigoreg1["0"]["0"]);
         var dir = (codigoreg1["0"]["1"]);
