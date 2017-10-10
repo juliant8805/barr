@@ -7,8 +7,11 @@ function buscardirboton() {
             if (modulo === "totempruebas") {
                 alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador:</br> <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'>");
             } else {
-                document.getElementById("menu_predio").style.display = "none";
-                document.getElementById("volver").style.display = "none";
+                //document.getElementById("menu_predio").style.display = "none";
+                //document.getElementById("volver").style.display = "none";
+                document.getElementById("inputdirecciontotemp").style.display = "none";
+                document.getElementById("buscar_ref").style.display = "none";
+                alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> Ingrese la dirección mediante el siguiente recuadro</br> el resultado es una aproximacion de la malla vial oficial o el resultado del geocodificador de Google </br> <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'>");
                 busqueda("boton_geocoder");
             }
         }
