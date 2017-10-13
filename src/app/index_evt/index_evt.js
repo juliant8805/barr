@@ -380,7 +380,7 @@ $(document).on('ready', function () {
             //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             //document.getElementById("manual").style.display = "block";
-            document.getElementById("icono_codigo").style.display = "block";
+            //document.getElementById("icono_codigo").style.display = "block";
             //document.getElementById("dir_gestor").style.display = "block";
             //document.getElementById("boton_geocoder").style.display = "block";
             modulo = "gestor";

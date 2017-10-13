@@ -10,6 +10,8 @@ function asigdir() {
     document.getElementById('raddir').value = document.getElementById('tblatt').rows[1].cells[1].innerHTML.split(",")[0];
 }
 function busca_dir() {
+    document.getElementById("menu_predio").style.display = "none";
+    document.getElementById("volver").style.display = "none";
     var dir = document.getElementById('dir_g1').value + " " + document.getElementById('dir1').value + " " + document.getElementById('dir_g2').value + " " + document.getElementById('dir2').value;
     var sel = search("preproduccion:DireccionGesstor", dir);
     if (sel.length > 0) {
