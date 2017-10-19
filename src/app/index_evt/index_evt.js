@@ -76,6 +76,7 @@ $(document).on('ready', function () {
     try {
         //console.log(select);
         if (select[0][5] === true) {
+            document.getElementById("notify").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
@@ -97,6 +98,17 @@ $(document).on('ready', function () {
             document.getElementById("updcsv").style.display = "block";
             //document.getElementById("Avaluo Catastral").style.display = "block";
             modulo = "catastro";
+            var slc = search("preproduccion:selgestor");
+            var cont = 0;
+            for (i = 0; i < slc.length; i++) {
+                if (slc[i][0] === false) {
+                    cont = cont + 1;
+                }
+            }
+            if (cont !== 0) 
+            {
+                $('#notmsn').text(cont);
+            }
             //new
             var b = document.createElement("script");
             b.type = "text/javascript";
@@ -285,6 +297,18 @@ $(document).on('ready', function () {
             if (sel.length > 0) {
                 document.getElementById("deshacer").style.display = "block";
             }
+            var slc = search("preproduccion:selgestor");
+            var cont = 0;
+            for (i = 0; i < slc.length; i++) {
+                if (slc[i][1] === false) {
+                    cont = cont + 1;
+                }
+            }
+            if (cont !== 0) {
+                $('#notmsn').text(cont);
+            }
+            //document.getElementById("notmsn").value = cont;
+            document.getElementById("notify").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
@@ -337,6 +361,7 @@ $(document).on('ready', function () {
             j || (j = document.body.parentNode.appendChild(document.createElement("head")));
             j.appendChild(i);
         } else if (select[0][10] === true) {
+            document.getElementById("notify").style.display = "block";
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
@@ -355,6 +380,17 @@ $(document).on('ready', function () {
             document.getElementById("boton_comparacion").style.display = "block";
             document.getElementById("boton_geocoder").style.display = "block";
             modulo = "hacienda";
+            var slc = search("preproduccion:selgestor");
+            var cont = 0;
+            for (i = 0; i < slc.length; i++) {
+                if (slc[i][2] === false) {
+                    cont = cont + 1;
+                }
+            }
+            if (cont !== 0) 
+            {
+                $('#notmsn').text(cont);
+            }
             var b = document.createElement("script");
             b.type = "text/javascript";
             b.charset = "UTF-8";
@@ -1059,14 +1095,12 @@ function abrir_manual() {
         /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
          '_blank' // <- This is what makes it open in a new window.
          );*/
-    } 
-    else if (modulo == 'planeacionmisional') {
+    } else if (modulo == 'planeacionmisional') {
         window.open('./documentos/manual_misional_planeacion.pdf', '_blank', 'fullscreen=yes');
         /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
          '_blank' // <- This is what makes it open in a new window.
          );*/
-    } 
-    else if (modulo == 'sui') {
+    } else if (modulo == 'sui') {
         window.open('./documentos/manual_sui.pdf', '_blank', 'fullscreen=yes');
         /* window.open(
          'http://35.184.3.4/gesstor/documentos/manual_sui.pdf',
@@ -1087,7 +1121,7 @@ window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
-        for (i = 0; i < dropdowns.length; i++) {
+        for (i = 0; i < dropdoforwns.length; i++) {
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
                 openDropdown.classList.remove('show');
@@ -1498,22 +1532,21 @@ function listaprediototem() {
     }
 }
 function cambiocatastro() {
-    if (document.getElementById("panel_atr_totem_catastro").style.display == "block"){
-      document.getElementById("panel_atr_totem_catastro").style.display = "none";
-      //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
-      document.getElementById("pesth").style.display = "block";
-      document.getElementById("pestp").style.display = "block";
-      document.getElementById("pestp").style.top = "0em";
-      document.getElementById("pestc").style.top = "0em";
-      document.getElementById("pesth").style.top = "0em";
-    }
-    else{
-       document.getElementById("panel_atr_totem_catastro").style.display = "block";
-       document.getElementById("pestc").style.top = "0em"; 
-       document.getElementById("pestp").style.top = "8em";
-       //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
-       //document.getElementById("pesth").style.display = "none";
-       //document.getElementById("pestp").style.display = "none";  
+    if (document.getElementById("panel_atr_totem_catastro").style.display == "block") {
+        document.getElementById("panel_atr_totem_catastro").style.display = "none";
+        //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
+        document.getElementById("pesth").style.display = "block";
+        document.getElementById("pestp").style.display = "block";
+        document.getElementById("pestp").style.top = "0em";
+        document.getElementById("pestc").style.top = "0em";
+        document.getElementById("pesth").style.top = "0em";
+    } else {
+        document.getElementById("panel_atr_totem_catastro").style.display = "block";
+        document.getElementById("pestc").style.top = "0em";
+        document.getElementById("pestp").style.top = "8em";
+        //document.getElementById("pestc").style.backgroundColor = "#F0AD4E";
+        //document.getElementById("pesth").style.display = "none";
+        //document.getElementById("pestp").style.display = "none";  
     }
     //document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
     //document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
@@ -1521,19 +1554,18 @@ function cambiocatastro() {
     document.getElementById("panel_atr_totem_planeacion").style.display = "none";
 }
 function cambiohacienda() {
-    if (document.getElementById("panel_atr_totem_hacienda").style.display == "block"){
-      document.getElementById("panel_atr_totem_hacienda").style.display = 'none' 
-      document.getElementById("pestc").style.top = "0em";
-      document.getElementById("pestp").style.top = "0em";
-      document.getElementById("pesth").style.top = "0em";
-      //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
-    }
-    else{
-       document.getElementById("panel_atr_totem_hacienda").style.display = "block";
-       document.getElementById("pestc").style.top = "13.5em";
-       document.getElementById("pestp").style.top = "13.5em";
-        
-       //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
+    if (document.getElementById("panel_atr_totem_hacienda").style.display == "block") {
+        document.getElementById("panel_atr_totem_hacienda").style.display = 'none'
+        document.getElementById("pestc").style.top = "0em";
+        document.getElementById("pestp").style.top = "0em";
+        document.getElementById("pesth").style.top = "0em";
+        //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
+    } else {
+        document.getElementById("panel_atr_totem_hacienda").style.display = "block";
+        document.getElementById("pestc").style.top = "13.5em";
+        document.getElementById("pestp").style.top = "13.5em";
+
+        //document.getElementById("pesth").style.backgroundColor = "#5CB85C";
     }
     //document.getElementById("pestp").style.backgroundColor = "#a6a6a6";
     //document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
@@ -1541,25 +1573,24 @@ function cambiohacienda() {
     document.getElementById("panel_atr_totem_planeacion").style.display = "none";
 }
 function cambioplaneacion() {
-    if (document.getElementById("panel_atr_totem_planeacion").style.display == "block"){
-      document.getElementById("panel_atr_totem_planeacion").style.display = "none"; 
-      //document.getElementById("pestp").style.backgroundColor = "#A6A6A6";
-      document.getElementById("pesth").style.display = "block";
-      document.getElementById("pestc").style.display = "block";
-      document.getElementById("pesth").style.top = "0em";
-      document.getElementById("pestc").style.top = "0em";
-      document.getElementById("pestp").style.top = "0em";
-    }
-    else{
-       document.getElementById("panel_atr_totem_planeacion").style.display = "block";
-       document.getElementById("panel_atr_totem_hacienda").style.display = "none"; 
-       //document.getElementById("pestp").style.backgroundColor = "#639BB3";
-       document.getElementById("pesth").style.display = "block";
-       document.getElementById("pestc").style.display = "block"; 
-       document.getElementById("pesth").style.top = "0em";
-       document.getElementById("pestc").style.top = "0em";
-       document.getElementById("pestp").style.top = "0em";
-       //document.getElementById("pestp").style.top = "13em";
+    if (document.getElementById("panel_atr_totem_planeacion").style.display == "block") {
+        document.getElementById("panel_atr_totem_planeacion").style.display = "none";
+        //document.getElementById("pestp").style.backgroundColor = "#A6A6A6";
+        document.getElementById("pesth").style.display = "block";
+        document.getElementById("pestc").style.display = "block";
+        document.getElementById("pesth").style.top = "0em";
+        document.getElementById("pestc").style.top = "0em";
+        document.getElementById("pestp").style.top = "0em";
+    } else {
+        document.getElementById("panel_atr_totem_planeacion").style.display = "block";
+        document.getElementById("panel_atr_totem_hacienda").style.display = "none";
+        //document.getElementById("pestp").style.backgroundColor = "#639BB3";
+        document.getElementById("pesth").style.display = "block";
+        document.getElementById("pestc").style.display = "block";
+        document.getElementById("pesth").style.top = "0em";
+        document.getElementById("pestc").style.top = "0em";
+        document.getElementById("pestp").style.top = "0em";
+        //document.getElementById("pestp").style.top = "13em";
     }
     //document.getElementById("pesth").style.backgroundColor = "#a6a6a6";
     //document.getElementById("pestc").style.backgroundColor = "#a6a6a6";
