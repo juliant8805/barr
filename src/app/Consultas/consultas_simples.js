@@ -566,7 +566,7 @@ function addressSelect(event, ui) {
     } catch (err) {
         // console.log(2);
     }
-    var feat = ui.item.feature;
+    //var feat = ui.item.feature;
     globalstyle = "sinconsulta";
     document.getElementById('mensaje').style.display = 'none';
     predio.setVisible(true);
@@ -1616,8 +1616,51 @@ function addressSelect(event, ui) {
 
         });
     } else if (modulo === 'gestor') {
+        predio.setVisible(false);
+        document.getElementById("volvertotem").style.display = "block";
         document.getElementById("volver").style.display = "none";
         document.getElementById("menu_predio").style.display = "none";
+        var table = document.getElementById("tblatt");
+        table.innerHTML = "";
+        var row = table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        cell1.colSpan = 2;
+        cell1.innerHTML = "<b>GEOREFERENCIADOR</b>";
+        var seleccion = [];
+        var sel = [];
+        var stv = [];
+        var ig = [];
+        seleccion[0] = "<b>Dirección Buscada</b>";
+        //seleccion[1] = "<b>Dirección Aproximada</b>";
+        seleccion[1] = "<b>Fuente</b>";
+        seleccion[2] = "<b>Radicar Solicitud</b>";
+        if (document.getElementById("sel1").value !== 'Busqueda por Dirección'){
+            sel[0] = ui.item.direccionoriginal;
+        }else {
+            sel[0] = document.getElementById("inputdirecciontotemp").value;
+        }
+        //sel[1] = direncontrada;
+        sel[1] = "<img src='./imagenes/gesstor_atributos.png'/>";
+        sel[2] = "<button type='button' class='btn btn-info btn-md' data-toggle='modal' data-target='#myModal1' onclick='asigdir()'>Radicar</button>";
+        for (i = 0; i < seleccion.length; i++) {
+            row = table.insertRow(i + 1);
+            cell1 = row.insertCell(0);
+            cell2 = row.insertCell(1);
+            cell1.innerHTML = seleccion[i];
+            if (i === 4) {
+                cell2.appendChild(sel[i]);
+                //cell2.appendChild(imag[i]);
+                sel[i].appendChild(imag[i]);
+                cell2.appendChild(stv[i]);
+                //cell2.appendChild(ig[i]);
+                stv[i].appendChild(ig[i]);
+
+            } else {
+                cell2.innerHTML = sel[i];
+            }
+        }
+        document.getElementById("panel_atr").style.display = "block";
+        document.getElementById("botonminimizar").style.display = "block";
     }
     document.getElementById("panel_atr_totem").style.display = "block";
     try {

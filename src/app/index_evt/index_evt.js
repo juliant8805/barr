@@ -1575,6 +1575,9 @@ function menutotem() {
     document.getElementById("inputdirecciontotemp").value = "";
     document.getElementById("volvertotem").style.display = "none";
     document.getElementById("menu_totemp").style.display = "block";
+    document.getElementById("sel1").value = 'Seleccione el tipo de Busqueda';
+    document.getElementById("inputdirecciontotemp").style.display = "none";
+    document.getElementById("products").style.display = "block";
 }
 function enviarcorreo(ref) {
     //console.log(ref);
