@@ -40,6 +40,7 @@ window.onload = function () {
     document.getElementById('CZampaRíoMagdalena50m').addEventListener('click', showtable, false);
     document.getElementById('CZonaDeclaradaPrado').addEventListener('click', showtable, false);
     //document.getElementById('CZonaDeclaradaCentro').addEventListener('click', showtable, false);
+    document.getElementById('notify').addEventListener('click', showtable, false);
 };
 function hideMe() {
     document.getElementById('draggable').style.display = "none";
@@ -181,21 +182,91 @@ function showtable(capas) {
         var colum = search("preproduccion:NameColumns", 'zonadeclaradaprado');
         var sel = search("preproduccion:selallzonadeclaradaprado");
     } /*else if (capas.target.innerHTML === "Zona Declarada Centro") {}*/
+    else if (capas.target.innerHTML === "Radicaciones") {
+        var colum = search("preproduccion:NameColumns", 'gestor');
+        var sel = search("preproduccion:selgestor");
+        var co = 1;
+        //var slc = search("preproduccion:selgestor");
+    }
     var option = [];
-    for (i = 0; i < colum.length; i++) {
-        option[i] = document.createElement("option");
-        option[i].text = colum[i];
-        x.add(option[i], i);
-    }
-    for (j = 0; j < colum.length; j++) {
-        cell1 = row.insertCell(j);
-        cell1.innerHTML = colum[j];
-    }
-    for (j = 0; j < sel.length; j++) {
-        var row = table.insertRow(j + 1);
-        for (k = 0; k < sel[0].length; k++) {
-            cell1 = row.insertCell(k);
-            cell1.innerHTML = sel[j][k];
+    if (modulo === 'catastro') {
+        for (i = 0; i < colum.length - 4; i++) {
+            option[i] = document.createElement("option");
+            cell1 = row.insertCell(i);
+            if (i === 9) {
+                option[i].text = colum[i + 2];
+                cell1.innerHTML = colum[i + 2];
+            } else {
+                option[i].text = colum[i];
+                cell1.innerHTML = colum[i];
+            }
+            x.add(option[i], i);
+        }
+    } else if (modulo === 'planeacionmisional' && co === 1) {
+        for (i = 0; i < colum.length - 4; i++) {
+            option[i] = document.createElement("option");
+            cell1 = row.insertCell(i);
+            if (i === 8) {
+                option[i].text = colum[i + 1];
+                cell1.innerHTML = colum[i + 1];
+            } else if (i === 9) {
+                option[i].text = colum[i + 3];
+                cell1.innerHTML = colum[i + 3];
+            } else {
+                option[i].text = colum[i];
+                cell1.innerHTML = colum[i];
+            }
+            x.add(option[i], i);
+        }
+        for (j = 0; j < sel.length; j++) {
+            var row = table.insertRow(j + 1);
+            for (k = 0; k < sel[0].length - 4; k++) {
+                cell1 = row.insertCell(k);
+                if (k === 8) {
+                    cell1.innerHTML = sel[j][k+1];
+                } else if (k === 9) {
+                    cell1.innerHTML = sel[j][k+3];
+                }else{
+                    cell1.innerHTML = sel[j][k];
+                }
+            }
+        }
+    } else if (modulo === 'hacienda') {
+        for (i = 0; i < colum.length - 4; i++) {
+            option[i] = document.createElement("option");
+            cell1 = row.insertCell(i);
+            if (i === 8) {
+                option[i].text = colum[i + 2];
+                cell1.innerHTML = colum[i + 2];
+            } else if (i === 9) {
+                option[i].text = colum[i + 4];
+                cell1.innerHTML = colum[i + 4];
+            } else {
+                option[i].text = colum[i];
+                cell1.innerHTML = colum[i];
+            }
+            x.add(option[i], i);
+        }
+    } else {
+        for (i = 0; i < colum.length; i++) {
+            option[i] = document.createElement("option");
+            option[i].text = colum[i];
+            x.add(option[i], i);
+            cell1 = row.insertCell(i);
+            cell1.innerHTML = colum[i];
+        }
+        for (j = 0; j < sel.length; j++) {
+            var row = table.insertRow(j + 1);
+            for (k = 0; k < sel[0].length; k++) {
+                cell1 = row.insertCell(k);
+                cell1.innerHTML = sel[j][k];
+            }
         }
     }
+    /*for (j = 0; j < colum.length; j++) {
+     
+     cell1 = row.insertCell(j);
+     cell1.innerHTML = colum[j];
+     }*/
+
 }

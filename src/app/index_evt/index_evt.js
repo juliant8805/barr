@@ -101,7 +101,7 @@ $(document).on('ready', function () {
             var slc = search("preproduccion:selgestor");
             var cont = 0;
             for (i = 0; i < slc.length; i++) {
-                if (slc[i][0] === false) {
+                if (slc[i][8] === false) {
                     cont = cont + 1;
                 }
             }
@@ -300,7 +300,7 @@ $(document).on('ready', function () {
             var slc = search("preproduccion:selgestor");
             var cont = 0;
             for (i = 0; i < slc.length; i++) {
-                if (slc[i][1] === false) {
+                if (slc[i][9] === false) {
                     cont = cont + 1;
                 }
             }
@@ -383,7 +383,7 @@ $(document).on('ready', function () {
             var slc = search("preproduccion:selgestor");
             var cont = 0;
             for (i = 0; i < slc.length; i++) {
-                if (slc[i][2] === false) {
+                if (slc[i][9] === false) {
                     cont = cont + 1;
                 }
             }
