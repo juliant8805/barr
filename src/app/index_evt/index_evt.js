@@ -884,6 +884,7 @@ function limpiar_consulta() {
     globalstyle = "sinconsulta";
     puntos_aaa.setVisible(false);
     manzana.setVisible(false);
+    homicidios_kernel.setVisible(false);
     construcciones.setVisible(true);
     unidades.setVisible(false);
     vias.setVisible(false);
