@@ -380,7 +380,7 @@ $(document).on('ready', function () {
             //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             //document.getElementById("manual").style.display = "block";
-            document.getElementById("icono_codigo").style.display = "block";
+            //document.getElementById("icono_codigo").style.display = "block";
             //document.getElementById("dir_gestor").style.display = "block";
             //document.getElementById("boton_geocoder").style.display = "block";
             modulo = "gestor";
@@ -1576,6 +1576,9 @@ function menutotem() {
     document.getElementById("inputdirecciontotemp").value = "";
     document.getElementById("volvertotem").style.display = "none";
     document.getElementById("menu_totemp").style.display = "block";
+    document.getElementById("sel1").value = 'Seleccione el tipo de Busqueda';
+    document.getElementById("inputdirecciontotemp").style.display = "none";
+    document.getElementById("products").style.display = "block";
 }
 function enviarcorreo(ref) {
     //console.log(ref);

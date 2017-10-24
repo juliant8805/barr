@@ -7,7 +7,7 @@ function general() {
     manzana.setVisible(false);
     construcciones.setVisible(false);
     unidades.setVisible(false);
-    predio.setVisible(true);
+    //predio.setVisible(true);
     //document.getElementById('mensaje').style.display = 'block'; 
    if(document.getElementById("barrio").value !== ''){    
         var valor = "'" + values + "'";
