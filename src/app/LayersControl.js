@@ -60,16 +60,8 @@ var bing = new ol.layer.Tile({
         imagerySet: 'Aerial'
     }), name: 'Satelite'
 });
-/*var pruebas = new ol.layer.Tile({
-    
-    visible: false,
-    //minResolution:0.000280044661523,
-   
-    source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
-        params: {LAYERS: 'preproduccion:pruebas', STYLES: ''}
-    }), name: 'Pruebas'
-});*/
+
+
 var predio = new ol.layer.Tile({
     //preload: Infinity,
     //title : 'Predios',
@@ -642,11 +634,19 @@ var arbol = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:arbol', STYLES: ''}
-    }), name: 'Arbol'    
+    }), name: 'Arbol'
+});
+
+var homicidios_kernel = new ol.layer.Tile({
+    visible: false,
+    source: new ol.source.TileWMS({
+        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        params: {LAYERS: 'preproduccion:homicidios_kernel', STYLES: ''}
+    }), name: 'prueba'
 });
 
 var layerCartobasica = new ol.layer.Group({
-    layers: [arbol, tuberia, red_alta_tension, puente_l, muro, lineademarcacion, limitevia, laguna, curvanivel, construccionagual, cicloruta, cerca, canaldoble, canalsencillo, paramento, antejardin, paramento],
+    layers: [arbol, tuberia, red_alta_tension, puente_l, muro, homicidios_kernel, lineademarcacion, limitevia, laguna, curvanivel, construccionagual, cicloruta, cerca, canaldoble, canalsencillo, paramento, antejardin, paramento],
     name: 'Cartografia Básica'
 });
 
