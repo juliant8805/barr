@@ -1616,6 +1616,13 @@ function addressSelect(event, ui) {
 
         });
     } else if (modulo === 'gestor') {
+        var lola = [];
+        lola[0] = (ppExtent[0] + ppExtent[2])/2;
+        lola[1] = (ppExtent[1] + ppExtent[3])/2;
+        //console.log(lola);
+        var cll = ol.proj.transform(lola, 'EPSG:3857','EPSG:4326');
+        //console.log(cll);
+        document.getElementById("radcoo").value = cll[0]+";" +cll[1];
         predio.setVisible(false);
         document.getElementById("volvertotem").style.display = "block";
         document.getElementById("volver").style.display = "none";
