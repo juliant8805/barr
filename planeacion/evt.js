@@ -222,15 +222,36 @@ function showtable(capas) {
             var row = table.insertRow(j + 1);
             for (k = 0; k < sel[0].length - 4; k++) {
                 cell1 = row.insertCell(k);
+                if (k === 0) {
+                    cell1.innerHTML = "<u>"+sel[j][k]+"</u>";
+                    cell1.style.color = "Blue";
+                    cell1.style.textDecoration = "underline";
+                    //cell1.onclick = edit(sel[j][k]);
+                    cell1.onclick = function () {
+                        edit(this.textContent);
+                    };
+                }
                 if (k === 8) {
-                    cell1.innerHTML = sel[j][k+1];
+                    if (sel[j][k + 1] === true) {
+                        cell1.innerHTML = '✔';
+                    } else {
+                        cell1.innerHTML = 'X';
+                    }
+                    //cell1.innerHTML = sel[j][k + 1];
                 } else if (k === 9) {
-                    cell1.innerHTML = sel[j][k+3];
-                }else{
+                    cell1.innerHTML = sel[j][k + 3];
+                } else {
                     cell1.innerHTML = sel[j][k];
+                }
+                if (k === 3 && sel[j][9] !== true) {
+                    //console.log(sel[j][9]);
+                    setpo(sel[j][k]);
                 }
             }
         }
+        document.getElementById("selcolum").value = "planeacion";
+        document.getElementById("inpfil").value = "X";
+        filtro();
     } else if (modulo === 'hacienda') {
         for (i = 0; i < colum.length - 4; i++) {
             option[i] = document.createElement("option");
@@ -269,4 +290,39 @@ function showtable(capas) {
      cell1.innerHTML = colum[j];
      }*/
 
+}
+function edit(param) {
+    console.log(param);
+}
+function setpo(coord) {
+    //console.log(coord);
+    var co = coord.split(";");
+    co[0] = Number(co[0]);
+    co[1] = Number(co[1]);
+    //console.log(co);
+    var vectorSource = new ol.source.Vector({});
+    var thing = new ol.geom.Point(ol.proj.transform(co, 'EPSG:4326', 'EPSG:3857'));
+    var feat = new ol.Feature({
+        name: "Thing",
+        geometry: thing
+    });
+    highlight.setStyle(alerta);
+    vectorSource = new ol.source.Vector({
+        features: [feat]
+    });
+    vectorLayer = new ol.layer.Vector({
+        source: vectorSource
+    });
+    var markerSource = highlight.getSource();
+    //markerSource.clear();
+    markerSource.addFeature(feat);
+    setInterval('pepe()', 1000);
+}
+function pepe() {
+    if (highlight.style_.image_.stroke_.color_ === "rgba(255, 0, 0, 0.8)") {
+        highlight.setStyle(alertc);
+    } else {
+        highlight.setStyle(alerta);
+    }
+    //console.log(highlight.style_.image_.stroke_.color_);
 }

@@ -101,11 +101,11 @@ $(document).on('ready', function () {
             var slc = search("preproduccion:selgestor");
             var cont = 0;
             for (i = 0; i < slc.length; i++) {
-                if (slc[i][8] === false) {
+                if (slc[i][8] !== true) {
                     cont = cont + 1;
                 }
             }
-            if (cont !== 0) 
+            if (cont !== 0)
             {
                 $('#notmsn').text(cont);
             }
@@ -300,7 +300,7 @@ $(document).on('ready', function () {
             var slc = search("preproduccion:selgestor");
             var cont = 0;
             for (i = 0; i < slc.length; i++) {
-                if (slc[i][9] === false) {
+                if (slc[i][9] !== true) {
                     cont = cont + 1;
                 }
             }
@@ -383,11 +383,11 @@ $(document).on('ready', function () {
             var slc = search("preproduccion:selgestor");
             var cont = 0;
             for (i = 0; i < slc.length; i++) {
-                if (slc[i][9] === false) {
+                if (slc[i][9] !== true) {
                     cont = cont + 1;
                 }
             }
-            if (cont !== 0) 
+            if (cont !== 0)
             {
                 $('#notmsn').text(cont);
             }
@@ -1119,15 +1119,18 @@ function abrir_manual() {
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdoforwns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
+    try {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdoforwns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
             }
         }
+    } catch (err) {
     }
 };
 function marcado() {
