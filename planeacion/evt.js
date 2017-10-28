@@ -192,7 +192,7 @@ function showtable(capas) {
     if (modulo === 'catastro') {
         for (i = 0; i < colum.length - 4; i++) {
             option[i] = document.createElement("option");
-            cell1 = row.insertCell(i);
+            var cell1 = row.insertCell(i);
             if (i === 9) {
                 option[i].text = colum[i + 2];
                 cell1.innerHTML = colum[i + 2];
@@ -205,7 +205,7 @@ function showtable(capas) {
     } else if (modulo === 'planeacionmisional' && co === 1) {
         for (i = 0; i < colum.length - 4; i++) {
             option[i] = document.createElement("option");
-            cell1 = row.insertCell(i);
+            var cell1 = row.insertCell(i);
             if (i === 8) {
                 option[i].text = colum[i + 1];
                 cell1.innerHTML = colum[i + 1];
@@ -220,16 +220,22 @@ function showtable(capas) {
         }
         for (j = 0; j < sel.length; j++) {
             var row = table.insertRow(j + 1);
+
             for (k = 0; k < sel[0].length - 4; k++) {
                 cell1 = row.insertCell(k);
                 if (k === 0) {
-                    cell1.innerHTML = "<u>"+sel[j][k]+"</u>";
+                    row.id = "td" + sel[j][k];
+                    /*cell1.innerHTML = sel[j][k];
                     cell1.style.color = "Blue";
+                    cell1.style.fontWeight = "bold";
                     cell1.style.textDecoration = "underline";
-                    //cell1.onclick = edit(sel[j][k]);
                     cell1.onclick = function () {
                         edit(this.textContent);
                     };
+                    $(".dropdown-toggle").attr("data-toggle", "dropdown");*/
+                    document.getElementById("myModal1").showModal(); 
+                    var pp = "<button type='button' class='btn btn-info btn-md' data-toggle='modal' data-target='#myModal1' onclick='asigdir()'>Radicar</button>";
+                    cell1.appendChild(pp);
                 }
                 if (k === 8) {
                     if (sel[j][k + 1] === true) {
@@ -255,7 +261,7 @@ function showtable(capas) {
     } else if (modulo === 'hacienda') {
         for (i = 0; i < colum.length - 4; i++) {
             option[i] = document.createElement("option");
-            cell1 = row.insertCell(i);
+            var cell1 = row.insertCell(i);
             if (i === 8) {
                 option[i].text = colum[i + 2];
                 cell1.innerHTML = colum[i + 2];
@@ -290,9 +296,19 @@ function showtable(capas) {
      cell1.innerHTML = colum[j];
      }*/
 
-}
+}/*
+$(document).ready(function () {
+    console.log(1);
+    $("#td28").click(function () {
+        console.log(2);
+        $("#myModal1").modal();
+    });
+});*/
 function edit(param) {
-    console.log(param);
+    //$('#myModal').modal('hide');
+    //$('#myModal1').modal('show');
+    console.log(document.getElementById("td" + param).cells);
+    //$('#myModal1').modal();
 }
 function setpo(coord) {
     //console.log(coord);
