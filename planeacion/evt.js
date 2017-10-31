@@ -231,12 +231,12 @@ function showtable(capas) {
                     wbr.setAttribute("class", "btn btn-info btn-md");
                     wbr.setAttribute("data-toggle", "modal");
                     wbr.setAttribute("data-target", "#myModal1");
-                    wbr.setAttribute("onclick", "edit("+row.id+")");
+                    wbr.setAttribute("onclick", "edit(" + row.id + ")");
                     cell1.appendChild(wbr);
-                }else if (k === 3 && sel[j][9] !== true) {
+                } else if (k === 3 && sel[j][9] !== true) {
                     cell1.innerHTML = sel[j][k];
                     setpo(sel[j][k]);
-                }else if (k === 8) {
+                } else if (k === 8) {
                     if (sel[j][k + 1] === true) {
                         cell1.innerHTML = '✔';
                     } else {
@@ -289,7 +289,7 @@ function edit(param) {
     //console.log(param.cells);
     var men = document.getElementById("titleedit").innerHTML.split("...");
     document.getElementById("titleedit").innerHTML = men[0];
-    document.getElementById("titleedit").innerHTML = document.getElementById("titleedit").innerHTML +"..."+param.cells["0"].textContent;
+    document.getElementById("titleedit").innerHTML = document.getElementById("titleedit").innerHTML + "..." + param.cells["0"].textContent;
     document.getElementById("radbarr").value = param.cells[1].textContent;
     document.getElementById("radbarr").disabled = true;
     document.getElementById("raddir").value = param.cells[2].textContent;
@@ -303,9 +303,10 @@ function edit(param) {
     document.getElementById("raduso").value = param.cells[6].textContent;
     document.getElementById("raduso").disabled = true;
     document.getElementById("001").innerHTML = "Documentos";
-    document.getElementById("002").hidden = true;
+    //document.getElementById("002").hidden = true;
+    document.getElementById("datfil0").hidden = true;
     document.getElementById("003").innerHTML = "Observacion";
-    document.getElementById("observation").hidden = false;
+    document.getElementById("observation").style.display = 'none';
     document.getElementById("004").hidden = true;
     document.getElementById("005").hidden = true;
     document.getElementById("006").hidden = true;
@@ -317,6 +318,34 @@ function edit(param) {
     document.getElementById("012").hidden = true;
     document.getElementById("butt1").innerHTML = "✔";
     document.getElementById("butt2").innerHTML = "X";
+    //var parametro = {"param" : param.cells["0"].textContent};
+    $.ajax({
+        url: 'gesstor/read.php',
+        type: 'POST',
+        data: {ref: param.cells[0].textContent},
+        /*beforeSend: function () {
+         message = $("<span class='before'>Subiendo los archivos, por favor espere...</span>");
+         showMessage(message);
+         },*/
+        success: function (xml) {
+            var arr = xml.split(" => ");
+            var array = [];
+            var a = [];
+            for (i = 1; i < arr.length - 2; i++) {
+                array[i - 1] = arr[i].split(/\n/)[0];
+                a[i - 1] = document.createElement("a");
+                a[i - 1].href = '/gesstor/files/' + param.cells["0"].textContent + '/' + array[i - 1];
+                a[i - 1].target = "_blank";
+                a[i - 1].innerHTML = array[i - 1];
+                document.getElementById("002").appendChild(a[i - 1]);
+                document.getElementById("002").appendChild(document.createElement("br"));
+            }
+            //console.log(array);
+        },
+        error: function (xml) {
+            console.log('error');
+        }
+    });
 }
 function setpo(coord) {
     //console.log(coord);

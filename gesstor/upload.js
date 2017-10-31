@@ -76,7 +76,7 @@ function chargegestor() {
             }
             var select = search("preproduccion:selgestormax");
             console.log(select[0][0]);
-            var rr = $.ajax({
+            $.ajax({
                 url: 'gesstor/upload.php?id='+select[0][0],
                 type: 'POST',
                 data: archivos,
