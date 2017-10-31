@@ -225,33 +225,27 @@ function showtable(capas) {
                 cell1 = row.insertCell(k);
                 if (k === 0) {
                     row.id = "td" + sel[j][k];
-                    /*cell1.innerHTML = sel[j][k];
-                    cell1.style.color = "Blue";
-                    cell1.style.fontWeight = "bold";
-                    cell1.style.textDecoration = "underline";
-                    cell1.onclick = function () {
-                        edit(this.textContent);
-                    };
-                    $(".dropdown-toggle").attr("data-toggle", "dropdown");*/
-                    document.getElementById("myModal1").showModal(); 
-                    var pp = "<button type='button' class='btn btn-info btn-md' data-toggle='modal' data-target='#myModal1' onclick='asigdir()'>Radicar</button>";
-                    cell1.appendChild(pp);
-                }
-                if (k === 8) {
+                    var wbr = document.createElement("button");
+                    wbr.textContent = sel[j][k];
+                    wbr.setAttribute("type", "button");
+                    wbr.setAttribute("class", "btn btn-info btn-md");
+                    wbr.setAttribute("data-toggle", "modal");
+                    wbr.setAttribute("data-target", "#myModal1");
+                    wbr.setAttribute("onclick", "edit("+row.id+")");
+                    cell1.appendChild(wbr);
+                }else if (k === 3 && sel[j][9] !== true) {
+                    cell1.innerHTML = sel[j][k];
+                    setpo(sel[j][k]);
+                }else if (k === 8) {
                     if (sel[j][k + 1] === true) {
                         cell1.innerHTML = '✔';
                     } else {
                         cell1.innerHTML = 'X';
                     }
-                    //cell1.innerHTML = sel[j][k + 1];
                 } else if (k === 9) {
                     cell1.innerHTML = sel[j][k + 3];
                 } else {
                     cell1.innerHTML = sel[j][k];
-                }
-                if (k === 3 && sel[j][9] !== true) {
-                    //console.log(sel[j][9]);
-                    setpo(sel[j][k]);
                 }
             }
         }
@@ -290,25 +284,39 @@ function showtable(capas) {
             }
         }
     }
-    /*for (j = 0; j < colum.length; j++) {
-     
-     cell1 = row.insertCell(j);
-     cell1.innerHTML = colum[j];
-     }*/
-
-}/*
-$(document).ready(function () {
-    console.log(1);
-    $("#td28").click(function () {
-        console.log(2);
-        $("#myModal1").modal();
-    });
-});*/
+}
 function edit(param) {
-    //$('#myModal').modal('hide');
-    //$('#myModal1').modal('show');
-    console.log(document.getElementById("td" + param).cells);
-    //$('#myModal1').modal();
+    //console.log(param.cells);
+    var men = document.getElementById("titleedit").innerHTML.split("...");
+    document.getElementById("titleedit").innerHTML = men[0];
+    document.getElementById("titleedit").innerHTML = document.getElementById("titleedit").innerHTML +"..."+param.cells["0"].textContent;
+    document.getElementById("radbarr").value = param.cells[1].textContent;
+    document.getElementById("radbarr").disabled = true;
+    document.getElementById("raddir").value = param.cells[2].textContent;
+    document.getElementById("raddir").disabled = true;
+    document.getElementById("radcoo").value = param.cells[3].textContent;
+    document.getElementById("radcoo").disabled = true;
+    document.getElementById("tiposerviciogesstor").value = param.cells[4].textContent;
+    document.getElementById("tiposerviciogesstor").disabled = true;
+    document.getElementById("radest").value = param.cells[5].textContent;
+    document.getElementById("radest").disabled = true;
+    document.getElementById("raduso").value = param.cells[6].textContent;
+    document.getElementById("raduso").disabled = true;
+    document.getElementById("001").innerHTML = "Documentos";
+    document.getElementById("002").hidden = true;
+    document.getElementById("003").innerHTML = "Observacion";
+    document.getElementById("observation").hidden = false;
+    document.getElementById("004").hidden = true;
+    document.getElementById("005").hidden = true;
+    document.getElementById("006").hidden = true;
+    document.getElementById("007").hidden = true;
+    document.getElementById("008").hidden = true;
+    document.getElementById("009").hidden = true;
+    document.getElementById("010").hidden = true;
+    document.getElementById("011").hidden = true;
+    document.getElementById("012").hidden = true;
+    document.getElementById("butt1").innerHTML = "✔";
+    document.getElementById("butt2").innerHTML = "X";
 }
 function setpo(coord) {
     //console.log(coord);

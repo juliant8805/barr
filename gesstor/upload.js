@@ -75,7 +75,7 @@ function chargegestor() {
                 archivos.append('archivo' + i, archivo[i][0]);
             }
             var select = search("preproduccion:selgestormax");
-            //console.log(select[0][0]);
+            console.log(select[0][0]);
             var rr = $.ajax({
                 url: 'gesstor/upload.php?id='+select[0][0],
                 type: 'POST',
