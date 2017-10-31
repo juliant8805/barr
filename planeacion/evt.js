@@ -40,6 +40,7 @@ window.onload = function () {
     document.getElementById('CZampaRíoMagdalena50m').addEventListener('click', showtable, false);
     document.getElementById('CZonaDeclaradaPrado').addEventListener('click', showtable, false);
     //document.getElementById('CZonaDeclaradaCentro').addEventListener('click', showtable, false);
+    document.getElementById('notify').addEventListener('click', showtable, false);
 };
 function hideMe() {
     document.getElementById('draggable').style.display = "none";
@@ -181,21 +182,171 @@ function showtable(capas) {
         var colum = search("preproduccion:NameColumns", 'zonadeclaradaprado');
         var sel = search("preproduccion:selallzonadeclaradaprado");
     } /*else if (capas.target.innerHTML === "Zona Declarada Centro") {}*/
+    else if (capas.target.innerHTML === "Radicaciones") {
+        var colum = search("preproduccion:NameColumns", 'gestor');
+        var sel = search("preproduccion:selgestor");
+        var co = 1;
+        //var slc = search("preproduccion:selgestor");
+    }
     var option = [];
-    for (i = 0; i < colum.length; i++) {
-        option[i] = document.createElement("option");
-        option[i].text = colum[i];
-        x.add(option[i], i);
-    }
-    for (j = 0; j < colum.length; j++) {
-        cell1 = row.insertCell(j);
-        cell1.innerHTML = colum[j];
-    }
-    for (j = 0; j < sel.length; j++) {
-        var row = table.insertRow(j + 1);
-        for (k = 0; k < sel[0].length; k++) {
-            cell1 = row.insertCell(k);
-            cell1.innerHTML = sel[j][k];
+    if (modulo === 'catastro') {
+        for (i = 0; i < colum.length - 4; i++) {
+            option[i] = document.createElement("option");
+            var cell1 = row.insertCell(i);
+            if (i === 9) {
+                option[i].text = colum[i + 2];
+                cell1.innerHTML = colum[i + 2];
+            } else {
+                option[i].text = colum[i];
+                cell1.innerHTML = colum[i];
+            }
+            x.add(option[i], i);
+        }
+    } else if (modulo === 'planeacionmisional' && co === 1) {
+        for (i = 0; i < colum.length - 4; i++) {
+            option[i] = document.createElement("option");
+            var cell1 = row.insertCell(i);
+            if (i === 8) {
+                option[i].text = colum[i + 1];
+                cell1.innerHTML = colum[i + 1];
+            } else if (i === 9) {
+                option[i].text = colum[i + 3];
+                cell1.innerHTML = colum[i + 3];
+            } else {
+                option[i].text = colum[i];
+                cell1.innerHTML = colum[i];
+            }
+            x.add(option[i], i);
+        }
+        for (j = 0; j < sel.length; j++) {
+            var row = table.insertRow(j + 1);
+
+            for (k = 0; k < sel[0].length - 4; k++) {
+                cell1 = row.insertCell(k);
+                if (k === 0) {
+                    row.id = "td" + sel[j][k];
+                    var wbr = document.createElement("button");
+                    wbr.textContent = sel[j][k];
+                    wbr.setAttribute("type", "button");
+                    wbr.setAttribute("class", "btn btn-info btn-md");
+                    wbr.setAttribute("data-toggle", "modal");
+                    wbr.setAttribute("data-target", "#myModal1");
+                    wbr.setAttribute("onclick", "edit("+row.id+")");
+                    cell1.appendChild(wbr);
+                }else if (k === 3 && sel[j][9] !== true) {
+                    cell1.innerHTML = sel[j][k];
+                    setpo(sel[j][k]);
+                }else if (k === 8) {
+                    if (sel[j][k + 1] === true) {
+                        cell1.innerHTML = '✔';
+                    } else {
+                        cell1.innerHTML = 'X';
+                    }
+                } else if (k === 9) {
+                    cell1.innerHTML = sel[j][k + 3];
+                } else {
+                    cell1.innerHTML = sel[j][k];
+                }
+            }
+        }
+        document.getElementById("selcolum").value = "planeacion";
+        document.getElementById("inpfil").value = "X";
+        filtro();
+    } else if (modulo === 'hacienda') {
+        for (i = 0; i < colum.length - 4; i++) {
+            option[i] = document.createElement("option");
+            var cell1 = row.insertCell(i);
+            if (i === 8) {
+                option[i].text = colum[i + 2];
+                cell1.innerHTML = colum[i + 2];
+            } else if (i === 9) {
+                option[i].text = colum[i + 4];
+                cell1.innerHTML = colum[i + 4];
+            } else {
+                option[i].text = colum[i];
+                cell1.innerHTML = colum[i];
+            }
+            x.add(option[i], i);
+        }
+    } else {
+        for (i = 0; i < colum.length; i++) {
+            option[i] = document.createElement("option");
+            option[i].text = colum[i];
+            x.add(option[i], i);
+            cell1 = row.insertCell(i);
+            cell1.innerHTML = colum[i];
+        }
+        for (j = 0; j < sel.length; j++) {
+            var row = table.insertRow(j + 1);
+            for (k = 0; k < sel[0].length; k++) {
+                cell1 = row.insertCell(k);
+                cell1.innerHTML = sel[j][k];
+            }
         }
     }
+}
+function edit(param) {
+    //console.log(param.cells);
+    var men = document.getElementById("titleedit").innerHTML.split("...");
+    document.getElementById("titleedit").innerHTML = men[0];
+    document.getElementById("titleedit").innerHTML = document.getElementById("titleedit").innerHTML +"..."+param.cells["0"].textContent;
+    document.getElementById("radbarr").value = param.cells[1].textContent;
+    document.getElementById("radbarr").disabled = true;
+    document.getElementById("raddir").value = param.cells[2].textContent;
+    document.getElementById("raddir").disabled = true;
+    document.getElementById("radcoo").value = param.cells[3].textContent;
+    document.getElementById("radcoo").disabled = true;
+    document.getElementById("tiposerviciogesstor").value = param.cells[4].textContent;
+    document.getElementById("tiposerviciogesstor").disabled = true;
+    document.getElementById("radest").value = param.cells[5].textContent;
+    document.getElementById("radest").disabled = true;
+    document.getElementById("raduso").value = param.cells[6].textContent;
+    document.getElementById("raduso").disabled = true;
+    document.getElementById("001").innerHTML = "Documentos";
+    document.getElementById("002").hidden = true;
+    document.getElementById("003").innerHTML = "Observacion";
+    document.getElementById("observation").hidden = false;
+    document.getElementById("004").hidden = true;
+    document.getElementById("005").hidden = true;
+    document.getElementById("006").hidden = true;
+    document.getElementById("007").hidden = true;
+    document.getElementById("008").hidden = true;
+    document.getElementById("009").hidden = true;
+    document.getElementById("010").hidden = true;
+    document.getElementById("011").hidden = true;
+    document.getElementById("012").hidden = true;
+    document.getElementById("butt1").innerHTML = "✔";
+    document.getElementById("butt2").innerHTML = "X";
+}
+function setpo(coord) {
+    //console.log(coord);
+    var co = coord.split(";");
+    co[0] = Number(co[0]);
+    co[1] = Number(co[1]);
+    //console.log(co);
+    var vectorSource = new ol.source.Vector({});
+    var thing = new ol.geom.Point(ol.proj.transform(co, 'EPSG:4326', 'EPSG:3857'));
+    var feat = new ol.Feature({
+        name: "Thing",
+        geometry: thing
+    });
+    highlight.setStyle(alerta);
+    vectorSource = new ol.source.Vector({
+        features: [feat]
+    });
+    vectorLayer = new ol.layer.Vector({
+        source: vectorSource
+    });
+    var markerSource = highlight.getSource();
+    //markerSource.clear();
+    markerSource.addFeature(feat);
+    setInterval('pepe()', 1000);
+}
+function pepe() {
+    if (highlight.style_.image_.stroke_.color_ === "rgba(255, 0, 0, 0.8)") {
+        highlight.setStyle(alertc);
+    } else {
+        highlight.setStyle(alerta);
+    }
+    //console.log(highlight.style_.image_.stroke_.color_);
 }

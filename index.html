@@ -31,6 +31,8 @@
     <script src="src/app/index_evt/index_evt.js"></script>
     <script src="sql/webserviceh.js"></script>
 
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <!--Highcharts-->
     <script src="src/highcharts/js/highcharts.js"></script>
     <script src="src/highcharts/js/modules/exporting.js"></script>
@@ -66,8 +68,8 @@
                         </tr>
                         <tr bgcolor= "rgb(147, 201, 147)">
                             <td colspan="2" style="text-align: left">
-                                <select id="selcolum" class="selcc"></select>
-                                <input id="inpfil" type="text" onkeyup="filtro()" onk/>
+                                <select id="selcolum" class="selcc" onchange="filtro()"></select>
+                                <input id="inpfil" type="text" onkeyup="filtro()"/>
                                 <!--<select id="selcolum" class="selcc">
                                     <option value="Seleccione">Seleccione...</option>
                                 </select>-->
@@ -420,15 +422,15 @@
                 <form class="form-horizontal" method="post" onsubmit="return false;">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Solicitud de Servicio Público</h4>
+                        <h4 id="titleedit" class="modal-title">Solicitud de Servicio Público</h4>
                     </div>
                     <div class="modal-body">
                         <label>Barrio:</label><br>
-                        <input type="text" id="radbarr"><br>
+                        <input type="text" id="radbarr" required="required"><br>
                         <label>Dirección:</label><br>
                         <input id="raddir" type="text" name="Direccion" required="required"><br>
                         <label>Coordenadas:</label><br> 
-                        <input type="text" id="radcoo"><br>
+                        <input type="text" id="radcoo" disabled><br>
                         <label>Tipo de Servicio Público:</label><br>     
                         <select id="tiposerviciogesstor">
                             <option value="Acueducto">Acueducto</option>
@@ -441,35 +443,37 @@
                         <input id="radest" type="text" name="EstratoR" required="required"><br>
                         <label>Uso de Referencia:&nbsp&nbsp&nbsp</label><br>
                         <input id="raduso" type="text" name="UsoR" required="required"><br>
-                        <label>Certificado de Uso:&nbsp&nbsp&nbsp</label><br>
-                        <div class="controls">
+                        <label id="001">Certificado de Uso:&nbsp&nbsp&nbsp</label><br>
+                        <div id="002" class="controls">
                             <input type="file" id="datfil0" name="archivo" required="required">
                         </div>
-                        <label>Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>
-                        <div class="controls">
+                        
+                        <label id="003">Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>
+                        <div id="004" class="controls">
                             <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil1" name="archivo" required="required">
                             </form>
                         </div>
-                        <input type="checkbox" id="checkconstruccion" onchange="habilitar(this.id, 'datfil2');" unchecked><label>Licencia de Construcción:</label><br>  
+                        <textarea id="observation" rows="4" cols="50" hidden="hidden" required="required"></textarea>
+                        <input id="005" type="checkbox" id="checkconstruccion" onchange="habilitar(this.id, 'datfil2');" unchecked><label id="009">Licencia de Construcción:</label><br>  
                         <div class="controls">
                             <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil2" name="archivo" style="display: none;">
                             </form>
                         </div>
-                        <input type="checkbox" id="checkservpublico" onchange="habilitar(this.id, 'datfil3');" unchecked><label>Recibo de Servicio Público:</label><br>  
+                        <input id="006" type="checkbox" id="checkservpublico" onchange="habilitar(this.id, 'datfil3');" unchecked><label id="010">Recibo de Servicio Público:</label><br>  
                         <div class="controls">
                             <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil3" name="archivo" style="display: none;">
                             </form>
                         </div>
-                        <input type="checkbox" id="checkfotografia" onchange="habilitar(this.id, 'datfil4');" unchecked><label>Fotografía del Predio:</label><br>  
+                        <input id="007" type="checkbox" id="checkfotografia" onchange="habilitar(this.id, 'datfil4');" unchecked><label id="011">Fotografía del Predio:</label><br>  
                         <div class="controls">
                             <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil4" name="archivo" style="display: none;">
                             </form>
                         </div>
-                        <input type="checkbox" id="checkdoc" onchange="habilitar(this.id, 'datfil5');" unchecked><label>Otro Documento:</label><br> 
+                        <input id="008" type="checkbox" id="checkdoc" onchange="habilitar(this.id, 'datfil5');" unchecked><label  id="012">Otro Documento:</label><br> 
                         <div class="controls">
                             <form enctype="multipart/form-data" class="formulario">
                                 <input type="file" id="datfil5" name="archivo" style="display: none;">
@@ -478,8 +482,8 @@
                         <div class="messages"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-info" onclick="enviargesstor()">Enviar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button id="butt1" type="submit" class="btn btn-info" onclick="enviargesstor()">Enviar</button>
+                        <button id="butt2" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -570,6 +574,11 @@
 
     <img id="update" src="imagenes/subirshape.jpg" style="display: none" data-toggle="modal" data-target="#myModalC" title="Actualizar Base de datos">
     <img id="updcsv" src="imagenes/csvsql.jpg" style="display: none" data-toggle="modal" data-target="#chargecsv" title="Actualizar Base de datos">
+
+    <a id ="notify" href="#" hidden="hidden">
+        <span id="notmsn" class="badge pull-right"></span>
+        <strong>Radicaciones</strong>
+    </a>
 
     <div id="menu_circular" hidden="hidden">
         <!--<img id="submenu" src="./imagenes/submenu.png">

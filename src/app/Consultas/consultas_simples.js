@@ -53,6 +53,27 @@ var flagStyle = new ol.style.Style({
         src: './imagenes/flag.png'
     })
 });
+var alerta = new ol.style.Style({
+    image: new ol.style.Circle({
+        radius: 5,
+        snapToPixel: false,
+        stroke: new ol.style.Stroke({
+            color: 'rgba(255, 0, 0, 0.8)',
+            width: 3
+        })
+    })
+});
+
+var alertc = new ol.style.Style({
+    image: new ol.style.Circle({
+        radius: 5,
+        snapToPixel: false,
+        stroke: new ol.style.Stroke({
+            color: 'rgba(214, 147, 12, 0.8)',
+            width: 3
+        })
+    })
+});
 var street1 = new ol.style.Style({
     image: new ol.style.Icon({
         anchor: [1, 1],
@@ -1617,12 +1638,12 @@ function addressSelect(event, ui) {
         });
     } else if (modulo === 'gestor') {
         var lola = [];
-        lola[0] = (ppExtent[0] + ppExtent[2])/2;
-        lola[1] = (ppExtent[1] + ppExtent[3])/2;
+        lola[0] = (ppExtent[0] + ppExtent[2]) / 2;
+        lola[1] = (ppExtent[1] + ppExtent[3]) / 2;
         //console.log(lola);
-        var cll = ol.proj.transform(lola, 'EPSG:3857','EPSG:4326');
+        var cll = ol.proj.transform(lola, 'EPSG:3857', 'EPSG:4326');
         //console.log(cll);
-        document.getElementById("radcoo").value = cll[0]+";" +cll[1];
+        document.getElementById("radcoo").value = cll[0] + ";" + cll[1];
         predio.setVisible(false);
         document.getElementById("volvertotem").style.display = "block";
         document.getElementById("volver").style.display = "none";
@@ -1641,9 +1662,9 @@ function addressSelect(event, ui) {
         //seleccion[1] = "<b>Dirección Aproximada</b>";
         seleccion[1] = "<b>Fuente</b>";
         seleccion[2] = "<b>Radicar Solicitud</b>";
-        if (document.getElementById("sel1").value !== 'Busqueda por Dirección'){
+        if (document.getElementById("sel1").value !== 'Busqueda por Dirección') {
             sel[0] = ui.item.direccionoriginal;
-        }else {
+        } else {
             sel[0] = document.getElementById("inputdirecciontotemp").value;
         }
         //sel[1] = direncontrada;
