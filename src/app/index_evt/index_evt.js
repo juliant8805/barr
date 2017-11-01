@@ -145,6 +145,13 @@ $(document).on('ready', function () {
             var h = document.getElementsByTagName("head")[0];
             h || (h = document.body.parentNode.appendChild(document.createElement("head")));
             h.appendChild(g);
+            var i = document.createElement("script");
+            i.type = "text/javascript";
+            i.charset = "UTF-8";
+            i.src = "planeacion/evt.js";
+            var j = document.getElementsByTagName("head")[0];
+            j || (j = document.body.parentNode.appendChild(document.createElement("head")));
+            j.appendChild(i);
         } else if (select[0][6] === true) {
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
@@ -412,6 +419,13 @@ $(document).on('ready', function () {
             var f = document.getElementsByTagName("head")[0];
             f || (f = document.body.parentNode.appendChild(document.createElement("head")));
             f.appendChild(e);
+            var i = document.createElement("script");
+            i.type = "text/javascript";
+            i.charset = "UTF-8";
+            i.src = "planeacion/evt.js";
+            var j = document.getElementsByTagName("head")[0];
+            j || (j = document.body.parentNode.appendChild(document.createElement("head")));
+            j.appendChild(i);
         } else if (select[0][12] === true) {
             //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
@@ -1488,7 +1502,7 @@ function enviargesstor() {
             chargegestor();
         }
         //alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
-    } else {
+    } else if (modulo === "planeacionmisional") {
         var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
                     <Update typeName="user:gestor">\
                         <Property>\
@@ -1527,6 +1541,107 @@ function enviargesstor() {
         //$('#notmsn').text(cont);
         for (i = 0; i < slc.length; i++) {
             if (slc[i][9] !== true) {
+                cont = cont + 1;
+            }
+        }
+        if (cont !== 0)
+        {
+            $('#notmsn').text(cont);
+        }else{
+            $('#notmsn').text('');
+        }
+        hideMe();
+        document.getElementById('butt1').disabled=true;
+    } else if (modulo === "catastro") {
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+                    <Update typeName="user:gestor">\
+                        <Property>\
+                            <Name>observacionesc</Name>\
+                            <Value>' + document.getElementById('observation').value + '</Value>\
+                        </Property>\
+                        <Filter>\
+                            <FeatureId fid="gestor.' + document.getElementById('titleedit').innerHTML.split('...')[1] + '"/>\
+                        </Filter>\
+                        <Property>\
+                            <Name>catastro</Name>\
+                            <Value>true</Value>\
+                        </Property>\
+                        <Filter>\
+                            <FeatureId fid="gestor.' + document.getElementById('titleedit').innerHTML.split('...')[1] + '"/>\
+                        </Filter>\
+                    </Update>\
+                </Transaction>';
+        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        $.ajax({
+            type: "POST",
+            url: rooturl,
+            dataType: "xml",
+            async: false,
+            contentType: "text/xml",
+            data: postData,
+            success: function (xml) {
+                alert('Datos actualizados con exito');
+            },
+            error: function (xml) {
+                alert('Los datos NO se actualizaron');
+            }
+        });
+        var slc = search("preproduccion:selgestor");
+        var cont = 0;
+        //$('#notmsn').text(cont);
+        for (i = 0; i < slc.length; i++) {
+            if (slc[i][8] !== true) {
+                cont = cont + 1;
+            }
+        }
+        if (cont !== 0)
+        {
+            $('#notmsn').text(cont);
+        }else{
+            $('#notmsn').text('');
+        }
+        highlight.getSource().clear();
+        hideMe();
+        document.getElementById('butt1').disabled=true;
+    } else if (modulo === "hacienda") {
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+                    <Update typeName="user:gestor">\
+                        <Property>\
+                            <Name>observacionesh</Name>\
+                            <Value>' + document.getElementById('observation').value + '</Value>\
+                        </Property>\
+                        <Filter>\
+                            <FeatureId fid="gestor.' + document.getElementById('titleedit').innerHTML.split('...')[1] + '"/>\
+                        </Filter>\
+                        <Property>\
+                            <Name>hacienda</Name>\
+                            <Value>true</Value>\
+                        </Property>\
+                        <Filter>\
+                            <FeatureId fid="gestor.' + document.getElementById('titleedit').innerHTML.split('...')[1] + '"/>\
+                        </Filter>\
+                    </Update>\
+                </Transaction>';
+        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        $.ajax({
+            type: "POST",
+            url: rooturl,
+            dataType: "xml",
+            async: false,
+            contentType: "text/xml",
+            data: postData,
+            success: function (xml) {
+                alert('Datos actualizados con exito');
+            },
+            error: function (xml) {
+                alert('Los datos NO se actualizaron');
+            }
+        });
+        var slc = search("preproduccion:selgestor");
+        var cont = 0;
+        //$('#notmsn').text(cont);
+        for (i = 0; i < slc.length; i++) {
+            if (slc[i][10] !== true) {
                 cont = cont + 1;
             }
         }

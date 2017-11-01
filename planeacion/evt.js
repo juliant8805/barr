@@ -2,48 +2,52 @@ $(function () {
     $("#draggable").draggable();
 });
 window.onload = function () {
-    document.getElementById('CBarrios').addEventListener('click', showtable, false);
-    document.getElementById('CLocalidades').addEventListener('click', showtable, false);
-    document.getElementById('CAmenazaInundación').addEventListener('click', showtable, false);
-    document.getElementById('CRemociónenMasa').addEventListener('click', showtable, false);
-    document.getElementById('CAreaReservaAcueducto').addEventListener('click', showtable, false);
-    document.getElementById('CAreaReservaAlcantarillado').addEventListener('click', showtable, false);
-    document.getElementById('CArroyos').addEventListener('click', showtable, false);
-    document.getElementById('CCiclorutasPropuestas').addEventListener('click', showtable, false);
-    document.getElementById('CCienagaMallorquin').addEventListener('click', showtable, false);
-    document.getElementById('CClasificaciónSuelo').addEventListener('click', showtable, false);
-    document.getElementById('CEstacionesTransmetro').addEventListener('click', showtable, false);
-    document.getElementById('CEspacioPúblico').addEventListener('click', showtable, false);
-    document.getElementById('CIntercambiadoresTransporte').addEventListener('click', showtable, false);
-    document.getElementById('CLimitesDistrital').addEventListener('click', showtable, false);
-    document.getElementById('CMaleconAvenidaRío').addEventListener('click', showtable, false);
-    document.getElementById('CPerfilViasUrbanasPropuestas').addEventListener('click', showtable, false);
-    document.getElementById('CParquesPropuestos').addEventListener('click', showtable, false);
-    document.getElementById('CParquesPropuestosRural').addEventListener('click', showtable, false);
-    document.getElementById('CPerimetroUrbano').addEventListener('click', showtable, false);
-    document.getElementById('CInstrumentosPlanificación').addEventListener('click', showtable, false);
-    document.getElementById('CNormativosUso').addEventListener('click', showtable, false);
-    document.getElementById('CProtecciónLitoralMarCaribe').addEventListener('click', showtable, false);
-    document.getElementById('CProtecciónConservaciónRural').addEventListener('click', showtable, false);
-    document.getElementById('CRedAcueductoPrimaria').addEventListener('click', showtable, false);
-    document.getElementById('CRedAlcantarillado').addEventListener('click', showtable, false);
-    document.getElementById('CRedEnergiaAltaTensión').addEventListener('click', showtable, false);
-    document.getElementById('CRondaArroyos15m').addEventListener('click', showtable, false);
-    document.getElementById('CRondaArroyos30m').addEventListener('click', showtable, false);
-    document.getElementById('CRondaRíoMagdalena').addEventListener('click', showtable, false);
-    document.getElementById('CTratamientosUrbanisticos').addEventListener('click', showtable, false);
-    document.getElementById('CViasRuralPropuesta').addEventListener('click', showtable, false);
-    document.getElementById('CViasTransmasivo').addEventListener('click', showtable, false);
-    document.getElementById('CZampaRíos50m').addEventListener('click', showtable, false);
-    document.getElementById('CZampaArroyos30m').addEventListener('click', showtable, false);
-    document.getElementById('CZampaCienagaMallorquin50m').addEventListener('click', showtable, false);
-    document.getElementById('CZampaRíoMagdalena50m').addEventListener('click', showtable, false);
-    document.getElementById('CZonaDeclaradaPrado').addEventListener('click', showtable, false);
-    //document.getElementById('CZonaDeclaradaCentro').addEventListener('click', showtable, false);
+    if (modulo === 'planeacionmisional') {
+        document.getElementById('CBarrios').addEventListener('click', showtable, false);
+        document.getElementById('CLocalidades').addEventListener('click', showtable, false);
+        document.getElementById('CAmenazaInundación').addEventListener('click', showtable, false);
+        document.getElementById('CRemociónenMasa').addEventListener('click', showtable, false);
+        document.getElementById('CAreaReservaAcueducto').addEventListener('click', showtable, false);
+        document.getElementById('CAreaReservaAlcantarillado').addEventListener('click', showtable, false);
+        document.getElementById('CArroyos').addEventListener('click', showtable, false);
+        document.getElementById('CCiclorutasPropuestas').addEventListener('click', showtable, false);
+        document.getElementById('CCienagaMallorquin').addEventListener('click', showtable, false);
+        document.getElementById('CClasificaciónSuelo').addEventListener('click', showtable, false);
+        document.getElementById('CEstacionesTransmetro').addEventListener('click', showtable, false);
+        document.getElementById('CEspacioPúblico').addEventListener('click', showtable, false);
+        document.getElementById('CIntercambiadoresTransporte').addEventListener('click', showtable, false);
+        document.getElementById('CLimitesDistrital').addEventListener('click', showtable, false);
+        document.getElementById('CMaleconAvenidaRío').addEventListener('click', showtable, false);
+        document.getElementById('CPerfilViasUrbanasPropuestas').addEventListener('click', showtable, false);
+        document.getElementById('CParquesPropuestos').addEventListener('click', showtable, false);
+        document.getElementById('CParquesPropuestosRural').addEventListener('click', showtable, false);
+        document.getElementById('CPerimetroUrbano').addEventListener('click', showtable, false);
+        document.getElementById('CInstrumentosPlanificación').addEventListener('click', showtable, false);
+        document.getElementById('CNormativosUso').addEventListener('click', showtable, false);
+        document.getElementById('CProtecciónLitoralMarCaribe').addEventListener('click', showtable, false);
+        document.getElementById('CProtecciónConservaciónRural').addEventListener('click', showtable, false);
+        document.getElementById('CRedAcueductoPrimaria').addEventListener('click', showtable, false);
+        document.getElementById('CRedAlcantarillado').addEventListener('click', showtable, false);
+        document.getElementById('CRedEnergiaAltaTensión').addEventListener('click', showtable, false);
+        document.getElementById('CRondaArroyos15m').addEventListener('click', showtable, false);
+        document.getElementById('CRondaArroyos30m').addEventListener('click', showtable, false);
+        document.getElementById('CRondaRíoMagdalena').addEventListener('click', showtable, false);
+        document.getElementById('CTratamientosUrbanisticos').addEventListener('click', showtable, false);
+        document.getElementById('CViasRuralPropuesta').addEventListener('click', showtable, false);
+        document.getElementById('CViasTransmasivo').addEventListener('click', showtable, false);
+        document.getElementById('CZampaRíos50m').addEventListener('click', showtable, false);
+        document.getElementById('CZampaArroyos30m').addEventListener('click', showtable, false);
+        document.getElementById('CZampaCienagaMallorquin50m').addEventListener('click', showtable, false);
+        document.getElementById('CZampaRíoMagdalena50m').addEventListener('click', showtable, false);
+        document.getElementById('CZonaDeclaradaPrado').addEventListener('click', showtable, false);
+        //document.getElementById('CZonaDeclaradaCentro').addEventListener('click', showtable, false);
+    }
     document.getElementById('notify').addEventListener('click', showtable, false);
 };
 function hideMe() {
+    clearInterval(interv);
     document.getElementById('draggable').style.display = "none";
+    highlight.getSource().clear();
 }
 function filtro() {
     var input, filter, table, tr, td, i;
@@ -202,6 +206,39 @@ function showtable(capas) {
             }
             x.add(option[i], i);
         }
+        for (j = 0; j < sel.length; j++) {
+            var row = table.insertRow(j + 1);
+            for (k = 0; k < sel[0].length - 4; k++) {
+                cell1 = row.insertCell(k);
+                if (k === 0) {
+                    row.id = "td" + sel[j][k];
+                    var wbr = document.createElement("button");
+                    wbr.textContent = sel[j][k];
+                    wbr.setAttribute("type", "button");
+                    wbr.setAttribute("class", "btn btn-info btn-md");
+                    wbr.setAttribute("data-toggle", "modal");
+                    wbr.setAttribute("data-target", "#myModal1");
+                    wbr.setAttribute("onclick", "edit(" + row.id + ")");
+                    cell1.appendChild(wbr);
+                } else if (k === 3 && sel[j][8] !== true) {
+                    cell1.innerHTML = sel[j][k];
+                    setpo(sel[j][k]);
+                } else if (k === 8) {
+                    if (sel[j][k] === true) {
+                        cell1.innerHTML = '✔';
+                    } else {
+                        cell1.innerHTML = 'X';
+                    }
+                } else if (k === 9) {
+                    cell1.innerHTML = sel[j][k + 2];
+                } else {
+                    cell1.innerHTML = sel[j][k];
+                }
+            }
+        }
+        document.getElementById("selcolum").value = "catastro";
+        document.getElementById("inpfil").value = "X";
+        filtro();
     } else if (modulo === 'planeacionmisional' && co === 1) {
         for (i = 0; i < colum.length - 4; i++) {
             option[i] = document.createElement("option");
@@ -220,7 +257,6 @@ function showtable(capas) {
         }
         for (j = 0; j < sel.length; j++) {
             var row = table.insertRow(j + 1);
-
             for (k = 0; k < sel[0].length - 4; k++) {
                 cell1 = row.insertCell(k);
                 if (k === 0) {
@@ -268,6 +304,39 @@ function showtable(capas) {
             }
             x.add(option[i], i);
         }
+        for (j = 0; j < sel.length; j++) {
+            var row = table.insertRow(j + 1);
+            for (k = 0; k < sel[0].length - 4; k++) {
+                cell1 = row.insertCell(k);
+                if (k === 0) {
+                    row.id = "td" + sel[j][k];
+                    var wbr = document.createElement("button");
+                    wbr.textContent = sel[j][k];
+                    wbr.setAttribute("type", "button");
+                    wbr.setAttribute("class", "btn btn-info btn-md");
+                    wbr.setAttribute("data-toggle", "modal");
+                    wbr.setAttribute("data-target", "#myModal1");
+                    wbr.setAttribute("onclick", "edit(" + row.id + ")");
+                    cell1.appendChild(wbr);
+                } else if (k === 3 && sel[j][10] !== true) {
+                    cell1.innerHTML = sel[j][k];
+                    setpo(sel[j][k]);
+                } else if (k === 8) {
+                    if (sel[j][k + 2] === true) {
+                        cell1.innerHTML = '✔';
+                    } else {
+                        cell1.innerHTML = 'X';
+                    }
+                } else if (k === 9) {
+                    cell1.innerHTML = sel[j][k + 4];
+                } else {
+                    cell1.innerHTML = sel[j][k];
+                }
+            }
+        }
+        document.getElementById("selcolum").value = "hacienda";
+        document.getElementById("inpfil").value = "X";
+        filtro();
     } else {
         for (i = 0; i < colum.length; i++) {
             option[i] = document.createElement("option");
@@ -286,7 +355,7 @@ function showtable(capas) {
     }
 }
 function edit(param) {
-    document.getElementById('butt1').disabled=false;
+    document.getElementById('butt1').disabled = false;
     //console.log(param.cells);
     var men = document.getElementById("titleedit").innerHTML.split("...");
     document.getElementById("titleedit").innerHTML = men[0];
@@ -305,6 +374,7 @@ function edit(param) {
     document.getElementById("raduso").disabled = true;
     document.getElementById("001").innerHTML = "Documentos";
     //document.getElementById("002").hidden = true;
+    document.getElementById("observation").value = param.cells[9].textContent;
     try {
         document.getElementById("datfil0").style.display = 'none';
     } catch (err) {
@@ -352,6 +422,7 @@ function edit(param) {
         }
     });
 }
+var interv = null;
 function setpo(coord) {
     //console.log(coord);
     var co = coord.split(";");
@@ -374,13 +445,12 @@ function setpo(coord) {
     var markerSource = highlight.getSource();
     //markerSource.clear();
     markerSource.addFeature(feat);
-    setInterval('pepe()', 1000);
+    interv = setInterval(intervalo, 500);
 }
-function pepe() {
+var intervalo = function() {
     if (highlight.style_.image_.stroke_.color_ === "rgba(255, 0, 0, 0.8)") {
         highlight.setStyle(alertc);
     } else {
         highlight.setStyle(alerta);
     }
-    //console.log(highlight.style_.image_.stroke_.color_);
-}
+};
