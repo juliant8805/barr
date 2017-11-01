@@ -390,7 +390,7 @@ $(document).on('ready', function () {
             var slc = search("preproduccion:selgestor");
             var cont = 0;
             for (i = 0; i < slc.length; i++) {
-                if (slc[i][9] !== true) {
+                if (slc[i][10] !== true) {
                     cont = cont + 1;
                 }
             }
