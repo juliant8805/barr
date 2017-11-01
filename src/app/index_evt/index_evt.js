@@ -1475,19 +1475,71 @@ function habilitar(id, value)
     }
 }
 function enviargesstor() {
-    var archiv = document.getElementById("datfil0");
-    var archivo = archiv.files;
-    var archiv1 = document.getElementById("datfil1");
-    var archivo1 = archiv1.files;
-    if (!document.getElementById("raddir").value || !document.getElementById("radest").value || !document.getElementById("raduso").value || archivo.length !== 1 || archivo1.length !== 1) {
-        //console.log("1");
-        return false;
+    if (modulo === "gestor") {
+        var archiv = document.getElementById("datfil0");
+        var archivo = archiv.files;
+        var archiv1 = document.getElementById("datfil1");
+        var archivo1 = archiv1.files;
+        if (!document.getElementById("raddir").value || !document.getElementById("radest").value || !document.getElementById("raduso").value || archivo.length !== 1 || archivo1.length !== 1) {
+            //console.log("1");
+            return false;
+        } else {
+            //console.log("2");
+            chargegestor();
+        }
+        //alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
     } else {
-        //console.log("2");
-        chargegestor();
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+                    <Update typeName="user:gestor">\
+                        <Property>\
+                            <Name>observacionesp</Name>\
+                            <Value>' + document.getElementById('observation').value + '</Value>\
+                        </Property>\
+                        <Filter>\
+                            <FeatureId fid="gestor.' + document.getElementById('titleedit').innerHTML.split('...')[1] + '"/>\
+                        </Filter>\
+                        <Property>\
+                            <Name>planeacion</Name>\
+                            <Value>true</Value>\
+                        </Property>\
+                        <Filter>\
+                            <FeatureId fid="gestor.' + document.getElementById('titleedit').innerHTML.split('...')[1] + '"/>\
+                        </Filter>\
+                    </Update>\
+                </Transaction>';
+        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        $.ajax({
+            type: "POST",
+            url: rooturl,
+            dataType: "xml",
+            async: false,
+            contentType: "text/xml",
+            data: postData,
+            success: function (xml) {
+                alert('Datos actualizados con exito');
+            },
+            error: function (xml) {
+                alert('Los datos NO se actualizaron');
+            }
+        });
+        var slc = search("preproduccion:selgestor");
+        var cont = 0;
+        //$('#notmsn').text(cont);
+        for (i = 0; i < slc.length; i++) {
+            if (slc[i][9] !== true) {
+                cont = cont + 1;
+            }
+        }
+        if (cont !== 0)
+        {
+            $('#notmsn').text(cont);
+        }else{
+            $('#notmsn').text('');
+        }
+        highlight.getSource().clear();
+        hideMe();
+        document.getElementById('butt1').disabled=true;
     }
-    //alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
-
 }
 function comparacion()
 {

@@ -286,6 +286,7 @@ function showtable(capas) {
     }
 }
 function edit(param) {
+    document.getElementById('butt1').disabled=false;
     //console.log(param.cells);
     var men = document.getElementById("titleedit").innerHTML.split("...");
     document.getElementById("titleedit").innerHTML = men[0];
@@ -304,9 +305,12 @@ function edit(param) {
     document.getElementById("raduso").disabled = true;
     document.getElementById("001").innerHTML = "Documentos";
     //document.getElementById("002").hidden = true;
-    document.getElementById("datfil0").hidden = true;
+    try {
+        document.getElementById("datfil0").style.display = 'none';
+    } catch (err) {
+    }
     document.getElementById("003").innerHTML = "Observacion";
-    document.getElementById("observation").style.display = 'none';
+    document.getElementById("observation").style.display = 'block';
     document.getElementById("004").hidden = true;
     document.getElementById("005").hidden = true;
     document.getElementById("006").hidden = true;
@@ -319,6 +323,7 @@ function edit(param) {
     document.getElementById("butt1").innerHTML = "✔";
     document.getElementById("butt2").innerHTML = "X";
     //var parametro = {"param" : param.cells["0"].textContent};
+    $("#002").empty();
     $.ajax({
         url: 'gesstor/read.php',
         type: 'POST',
@@ -334,8 +339,8 @@ function edit(param) {
             for (i = 1; i < arr.length - 2; i++) {
                 array[i - 1] = arr[i].split(/\n/)[0];
                 a[i - 1] = document.createElement("a");
-                a[i - 1].href = '/gesstor/files/' + param.cells["0"].textContent + '/' + array[i - 1];
-                a[i - 1].target = "_blank";
+                a[i - 1].href = '/barranquilla/gesstor/files/' + param.cells["0"].textContent + '/' + array[i - 1];
+                a[i - 1].download = array[i - 1];
                 a[i - 1].innerHTML = array[i - 1];
                 document.getElementById("002").appendChild(a[i - 1]);
                 document.getElementById("002").appendChild(document.createElement("br"));
