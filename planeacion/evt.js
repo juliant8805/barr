@@ -220,9 +220,10 @@ function showtable(capas) {
                     wbr.setAttribute("data-target", "#myModal1");
                     wbr.setAttribute("onclick", "edit(" + row.id + ")");
                     cell1.appendChild(wbr);
+                    setval(sel[j][k]);
                 } else if (k === 3 && sel[j][8] !== true) {
                     cell1.innerHTML = sel[j][k];
-                    setpo(sel[j][k]);
+                    setpo(sel[j][k], j);
                 } else if (k === 8) {
                     if (sel[j][k] === true) {
                         cell1.innerHTML = '✔';
@@ -269,9 +270,10 @@ function showtable(capas) {
                     wbr.setAttribute("data-target", "#myModal1");
                     wbr.setAttribute("onclick", "edit(" + row.id + ")");
                     cell1.appendChild(wbr);
+                    setval(sel[j][k]);
                 } else if (k === 3 && sel[j][9] !== true) {
                     cell1.innerHTML = sel[j][k];
-                    setpo(sel[j][k]);
+                    setpo(sel[j][k], j);
                 } else if (k === 8) {
                     if (sel[j][k + 1] === true) {
                         cell1.innerHTML = '✔';
@@ -318,9 +320,10 @@ function showtable(capas) {
                     wbr.setAttribute("data-target", "#myModal1");
                     wbr.setAttribute("onclick", "edit(" + row.id + ")");
                     cell1.appendChild(wbr);
+                    setval(sel[j][k]);
                 } else if (k === 3 && sel[j][10] !== true) {
                     cell1.innerHTML = sel[j][k];
-                    setpo(sel[j][k]);
+                    setpo(sel[j][k], j);
                 } else if (k === 8) {
                     if (sel[j][k + 2] === true) {
                         cell1.innerHTML = '✔';
@@ -423,8 +426,14 @@ function edit(param) {
     });
 }
 var interv = null;
-function setpo(coord) {
-    //console.log(coord);
+var vectorSource = [];
+var thing = [];
+var feat = [];
+function setval(valor) {
+    //console.log(valor);
+    txt.text_.text_ = "'" + valor + "'";
+}
+function setpo(coord,j) {
     var co = coord.split(";");
     co[0] = Number(co[0]);
     co[1] = Number(co[1]);
@@ -436,7 +445,8 @@ function setpo(coord) {
         geometry: thing
     });
     highlight.setStyle(alerta);
-    vectorSource = new ol.source.Vector({
+    //console.log(highlight);
+    var vectorSource = new ol.source.Vector({
         features: [feat]
     });
     vectorLayer = new ol.layer.Vector({
@@ -445,9 +455,34 @@ function setpo(coord) {
     var markerSource = highlight.getSource();
     //markerSource.clear();
     markerSource.addFeature(feat);
+    //console.log(markerSource);
+    //var vectorSource = [];
+    /*
+    vectorSource[j] = new ol.source.Vector({});
+    thing[j] = new ol.geom.Point(ol.proj.transform(co, 'EPSG:4326', 'EPSG:3857'));
+    feat[j] = new ol.Feature({
+        name: "Thing1",
+        geometry: thing[j]
+    });
+    //console.log(txt);
+
+    //console.log(txt);
+    highlightt.setStyle(txt);
+
+    //highlightt.style_.text_.text_= 555;
+    vectorSource[j] = new ol.source.Vector({
+        features: [feat[j]]
+    });
+    vectorLayer1 = new ol.layer.Vector({
+        source: vectorSource[j]
+    });
+    var markerSource1 = highlightt.getSource();
+    //markerSource.clear();
+    markerSource1.addFeature(feat[j]);*/
+    //console.log(markerSource1);
     interv = setInterval(intervalo, 500);
 }
-var intervalo = function() {
+var intervalo = function () {
     if (highlight.style_.image_.stroke_.color_ === "rgba(255, 0, 0, 0.8)") {
         highlight.setStyle(alertc);
     } else {

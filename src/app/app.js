@@ -43,6 +43,15 @@ var highlight = new ol.layer.Vector({
     }),
     source: new ol.source.Vector()
 });
+var highlightt = new ol.layer.Vector({
+    style: new ol.style.Style({
+        stroke: new ol.style.Stroke({
+            color: '#00FFFF',
+            width: 3
+        })
+    }),
+    source: new ol.source.Vector()
+});
 var measuring = false;
 measureControl = function (opt_options) {
     var options = opt_options || {};
@@ -98,7 +107,7 @@ map = new ol.Map({
     target: document.getElementById('map'),
     // use the Canvas renderer
     renderer: 'canvas',
-    layers: [layerBase, layerPot, /*layerPuntosFotocontrol,*/ layerCartobasica, /*layerEstratificacionOficial, layerprediosexentos2016, layermetrotel, layerindustriaycomercio, layerSUI,*/ layerCatastro,   layerOrtofoto, layerSitios, highlight],
+    layers: [layerBase, layerPot, /*layerPuntosFotocontrol,*/ layerCartobasica, /*layerEstratificacionOficial, layerprediosexentos2016, layermetrotel, layerindustriaycomercio, layerSUI,*/ layerCatastro,   layerOrtofoto, layerSitios, highlight, highlightt],
     view: new ol.View({
         center: center,
         zoom: zoom,

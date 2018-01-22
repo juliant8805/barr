@@ -76,7 +76,7 @@ $(document).on('ready', function () {
     try {
         //console.log(select);
         if (select[0][5] === true) {
-            document.getElementById("notify").style.display = "block";
+          //  document.getElementById("notify").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
@@ -315,7 +315,7 @@ $(document).on('ready', function () {
                 $('#notmsn').text(cont);
             }
             //document.getElementById("notmsn").value = cont;
-            document.getElementById("notify").style.display = "block";
+        //    document.getElementById("notify").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
@@ -368,7 +368,7 @@ $(document).on('ready', function () {
             j || (j = document.body.parentNode.appendChild(document.createElement("head")));
             j.appendChild(i);
         } else if (select[0][10] === true) {
-            document.getElementById("notify").style.display = "block";
+        //    document.getElementById("notify").style.display = "block";
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";
             document.getElementById("menu_circular").style.display = "block";
@@ -624,11 +624,13 @@ function mostrar(consulta) {
     document.getElementById('direccion').value = "";
     if (consulta === 'consulta_direccion') {
         document.getElementById('barra_direccion').style.display = 'block';
+        document.getElementById("myDropdown").classList.toggle("show");
         localidad.setVisible(false);
         manzana.setVisible(false);
         barrio.setVisible(false);
     } else if (consulta === 'consulta_sitio') {
         document.getElementById('barra_sitio').style.display = 'block';
+        document.getElementById("myDropdown").classList.toggle("show");
         localidad.setVisible(false);
         manzana.setVisible(false);
         barrio.setVisible(false);
@@ -636,6 +638,7 @@ function mostrar(consulta) {
         document.getElementById('barra_propietario').style.display = 'block';
     } else if (consulta === 'consulta_barrio') {
         document.getElementById('barra_barrio').style.display = 'block';
+        document.getElementById("myDropdown").classList.toggle("show");
         barrio.setVisible(true);
         localidad.setVisible(false);
         predio.setVisible(false);
@@ -649,6 +652,7 @@ function mostrar(consulta) {
         document.getElementById('barra_comuna').style.display = 'block';
     } else if (consulta === 'consulta_localidad') {
         document.getElementById('barra_localidad').style.display = 'block';
+        document.getElementById("myDropdown").classList.toggle("show");
         localidad.setVisible(true);
         barrio.setVisible(false);
         predio.setVisible(false);
@@ -656,6 +660,7 @@ function mostrar(consulta) {
         map.getView().fitExtent(barrio.getExtent(), map.getSize());
     } else if (consulta === 'consulta_manzana') {
         document.getElementById('barra_manzana').style.display = 'block';
+        document.getElementById("myDropdown").classList.toggle("show");
         localidad.setVisible(false);
         barrio.setVisible(false);
         //manzana.setVisible(true);

@@ -53,6 +53,31 @@ var flagStyle = new ol.style.Style({
         src: './imagenes/flag.png'
     })
 });
+/*function styleFunction() {
+    //console.log(this);
+    return [
+        new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(255,255,255,0.4)'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#3399CC',
+                width: 1.25
+            }),
+            text: new ol.style.Text({
+                font: '12px Calibri,sans-serif',
+                fill: new ol.style.Fill({color: '#000'}),
+                stroke: new ol.style.Stroke({
+                    color: '#fff', width: 2
+                }),
+                // get the text from the feature - `this` is ol.Feature
+                // and show only under certain resolution
+                //text: map.getView().getZoom() > 12 ? this.get('description') : ''
+                text: 'qqqqqq'
+            })
+        })
+    ];
+}*/
 var alerta = new ol.style.Style({
     image: new ol.style.Circle({
         radius: 5,
@@ -72,6 +97,26 @@ var alertc = new ol.style.Style({
             color: 'rgba(214, 147, 12, 0.8)',
             width: 3
         })
+    })
+});
+var txt = new ol.style.Style({
+    fill: new ol.style.Fill({
+        color: 'rgba(255,255,255,0.4)'
+    }),
+    stroke: new ol.style.Stroke({
+        color: '#3399CC',
+        width: 1.25
+    }),
+    text: new ol.style.Text({
+        font: '12px Calibri,sans-serif',
+        fill: new ol.style.Fill({color: '#000'}),
+        stroke: new ol.style.Stroke({
+            color: '#fff', width: 2
+        }),
+        // get the text from the feature - `this` is ol.Feature
+        // and show only under certain resolution
+        //text: map.getView().getZoom() > 12 ? this.get('description') : ''
+        text: ''
     })
 });
 var street1 = new ol.style.Style({

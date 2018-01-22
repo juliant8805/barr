@@ -1,19 +1,19 @@
 // Create layers instances
 var highlightfeatures = new ol.layer.Vector({
-    style : new ol.style.Style({
-    	stroke : new ol.style.Stroke({
-            color : '#00FFFF',
-            width : 3
-	})
+    style: new ol.style.Style({
+        stroke: new ol.style.Stroke({
+            color: '#00FFFF',
+            width: 3
+        })
     }),
-    source : new ol.source.Vector()
+    source: new ol.source.Vector()
 });
 
 var ortofotourbana = new ol.layer.Tile({
     visible: true,
-    minResolution:0,
-    maxResolution:20,
-    opacity:0.6,
+    minResolution: 0,
+    maxResolution: 20,
+    opacity: 0.6,
     preload: Infinity,
     source: new ol.source.XYZ({
         url: "http://www.gesstor.com/ortofoto/{z}/{x}/{y}.png"
@@ -24,7 +24,7 @@ var mapabase = new ol.layer.Tile({
     visible: true,
     preload: Infinity,
     //minResolution:2,
-    maxResolution:20,
+    maxResolution: 20,
     source: new ol.source.XYZ({
         url: "http://www.gesstor.com/mapa_base/{z}/{x}/{y}.jpg"
     }), name: 'Mapa Base'
@@ -34,24 +34,24 @@ var streetmap = new ol.layer.Tile({
     source: new ol.source.OSM(),
     visible: false,
     /*minResolution:2,
-    maxResolution:20,*/
+     maxResolution:20,*/
     name: 'Street Map'
 });
 
 var bingarranque = new ol.layer.Image({
     visible: true,
-     minResolution:20,
+    minResolution: 20,
     opacity: 1,
     preload: Infinity,
-    title: "BING",    
+    title: "BING",
     source: new ol.source.ImageStatic({
-    url: "/imagenes_base/Bing.png",
-    projection: 'EPSG:3857',
-    alwaysInRange: true,
-    //imageSize: [1888, 940],
-    imageExtent: [-8377346.467879, 1202426.862044, -8279545.277057, 1256384.963248]
-         })
-    });
+        url: "/imagenes_base/Bing.png",
+        projection: 'EPSG:3857',
+        alwaysInRange: true,
+        //imageSize: [1888, 940],
+        imageExtent: [-8377346.467879, 1202426.862044, -8279545.277057, 1256384.963248]
+    })
+});
 
 var bing = new ol.layer.Tile({
     visible: false,
@@ -71,8 +71,8 @@ var predio = new ol.layer.Tile({
     preload: Infinity,
     //minResolution:0.000280044661523,
     //maxResolution:0.960833233684,
-   minResolution: -0.420066992284,
-   maxResolution: 56.5679014489,
+    minResolution: -0.420066992284,
+    maxResolution: 56.5679014489,
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_terreno', STYLES: ''}
@@ -350,13 +350,13 @@ var zampariomagdalena = new ol.layer.Tile({
     }), name: 'Zampa Río Magdalena 50m'
 });
 /*
-var zonacentro = new ol.layer.Tile({
-    visible: false,
-    source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
-        params: {LAYERS: 'preproduccion:zonadeclaradcentro', STYLES: ''}
-    }), name: 'Zona Declarada Centro'
-});*/
+ var zonacentro = new ol.layer.Tile({
+ visible: false,
+ source: new ol.source.TileWMS({
+ url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+ params: {LAYERS: 'preproduccion:zonadeclaradcentro', STYLES: ''}
+ }), name: 'Zona Declarada Centro'
+ });*/
 var puntosfotocontrol = new ol.layer.Tile({
     visible: true,
     source: new ol.source.TileWMS({
@@ -366,7 +366,7 @@ var puntosfotocontrol = new ol.layer.Tile({
 });
 var prediossui = new ol.layer.Tile({
     visible: true,
-	extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
+    extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:predios_sui', STYLES: ''}
@@ -388,7 +388,7 @@ var zonadeclaradaprado = new ol.layer.Tile({
 });
 var metrotel = new ol.layer.Tile({
     visible: true,
-	extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
+    extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:metrotel', STYLES: ''}
@@ -396,7 +396,7 @@ var metrotel = new ol.layer.Tile({
 });
 var industriaycomercio = new ol.layer.Tile({
     visible: true,
-	extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
+    extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:industria_y_comercio', STYLES: ''}
@@ -440,7 +440,7 @@ var ladomanzana = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:ladosmanzana', STYLES: ''}
     }), name: 'Lado Manzana'
-    
+
 });
 
 var sitios = new ol.layer.Tile({
@@ -449,7 +449,7 @@ var sitios = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:sitios', STYLES: ''}
     }), name: 'Sitios de Interes'
-    
+
 });
 
 var puntos_aaa = new ol.layer.Tile({
@@ -458,7 +458,7 @@ var puntos_aaa = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:puntos_aaa', STYLES: ''}
     }), name: 'Puntos AAA'
-    
+
 });
 
 var consolidado = new ol.layer.Tile({
@@ -467,7 +467,7 @@ var consolidado = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:consolidado_campo', STYLES: ''}
     }), name: 'Consolidado'
-    
+
 });
 
 var construcciones = new ol.layer.Tile({
@@ -477,7 +477,7 @@ var construcciones = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_construccion', STYLES: ''}
     }), name: 'Construcciones'
-    
+
 });
 
 var unidades = new ol.layer.Tile({
@@ -486,7 +486,7 @@ var unidades = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_unidad', STYLES: ''}
     }), name: 'Unidades'
-    
+
 });
 var geocodificador = new ol.layer.Tile({
     visible: false,
@@ -503,7 +503,7 @@ var limitevia = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:limite_via', STYLES: ''}
-    }), name: 'Limite de Via'  
+    }), name: 'Limite de Via'
 });
 
 var canalsencillo = new ol.layer.Tile({
@@ -511,7 +511,7 @@ var canalsencillo = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:canal_sencillo', STYLES: ''}
-    }), name: 'Canal Sencillo'  
+    }), name: 'Canal Sencillo'
 });
 
 var canaldoble = new ol.layer.Tile({
@@ -520,7 +520,7 @@ var canaldoble = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:canal_doble', STYLES: ''}
     }), name: 'Canal Doble'
-    
+
 });
 
 var paramento = new ol.layer.Tile({
@@ -529,7 +529,7 @@ var paramento = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:paramento', STYLES: ''}
     }), name: 'Paramento'
-    
+
 });
 
 var antejardin = new ol.layer.Tile({
@@ -538,7 +538,7 @@ var antejardin = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:antejardin', STYLES: ''}
     }), name: 'Antejardin'
-    
+
 });
 
 var cerca = new ol.layer.Tile({
@@ -547,7 +547,7 @@ var cerca = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:cerca', STYLES: ''}
     }), name: 'Cerca'
-    
+
 });
 
 var cicloruta = new ol.layer.Tile({
@@ -556,7 +556,7 @@ var cicloruta = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:cicloruta', STYLES: ''}
     }), name: 'Cicloruta'
-    
+
 });
 
 var construccionagual = new ol.layer.Tile({
@@ -565,7 +565,7 @@ var construccionagual = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:construccion_agua_l', STYLES: ''}
     }), name: 'Construccion Agua L'
-    
+
 });
 
 var curvanivel = new ol.layer.Tile({
@@ -574,7 +574,7 @@ var curvanivel = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:curva_nivel', STYLES: ''}
     }), name: 'Curva de Nivel'
-    
+
 });
 
 var laguna = new ol.layer.Tile({
@@ -583,7 +583,7 @@ var laguna = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:laguna', STYLES: ''}
     }), name: 'Laguna'
-    
+
 });
 
 var lineademarcacion = new ol.layer.Tile({
@@ -592,7 +592,7 @@ var lineademarcacion = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:linea_demarcacion', STYLES: ''}
     }), name: 'Linea de Demarcacion'
-    
+
 });
 
 var muro = new ol.layer.Tile({
@@ -601,7 +601,7 @@ var muro = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:muro', STYLES: ''}
     }), name: 'Muro'
-    
+
 });
 
 var puente_l = new ol.layer.Tile({
@@ -610,7 +610,7 @@ var puente_l = new ol.layer.Tile({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:puente_l', STYLES: ''}
     }), name: 'Puente L'
-    
+
 });
 
 var red_alta_tension = new ol.layer.Tile({
@@ -618,7 +618,7 @@ var red_alta_tension = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:red_alta_tension', STYLES: ''}
-    }), name: 'Red Alta Tension'    
+    }), name: 'Red Alta Tension'
 });
 
 var tuberia = new ol.layer.Tile({
@@ -626,7 +626,7 @@ var tuberia = new ol.layer.Tile({
     source: new ol.source.TileWMS({
         url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:tuberia', STYLES: ''}
-    }), name: 'Tuberia'    
+    }), name: 'Tuberia'
 });
 
 var arbol = new ol.layer.Tile({
@@ -699,7 +699,7 @@ var layerPot = new ol.layer.Group({
     layers: [/*zonacentro,*/ zonadeclaradaprado, zampariomagdalena, zampacienaga, zampa30, zampa50, viastransmasivo, viasruralpropuesta, tratamientosurbanisticos, rondariomagdalena, rondaarroyos30, rondaarroyos15, altatension, redalcantarillado, acueductoprimaria, proteccionrural, proteccionliteral, normativosuso, instrumentosplanificacion, perimetrourbano, parquespropuestosrural, parquespropuestos, perfilviasurbanaspropuestas, malecon, limitesdistrital, intercambiadores, espacio_pubico, estacionestransmetro, clasificacionsuelo, cienaga_mallorquin, ciclorutaspropuestas, arroyos, areareservaalcantarillado, areareservaacueducto, remosionenmasa, amenazainundacion, localidad, barrio, ladomanzana],
     name: 'POT'
 });
-var layerOrtofoto= new ol.layer.Group({
+var layerOrtofoto = new ol.layer.Group({
     layers: [ortofotourbana, highlightfeatures],
     name: 'Ortofoto 2016 Distrito'
 });
@@ -718,11 +718,11 @@ function buildLayerTree(layer) {
         if (layer.values_.visible === true && layer.get('name') !== 'CAPAS') {
             var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".jpg' alt='Smiley face' height='20' width='20' >" + layer.get('name') + "</span>" + "<i class='glyphicon glyphicon-check'></i> ";
         } else if (layer.get('name') === 'CAPAS') {
-            var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".png' alt='Smiley face' height='30' width='100'>" /*+ layer.get('name') */+ "</span>";
+            var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".png' alt='Smiley face' height='30' width='100'>" /*+ layer.get('name') */ + "</span>";
         } else {
-            if (select[0][9] === true && (layer.values_.name === "Barrios" || layer.values_.name === "Localidades" || layer.values_.name === "Amenaza Inundación" || layer.values_.name === "Remoción en Masa" || layer.values_.name === "Area Reserva Acueducto" || layer.values_.name === "Area Reserva Alcantarillado" || layer.values_.name === "Arroyos" || layer.values_.name === "Ciclorutas Propuestas" || layer.values_.name === "Cienaga Mallorquin" || layer.values_.name === "Clasificación Suelo" || layer.values_.name === "Estaciones Transmetro" || layer.values_.name === "Espacio Público" || layer.values_.name === "Intercambiadores Transporte" || layer.values_.name === "Limites Distrital" || layer.values_.name === "Malecon Avenida Río" || layer.values_.name === "Perfil Vias Urbanas Propuestas" || layer.values_.name === "Parques Propuestos" || layer.values_.name === "Parques Propuestos Rural" || layer.values_.name === "Perimetro Urbano" || layer.values_.name === "Instrumentos Planificación" || layer.values_.name === "Normativos Uso" || layer.values_.name === "Protección Litoral Mar Caribe" || layer.values_.name === "Protección Conservación Rural" || layer.values_.name === "Red Acueducto Primaria" || layer.values_.name === "Red Alcantarillado" || layer.values_.name === "Red Energia Alta Tensión" || layer.values_.name === "Ronda Arroyos 15m" || layer.values_.name === "Ronda Arroyos 30m" || layer.values_.name === "Ronda Río Magdalena" || layer.values_.name === "Tratamientos Urbanisticos" || layer.values_.name === "Vias Rural Propuesta" || layer.values_.name === "Vias Transmasivo" || layer.values_.name === "Zampa Ríos 50m" || layer.values_.name === "Zampa Arroyos 30m" || layer.values_.name === "Zampa Cienaga Mallorquin 50m" || layer.values_.name === "Zampa Río Magdalena 50m" || layer.values_.name === "Zona Declarada Prado" || layer.values_.name === "Zona Declarada Centro")){
+            if (select[0][9] === true && (layer.values_.name === "Barrios" || layer.values_.name === "Localidades" || layer.values_.name === "Amenaza Inundación" || layer.values_.name === "Remoción en Masa" || layer.values_.name === "Area Reserva Acueducto" || layer.values_.name === "Area Reserva Alcantarillado" || layer.values_.name === "Arroyos" || layer.values_.name === "Ciclorutas Propuestas" || layer.values_.name === "Cienaga Mallorquin" || layer.values_.name === "Clasificación Suelo" || layer.values_.name === "Estaciones Transmetro" || layer.values_.name === "Espacio Público" || layer.values_.name === "Intercambiadores Transporte" || layer.values_.name === "Limites Distrital" || layer.values_.name === "Malecon Avenida Río" || layer.values_.name === "Perfil Vias Urbanas Propuestas" || layer.values_.name === "Parques Propuestos" || layer.values_.name === "Parques Propuestos Rural" || layer.values_.name === "Perimetro Urbano" || layer.values_.name === "Instrumentos Planificación" || layer.values_.name === "Normativos Uso" || layer.values_.name === "Protección Litoral Mar Caribe" || layer.values_.name === "Protección Conservación Rural" || layer.values_.name === "Red Acueducto Primaria" || layer.values_.name === "Red Alcantarillado" || layer.values_.name === "Red Energia Alta Tensión" || layer.values_.name === "Ronda Arroyos 15m" || layer.values_.name === "Ronda Arroyos 30m" || layer.values_.name === "Ronda Río Magdalena" || layer.values_.name === "Tratamientos Urbanisticos" || layer.values_.name === "Vias Rural Propuesta" || layer.values_.name === "Vias Transmasivo" || layer.values_.name === "Zampa Ríos 50m" || layer.values_.name === "Zampa Arroyos 30m" || layer.values_.name === "Zampa Cienaga Mallorquin 50m" || layer.values_.name === "Zampa Río Magdalena 50m" || layer.values_.name === "Zona Declarada Prado" || layer.values_.name === "Zona Declarada Centro")) {
                 var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".jpg' alt='Smiley face' height='20' width='20'><u id=C" + name.replace(/ /g, '') + "><font color='blue'>" + layer.get('name') + "</font></u></span>" + "<i class='glyphicon glyphicon-unchecked'></i> ";
-            }else {
+            } else {
                 var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".jpg' alt='Smiley face' height='20' width='20'>" + layer.get('name') + "</span>" + "<i class='glyphicon glyphicon-unchecked'></i> ";
             }
         }
@@ -731,7 +731,10 @@ function buildLayerTree(layer) {
             var layers = layer.getLayers().getArray(),
                     len = layers.length;
             for (var i = len - 2; i >= 0; i--) {
-                sublayersElem += buildLayerTree(layers[i]);
+                if (buildLayerTree(layers[i]) == undefined) {
+                } else {
+                    sublayersElem += buildLayerTree(layers[i]);
+                }
             }
             elem = div + " <ul>" + sublayersElem + "</ul></li>";
         } else {

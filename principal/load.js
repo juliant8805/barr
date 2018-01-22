@@ -1,7 +1,7 @@
 function resetpass() {
     //console.log(document.getElementById("email").value);
     var select = search("preproduccion:mailUser", document.getElementById("email").value);
-    console.log(select[0]);
+   // console.log(select[0]);
     if (select[0]) {
         //console.log(select[0][0]);
         var caracteres = "abcdefghijklmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
@@ -50,7 +50,7 @@ function onload() {
     //console.log(cookies);
     for (var i = 0; i < cookies.length; i++)
     {
-        console.log(cookies[i].split("=")[0]);
+       // console.log(cookies[i].split("=")[0]);
         deleteCookie(cookies[i].split("=")[0]);
     }
     var val = document.location.href;
