@@ -1,5 +1,5 @@
 <?php
-    $path = 'C:/Bitnami/wampstack-5.6.30-2/apache2/htdocs/barranquilla/export/Reporte.xls';    
+    $path = '/var/www/html/barranquilla/export/Reporte.xls';    
     $array_data = json_decode($_POST['arreglo']);
     $fp = fopen($path, 'w');
     $b = '\@';

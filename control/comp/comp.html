@@ -95,27 +95,27 @@
         var ortofotourbana = new ol.layer.Tile({
             visible : true,
             source : new ol.source.XYZ({
-            url : "http://www.gesstor.com/ortofoto/{z}/{x}/{y}.png"			
+            url : "http://www.gesstorbarranquilla.com/barranquilla/ortofoto/{z}/{x}/{y}.png"			
             }), name: 'Ortofoto 2016 Distrito'                        
         });
         var ortofotourbana2008 = new ol.layer.Tile({
             visible : true,
             source : new ol.source.XYZ({
-            url : "http://www.gesstor.com/ortofoto2008/{z}/{x}/{y}.jpg"			
+            url : "http://www.gesstorbarranquilla.com/barranquilla/ortofoto2008/{z}/{x}/{y}.jpg"			
             }), name: 'Ortofoto 2008'                        
         });
         var predio = new ol.layer.Tile({
             extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
             visible: false,
             source: new ol.source.TileWMS({
-                url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+                url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
                 params: {LAYERS: 'preproduccion:u_terreno', STYLES: 'Predios_Imag'}
             }), name: 'Predios'
         });
         var construcciones_rest = new ol.layer.Tile({
             visible: false,
             source: new ol.source.TileWMS({
-                url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+                url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
                 params: {LAYERS: 'preproduccion:construccion_rest', STYLES: ''}
             }), name: 'Construcciones'
         });
@@ -133,7 +133,7 @@
             extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
             visible: true,
             source: new ol.source.TileWMS({
-                url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+                url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
                 params: {LAYERS: 'preproduccion:hallazgos_ortofoto', STYLES: ''}
             }), name: 'Poligonos'
         });   

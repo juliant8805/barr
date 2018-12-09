@@ -46,7 +46,7 @@ $(document).on('ready', function () {
             var second = f.getSeconds();
         }
         var fecha = f.getFullYear() + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second + "Z";
-        var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.3.4:8080/geoserver">\
+        var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.53.233:8081/geoserver">\
             <Insert xmlns="http://www.opengis.net/wfs">\
                 <user:reguser>\
                     <usuario>' + select[0][3] + '</usuario>\
@@ -55,7 +55,7 @@ $(document).on('ready', function () {
                 </user:reguser>\
             </Insert>\
         </Transaction>';
-        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
         var res = $.ajax({
             type: "POST",
             url: rooturl,
@@ -567,7 +567,7 @@ function password() {
     if (select === null || select.length === 0) {
         alert("Contraseña incorrecta");
     } else if (document.getElementById("newpassword").value === document.getElementById("cpassword").value) {
-        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.53.233:8081/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
             <Update typeName="user:usuario">\
                 <Property>\
                     <Name>contrasena</Name>\
@@ -578,7 +578,7 @@ function password() {
                 </Filter>\
             </Update>\
         </Transaction>';
-        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
         $.ajax({
             type: "POST",
             url: rooturl,
@@ -1107,29 +1107,29 @@ function abrir_manual() {
     if (modulo == 'catastro') {
         window.open('./documentos/manual_catastro.pdf', '_blank');
         /* window.open(
-         'http://35.184.3.4/gesstor/documentos/manual_catastro.pdf',
+         'http://35.184.53.233/gesstor/documentos/manual_catastro.pdf',
          '_blank' // <- This is what makes it open in a new window.
          );*/
     } else if (modulo == 'planeacion') {
         window.open('./documentos/manual_misional_planeacion.pdf', '_blank', 'fullscreen=yes');
-        /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
+        /*'http://35.184.53.233/gesstor/documentos/manual_misional_planeacion.pdf',
          '_blank' // <- This is what makes it open in a new window.
          );*/
     } else if (modulo == 'planeacionmisional') {
         window.open('./documentos/manual_misional_planeacion.pdf', '_blank', 'fullscreen=yes');
-        /*'http://35.184.3.4/gesstor/documentos/manual_misional_planeacion.pdf',
+        /*'http://35.184.53.233/gesstor/documentos/manual_misional_planeacion.pdf',
          '_blank' // <- This is what makes it open in a new window.
          );*/
     } else if (modulo == 'sui') {
         window.open('./documentos/manual_sui.pdf', '_blank', 'fullscreen=yes');
         /* window.open(
-         'http://35.184.3.4/gesstor/documentos/manual_sui.pdf',
+         'http://35.184.53.233/gesstor/documentos/manual_sui.pdf',
          '_blank' // <- This is what makes it open in a new window.
          );*/
     } else if (modulo == 'hacienda') {
         window.open('./documentos/manual_hacienda.pdf', '_blank', 'fullscreen=yes');
         /*window.open(
-         'http://35.184.3.4/gesstor/documentos/manual_hacienda.pdf',
+         'http://35.184.53.233/gesstor/documentos/manual_hacienda.pdf',
          '_blank' // <- This is what makes it open in a new window.
          );*/
     }
@@ -1508,7 +1508,7 @@ function enviargesstor() {
         }
         //alert("GESSTOR INFORMA:</br></br>La solicitud ###### fue radicada exitosamente");
     } else if (modulo === "planeacionmisional") {
-        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.53.233:8081/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
                     <Update typeName="user:gestor">\
                         <Property>\
                             <Name>observacionesp</Name>\
@@ -1526,7 +1526,7 @@ function enviargesstor() {
                         </Filter>\
                     </Update>\
                 </Transaction>';
-        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
         $.ajax({
             type: "POST",
             url: rooturl,
@@ -1558,7 +1558,7 @@ function enviargesstor() {
         hideMe();
         document.getElementById('butt1').disabled=true;
     } else if (modulo === "catastro") {
-        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.53.233:8081/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
                     <Update typeName="user:gestor">\
                         <Property>\
                             <Name>observacionesc</Name>\
@@ -1576,7 +1576,7 @@ function enviargesstor() {
                         </Filter>\
                     </Update>\
                 </Transaction>';
-        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
         $.ajax({
             type: "POST",
             url: rooturl,
@@ -1609,7 +1609,7 @@ function enviargesstor() {
         hideMe();
         document.getElementById('butt1').disabled=true;
     } else if (modulo === "hacienda") {
-        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.53.233:8081/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
                     <Update typeName="user:gestor">\
                         <Property>\
                             <Name>observacionesh</Name>\
@@ -1627,7 +1627,7 @@ function enviargesstor() {
                         </Filter>\
                     </Update>\
                 </Transaction>';
-        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
         $.ajax({
             type: "POST",
             url: rooturl,

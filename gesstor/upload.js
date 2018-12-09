@@ -28,7 +28,7 @@ function chargegestor() {
         var second = f.getSeconds();
     }
     var fecha = f.getFullYear() + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second + "Z";
-    var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.3.4:8080/geoserver">\
+    var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.53.233:8081/geoserver">\
             <Insert xmlns="http://www.opengis.net/wfs">\
                 <user:gestor>\
                     <barrio>' + document.getElementById("radbarr").value + '</barrio>\
@@ -41,7 +41,7 @@ function chargegestor() {
                 </user:gestor>\
             </Insert>\
         </Transaction>';
-    //rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+    //rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
     var res = $.ajax({
         type: "POST",
         url: rooturl,

@@ -1726,7 +1726,7 @@
                     // defer: true,
                     // enabled: false,
                     formatter: function () {
-                        console.log(this);
+                        //console.log(this);
                         if (this.y===0){
                             return;
                         }else{

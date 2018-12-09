@@ -16,7 +16,7 @@ var ortofotourbana = new ol.layer.Tile({
     opacity: 0.6,
     preload: Infinity,
     source: new ol.source.XYZ({
-        url: "http://www.gesstor.com/ortofoto/{z}/{x}/{y}.png"
+        url: "http://www.gesstorbarranquilla.com/barranquilla/ortofoto/{z}/{x}/{y}.png"
     }), name: 'Ortofoto 2016 Distrito'
 });
 
@@ -26,7 +26,7 @@ var mapabase = new ol.layer.Tile({
     //minResolution:2,
     maxResolution: 20,
     source: new ol.source.XYZ({
-        url: "http://www.gesstor.com/mapa_base/{z}/{x}/{y}.jpg"
+        url: "http://www.gesstorbarranquilla.com/barranquilla/mapa_base/{z}/{x}/{y}.jpg"
     }), name: 'Mapa Base'
 });
 
@@ -74,14 +74,14 @@ var predio = new ol.layer.Tile({
     minResolution: -0.420066992284,
     maxResolution: 56.5679014489,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_terreno', STYLES: ''}
     }), name: 'Predios'
 });
 var predio_rural = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:r_terreno', STYLES: ''}
     }), name: 'Predios Rurales'
 });
@@ -89,7 +89,7 @@ var manzana = new ol.layer.Tile({
     visible: false,
     preload: Infinity,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_manzana', STYLES: ''}
     }), name: 'Manzanas'
 });
@@ -98,7 +98,7 @@ var nom_dom = new ol.layer.Tile({
     minResolution: 0.000280044661523,
     maxResolution: 0.480556639173,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:n_domiciliaria', STYLES: ''}
     }), name: 'Placa'
 });
@@ -106,210 +106,210 @@ var barrio = new ol.layer.Tile({
     extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:barrios', STYLES: ''}
     }), name: 'Barrios'
 });
 var comuna = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:comunas', STYLES: ''}
     }), name: 'Comunas'
 });
 var localidad = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:localidades', STYLES: ''}
     }), name: 'Localidades'
 });
 var amenazainundacion = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:amenazainundacion', STYLES: ''}
     }), name: 'Amenaza Inundación'
 });
 var remosionenmasa = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:amenazaremocionmasa', STYLES: ''}
     }), name: 'Remoción en Masa'
 });
 var areareservaacueducto = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:areas_reservaacueducto', STYLES: ''}
     }), name: 'Area Reserva Acueducto'
 });
 var areareservaalcantarillado = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:areasreservaalcantarillado', STYLES: ''}
     }), name: 'Area Reserva Alcantarillado'
 });
 var arroyos = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:arroyos', STYLES: ''}
     }), name: 'Arroyos'
 });
 var ciclorutaspropuestas = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:ciclorutas_propuestas', STYLES: ''}
     }), name: 'Ciclorutas Propuestas'
 });
 var cienaga_mallorquin = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:cienagamallorquin', STYLES: ''}
     }), name: 'Cienaga Mallorquin'
 });
 var clasificacionsuelo = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:clasificacionsuelo', STYLES: ''}
     }), name: 'Clasificación Suelo'
 });
 var estacionestransmetro = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:estacionestransmetro', STYLES: ''}
     }), name: 'Estaciones Transmetro'
 });
 var intercambiadores = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:intercambiadores_multimodales_transporte', STYLES: ''}
     }), name: 'Intercambiadores Transporte'
 });
 var limitesdistrital = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:limitedistrital', STYLES: ''}
     }), name: 'Limites Distrital'
 });
 var malecon = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:maleconavenidario', STYLES: ''}
     }), name: 'Malecon Avenida Río'
 });
 var parquespropuestos = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:parquespropuestos', STYLES: ''}
     }), name: 'Parques Propuestos'
 });
 var parquespropuestosrural = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:parquespropuestosrural', STYLES: ''}
     }), name: 'Parques Propuestos Rural'
 });
 var perimetrourbano = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:perimetrourbano', STYLES: ''}
     }), name: 'Perimetro Urbano'
 });
 var instrumentosplanificacion = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:poligonosinstrumentosplanificacion', STYLES: ''}
     }), name: 'Instrumentos Planificación'
 });
 var normativosuso = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:poligonosnormativos', STYLES: ''}
     }), name: 'Normativos Uso'
 });
 var proteccionliteral = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:proteccionlitoralmarcaribe', STYLES: ''}
     }), name: 'Protección Litoral Mar Caribe'
 });
 var proteccionrural = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:proteccionconservacionrural', STYLES: ''}
     }), name: 'Protección Conservación Rural'
 });
 var acueductoprimaria = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:redacueductoprimaria', STYLES: ''}
     }), name: 'Red Acueducto Primaria'
 });
 var redalcantarillado = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:redalcantarillado', STYLES: ''}
     }), name: 'Red Alcantarillado'
 });
 var altatension = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:redesenergiaaltatension', STYLES: ''}
     }), name: 'Red Energia Alta Tensión'
 });
 var rondaarroyos15 = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:rondasarroyossecundarios15m', STYLES: ''}
     }), name: 'Ronda Arroyos 15m'
 });
 var rondaarroyos30 = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:rondaarroyosprincipales30m', STYLES: ''}
     }), name: 'Ronda Arroyos 30m'
 });
 var rondariomagdalena = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:rondariomagdalena', STYLES: ''}
     }), name: 'Ronda Río Magdalena'
 });
 var tratamientosurbanisticos = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:tratamientosurbanisticos', STYLES: ''}
     }), name: 'Tratamientos Urbanisticos'
 });
 var viasruralpropuesta = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:viasruralpropuesta', STYLES: ''}
     }), name: 'Vias Rural Propuesta'
 });
@@ -317,35 +317,35 @@ var viastransmasivo = new ol.layer.Tile({
     extent: [-8335866.925323, 1221365.091082, -8315171.898268, 1232615.200186],
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:vias_transmasivo', STYLES: ''}
     }), name: 'Vias Transmasivo'
 });
 var zampa50 = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:zampa_arroyos_principales_50m', STYLES: ''}
     }), name: 'Zampa Ríos 50m'
 });
 var zampa30 = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:zampa_arroyos_secundarios_30m', STYLES: ''}
     }), name: 'Zampa Arroyos 30m'
 });
 var zampacienaga = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:zampa_cienaga_mallorquin_50m', STYLES: ''}
     }), name: 'Zampa Cienaga Mallorquin 50m'
 });
 var zampariomagdalena = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:zampa_rio_magdalena_50m', STYLES: ''}
     }), name: 'Zampa Río Magdalena 50m'
 });
@@ -353,14 +353,14 @@ var zampariomagdalena = new ol.layer.Tile({
  var zonacentro = new ol.layer.Tile({
  visible: false,
  source: new ol.source.TileWMS({
- url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+ url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
  params: {LAYERS: 'preproduccion:zonadeclaradcentro', STYLES: ''}
  }), name: 'Zona Declarada Centro'
  });*/
 var puntosfotocontrol = new ol.layer.Tile({
     visible: true,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:puntos_fotocontrol', STYLES: ''}
     }), name: 'Puntos de Fotocontrol'
 });
@@ -368,21 +368,21 @@ var prediossui = new ol.layer.Tile({
     visible: true,
     extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:predios_sui', STYLES: ''}
     }), name: 'Predios SUI'
 });
 var perfilviasurbanaspropuestas = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:perfilviasurbanaspropuestas', STYLES: ''}
     }), name: 'Perfil Vias Urbanas Propuestas'
 });
 var zonadeclaradaprado = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:zonadeclaradaprado', STYLES: ''}
     }), name: 'Zona Declarada Prado'
 });
@@ -390,7 +390,7 @@ var metrotel = new ol.layer.Tile({
     visible: true,
     extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:metrotel', STYLES: ''}
     }), name: 'Metrotel'
 });
@@ -398,21 +398,21 @@ var industriaycomercio = new ol.layer.Tile({
     visible: true,
     extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:industria_y_comercio', STYLES: ''}
     }), name: 'Camara y Comercio'
 });
 var estratificacion_oficial = new ol.layer.Tile({
     visible: true,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:estratificacion_oficial', STYLES: ''}
     }), name: 'Estratificación Oficial'
 });
 var predios_exentos_2016 = new ol.layer.Tile({
     visible: true,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:predios_exentos_2016', STYLES: ''}
     }), name: 'Predios Exentos 2016'
 });
@@ -420,7 +420,7 @@ var predios_exentos_2016 = new ol.layer.Tile({
 var vias = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:vias', STYLES: ''}
     }), name: 'Vias'
 });
@@ -429,7 +429,7 @@ var espacio_pubico = new ol.layer.Tile({
     extent: [-8342085.395410, 1222896.318514, -8314873.686686, 1237419.421485],
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:espacio_publico', STYLES: ''}
     }), name: 'Espacio Público'
 });
@@ -437,7 +437,7 @@ var espacio_pubico = new ol.layer.Tile({
 var ladomanzana = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:ladosmanzana', STYLES: ''}
     }), name: 'Lado Manzana'
 
@@ -446,7 +446,7 @@ var ladomanzana = new ol.layer.Tile({
 var sitios = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:sitios', STYLES: ''}
     }), name: 'Sitios de Interes'
 
@@ -455,7 +455,7 @@ var sitios = new ol.layer.Tile({
 var puntos_aaa = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:puntos_aaa', STYLES: ''}
     }), name: 'Puntos AAA'
 
@@ -464,7 +464,7 @@ var puntos_aaa = new ol.layer.Tile({
 var consolidado = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:consolidado_campo', STYLES: ''}
     }), name: 'Consolidado'
 
@@ -474,7 +474,7 @@ var construcciones = new ol.layer.Tile({
     visible: true,
     preload: Infinity,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_construccion', STYLES: ''}
     }), name: 'Construcciones'
 
@@ -483,7 +483,7 @@ var construcciones = new ol.layer.Tile({
 var unidades = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:u_unidad', STYLES: ''}
     }), name: 'Unidades'
 
@@ -491,7 +491,7 @@ var unidades = new ol.layer.Tile({
 var geocodificador = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:geo_wgs84', STYLES: ''}
     }), name: 'Geo'
 });
@@ -501,7 +501,7 @@ var geocodificador = new ol.layer.Tile({
 var limitevia = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:limite_via', STYLES: ''}
     }), name: 'Limite de Via'
 });
@@ -509,7 +509,7 @@ var limitevia = new ol.layer.Tile({
 var canalsencillo = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:canal_sencillo', STYLES: ''}
     }), name: 'Canal Sencillo'
 });
@@ -517,7 +517,7 @@ var canalsencillo = new ol.layer.Tile({
 var canaldoble = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:canal_doble', STYLES: ''}
     }), name: 'Canal Doble'
 
@@ -526,7 +526,7 @@ var canaldoble = new ol.layer.Tile({
 var paramento = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:paramento', STYLES: ''}
     }), name: 'Paramento'
 
@@ -535,7 +535,7 @@ var paramento = new ol.layer.Tile({
 var antejardin = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:antejardin', STYLES: ''}
     }), name: 'Antejardin'
 
@@ -544,7 +544,7 @@ var antejardin = new ol.layer.Tile({
 var cerca = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:cerca', STYLES: ''}
     }), name: 'Cerca'
 
@@ -553,7 +553,7 @@ var cerca = new ol.layer.Tile({
 var cicloruta = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:cicloruta', STYLES: ''}
     }), name: 'Cicloruta'
 
@@ -562,7 +562,7 @@ var cicloruta = new ol.layer.Tile({
 var construccionagual = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:construccion_agua_l', STYLES: ''}
     }), name: 'Construccion Agua L'
 
@@ -571,7 +571,7 @@ var construccionagual = new ol.layer.Tile({
 var curvanivel = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:curva_nivel', STYLES: ''}
     }), name: 'Curva de Nivel'
 
@@ -580,7 +580,7 @@ var curvanivel = new ol.layer.Tile({
 var laguna = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:laguna', STYLES: ''}
     }), name: 'Laguna'
 
@@ -589,7 +589,7 @@ var laguna = new ol.layer.Tile({
 var lineademarcacion = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:linea_demarcacion', STYLES: ''}
     }), name: 'Linea de Demarcacion'
 
@@ -598,7 +598,7 @@ var lineademarcacion = new ol.layer.Tile({
 var muro = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:muro', STYLES: ''}
     }), name: 'Muro'
 
@@ -607,7 +607,7 @@ var muro = new ol.layer.Tile({
 var puente_l = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:puente_l', STYLES: ''}
     }), name: 'Puente L'
 
@@ -616,7 +616,7 @@ var puente_l = new ol.layer.Tile({
 var red_alta_tension = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:red_alta_tension', STYLES: ''}
     }), name: 'Red Alta Tension'
 });
@@ -624,7 +624,7 @@ var red_alta_tension = new ol.layer.Tile({
 var tuberia = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:tuberia', STYLES: ''}
     }), name: 'Tuberia'
 });
@@ -632,7 +632,7 @@ var tuberia = new ol.layer.Tile({
 var arbol = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:arbol', STYLES: ''}
     }), name: 'Arbol'
 });
@@ -640,7 +640,7 @@ var arbol = new ol.layer.Tile({
 var homicidios_kernel = new ol.layer.Tile({
     visible: false,
     source: new ol.source.TileWMS({
-        url: 'http://35.184.3.4:8080/geoserver/preproduccion/wms',
+        url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
         params: {LAYERS: 'preproduccion:homicidios_kernel', STYLES: ''}
     }), name: 'prueba'
 });

@@ -1,4 +1,4 @@
-var url = 'http://35.184.3.4:8080/geoserver/ows?';
+var url = 'http://35.184.53.233:8081/geoserver/ows?';
 function search(param, request, request1, request2) {
     /*if (request === undefined || request === '') {
         return;

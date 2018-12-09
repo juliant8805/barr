@@ -433,6 +433,7 @@ function addressSource(requestString, responseFunc) {
         srsname: 'EPSG:3857',
         viewparams: viewParamsStr
     };
+    //console.log(tempname);
     $.ajax({
         url: url,
         data: wfsParams,

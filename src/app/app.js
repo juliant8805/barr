@@ -1,5 +1,5 @@
 // ========= config section ================================================
-var url = 'http://35.184.3.4:8080/geoserver/ows?';
+var url = 'http://35.184.53.233:8081/geoserver/ows?';
 var featurePrefix = 'preproduccion';
 var featureType = ['u_terreno', 'estacionestransmetro', 'puntos_aaa', 'consolidado_campo'];
 var featureNS = 'http://barranquilla.co';

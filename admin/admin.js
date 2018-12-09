@@ -449,7 +449,7 @@ function actualizar() {
     } else {
         var gestorE = true;
     }
-    var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+    var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.53.233:8081/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
                     <Update typeName="user:usuario">\
                         <Property>\
                             <Name>cargo</Name>\
@@ -558,7 +558,7 @@ function actualizar() {
                         </Filter>\
                     </Update>\
                 </Transaction>';
-    rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+    rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
     $.ajax({
         type: "POST",
         url: rooturl,
@@ -643,7 +643,7 @@ function guardar() {
      console.log("tecnologia"+tecnologia);
      console.log("gestor"+gestor);
      console.log(document.getElementById('inlineRadio1').checked);*/
-    var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.3.4:8080/geoserver">\
+    var arrayResult = '<Transaction xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:user="user" xmlns:gml="http://www.opengis.net/gml" version="1.1.0" service="WFS" xsi:schemaLocation="http://35.184.53.233:8081/geoserver">\
      <Insert xmlns="http://www.opengis.net/wfs">\
      <user:usuario>\
      <usuario>' + nomg + '</usuario>\
@@ -667,7 +667,7 @@ function guardar() {
      </user:usuario>\
      </Insert>\
      </Transaction>';
-    rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+    rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
     var res = $.ajax({
         type: "POST",
         url: rooturl,
@@ -701,7 +701,7 @@ function password() {
     if (select === null || select.length === 0) {
         alert("Contraseña incorrecta");
     } else if (document.getElementById("newpassword").value === document.getElementById("cpassword").value) {
-        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.53.233:8081/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
             <Update typeName="user:usuario">\
                 <Property>\
                     <Name>contrasena</Name>\
@@ -712,7 +712,7 @@ function password() {
                 </Filter>\
             </Update>\
         </Transaction>';
-        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
         $.ajax({
             type: "POST",
             url: rooturl,

@@ -10,7 +10,7 @@ function resetpass() {
             contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
         }
         var cont = hex_md5(contraseña);
-        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.3.4:8080/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
+        var postData = '<Transaction service="WFS" xmlns="http://www.opengis.net/wfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://35.184.53.233:8081/geoserver/schemas/wfs/1.1.0/wfs.xsd">\
                     <Update typeName="user:usuario">\
                         <Property>\
                             <Name>contrasena</Name>\
@@ -21,7 +21,7 @@ function resetpass() {
                         </Filter>\
                     </Update>\
                 </Transaction>';
-        rooturl = 'http://35.184.3.4:8080/geoserver/user/ows?';
+        rooturl = 'http://35.184.53.233:8081/geoserver/user/ows?';
         $.ajax({
             type: "POST",
             url: rooturl,
