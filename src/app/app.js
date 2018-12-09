@@ -9,7 +9,7 @@ var geometryType = 'MultiPolygon';
 var fields = ['*'];
 var infoFormat = 'application/vnd.ogc.gml/3.1.1';
 var center = [-8327000, 1230000];
-var zoom = 12;
+var zoom = 13;
 // =========================================================================
 var proj = new ol.proj.Projection({
     code: 'http://www.opengis.net/gml/srs/epsg.xml#4326',

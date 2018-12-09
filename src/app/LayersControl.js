@@ -16,7 +16,7 @@ var ortofotourbana = new ol.layer.Tile({
     opacity: 0.6,
     preload: Infinity,
     source: new ol.source.XYZ({
-        url: "http://www.gesstorbarranquilla.com/barranquilla/ortofoto/{z}/{x}/{y}.png"
+        url: "http://35.184.53.233:8081/dashboard/ortofoto/{z}/{x}/{y}.png"
     }), name: 'Ortofoto 2016 Distrito'
 });
 
@@ -26,7 +26,7 @@ var mapabase = new ol.layer.Tile({
     //minResolution:2,
     maxResolution: 20,
     source: new ol.source.XYZ({
-        url: "http://www.gesstorbarranquilla.com/barranquilla/mapa_base/{z}/{x}/{y}.jpg"
+        url: "http://35.184.53.233:8081/dashboard/mapa_base/{z}/{x}/{y}.jpg"
     }), name: 'Mapa Base'
 });
 
@@ -714,13 +714,20 @@ function buildLayerTree(layer) {
     var elem;
     var name = layer.get('name') ? layer.get('name') : "Group";
     if (name !== 'Group') {
-        var select = validacionusuarios();
+        //console.log("build layer tree");
+        try{
+            var select = selectUser;
+            var sel = select[0][9];
+        }catch (err){
+            var sel = 0;
+        }
+        
         if (layer.values_.visible === true && layer.get('name') !== 'CAPAS') {
             var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".jpg' alt='Smiley face' height='20' width='20' >" + layer.get('name') + "</span>" + "<i class='glyphicon glyphicon-check'></i> ";
         } else if (layer.get('name') === 'CAPAS') {
             var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".png' alt='Smiley face' height='30' width='100'>" /*+ layer.get('name') */ + "</span>";
         } else {
-            if (select[0][9] === true && (layer.values_.name === "Barrios" || layer.values_.name === "Localidades" || layer.values_.name === "Amenaza Inundación" || layer.values_.name === "Remoción en Masa" || layer.values_.name === "Area Reserva Acueducto" || layer.values_.name === "Area Reserva Alcantarillado" || layer.values_.name === "Arroyos" || layer.values_.name === "Ciclorutas Propuestas" || layer.values_.name === "Cienaga Mallorquin" || layer.values_.name === "Clasificación Suelo" || layer.values_.name === "Estaciones Transmetro" || layer.values_.name === "Espacio Público" || layer.values_.name === "Intercambiadores Transporte" || layer.values_.name === "Limites Distrital" || layer.values_.name === "Malecon Avenida Río" || layer.values_.name === "Perfil Vias Urbanas Propuestas" || layer.values_.name === "Parques Propuestos" || layer.values_.name === "Parques Propuestos Rural" || layer.values_.name === "Perimetro Urbano" || layer.values_.name === "Instrumentos Planificación" || layer.values_.name === "Normativos Uso" || layer.values_.name === "Protección Litoral Mar Caribe" || layer.values_.name === "Protección Conservación Rural" || layer.values_.name === "Red Acueducto Primaria" || layer.values_.name === "Red Alcantarillado" || layer.values_.name === "Red Energia Alta Tensión" || layer.values_.name === "Ronda Arroyos 15m" || layer.values_.name === "Ronda Arroyos 30m" || layer.values_.name === "Ronda Río Magdalena" || layer.values_.name === "Tratamientos Urbanisticos" || layer.values_.name === "Vias Rural Propuesta" || layer.values_.name === "Vias Transmasivo" || layer.values_.name === "Zampa Ríos 50m" || layer.values_.name === "Zampa Arroyos 30m" || layer.values_.name === "Zampa Cienaga Mallorquin 50m" || layer.values_.name === "Zampa Río Magdalena 50m" || layer.values_.name === "Zona Declarada Prado" || layer.values_.name === "Zona Declarada Centro")) {
+            if (sel === true && (layer.values_.name === "Barrios" || layer.values_.name === "Localidades" || layer.values_.name === "Amenaza Inundación" || layer.values_.name === "Remoción en Masa" || layer.values_.name === "Area Reserva Acueducto" || layer.values_.name === "Area Reserva Alcantarillado" || layer.values_.name === "Arroyos" || layer.values_.name === "Ciclorutas Propuestas" || layer.values_.name === "Cienaga Mallorquin" || layer.values_.name === "Clasificación Suelo" || layer.values_.name === "Estaciones Transmetro" || layer.values_.name === "Espacio Público" || layer.values_.name === "Intercambiadores Transporte" || layer.values_.name === "Limites Distrital" || layer.values_.name === "Malecon Avenida Río" || layer.values_.name === "Perfil Vias Urbanas Propuestas" || layer.values_.name === "Parques Propuestos" || layer.values_.name === "Parques Propuestos Rural" || layer.values_.name === "Perimetro Urbano" || layer.values_.name === "Instrumentos Planificación" || layer.values_.name === "Normativos Uso" || layer.values_.name === "Protección Litoral Mar Caribe" || layer.values_.name === "Protección Conservación Rural" || layer.values_.name === "Red Acueducto Primaria" || layer.values_.name === "Red Alcantarillado" || layer.values_.name === "Red Energia Alta Tensión" || layer.values_.name === "Ronda Arroyos 15m" || layer.values_.name === "Ronda Arroyos 30m" || layer.values_.name === "Ronda Río Magdalena" || layer.values_.name === "Tratamientos Urbanisticos" || layer.values_.name === "Vias Rural Propuesta" || layer.values_.name === "Vias Transmasivo" || layer.values_.name === "Zampa Ríos 50m" || layer.values_.name === "Zampa Arroyos 30m" || layer.values_.name === "Zampa Cienaga Mallorquin 50m" || layer.values_.name === "Zampa Río Magdalena 50m" || layer.values_.name === "Zona Declarada Prado" || layer.values_.name === "Zona Declarada Centro")) {
                 var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".jpg' alt='Smiley face' height='20' width='20'><u id=C" + name.replace(/ /g, '') + "><font color='blue'>" + layer.get('name') + "</font></u></span>" + "<i class='glyphicon glyphicon-unchecked'></i> ";
             } else {
                 var div = "<li data-layerid='" + name + "'>" + "<span><img src='image/" + layer.get('name') + ".jpg' alt='Smiley face' height='20' width='20'>" + layer.get('name') + "</span>" + "<i class='glyphicon glyphicon-unchecked'></i> ";

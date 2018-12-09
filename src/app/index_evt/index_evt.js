@@ -3,7 +3,7 @@
 $(document).on('ready', function () {
 //codigo aquí
     var select = validacionusuarios();
-    //console.log(select);
+    //console.log("doc ready "+select);
     if (navigator.vendor !== "Google Inc.") {
         location.href = "barranquilla.html?ig=navegador";
     }
@@ -547,17 +547,18 @@ $(document).on('ready', function () {
     }
 });
 function validacionusuarios() {
+    //console.log("val user");
     var ca = document.cookie.split('=');
     if (ca["0"] === "") {
         location.href = "barranquilla.html?ig=error";
     } else {
         try {
-            var select = search("preproduccion:ValidateUser", ca[0], ca[1]);
+            selectUser = search("preproduccion:ValidateUser", ca[0], ca[1]);
             document.getElementById("carga").style.display = "none";
-            document.getElementById("nombre_usuario").innerHTML = select[0][0].split(" ", 1);
+            document.getElementById("nombre_usuario").innerHTML = selectUser[0][0].split(" ", 1);
         } catch (err) {
         }
-        return(select);
+        return(selectUser);
     }
 }
 changestyles = 0;
