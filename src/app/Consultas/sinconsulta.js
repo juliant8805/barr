@@ -5,7 +5,7 @@ var sinconsulta = async function (x) {
 };
 function general() {
     manzana.setVisible(false);
-    construcciones.setVisible(false);
+    //construcciones.setVisible(false);
     unidades.setVisible(false);
     //predio.setVisible(true);
     //document.getElementById('mensaje').style.display = 'block'; 

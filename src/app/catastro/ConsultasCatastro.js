@@ -23,7 +23,7 @@ function rango(style) {
     if (style === "Rango Area Terreno") {
         viastransmasivo.setVisible(false);
         estacionestransmetro.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
@@ -67,7 +67,7 @@ function rango(style) {
      else if (style === "Tipo Construccion") { 
         estacionestransmetro.setVisible(false);
         viastransmasivo.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
@@ -102,7 +102,7 @@ function rango(style) {
 
 //distrito vs AAA
      else if (style === "Distrito vs Prestadores AAA") { 
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         puntos_aaa.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
@@ -139,7 +139,7 @@ function rango(style) {
     else if (style === "predios_construidos") { 
         estacionestransmetro.setVisible(false);
         viastransmasivo.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
@@ -176,7 +176,7 @@ function rango(style) {
      else if (style === "predios_actualizacion") {
              estacionestransmetro.setVisible(false);
         viastransmasivo.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         alert("GESSTOR INFORMA:</br></br>Esta consulta solo sirve de referencia para los predios que aparecen con área construida 0 en los registros planos.</br>");
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
@@ -214,7 +214,7 @@ function rango(style) {
     else if (style === "plusvalia") {
             estacionestransmetro.setVisible(false);
              viastransmasivo.setVisible(false);
-             construcciones.setVisible(false);
+             //construcciones.setVisible(false);
              predio.setVisible(true);
              alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para establecer cuales predios generan Efecto de plusvalía</br>");
                 var select = search("preproduccion:TotalPredios");
@@ -233,7 +233,7 @@ function rango(style) {
     else if (style === "Rango Area Construccion") {
         viastransmasivo.setVisible(false);
         estacionestransmetro.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
@@ -277,7 +277,7 @@ function rango(style) {
     else if (style === "Calidad Construcciones") {
         viastransmasivo.setVisible(false);
         estacionestransmetro.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");

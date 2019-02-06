@@ -13,7 +13,7 @@ var ortofotourbana = new ol.layer.Tile({
     visible: true,
     minResolution: 0,
     maxResolution: 20,
-    opacity: 0.6,
+    opacity: 0,
     preload: Infinity,
     source: new ol.source.XYZ({
         url: "http://35.184.53.233:8081/dashboard/ortofoto/{z}/{x}/{y}.png"
@@ -472,10 +472,10 @@ var consolidado = new ol.layer.Tile({
 
 var construcciones = new ol.layer.Tile({
     visible: true,
-    preload: Infinity,
+    //preload: Infinity,
     source: new ol.source.TileWMS({
         url: 'http://35.184.53.233:8081/geoserver/preproduccion/wms',
-        params: {LAYERS: 'preproduccion:u_construccion', STYLES: ''}
+        params: {LAYERS: 'preproduccion:u_construccion', 'TILED': true, STYLES: ''}
     }), name: 'Construcciones'
 
 });

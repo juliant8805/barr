@@ -40,7 +40,7 @@ function rango(style) {
                  }
                 }
     if (style === "Avaluo Catastral") {
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         alert("GESSTOR INFORMA:</br></br>Para el caso de esta consulta se suman las mejoras al total de predios debido a que son objeto de avalúo catastral</br>");
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
@@ -88,7 +88,7 @@ function rango(style) {
     }
     
     else if (style === "Tipo de Contribuyente") {
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPrediosContribuyentes");
@@ -130,7 +130,7 @@ function rango(style) {
         }
     
         else if (style === "Impuesto Camara") {
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
              predio.setVisible(true);
              alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta</br></br>");
                 var select = search("preproduccion:TotalPredios");
@@ -147,7 +147,7 @@ function rango(style) {
         } 
     
         else if (style === "Tipo Propietario") {
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
              predio.setVisible(true);
              alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta</br></br>");
                 var select = search("preproduccion:TotalPredios");
@@ -164,7 +164,7 @@ function rango(style) {
         }
     
         else if (style === "Incremento Avaluo") {
-             construcciones.setVisible(false);
+             //construcciones.setVisible(false);
              predio.setVisible(true);
              alert("GESSTOR INFORMA:</br></br>No se encuentra información de avalúos para vigencias anteriores a 2017</br></br>");
                 var select = search("preproduccion:TotalPredios");
@@ -184,7 +184,7 @@ function rango(style) {
      else if (style === "Tipo Construccion") { 
         estacionestransmetro.setVisible(false);
         viastransmasivo.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
@@ -220,7 +220,7 @@ function rango(style) {
             document.getElementById("statistics").style.display = "none";
             document.getElementById("botonocultarstatistics").style.display = "none";
             document.getElementById("botonmostrarstatistics").style.display = "none";
-            construcciones.setVisible(false); 
+            //construcciones.setVisible(false); 
             predio.setVisible(true);
             if (document.getElementById("oficial_vs_AAA_uso").value === "Acueducto") {
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === ''){
@@ -348,7 +348,7 @@ function rango(style) {
     } 
     
     else if (style === "uso_electricaribe") {
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");

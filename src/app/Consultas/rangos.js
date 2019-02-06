@@ -36,7 +36,7 @@ function rango(style) {
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
             layerSUI.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {   
                 //new
@@ -171,7 +171,7 @@ function rango(style) {
             layerprediosexentos2016.setVisible(false);
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true); 
             var formatNumber = {
                  separador: ".", // separador para los miles
@@ -325,7 +325,7 @@ function rango(style) {
             layerprediosexentos2016.setVisible(false);
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             try{
                 var select = select_query("select sum(numeropredios) from u_terreno");}catch(err){}
@@ -352,7 +352,7 @@ function rango(style) {
                 layerprediosexentos2016.setVisible(false);
                 estacionestransmetro.setVisible(false);
                 viastransmasivo.setVisible(false);
-                construcciones.setVisible(false);
+                //construcciones.setVisible(false);
                 predio.setVisible(true);    
               //funciona en postgres select(select sum(numeropredios) from u_terreno) + (select count(*) from r_terreno);
                 try{
@@ -382,7 +382,7 @@ function rango(style) {
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
             layerSUI.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
                 try{
@@ -468,7 +468,7 @@ function rango(style) {
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
             layerSUI.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {   
                 try{
@@ -846,7 +846,7 @@ function rango(style) {
             viastransmasivo.setVisible(false);
             espacio_pubico.setVisible(false);
             layerespaciopublico.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
                 try{
@@ -970,7 +970,7 @@ function rango(style) {
         //estratificacion oficial lineas
         else if (style === "estratificacion_oficial") {
             manzana.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             unidades.setVisible(false);
             layermetrotel.setVisible(false);
             predio.setVisible(true);
@@ -1119,7 +1119,7 @@ function rango(style) {
             layerprediosexentos2016.setVisible(false);
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             if (document.getElementById("oficial_vs_AAA").value === "Acueducto") {
                 if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' &&  document.getElementById("manzana").value === '') {
@@ -1583,7 +1583,7 @@ function rango(style) {
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
             predio.setVisible(true);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             //acueducto
             if (document.getElementById("disponibilidad_AAA").value === "Acueducto") {
                 if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
@@ -1824,7 +1824,7 @@ function rango(style) {
                 viastransmasivo.setVisible(false);
                 espacio_pubico.setVisible(false);
                 layerespaciopublico.setVisible(false);
-                construcciones.setVisible(false);
+                //construcciones.setVisible(false);
                 predio.setVisible(true);
                 if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
                 try{
@@ -1917,7 +1917,7 @@ function rango(style) {
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
             layerSUI.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
                 try{
@@ -2106,7 +2106,7 @@ function rango(style) {
             layerprediosexentos2016.setVisible(false);
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta");
             try{
@@ -2132,7 +2132,7 @@ function rango(style) {
             layerprediosexentos2016.setVisible(false);
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta");
             queryexport = style + ' G';
@@ -2213,7 +2213,7 @@ function rango(style) {
         else if (style === "Area Proteccion Urbanistica") {
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta");
             try{
@@ -2232,7 +2232,7 @@ function rango(style) {
         //Nivel de Amenaza
         else if (style === "Tipo de Amenaza") {
             manzana.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             unidades.setVisible(false);
             layermetrotel.setVisible(false);
             layerSUI.setVisible(false);
@@ -2569,7 +2569,7 @@ function rango(style) {
         else if (style === "Estructura Ecologica Principal") {
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta");
             try{
@@ -2622,7 +2622,7 @@ function rango(style) {
          else if (style === "plusvalia") {
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para establecer cuales predios generan Efecto de plusvalía");
             queryexport = style + ' G';
@@ -2645,7 +2645,7 @@ function rango(style) {
             
             estacionestransmetro.setVisible(false);
             viastransmasivo.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para establecer cuales predios son sujetos de Actualización o Conservación Catastral");
             try{

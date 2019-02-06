@@ -23,7 +23,7 @@ function rango(style) {
     if (document.getElementById("Tipo de Amenaza").value === "Inundacion") {
         viastransmasivo.setVisible(false);
         estacionestransmetro.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPrediosInundacion");
@@ -66,7 +66,7 @@ function rango(style) {
      else if (document.getElementById("Tipo de Amenaza").value === "Remosion") { 
         viastransmasivo.setVisible(false);
         estacionestransmetro.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
@@ -114,7 +114,7 @@ function rango(style) {
     else if (style === "estratificacion_oficial") {
         viastransmasivo.setVisible(false);
         estacionestransmetro.setVisible(false);
-        construcciones.setVisible(false);
+        //construcciones.setVisible(false);
         predio.setVisible(true);
         if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");
@@ -163,7 +163,7 @@ function rango(style) {
         document.getElementById("botonocultarstatistics").style.display = "none";
         document.getElementById("botonmostrarstatistics").style.display = "none";
         predio.setVisible(false);
-        construcciones.setVisible(false); 
+        //construcciones.setVisible(false); 
         estacionestransmetro.setVisible(true);
         viastransmasivo.setVisible(true);
         document.getElementById('leyenda_transmetro').style.display = 'block';
@@ -175,7 +175,7 @@ function rango(style) {
     else if (style === "espacio_publico") {
             viastransmasivo.setVisible(false);
             estacionestransmetro.setVisible(false);
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             espacio_pubico.setVisible(true);
             layerespaciopublico.setVisible(true);
@@ -194,7 +194,7 @@ function rango(style) {
     else if (style === "Estructura Ecologica Principal") {
              estacionestransmetro.setVisible(false);
              viastransmasivo.setVisible(false);
-             construcciones.setVisible(false);
+             //construcciones.setVisible(false);
              predio.setVisible(true);
              alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta</br>");
              var select = search("preproduccion:TotalPredios");
@@ -212,7 +212,7 @@ function rango(style) {
     else if (style === "Area Proteccion Urbanistica") {
              estacionestransmetro.setVisible(false);
              viastransmasivo.setVisible(false);
-             construcciones.setVisible(false);
+             //construcciones.setVisible(false);
              predio.setVisible(true);
              alert("GESSTOR INFORMA:</br></br>No se encuentra información suficiente para ejecutar esta consulta</br>");
              var select = search("preproduccion:TotalPredios");
@@ -231,7 +231,7 @@ function rango(style) {
     else if (style === "Clasificacion_Uso") { 
              estacionestransmetro.setVisible(false);
              viastransmasivo.setVisible(false);
-             construcciones.setVisible(false);
+             //construcciones.setVisible(false);
              //predio_rural.setVisible(true);
              predio.setVisible(true);
              var select = search("preproduccion:TotalPredios");
@@ -248,7 +248,7 @@ function rango(style) {
     
     } 
     else if (style === "Nomenclatura Domiciliaria") {
-            construcciones.setVisible(false);
+            //construcciones.setVisible(false);
             predio.setVisible(true);
             if (document.getElementById("barrio").value === '' && document.getElementById("localidad").value === '' && document.getElementById("manzana").value === '') {
             var select = search("preproduccion:TotalPredios");

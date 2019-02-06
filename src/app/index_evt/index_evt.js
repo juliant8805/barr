@@ -532,9 +532,9 @@ $(document).on('ready', function () {
             var a = document.getElementsByTagName("head")[0];
             a || (a = document.body.parentNode.appendChild(document.createElement("head")));
             a.appendChild(b);
-            window.oncontextmenu = function () {
+            /*window.oncontextmenu = function () {
                 return false;
-            };
+            };*/
         }
         //$("#map").removeAttr("hidden").show();
         $("#logos_cabezote").removeAttr("hidden").show();

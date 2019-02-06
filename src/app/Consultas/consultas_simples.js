@@ -1351,13 +1351,15 @@ function addressSelect(event, ui) {
                     var ph = values.ph;
                     if (ph >= 800) {
                         var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
-                        //console.log(ui.item.direccionoriginal);
+                        //preproduccion:RefCatastral ya tiene el codigo predial aca voy
                         ref_cat = ref_cat["0"]["0"];
                     } else {
                         var ref_cat = values.ref_catastral;
                     }
                     ref_cat = "'" + ref_cat + "'";
-                    var arregloDeSubCadenas = enviarRef(eval(ref_cat));
+                    //var arregloDeSubCadenas = enviarRef(eval(ref_cat));
+                    var arregloDeSubCadenas = ref_cat;
+                    console.log(values);
                     select[0] = "<b>Dirección</b>";
                     select[1] = "<b>Referencia Catastral</b>";
                     sel[0] = ui.item.direccionoriginal;
@@ -1747,10 +1749,13 @@ function addressSelect(event, ui) {
 }
 
 function PlaceSelect(event, ui) {
-    vias.setVisible(true);
+    //vias.setVisible(true);
     document.getElementById('menusitiostotem').style.display = 'none';
     document.getElementById('volver').style.display = 'none';
-    document.getElementById("volvertotem").style.display = "block";
+    console.log(modulo);
+    if (modulo === 'totempruebas'){
+        document.getElementById("volvertotem").style.display = "block";
+    }
     document.getElementById("exp1").style.display = "none";
     document.getElementById("consultas_totem").style.display = "none";
     var view = map.getView();
