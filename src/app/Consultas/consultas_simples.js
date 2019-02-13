@@ -1348,35 +1348,46 @@ function addressSelect(event, ui) {
                     var stv = [];
                     var ig = [];
                     var codfoto = values.codigo_ant.substring(0, 17);
-                    var ph = values.ph;
-                    if (ph >= 800) {
-                        var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
+                    //var ph = values.ph;
+                    var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
+                    //if (ph >= 800) {
+                        //var ref_cat = search("preproduccion:RefCatastral", ui.item.direccionoriginal);
                         //preproduccion:RefCatastral ya tiene el codigo predial aca voy
-                        ref_cat = ref_cat["0"]["0"];
-                    } else {
-                        var ref_cat = values.ref_catastral;
-                    }
-                    ref_cat = "'" + ref_cat + "'";
+                        //ref_cat = ref_cat["0"]["0"];
+                        ref_cat = ref_cat["0"]["1"];
+                    //} else {
+                        //var ref_cat = values.ref_catastral;
+                    //}
+                    //ref_cat = "'" + ref_cat + "'";
                     //var arregloDeSubCadenas = enviarRef(eval(ref_cat));
-                    var arregloDeSubCadenas = ref_cat;
-                    console.log(values);
+                    var ref_cat1 = search("preproduccion:ftp_hacienda", ref_cat);
+                    var arregloDeSubCadenas = ref_cat1[0];
+                    //console.log("ref "+ref_cat1[0][0]);
                     select[0] = "<b>Dirección</b>";
                     select[1] = "<b>Referencia Catastral</b>";
                     sel[0] = ui.item.direccionoriginal;
                     sel[1] = arregloDeSubCadenas[0];
                     for (i = 0; i < arregloDeSubCadenas.length - 1; i = i + 6) {
                         select[i + 2] = "<b></b>";
-                        select[i + 3] = "<b>Destino Económico (" + arregloDeSubCadenas[i + 5] + ")</b>";
+                        /*select[i + 3] = "<b>Destino Económico (" + arregloDeSubCadenas[i + 5] + ")</b>";
                         select[i + 4] = "<b>Estrato (" + arregloDeSubCadenas[i + 5] + ")</b>";
-                        select[i + 5] = "<b>Valor Capital Impuesto Predial (" + arregloDeSubCadenas[i + 5] + ")</b>";
-                        select[i + 6] = "<b>Valor Intereses Impuesto Predial (" + arregloDeSubCadenas[i + 5] + ")</b>";
-                        select[i + 7] = "<b></b>";
+                        select[i + 5] = "<b>Capital Cartera Vigencias Anteriores (" + arregloDeSubCadenas[i + 5] + ")</b>";
+                        select[i + 6] = "<b>Valor Intereses Impuesto Predial (" + arregloDeSubCadenas[i + 5] + ")</b>";*/
+                        select[i + 3] = "<b>Destino Económico</b>";
+                        select[i + 4] = "<b>Estrato</b>";
+                        select[i + 5] = "<b>Capital Cartera Vigencias Anteriores</b>";
+                        select[i + 6] = "<b>Sw Cartera (S/N)";
+                        select[i + 7] = "<b>Capital Cartera Vigencia Actual</b>";
+                        select[i + 8] = "<b>Sw Cartera vigencia Actual (S/N)";
+                        select[i + 9] = "<b></b>";
                         sel[i + 2] = "";
                         sel[i + 3] = arregloDeSubCadenas[i + 1];
                         sel[i + 4] = arregloDeSubCadenas[i + 2];
-                        sel[i + 5] = arregloDeSubCadenas[i + 3];
+                        sel[i + 5] = new Intl.NumberFormat("es-CO", {style: "currency", currency: "COP", minimumFractionDigits: 0}).format(arregloDeSubCadenas[i + 3]);
                         sel[i + 6] = arregloDeSubCadenas[i + 4];
-                        sel[i + 7] = "";
+                        sel[i + 7] = new Intl.NumberFormat("es-CO", {style: "currency", currency: "COP", minimumFractionDigits: 0}).format(arregloDeSubCadenas[i + 5]);
+                        sel[i + 8] = arregloDeSubCadenas[i + 6];
+                        sel[i + 9] = "";
                     }
                     var p = sel.length;
                     select[p] = "<b>Fotografias</b>";
