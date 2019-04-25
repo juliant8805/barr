@@ -539,10 +539,11 @@ function addressSource(requestString, responseFunc) {
                     codeAddress(viewParamsStr);
                 } else {
                     if ((tempname == "preproduccion:buscar_direccion_registro1") && (modulo !== 'totem')) {
-                        if (modulo === "totempruebas") {
+                        //if (modulo === "totempruebas") {
                             alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a la consulta en la base de datos Catastral. Por favor intente lo siguiente:</br> 1). Ingrese la dirección mediante abreviaturas, ejemplo: (calle) C 45 25 07 ó (Carrera) K 35 48 31</br> 2). Obtenga una ubicación aproximada mediante el Georeferenciador:</br> <input type='image' id='indicadorgeo' name='boton_geocoder' src='imagenes/geocoder.png' onclick='busqueda(name)'></br>");
                             document.getElementById("direccion").value = "";
-                        }// else {}
+                            document.getElementById("inputdirecciontotemp").value = "";
+                        //}// else {}
                     } else if (tempname == "preproduccion:buscar_barrio") {
                         alert("GESSTOR INFORMA:</br></br> No se encuentra información geográfica asociada a el nombre de Barrio Ingresado, por favor verifique que el nombre ingresado sea correcto. Ejemplo:</br></br> La Concepcion</br>Paseo de La Castella</br>Zona Franca</br>etc.</br>");
                         document.getElementById("barrio").value = "";
