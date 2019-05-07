@@ -1473,6 +1473,11 @@ img.pequeña{
     width: 30px; 
     height: 50px;
 }
+img.factura{
+    width: 70px; 
+    height: 70px;
+    
+}
 @media handheld, only screen and (max-width: 767px) {
     #boton3d{
         visibility: hidden;

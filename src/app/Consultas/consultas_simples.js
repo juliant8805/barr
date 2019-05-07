@@ -1497,19 +1497,28 @@ function addressSelect(event, ui) {
                     select[0] = "<b>Dirección</b>";
                     select[1] = "<b>Referencia Catastral</b>";
                     select[2] = "<b>Área de Terreno</b>";
-                    //select[3] = "<b>Imprimir Factura</b><br>";
-                    select[3] = document.createElement("a");
-                    select[3].id = "img1";
-                    select[3].style = "width: 30px; height: 50px;";
-                    select[3].target = "marco";
-                    select[3].setAttribute("onclick", "PrintFac("+arregloDeSubCadenas[0]+","+ +")");
-                    select[3].href = "http://www.gesstorbarranquilla.com/barranquilla/imagenes/pdf.jpg";
+                    select[3] = '<b>Imprimir Factura</b><br><input type="checkbox" id="2017" value="2017"> 2017<br><input type="checkbox" id="2018" value="2018"> 2018<br><input type="checkbox" id="2019" value="2019" checked> 2019<br>';
                     sel[0] = ui.item.direccionoriginal;
                     sel[1] = arregloDeSubCadenas[0];
                     sel[2] = areaterreno + " metros cuadrados";
-                    sel[3] = areaterreno + " metros cuadrados";
-                    var campos = 4;
+                    sel[3] = document.createElement("a");
+                    sel[3].id = "img1";
+                    sel[3].style = "width: 50px; height: 50px;";
+                    sel[3].target = "marco";
+                    sel[3].setAttribute("onclick", "PrintFac('"+arregloDeSubCadenas[0]+"')");
+                    sel[3].href = "http://www.gesstorbarranquilla.com/barranquilla/imagenes/pdf.jpg";
+                    imag[3] = document.createElement("img");
+                    imag[3].id = "im1";
+                    imag[3].className = "factura";
+                    imag[3].src = "http://www.gesstorbarranquilla.com/barranquilla/imagenes/pdf.jpg";
+                    /*stv[2] = document.createElement("a");
+                    stv[2].id = "imgfac";
+                    stv[2].target = "marco";
+                    stv[2].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                    stv[2].setAttribute("onclick", "open_streetview()");*/
+                    var campos = 3;
                     for (i = 0; i < select.length; i++) {
+                        //console.log(i);
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
                         cell2 = row.insertCell(1);
@@ -1518,9 +1527,9 @@ function addressSelect(event, ui) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
                             sel[i].appendChild(imag[i]);
-                            cell2.appendChild(stv[i]);
+                           // cell2.appendChild(stv[i]);
                             //cell2.appendChild(ig[i]);
-                            stv[i].appendChild(ig[i]);
+                            //stv[i].appendChild(ig[i]);
 
                         } else {
                             cell2.innerHTML = sel[i];
