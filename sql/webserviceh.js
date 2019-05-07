@@ -41,10 +41,13 @@ function PrintFac(referencia) {
         alert("Debe seleccionar por lo menos un año");
         return;
     }
-    console.log(ano);
+    //console.log(ano);
     //MessFac();
     //var an = ano;
-    var urlphp = 'sql/wsFactura.php';
+    //var urlphp = 'sql/wsFactura.php';
+    
+    window.open("/barranquilla/sql/wsFactura.php?ref="+ref+"&anos="+ano)
+    /*
     var temp = $.ajax({
         url: urlphp,
         data: {ref: ref, ano: ano},
@@ -58,5 +61,5 @@ function PrintFac(referencia) {
             console.log(jqXHR);
             console.log(exception);
         }
-    });
+    });*/
 }

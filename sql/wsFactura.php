@@ -1,7 +1,12 @@
 <?php
-$ref = $_POST['ref']; //referencia catastral enviada
-$ano = $_POST['ano'];
+//$ref = $_POST['ref']; //referencia catastral enviada
+//$ano = $_POST['ano'];
+$ref = $_GET['ref']; //referencia catastral enviada
+$ano = $_GET['anos'];
+echo $ref."<br>";
+echo $anos;
 //$ref = '010601560009000';
+//$ano = '2019';
 //$servicio = "http://201.245.170.148:8585/predial/wsPredial.svc?wsdl"; //url del servicio
 $servicio="http://190.248.57.43:8090/WS_CatastroWeb/ProcesosCatastro?wsdl"; //url del servicio
 $parametros = array(); //parametros de la llamada
@@ -29,7 +34,8 @@ $servic = $servicio['msgEstado'];
 echo $servici.'<br />';
 echo $servic;
 
-$fichero = $_SERVER["DOCUMENT_ROOT"] . '/barr/facturas/' . $ref . 'factura.pdf';
+$fichero = $_SERVER["DOCUMENT_ROOT"] . '/barranquilla/facturas/' . $ref . 'factura.pdf';
+echo '<br>'.$fichero;
 file_put_contents($fichero, $servicio['archivoPdf']);
 header("Content-Disposition: attachment; filename=" . urlencode('factura.pdf'));
 header("Content-type: application/octet-stream");
