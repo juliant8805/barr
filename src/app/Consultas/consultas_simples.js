@@ -1497,10 +1497,18 @@ function addressSelect(event, ui) {
                     select[0] = "<b>Dirección</b>";
                     select[1] = "<b>Referencia Catastral</b>";
                     select[2] = "<b>Área de Terreno</b>";
+                    //select[3] = "<b>Imprimir Factura</b><br>";
+                    select[3] = document.createElement("a");
+                    select[3].id = "img1";
+                    select[3].style = "width: 30px; height: 50px;";
+                    select[3].target = "marco";
+                    select[3].setAttribute("onclick", "PrintFac("+arregloDeSubCadenas[0]+","+ +")");
+                    select[3].href = "http://www.gesstorbarranquilla.com/barranquilla/imagenes/pdf.jpg";
                     sel[0] = ui.item.direccionoriginal;
                     sel[1] = arregloDeSubCadenas[0];
                     sel[2] = areaterreno + " metros cuadrados";
-                    var campos = 3;
+                    sel[3] = areaterreno + " metros cuadrados";
+                    var campos = 4;
                     for (i = 0; i < select.length; i++) {
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);

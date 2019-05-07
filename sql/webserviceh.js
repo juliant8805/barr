@@ -19,3 +19,22 @@ function enviarRef(referencia) {
             arregloDeSubCadenas = cadena.split(separador);
     return arregloDeSubCadenas;
 }
+function PrintFac(refrencia, ano){
+     var ref = referencia;
+     var an = ano;
+    var urlphp = 'sql/wsFactura.php';
+    var temp = $.ajax({
+        url: urlphp,
+        data: {ref: ref, ano:an},
+        type: "POST",
+        //dataType: "json",
+        async: false,
+        success: function (data, status, xhr) {
+            console.log("exito fac");
+        },
+        error: function (jqXHR, exception) {
+            console.log(jqXHR);
+            console.log(exception);
+        }
+    });
+}
