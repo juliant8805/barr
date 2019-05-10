@@ -4,8 +4,8 @@
         position: fixed;
         list-style:none;
         overflow: auto;
-        bottom: 0em;	
-        left: 0em;
+        bottom: 8em;
+        right: 4.7em;
         background-color: rgba(255, 255, 255, 1);
         width: auto;
         max-height: 70%; 
@@ -114,12 +114,12 @@ body{
 @media handheld, only screen and (min-width: 900px) {
     #mouse-position {
         position: absolute;
-        top: 2em;
-        right: 20em;
+        top: 10em;
+        right: 2em;
         font-size: 0.83em;
-        background-color: rgba(0,173,65,1);
+        background-color: rgba(78,154,171,1);
         color: #F8F8F8;
-        width: 15em !important;
+        width: 15em;
         height: 3em;
         text-align: center;
         -webkit-border-radius: 1em;
@@ -135,7 +135,7 @@ body{
 
 @media handheld, only screen and (min-width: 900px) {
     #barratransparencia{
-        position: absolute;
+        /*position: absolute;
         top: 2em;
         left: 22em;
         font-size: 0.83em; 
@@ -144,7 +144,13 @@ body{
         height: 35px;
         background-image: url(../imagenes/fondo_barra_transparencia.png);
         background-repeat:no-repeat;
-        -webkit-border-radius: 18px;
+        -webkit-border-radius: 18px;*/
+
+        padding: 0px 0px 0px 20px;
+        font-size: 0.83em;
+        color: #F8F8F8;
+        width: 90%;
+        height: 20%;
     }
 }
 @media handheld, only screen and (max-width: 900px) {
@@ -261,8 +267,8 @@ body{
 @media handheld, only screen and (min-width: 900px) {
     #boton_limpiar{
         position: absolute;
-        top: 2em;
-        left: 66%;
+        top: 2.9em;
+        left: 48.3%;
         height: 2.5em;
         width: 2.5em;
         margin-left: 0.5em;
@@ -529,10 +535,10 @@ body{
 @media handheld, only screen and (min-width: 900px) {
     #salida {
         position: absolute;
-        top:1.3em;
-        right:2.9em;
-        width: 5.8em;
-        z-index: 0;
+        top: 4.5em;
+        right: 1em;
+        width: 2.572em;
+        height: auto;
     }
 }
 @media handheld, only screen and (max-width: 900px) {
@@ -582,7 +588,7 @@ body{
 }
 @media handheld, only screen and (max-width: 900px) {
     #barra_codigo{
-         z-index: 10;
+        z-index: 10;
         position: absolute;
         bottom:20%;
         left:20%;
@@ -718,10 +724,10 @@ body{
 }
 @media handheld, only screen and (min-width: 900px) {
     .ol-scale-line {
-        background: rgba(0,173,65,0.5);
+        background: rgba(0,188,212,0.7);
         border-radius: 0px;
-        top: 5em;
-        right: 18em;
+        bottom: 1em;
+        right: 2em;
         padding: 0em;
         position: absolute;
     }
@@ -982,9 +988,13 @@ body{
 }
 @media handheld, only screen and (min-width: 767px) {
     #direccion{
-        opacity:0.9;
-        width:15em; 
-        height:2.5em;
+        position: absolute;
+        top: 0em;
+        opacity: 1;
+        width: 20em;
+        height: 4.4em;
+        border-radius: 0px 30px 30px 0px;
+        border-left: 5px solid gray;
     }
 }
 @media handheld, only screen and (max-width: 767px) {
@@ -996,8 +1006,8 @@ body{
 }
 #barra_general{
     opacity: 0.9;
-    width: 0em;
-    left:60%;
+    /*width: 0em;*/
+    left:0em;
 
 }
 #barras{
@@ -1022,8 +1032,8 @@ body{
     #tipo_usuario
     {
         position: absolute;
-        top:1.3em;
-        right:10.6em;
+        top:4.5em;
+        right:11.5em;
         width: 2.1em;
     }
 }
@@ -1037,10 +1047,10 @@ body{
 @media handheld, only screen and (min-width: 767px) {
     #nombre_usuario{
         position: absolute;
-        top: 3.2em;
-        right: 9em;
+        top: 6.5em;
+        right: 10em;
         width: 80px;
-        color: white;
+        color: black;
         font-weight: bold;
         text-decoration: underline;
         z-index: 0;
@@ -1147,7 +1157,7 @@ body{
 }
 
 input[type='range'] {
-    -webkit-appearance: none;
+    /*-webkit-appearance: none;
     border-radius: 0px;
     box-shadow: inset 0 0 0px #FFFFFF;
     background-color: #FFFFFF;
@@ -1155,6 +1165,16 @@ input[type='range'] {
     width: 90%;
     vertical-align: middle;
     margin-top:10px;
+    margin-left: 10px;
+    margin-right: 10px;*/
+    -webkit-appearance: none;
+    border-radius: 0px;
+    box-shadow: inset 0 0 0px #1D89C6;
+    background-color: #1D89C6;
+    height: 5px;
+    width: 90%;
+    vertical-align: middle;
+    margin-top: -10px;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -1476,7 +1496,7 @@ img.pequeña{
 img.factura{
     width: 70px; 
     height: 70px;
-    
+
 }
 @media handheld, only screen and (max-width: 767px) {
     #boton3d{
@@ -1558,8 +1578,8 @@ td{
 @media handheld, only screen and (min-width: 900px) {
     #boton_geocoder{
         position:absolute;
-        top:1.7em;
-        left:35em; 
+        top:2.5em;
+        left:51em; 
         height:3em;
         width:3em;    
     }

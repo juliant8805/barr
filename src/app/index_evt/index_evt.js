@@ -77,7 +77,7 @@ $(document).on('ready', function () {
         //console.log(select);
         if (select[0][5] === true) {
           //  document.getElementById("notify").style.display = "block";
-            document.getElementById("menu_circular").style.display = "block";
+            //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
             document.getElementById("icono_matricula").style.display = "block";
@@ -153,7 +153,7 @@ $(document).on('ready', function () {
             j || (j = document.body.parentNode.appendChild(document.createElement("head")));
             j.appendChild(i);
         } else if (select[0][6] === true) {
-            document.getElementById("menu_circular").style.display = "block";
+            //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
             document.getElementById("icono_matricula").style.display = "block";
@@ -203,7 +203,7 @@ $(document).on('ready', function () {
              f.appendChild(f);*/
         } else if (select[0][7] === true) {
             //document.getElementById("metrotel").style.display = "block";
-            document.getElementById("menu_circular").style.display = "block";
+            //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
             document.getElementById("Distrito vs Prestadores AAA").style.display = "block";
@@ -250,7 +250,7 @@ $(document).on('ready', function () {
              if (parseInt(sel[0][0]) > 0) {
              document.getElementById("deshacer").style.display = "block";
              }*/
-            document.getElementById("menu_circular").style.display = "block";
+            //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
             //document.getElementById("subirshape").style.display = "block";
@@ -316,7 +316,7 @@ $(document).on('ready', function () {
             }
             //document.getElementById("notmsn").value = cont;
         //    document.getElementById("notify").style.display = "block";
-            document.getElementById("menu_circular").style.display = "block";
+            //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
             document.getElementById("subirshape").style.display = "block";
@@ -371,7 +371,7 @@ $(document).on('ready', function () {
         //    document.getElementById("notify").style.display = "block";
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";
-            document.getElementById("menu_circular").style.display = "block";
+            //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
             document.getElementById("Tipo de Contribuyente").style.display = "block";
@@ -463,7 +463,7 @@ $(document).on('ready', function () {
         } else if (select[0][17] === true) {
             document.getElementById("Avaluo Catastral").style.display = "block";
             document.getElementById("Incremento Avaluo").style.display = "block";
-            document.getElementById("menu_circular").style.display = "block";
+            //document.getElementById("menu_circular").style.display = "block";
             document.getElementById("tipo_usuario").style.display = "block";
             document.getElementById("manual").style.display = "block";
             document.getElementById("Tipo de Contribuyente").style.display = "block";

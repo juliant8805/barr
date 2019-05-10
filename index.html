@@ -97,9 +97,12 @@
     <button id="botonmostrarpanelatributos" hidden="hidden" onclick="mostrarpanelatributos();" style="background:url('./imagenes/mostrarstatistics.png'); background-repeat:no-repeat;"></button>
     <button id="botonocultarpanelatributos" hidden="hidden" onclick="ocultarpanelatributos();" style="background:url('./imagenes/ocultarstatistics.png'); background-repeat:no-repeat;"></button>
     <div id="mouse-position" hidden="hidden"></div>
-    <div id="barratransparencia" hidden="hidden">
-        <br>
-        <input type="range" min="0" max="1" step="0.1" value="0" onchange="ortofotourbana.setOpacity(Number(this.value))"/>
+    <div style="position:absolute; bottom:4.7em; right:4em; text-align:center; padding: 0px 0px 0px 0px; background-color: white;height: 32px;">
+        Mapa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ortofoto                        
+        <div id="barratransparencia" hidden="hidden">
+            <br>
+            <input type="range" min="0" max="1" step="0.1" value="0" onchange="ortofotourbana.setOpacity(Number(this.value))"/>
+        </div>
     </div>
     <div id="leyenda_transmetro" hidden="hidden">
         <div><img img id="leyenda_troncales" src="./imagenes/leyenda_troncales.png"></div>
@@ -269,7 +272,12 @@
     <button id="botonmaximizarpuntosaaa" hidden="hidden" onclick="mostrarpanelatributosaaa();" style="background:url('./imagenes/maximizar.png'); background-repeat:no-repeat;"></button>
     <div id="posicionbarra" hidden="hidden">
         <div class="navbar navbar-inverse navbar-fixed-top" id="barra_general">
-            <div class="input-group input-group-xs" id="lista_general" >					
+            <div class="input-group input-group-xs" id="lista_general">
+                <div style="width:25em; height:4.5em; background-color:white; opacity: 1;">
+                    <img src="./iconos/pc.png" style="margin-left:2em; width:4em;">  
+                    <img src="./imagenes/imagen_condiciones.png" style="margin-left:2em; width:7em;">  
+                    <img src="./iconos/gesstor_plantilla.png" style="margin-left:3em; width:6em;">       		
+                </div>
                 <span class="input-group-addon" id="botonlista">
                     <input id="barras" onclick="lista()" class="dropbtn">
                 </span>		
@@ -282,7 +290,8 @@
                     <a href="#" id="consulta_sitio" onclick="mostrar(id)">Consulta Sitio</a>  
                 </div>
                 <div id='barra_direccion'>
-                    <input class="direccion" id="direccion" type="text" class="form-control" placeholder="Buscar Direccion">
+                    <!--<input class="direccion" id="direccion" type="text" class="form-control" placeholder="Buscar Direccion">-->
+                    <input class="direccion" id="direccion" style="border-width: 0px 0px 0px 2px; border-color:#bfbfbf; padding-left:30px; box-shadow: 1px 2px #d8d8d8;" type="text" class="form-control" placeholder="Buscar Direccion">
                 </div>
                 <div id='barra_sitio' style='display:none;'>
                     <input type="text" id="address1" class="form-control" placeholder="Buscar Sitio">
@@ -447,7 +456,7 @@
                         <div id="002" class="controls">
                             <input type="file" id="datfil0" name="archivo" required="required">
                         </div>
-                        
+
                         <label id="003">Certificado de Estratificación:&nbsp&nbsp&nbsp</label><br>
                         <div id="004" class="controls">
                             <form enctype="multipart/form-data" class="formulario">
@@ -558,16 +567,16 @@
     <div id="mensaje" hidden="hidden"></div>
     <!--<iframe name="marco_imagenes" hidden="hidden" id="marco_imagenes" src="map.control.swipe.html"></iframe>-->
 
-    <img id="tipo_usuario" hidden="hidden" src="imagenes/tipo_usuario.png" data-toggle="modal" data-target="#myModal"  title="Cambiar Contraseña">
+    <img id="tipo_usuario" hidden="hidden" src="iconos/tipo_usuario.png" data-toggle="modal" data-target="#myModal"  title="Cambiar Contraseña">
     <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Cambiar Contraseña</button>-->
     <label id="nombre_usuario"></label>
     <!--<img id="consulta_simple" hidden="hidden" src="./imagenes/lupa_submenu.png" title="busqueda personalizada" onclick="busqueda_personalizada()">-->
 
     <!--<img id="cerrar_submenu" hidden="hidden" src="./imagenes/cerrar_submenu.png" onclick="cerrar_menu()">-->
-    <img id="gesstor" src="./imagenes/gesstor.png">
+    <img id="gesstor" src="./imagenes/gesstor.png" hidden="hidden">
     <img id="logos_cabezote" src="./imagenes/logos_cabezote.png" hidden="hidden">
     <!--<<img id="logos_cabezote" src="./imagenes/logos_cabezote.png" data-toggle="modal" data-target="#charge">-->
-    <img id="boton_limpiar" src="imagenes/limpiar.png" onclick="limpiar_consulta()" title="Limpiar Consulta" hidden="hidden">
+    <img id="boton_limpiar" src="iconos/limpiar.png" onclick="limpiar_consulta()" title="Limpiar Consulta" hidden="hidden">
     <img id="subirshape" src="imagenes/subirshape.jpg" style="display: none" data-toggle="modal" data-target="#charge" title="Subir shapefile">
     <img id="valid" src="imagenes/validar.jpg" onclick="validate(id)" style="display: none" data-toggle="modal" data-target="#validate" title="Validar Informacion subida">
     <img id="deshacer" src="imagenes/deshacer.jpg" onclick="validate(id)" style="display: none" data-toggle="modal" data-target="#validate" title="Deshacer cambios">
@@ -595,10 +604,10 @@
     <input type="image" id="boton_geocoder" style="display: none" name="boton_geocoder" src="imagenes/geocoder.png" onclick="busqueda(name)">
     <input type="image" id="boton_comparacion" style="display: none" name="boton_comparacion" src="imagenes/icono_comparaciones.png" onclick="comparacion()">
 
-    <a href="barranquilla.html"><img id="salida" src="./imagenes/foto_usuario.png" title="Salir" hidden="hidden"></a>
+    <a href="barranquilla.html"><img id="salida" src="./iconos/salir.png" title="Salir" hidden="hidden"></a>
 
     <img id="manual" src="./imagenes/manual.png" hidden="hidden" onclick="abrir_manual()" title="Manual de Usuario">
-    <div id="herramientas" class='container' hidden="hidden">
+    <div id="herramientas" class='container'>
         <div id="layertree" class="tree"><img src="./imagenes/layers.png"  class="btn btn-success" style="background-color:#198c19; border: 0px solid" ></div> 
     </div> 
 
