@@ -352,6 +352,7 @@ $("#input_predioshasusos").autocomplete({
     select: predioshasusosSelect
 });
 function addressSource(requestString, responseFunc) {
+    document.getElementById("tblatt_totem_general").innerHTML = "";
     //console.log(requestString);
     //globalstyle = "sinconsulta";
     predio.setVisible(true);
@@ -1498,6 +1499,7 @@ function addressSelect(event, ui) {
                     select[1] = "<b>Referencia Catastral</b>";
                     select[2] = "<b>Área de Terreno</b>";
                     select[3] = '<b>Imprimir Factura</b><br><input type="checkbox" id="2017" value="2017"> 2017<br><input type="checkbox" id="2018" value="2018"> 2018<br><input type="checkbox" id="2019" value="2019" checked> 2019<br>';
+                    select[4] = "<b>Fotografias</b>";
                     sel[0] = ui.item.direccionoriginal;
                     sel[1] = arregloDeSubCadenas[0];
                     sel[2] = areaterreno + " metros cuadrados";
@@ -1516,14 +1518,31 @@ function addressSelect(event, ui) {
                     stv[2].target = "marco";
                     stv[2].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
                     stv[2].setAttribute("onclick", "open_streetview()");*/
-                    var campos = 3;
+                    sel[4] = document.createElement("a");
+                    sel[4].id = "img1";
+                    sel[4].style = "width: 30px; height: 50px;";
+                    sel[4].target = "marco";
+                    sel[4].setAttribute("onclick", "open_streetview()");
+                    sel[4].href = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    imag[4] = document.createElement("img");
+                    imag[4].id = "im1";
+                    imag[4].className = "pequeña";
+                    imag[4].src = "http://www.gesstorbarranquilla.com/barranquilla/fotografias/" + codfoto + "/1.jpg";
+                    stv[4] = document.createElement("a");
+                    stv[4].id = "imgstreet1";
+                    stv[4].target = "marco";
+                    stv[4].href = "street_view.html?coordenadas=" + values.geom.flatCoordinates;
+                    stv[4].setAttribute("onclick", "open_streetview()");
+                    ig[4] = document.createElement("img");
+                    ig[4].src = "./imagenes/streetview.png";
+                    var campos = 4;
                     for (i = 0; i < select.length; i++) {
                         //console.log(i);
                         row = table.insertRow(i + 1);
                         cell1 = row.insertCell(0);
                         cell2 = row.insertCell(1);
                         cell1.innerHTML = select[i];
-                        if (i === campos) {
+                        if (i === campos-1) {
                             cell2.appendChild(sel[i]);
                             //cell2.appendChild(imag[i]);
                             sel[i].appendChild(imag[i]);
@@ -1531,7 +1550,14 @@ function addressSelect(event, ui) {
                             //cell2.appendChild(ig[i]);
                             //stv[i].appendChild(ig[i]);
 
-                        } else {
+                        } else if (i === campos) {
+                            cell2.appendChild(sel[i]);
+                            //cell2.appendChild(imag[i]);
+                            sel[i].appendChild(imag[i]);
+                            cell2.appendChild(stv[i]);
+                            //cell2.appendChild(ig[i]);
+                            stv[i].appendChild(ig[i]);
+                        }else{
                             cell2.innerHTML = sel[i];
                         }
                     }
