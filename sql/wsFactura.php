@@ -36,14 +36,17 @@ echo $servic;
 
 $fichero = $_SERVER["DOCUMENT_ROOT"] . '/barranquilla/facturas/' . $ref . 'factura.pdf';
 echo '<br>'.$fichero;
-file_put_contents($fichero, $servicio['archivoPdf']);
-header("Content-Disposition: attachment; filename=" . urlencode('factura.pdf'));
-header("Content-type: application/octet-stream");
-header("Content-type: application/download");
-header("Content-Description: File Transfer");
+//file_put_contents($fichero, $servicio['archivoPdf']);
+//header("Content-Disposition: inline; filename=" . urlencode('factura.pdf'));
+//header("Content-type: application/octet-stream");
+//header("Content-type: application/download");
+//header("Content-Description: File Transfer");
+//header("Content-Length: " . $servicio['archivoPdf']);
+//exit($servicio['archivoPdf']);
+header("Content-type: application/pdf");
+header("Content-Disposition: inline; filename=" . urlencode('factura.pdf'));
 header("Content-Length: " . $servicio['archivoPdf']);
 exit($servicio['archivoPdf']);
- 
 
 function obj2array($obj) {
     $out = array();
