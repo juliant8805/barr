@@ -8,7 +8,8 @@ echo $anos;
 //$ref = '010601560009000';
 //$ano = '2019';
 //$servicio = "http://201.245.170.148:8585/predial/wsPredial.svc?wsdl"; //url del servicio
-$servicio="http://190.248.57.43:8090/WS_CatastroWeb/ProcesosCatastro?wsdl"; //url del servicio
+//$servicio="http://190.248.57.43:8090/WS_CatastroWeb/ProcesosCatastro?wsdl"; //url del servicio
+$servicio="http://10.10.0.3:8080/WS_CatastroWeb/ProcesosCatastro?wsdl"; //url del servicio
 $parametros = array(); //parametros de la llamada
 $parametros['referenciaCatastral'] = $ref;
 $parametros['vigencia'] = $ano;

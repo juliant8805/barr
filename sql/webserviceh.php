@@ -1,6 +1,7 @@
 <?php
 $ref = $_POST['ref'];//referencia catastral enviada
-$servicio="http://190.248.57.43:8090/WS_CatastroWeb/ProcesosCatastro?wsdl"; //url del servicio
+//$servicio="http://190.248.57.43:8090/WS_CatastroWeb/ProcesosCatastro?wsdl"; //url del servicio
+$servicio="http://10.10.0.3:8080/WS_CatastroWeb/ProcesosCatastro?wsdl";
 $parametros=array(); //parametros de la llamada
 $parametros['referenciaCatastral']=$ref;
 $client = new SoapClient($servicio, $parametros);
